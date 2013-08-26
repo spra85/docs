@@ -1,0 +1,13 @@
+.gradle
+bin
+.ignorepath
+.settings
+.classpath
+.project
+.repos/*/
+*.iml
+*.ipr
+*.iws
+*.log
+metastore_db
+html_docs/
