@@ -10,7 +10,7 @@ use YAML qw(LoadFile);
 use Path::Class qw(dir file);
 use File::Copy::Recursive qw(fcopy rcopy);
 use Capture::Tiny qw(capture_merged tee_merged);
-use Data::Dump qw(pp);
+use Data::Dumper;
 use Getopt::Long;
 use v5.10;
 
@@ -43,17 +43,18 @@ sub build_local {
     say "Building HTML from $doc";
 
     my $dir = dir( $Opts{out} || $Old_Pwd->subdir('html_docs') );
+    my $html;
     if ( $Opts{single} ) {
         $dir->rmtree;
         $dir->mkpath;
         build_single( $index, $dir, $Opts{toc} );
+        $html = 'index.html';
     }
     else {
         build_chunked( $index, $dir );
+        $html = $index->basename;
+        $html =~ s/\.[^.]+/.html/;
     }
-
-    my $html = $index->basename;
-    $html =~ s/\.[^.]+/.html/;
 
     say "Done";
     say "See: " . $dir->file($html);
@@ -86,7 +87,7 @@ sub build_entries {
     while ( my $entry = shift @entries ) {
 
         my $title = $entry->{title}
-            or die "Missing title for entry: " . pp($entry);
+            or die "Missing title for entry: " . Dumper($entry);
 
         if ( my $sections = $entry->{sections} ) {
             my $entries = build_entries( $build, @$sections );

@@ -3,6 +3,7 @@ bin
 .ignorepath
 .settings
 .classpath
+styles.css
 .project
 .repos/*/
 *.iml
