@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Hadoop Gateway</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="modules-gateway.html" title="Gateway" /><link rel="prev" href="modules-gateway-fs.html" title="Shared FS Gateway" /><link rel="next" href="modules-gateway-s3.html" title="S3 Gateway" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="modules.html">Modules</a></span> &gt; <span class="breadcrumb-link"><a href="modules-gateway.html">Gateway</a></span> &gt; <span class="breadcrumb-node">Hadoop Gateway</span></div><div class="navheader"><span class="prev"><a href="modules-gateway-fs.html">
+              « 
+              Shared FS Gateway</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-gateway-s3.html">S3 Gateway
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="modules-gateway-hadoop"></a>Hadoop Gateway</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="modules-gateway-local.html">Local Gateway</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="modules-gateway-fs.html">Shared FS Gateway</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="modules-gateway-hadoop.html">Hadoop Gateway</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="modules-gateway-s3.html">S3 Gateway</a></span></dt></dl></div><p><span class="strong"><strong>The hadoop gateway is deprecated and will be removed in a future
+version. Please use the
+<a class="link" href="modules-gateway-local.html" title="Local Gateway">local gateway</a>
+instead.</strong></span></p><p>The hadoop (HDFS) based gateway stores the cluster meta and indices data
+in hadoop. Hadoop support is provided as a plugin and installing is
+explained <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-hadoop" target="_top">here</a> or
+downloading the hadoop plugin and placing it under the <code class="literal">plugins</code>
+directory. Here is an example config to enable it:</p><pre class="programlisting prettyprint noescape lang-js">gateway:
+    type: hdfs
+    hdfs:
+        uri: hdfs://myhost:8022</pre><h4><a id="_settings_2"></a>Settings</h4><p>The hadoop gateway requires two simple settings. The <code class="literal">gateway.hdfs.uri</code>
+controls the URI to connect to the hadoop cluster, for example:
+<code class="literal">hdfs://myhost:8022</code>. The <code class="literal">gateway.hdfs.path</code> controls the path under
+which the gateway will store the data.</p><h4><a id="_concurrent_streams_2"></a>concurrent_streams</h4><p>The <code class="literal">gateway.hdfs.concurrent_streams</code> allow to throttle the number of
+streams (per node) opened against the shared gateway performing the
+snapshot operation. It defaults to <code class="literal">5</code>.</p></div><div class="navfooter"><span class="prev"><a href="modules-gateway-fs.html">
+              « 
+              Shared FS Gateway</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-gateway-s3.html">S3 Gateway
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

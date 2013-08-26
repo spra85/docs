@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Bulk Java API</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="java-api.html" title="Java API" /><link rel="prev" href="java-api-delete.html" title="Delete Java API" /><link rel="next" href="java-api-search.html" title="Search Java API" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="java-api.html">Java API</a></span> &gt; <span class="breadcrumb-node">Bulk Java API</span></div><div class="navheader"><span class="prev"><a href="java-api-delete.html">
+              « 
+              Delete Java API</a>
+           
+        </span><span class="next">
+           
+          <a href="java-api-search.html">Search Java API
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="java-api-bulk"></a>Bulk Java API</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-client.html">Java Client</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-index_.html">Index Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-get.html">Get Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-delete.html">Delete Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-bulk.html">Bulk Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-search.html">Search Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-count.html">Count Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-delete-by-query.html">Delete By Query Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-facets.html">Java Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-percolate.html">Percolate Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-query-dsl-queries.html">Java Query DSL - Queries</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-query-dsl-filters.html">Java Query DSL - Filters</a></span></dt></dl></div><p>The bulk API allows one to index and delete several documents in a
+single request. Here is a sample usage:</p><pre class="programlisting prettyprint noescape lang-java">import static org.elasticsearch.common.xcontent.XContentFactory.*;
+
+BulkRequestBuilder bulkRequest = client.prepareBulk();
+
+// either use client#prepare, or use Requests# to directly build index/delete requests
+bulkRequest.add(client.prepareIndex("twitter", "tweet", "1")
+        .setSource(jsonBuilder()
+                    .startObject()
+                        .field("user", "kimchy")
+                        .field("postDate", new Date())
+                        .field("message", "trying out Elastic Search")
+                    .endObject()
+                  )
+        );
+
+bulkRequest.add(client.prepareIndex("twitter", "tweet", "2")
+        .setSource(jsonBuilder()
+                    .startObject()
+                        .field("user", "kimchy")
+                        .field("postDate", new Date())
+                        .field("message", "another post")
+                    .endObject()
+                  )
+        );
+
+BulkResponse bulkResponse = bulkRequest.execute().actionGet();
+if (bulkResponse.hasFailures()) {
+    // process failures by iterating through each bulk response item
+}</pre></div><div class="navfooter"><span class="prev"><a href="java-api-delete.html">
+              « 
+              Delete Java API</a>
+           
+        </span><span class="next">
+           
+          <a href="java-api-search.html">Search Java API
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

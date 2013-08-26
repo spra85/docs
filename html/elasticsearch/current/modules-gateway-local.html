@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Local Gateway</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="modules-gateway.html" title="Gateway" /><link rel="prev" href="modules-gateway.html" title="Gateway" /><link rel="next" href="modules-gateway-fs.html" title="Shared FS Gateway" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="modules.html">Modules</a></span> &gt; <span class="breadcrumb-link"><a href="modules-gateway.html">Gateway</a></span> &gt; <span class="breadcrumb-node">Local Gateway</span></div><div class="navheader"><span class="prev"><a href="modules-gateway.html">
+              « 
+              Gateway</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-gateway-fs.html">Shared FS Gateway
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="modules-gateway-local"></a>Local Gateway</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="modules-gateway-local.html">Local Gateway</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="modules-gateway-fs.html">Shared FS Gateway</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="modules-gateway-hadoop.html">Hadoop Gateway</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="modules-gateway-s3.html">S3 Gateway</a></span></dt></dl></div><p>The local gateway allows for recovery of the full cluster state and
+indices from the local storage of each node, and does not require a
+common node level shared storage.</p><p>Note, different from shared gateway types, the persistency to the local
+gateway is <span class="strong"><strong>not</strong></span> done in an async manner. Once an operation is
+performed, the data is there for the local gateway to recover it in case
+of full cluster failure.</p><p>It is important to configure the <code class="literal">gateway.recover_after_nodes</code> setting
+to include most of the expected nodes to be started after a full cluster
+restart. This will insure that the latest cluster state is recovered.
+For example:</p><pre class="programlisting prettyprint noescape lang-js">gateway:
+    recover_after_nodes: 1
+    recover_after_time: 5m
+    expected_nodes: 2</pre><p>Note, to backup/snapshot the full cluster state it is recommended that
+the local storage for all nodes be copied (in theory not all are
+required, just enough to guarantee a copy of each shard has been copied,
+i.e. depending on the replication settings) while disabling flush.
+Shared storage such as S3 can be used to keep the different nodes'
+copies in one place, though it does comes at a price of more IO.</p></div><div class="navfooter"><span class="prev"><a href="modules-gateway.html">
+              « 
+              Gateway</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-gateway-fs.html">Shared FS Gateway
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

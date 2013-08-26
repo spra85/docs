@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Installation</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="setup.html" title="Setup" /><link rel="prev" href="setup.html" title="Setup" /><link rel="next" href="setup-configuration.html" title="Configuration" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="setup.html">Setup</a></span> &gt; <span class="breadcrumb-node">Installation</span></div><div class="navheader"><span class="prev"><a href="setup.html">
+              « 
+              Setup</a>
+           
+        </span><span class="next">
+           
+          <a href="setup-configuration.html">Configuration
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="setup-installation"></a>Installation</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="setup-installation.html">Installation</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="setup-configuration.html">Configuration</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="setup-service.html">Running As a Service</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="setup-dir-layout.html">Directory Layout</a></span></dt></dl></div><p>After <a class="ulink" href="/download" target="_top">downloading</a> the latest release and extracting it,
+<span class="strong"><strong>elasticsearch</strong></span> can be started using:</p><pre class="programlisting prettyprint noescape lang-sh">$ bin/elasticsearch</pre><p>Under *nix system, the command will start the process in the background.
+To run it in the foreground, add the <code class="literal">-f</code> switch to it:</p><pre class="programlisting prettyprint noescape lang-sh">$ bin/elasticsearch -f</pre><p>ElasticSearch is built using Java, and requires at least
+<a class="ulink" href="http://java.sun.com/javase/downloads/index.jsp" target="_top">Java 6</a> in order to run.
+The version of Java that will be used can be set by setting the
+<code class="literal">JAVA_HOME</code> environment variable.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>*NIX</strong></p></div></div></div><p>There are added features when using the <code class="literal">elasticsearch</code> shell script.
+The first, which was explained earlier, is the ability to easily run the
+process either in the foreground or the background.</p><p>Another feature is the ability to pass <code class="literal">-X</code> and <code class="literal">-D</code> directly to the
+script. When set, both override anything set using either <code class="literal">JAVA_OPTS</code> or
+<code class="literal">ES_JAVA_OPTS</code>. For example:</p><pre class="programlisting prettyprint noescape lang-sh">$ bin/elasticsearch -f -Xmx2g -Xms2g -Des.index.storage.type=memory</pre></div></div><div class="navfooter"><span class="prev"><a href="setup.html">
+              « 
+              Setup</a>
+           
+        </span><span class="next">
+           
+          <a href="setup-configuration.html">Configuration
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Delete Java API</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="java-api.html" title="Java API" /><link rel="prev" href="java-api-get.html" title="Get Java API" /><link rel="next" href="java-api-bulk.html" title="Bulk Java API" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="java-api.html">Java API</a></span> &gt; <span class="breadcrumb-node">Delete Java API</span></div><div class="navheader"><span class="prev"><a href="java-api-get.html">
+              « 
+              Get Java API</a>
+           
+        </span><span class="next">
+           
+          <a href="java-api-bulk.html">Bulk Java API
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="java-api-delete"></a>Delete Java API</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-client.html">Java Client</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-index_.html">Index Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-get.html">Get Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-delete.html">Delete Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-bulk.html">Bulk Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-search.html">Search Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-count.html">Count Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-delete-by-query.html">Delete By Query Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-facets.html">Java Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-percolate.html">Percolate Java API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-query-dsl-queries.html">Java Query DSL - Queries</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="java-api-query-dsl-filters.html">Java Query DSL - Filters</a></span></dt></dl></div><p>The delete API allows to delete a typed JSON document from a specific
+index based on its id. The following example deletes the JSON document
+from an index called twitter, under a type called tweet, with id valued
+1:</p><pre class="programlisting prettyprint noescape lang-java">DeleteResponse response = client.prepareDelete("twitter", "tweet", "1")
+        .execute()
+        .actionGet();</pre><p>For more information on the delete operation, check out the
+<a class="link" href="docs-api-delete.html" title="Delete API">delete API</a> docs.</p><h3><a id="_operation_threading_3"></a>Operation Threading</h3><p>The delete API allows to set the threading model the operation will be
+performed when the actual execution of the API is performed on the same
+node (the API is executed on a shard that is allocated on the same
+server).</p><p>The options are to execute the operation on a different thread, or to
+execute it on the calling thread (note that the API is still async). By
+default, <code class="literal">operationThreaded</code> is set to <code class="literal">true</code> which means the operation
+is executed on a different thread. Here is an example that sets it to
+<code class="literal">false</code>:</p><pre class="programlisting prettyprint noescape lang-java">DeleteResponse response = client.prepareDelete("twitter", "tweet", "1")
+        .setOperationThreaded(false)
+        .execute()
+        .actionGet();</pre></div><div class="navfooter"><span class="prev"><a href="java-api-get.html">
+              « 
+              Get Java API</a>
+           
+        </span><span class="next">
+           
+          <a href="java-api-bulk.html">Bulk Java API
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

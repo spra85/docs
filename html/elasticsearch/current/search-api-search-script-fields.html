@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Script Fields</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="search-api-request-body.html" title="Request Body" /><link rel="prev" href="search-api-search-fields.html" title="Fields" /><link rel="next" href="search-api-search-filter.html" title="Filter" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="search-api.html">Search APIs</a></span> &gt; <span class="breadcrumb-link"><a href="search-api-request-body.html">Request Body</a></span> &gt; <span class="breadcrumb-node">Script Fields</span></div><div class="navheader"><span class="prev"><a href="search-api-search-fields.html">
+              « 
+              Fields</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api-search-filter.html">Filter
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="search-api-search-script-fields"></a>Script Fields</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-query.html">Query</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-from-size.html">From / Size</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-sort.html">Sort</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-fields.html">Fields</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-script-fields.html">Script Fields</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-filter.html">Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-highlighting.html">Highlighting</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-rescore.html">Rescoring</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-search-type.html">Search Type</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-scroll.html">Scroll</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-preference.html">Preference</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-explain.html">Explain</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-version.html">Version</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-index-boost.html">Index Boost</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-min-score.html">min_score</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-named-filters.html">Named Filters</a></span></dt></dl></div><p>Allows to return a <a class="link" href="modules-scripting.html" title="Scripting">script evaluation</a> (based on different fields) for each hit, for example:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "query" : {
+        ...
+    },
+    "script_fields" : {
+        "test1" : {
+            "script" : "doc['my_field_name'].value * 2"
+        },
+        "test2" : {
+            "script" : "doc['my_field_name'].value * factor",
+            "params" : {
+                "factor"  : 2.0
+            }
+        }
+    }
+}</pre><p>Script fields can work on fields that are not store (<code class="literal">my_field_name</code> in
+the above case), and allow to return custom values to be returned (the
+evaluated value of the script).</p><p>Script fields can also access the actual <code class="literal">_source</code> document indexed and
+extract specific elements to be returned from it (can be an "object"
+type). Here is an example:</p><pre class="programlisting prettyprint noescape lang-js">    {
+        "query" : {
+            ...
+        },
+        "script_fields" : {
+            "test1" : {
+                "script" : "_source.obj1.obj2"
+            }
+        }
+    }</pre><p>Note the <code class="literal">_source</code> keyword here to navigate the json like model.</p><p>Its important to understand the difference between
+<code class="literal">doc['my_field'].value</code> and <code class="literal">_source.my_field</code>. The first, using the doc
+keyword, will cause the terms for that field to be loaded to memory
+(cached), which will result in faster execution, but more memory
+consumption. Also, the <code class="literal">doc[...]</code> notation only allows for simple valued
+fields (can’t return a json object from it) and make sense only on non
+analyzed or single term based fields.</p><p>The <code class="literal">_source</code> on the other hand causes the source to be loaded, parsed,
+and then only the relevant part of the json is returned.</p></div><div class="navfooter"><span class="prev"><a href="search-api-search-fields.html">
+              « 
+              Fields</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api-search-filter.html">Filter
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

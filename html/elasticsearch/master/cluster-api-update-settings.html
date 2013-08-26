@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Cluster Update Settings</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="cluster-api.html" title="Cluster APIs" /><link rel="prev" href="cluster-api-reroute.html" title="Cluster Reroute" /><link rel="next" href="cluster-api-nodes-stats.html" title="Nodes Stats" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="cluster-api.html">Cluster APIs</a></span> &gt; <span class="breadcrumb-node">Cluster Update Settings</span></div><div class="navheader"><span class="prev"><a href="cluster-api-reroute.html">
+              « 
+              Cluster Reroute</a>
+           
+        </span><span class="next">
+           
+          <a href="cluster-api-nodes-stats.html">Nodes Stats
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="cluster-api-update-settings"></a>Cluster Update Settings</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-health.html">Cluster Health</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-state.html">Cluster State</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-reroute.html">Cluster Reroute</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-update-settings.html">Cluster Update Settings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-nodes-stats.html">Nodes Stats</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-nodes-info.html">Nodes Info</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-nodes-hot-threads.html">Nodes hot_threads</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-nodes-shutdown.html">Nodes Shutdown</a></span></dt></dl></div><p>Allows to update cluster wide specific settings. Settings updated can
+either be persistent (applied cross restarts) or transient (will not
+survive a full cluster restart). Here is an example:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/_cluster/settings -d '{
+    "persistent" : {
+        "discovery.zen.minimum_master_nodes" : 2
+    }
+}'</pre><p>Or:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/_cluster/settings -d '{
+    "transient" : {
+        "discovery.zen.minimum_master_nodes" : 2
+    }
+}'</pre><p>The cluster responds with the settings updated. So the response for the
+last example will be:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "persistent" : {},
+    "transient" : {
+        "discovery.zen.minimum_master_nodes" : "2"
+    }
+}</pre><p>There is a specific list of settings that can be updated, those include:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">cluster.blocks.read_only</code>: Have the whole cluster read only (indices
+  do not accept write operations), metadata is not allowed to be modified
+  (create or delete indices).
+</li><li class="listitem">
+<code class="literal">discovery.zen.minimum_master_nodes</code>
+</li><li class="listitem">
+<code class="literal">indices.recovery.concurrent_streams</code>
+</li><li class="listitem">
+<code class="literal">cluster.routing.allocation.node_initial_primaries_recoveries</code>
+</li><li class="listitem">
+<code class="literal">cluster.routing.allocation.node_concurrent_recoveries</code>
+</li><li class="listitem">
+<code class="literal">cluster.routing.allocation.cluster_concurrent_rebalance</code>
+</li><li class="listitem">
+<code class="literal">cluster.routing.allocation.awareness.attributes</code>
+</li><li class="listitem">
+<code class="literal">cluster.routing.allocation.awareness.force.*</code>
+</li><li class="listitem">
+<code class="literal">cluster.routing.allocation.disable_allocation</code>
+</li><li class="listitem">
+<code class="literal">cluster.routing.allocation.disable_replica_allocation</code>
+</li><li class="listitem">
+<code class="literal">cluster.routing.allocation.include.*</code>
+</li><li class="listitem">
+<code class="literal">cluster.routing.allocation.exclude.*</code>
+</li><li class="listitem">
+<code class="literal">cluster.routing.allocation.require.*</code> (from 0.90)
+</li><li class="listitem">
+<code class="literal">indices.cache.filter.size</code>
+</li><li class="listitem">
+<code class="literal">indices.ttl.interval</code>
+</li><li class="listitem">
+<code class="literal">indices.recovery.file_chunk_size</code>
+</li><li class="listitem">
+<code class="literal">indices.recovery.translog_ops</code>
+</li><li class="listitem">
+<code class="literal">indices.recovery.translog_size</code>
+</li><li class="listitem">
+<code class="literal">indices.recovery.compress</code>
+</li><li class="listitem">
+<code class="literal">indices.recovery.concurrent_streams</code>
+</li><li class="listitem">
+<code class="literal">indices.recovery.max_bytes_per_sec</code> (since 0.90.1) / <code class="literal">indices.recovery.max_size_per_sec</code> (pre 0.90.1).
+</li></ul></div><p>Logger values can also be updated by setting <code class="literal">logger.</code> prefix. More
+settings will be allowed to be updated.</p><p>Cluster wide settings can be returned using:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET localhost:9200/_cluster/settings</pre></div><div class="navfooter"><span class="prev"><a href="cluster-api-reroute.html">
+              « 
+              Cluster Reroute</a>
+           
+        </span><span class="next">
+           
+          <a href="cluster-api-nodes-stats.html">Nodes Stats
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

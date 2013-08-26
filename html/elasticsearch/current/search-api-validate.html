@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Validate API</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="search-api.html" title="Search APIs" /><link rel="prev" href="docs-api-delete-by-query.html" title="Delete By Query API" /><link rel="next" href="search-api-explain.html" title="Explain API" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="search-api.html">Search APIs</a></span> &gt; <span class="breadcrumb-node">Validate API</span></div><div class="navheader"><span class="prev"><a href="docs-api-delete-by-query.html">
+              « 
+              Delete By Query API</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api-explain.html">Explain API
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="search-api-validate"></a>Validate API</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-search.html">Search</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-uri-request.html">URI Request</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-request-body.html">Request Body</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-facets.html">Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-suggesters.html">Suggesters</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-multi-search.html">Multi Search API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-count.html">Count API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="docs-api-delete-by-query.html">Delete By Query API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-validate.html">Validate API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-explain.html">Explain API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-percolate.html">Percolate API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-api-more-like-this.html">More Like This API</a></span></dt></dl></div><p>The validate API allows a user to validate a potentially expensive query
+without executing it. The following example shows how it can be used:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
+    "user" : "kimchy",
+    "post_date" : "2009-11-15T14:12:12",
+    "message" : "trying out Elastic Search"
+}'</pre><p>When the query is valid, the response contains <code class="literal">valid:true</code>:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/twitter/_validate/query?q=user:foo'
+{"valid":true,"_shards":{"total":1,"successful":1,"failed":0}}</pre><p>Or, with a request body:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query' -d '{
+  "filtered" : {
+    "query" : {
+      "query_string" : {
+        "query" : "*:*"
+      }
+    },
+    "filter" : {
+      "term" : { "user" : "kimchy" }
+    }
+  }
+}'
+{"valid":true,"_shards":{"total":1,"successful":1,"failed":0}}</pre><p>If the query is invalid, <code class="literal">valid</code> will be <code class="literal">false</code>. Here the query is
+invalid because ElasticSearch knows the post_date field should be a date
+due to dynamic mapping, and <span class="emphasis"><em>foo</em></span> does not correctly parse into a date:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query?q=post_date:foo'
+{"valid":false,"_shards":{"total":1,"successful":1,"failed":0}}</pre><p>An <code class="literal">explain</code> parameter can be specified to get more detailed information
+about why a query failed:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query?q=post_date:foo&amp;pretty=true&amp;explain=true'
+{
+  "valid" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "explanations" : [ {
+    "index" : "twitter",
+    "valid" : false,
+    "error" : "org.elasticsearch.index.query.QueryParsingException: [twitter] Failed to parse; org.elasticsearch.ElasticSearchParseException: failed to parse date field [foo], tried both date format [dateOptionalTime], and timestamp number; java.lang.IllegalArgumentException: Invalid format: \"foo\""
+  } ]
+}</pre></div><div class="navfooter"><span class="prev"><a href="docs-api-delete-by-query.html">
+              « 
+              Delete By Query API</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api-explain.html">Explain API
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

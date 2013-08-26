@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Cluster State</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="cluster-api.html" title="Cluster APIs" /><link rel="prev" href="cluster-api-health.html" title="Cluster Health" /><link rel="next" href="cluster-api-reroute.html" title="Cluster Reroute" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="cluster-api.html">Cluster APIs</a></span> &gt; <span class="breadcrumb-node">Cluster State</span></div><div class="navheader"><span class="prev"><a href="cluster-api-health.html">
+              « 
+              Cluster Health</a>
+           
+        </span><span class="next">
+           
+          <a href="cluster-api-reroute.html">Cluster Reroute
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="cluster-api-state"></a>Cluster State</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-health.html">Cluster Health</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-state.html">Cluster State</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-reroute.html">Cluster Reroute</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-update-settings.html">Cluster Update Settings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-nodes-stats.html">Nodes Stats</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-nodes-info.html">Nodes Info</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-nodes-hot-threads.html">Nodes hot_threads</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-api-nodes-shutdown.html">Nodes Shutdown</a></span></dt></dl></div><p>The cluster state API allows to get a comprehensive state information of
+the whole cluster.</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XGET 'http://localhost:9200/_cluster/state'</pre><p>By default, the cluster state request is routed to the master node, to
+ensure that the latest cluster state is returned.
+For debugging purposes, you can retrieve the cluster state local to a
+particular node by adding <code class="literal">local=true</code> to the  query string.</p><h3><a id="_response_filters"></a>Response Filters</h3><p>It is possible to filter the cluster state response using the following
+REST parameters:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">filter_nodes</code>
+</span></dt><dd>
+        Set to <code class="literal">true</code> to filter out the <code class="literal">nodes</code> part of the
+        response.
+</dd><dt><span class="term">
+<code class="literal">filter_routing_table</code>
+</span></dt><dd>
+        Set to <code class="literal">true</code> to filter out the <code class="literal">routing_table</code>
+        part of the response.
+</dd><dt><span class="term">
+<code class="literal">filter_metadata</code>
+</span></dt><dd>
+        Set to <code class="literal">true</code> to filter out the <code class="literal">metadata</code> part of the
+        response.
+</dd><dt><span class="term">
+<code class="literal">filter_blocks</code>
+</span></dt><dd>
+        Set to <code class="literal">true</code> to filter out the <code class="literal">blocks</code> part of the
+        response.
+</dd><dt><span class="term">
+<code class="literal">filter_indices</code>
+</span></dt><dd>
+        When not filtering metadata, a comma separated list of
+        indices to include in the response.
+</dd></dl></div><p>Example follows:</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XGET 'http://localhost:9200/_cluster/state?filter_nodes=true'</pre></div><div class="navfooter"><span class="prev"><a href="cluster-api-health.html">
+              « 
+              Cluster Health</a>
+           
+        </span><span class="next">
+           
+          <a href="cluster-api-reroute.html">Cluster Reroute
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

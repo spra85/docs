@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Stemmer Token Filter</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="analysis-tokenfilters.html" title="Token Filters" /><link rel="prev" href="analysis-word-delimiter-tokenfilter.html" title="Word Delimiter Token Filter" /><link rel="next" href="analysis-stemmer-override-tokenfilter.html" title="Stemmer Override Token Filter" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="analysis.html">Analysis</a></span> &gt; <span class="breadcrumb-link"><a href="analysis-tokenfilters.html">Token Filters</a></span> &gt; <span class="breadcrumb-node">Stemmer Token Filter</span></div><div class="navheader"><span class="prev"><a href="analysis-word-delimiter-tokenfilter.html">
+              « 
+              Word Delimiter Token Filter</a>
+           
+        </span><span class="next">
+           
+          <a href="analysis-stemmer-override-tokenfilter.html">Stemmer Override Token Filter
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="analysis-stemmer-tokenfilter"></a>Stemmer Token Filter</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-standard-tokenfilter.html">Standard Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-asciifolding-tokenfilter.html">ASCII Folding Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-length-tokenfilter.html">Length Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-lowercase-tokenfilter.html">Lowercase Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-ngram-tokenfilter.html">NGram Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-edgengram-tokenfilter.html">Edge NGram Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-porterstem-tokenfilter.html">Porter Stem Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-shingle-tokenfilter.html">Shingle Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-stop-tokenfilter.html">Stop Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-word-delimiter-tokenfilter.html">Word Delimiter Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-stemmer-tokenfilter.html">Stemmer Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-stemmer-override-tokenfilter.html">Stemmer Override Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-keyword-marker-tokenfilter.html">Keyword Marker Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-keyword-repeat-tokenfilter.html">Keyword Repeat Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-kstem-tokenfilter.html">KStem Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-snowball-tokenfilter.html">Snowball Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-phonetic-tokenfilter.html">Phonetic Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-synonym-tokenfilter.html">Synonym Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-compound-word-tokenfilter.html">Compound Word Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-reverse-tokenfilter.html">Reverse Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-elision-tokenfilter.html">Elision Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-truncate-tokenfilter.html">Truncate Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-unique-tokenfilter.html">Unique Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-pattern-capture-tokenfilter.html">Pattern Capture Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-pattern_replace-tokenfilter.html">Pattern Replace Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-trim-tokenfilter.html">Trim Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-limit-token-count-tokenfilter.html">Limit Token Count Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-hunspell-tokenfilter.html">Hunspell Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-common-grams-tokenfilter.html">Common Grams Token Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="analysis-normalization-tokenfilter.html">Normalization Token Filter</a></span></dt></dl></div><p>A filter that stems words (similar to <code class="literal">snowball</code>, but with more
+options). The <code class="literal">language</code>/@name@ parameter controls the stemmer with the
+following available values:</p><p><a class="ulink" href="http://lucene.apache.org/core/4_3_0/analyzers-common/index.html?org%2Fapache%2Flucene%2Fanalysis%2Far%2FArabicStemmer.html" target="_top">arabic</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/armenian/stemmer.html" target="_top">armenian</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/basque/stemmer.html" target="_top">basque</a>,
+<a class="ulink" href="http://lucene.apache.org/core/4_3_0/analyzers-common/index.html?org%2Fapache%2Flucene%2Fanalysis%2Fbr%2FBrazilianStemmer.html" target="_top">brazilian</a>,
+<a class="ulink" href="http://members.unine.ch/jacques.savoy/Papers/BUIR.pdf" target="_top">bulgarian</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/catalan/stemmer.html" target="_top">catalan</a>,
+<a class="ulink" href="http://portal.acm.org/citation.cfm?id=1598600" target="_top">czech</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/danish/stemmer.html" target="_top">danish</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/dutch/stemmer.html" target="_top">dutch</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/english/stemmer.html" target="_top">english</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/finnish/stemmer.html" target="_top">finnish</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/french/stemmer.html" target="_top">french</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/german/stemmer.html" target="_top">german</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/german2/stemmer.html" target="_top">german2</a>,
+<a class="ulink" href="http://sais.se/mthprize/2007/ntais2007.pdf" target="_top">greek</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/hungarian/stemmer.html" target="_top">hungarian</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/italian/stemmer.html" target="_top">italian</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/kraaij_pohlmann/stemmer.html" target="_top">kp</a>,
+<a class="ulink" href="http://ciir.cs.umass.edu/pubfiles/ir-35.pdf" target="_top">kstem</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/lovins/stemmer.html" target="_top">lovins</a>,
+<a class="ulink" href="http://lucene.apache.org/core/4_3_0/analyzers-common/index.html?org%2Fapache%2Flucene%2Fanalysis%2Flv%2FLatvianStemmer.html" target="_top">latvian</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/norwegian/stemmer.html" target="_top">norwegian</a>,
+<a class="ulink" href="http://lucene.apache.org/core/4_3_0/analyzers-common/index.html?org%2Fapache%2Flucene%2Fanalysis%2Fno%2FNorwegianMinimalStemFilter.html" target="_top">minimal_norwegian</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/porter/stemmer.html" target="_top">porter</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/portuguese/stemmer.html" target="_top">portuguese</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/romanian/stemmer.html" target="_top">romanian</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/russian/stemmer.html" target="_top">russian</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/spanish/stemmer.html" target="_top">spanish</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/swedish/stemmer.html" target="_top">swedish</a>,
+<a class="ulink" href="http://snowball.tartarus.org/algorithms/turkish/stemmer.html" target="_top">turkish</a>,
+<a class="ulink" href="http://www.medialab.tfe.umu.se/courses/mdm0506a/material/fulltext_ID%3D10049387%26PLACEBO%3DIE.pdf" target="_top">minimal_english</a>,
+<a class="ulink" href="http://lucene.apache.org/core/4_3_0/analyzers-common/index.html?org%2Fapache%2Flucene%2Fanalysis%2Fen%2FEnglishPossessiveFilter.html" target="_top">possessive_english</a>,
+<a class="ulink" href="http://clef.isti.cnr.it/2003/WN_web/22.pdf" target="_top">light_finish</a>,
+<a class="ulink" href="http://dl.acm.org/citation.cfm?id=1141523" target="_top">light_french</a>,
+<a class="ulink" href="http://dl.acm.org/citation.cfm?id=318984" target="_top">minimal_french</a>,
+<a class="ulink" href="http://dl.acm.org/citation.cfm?id=1141523" target="_top">light_german</a>,
+<a class="ulink" href="http://members.unine.ch/jacques.savoy/clef/morpho.pdf" target="_top">minimal_german</a>,
+<a class="ulink" href="http://computing.open.ac.uk/Sites/EACLSouthAsia/Papers/p6-Ramanathan.pdf" target="_top">hindi</a>,
+<a class="ulink" href="http://dl.acm.org/citation.cfm?id=1141523&amp;dl=ACM&amp;coll=DL&amp;CFID=179095584&amp;CFTOKEN=80067181" target="_top">light_hungarian</a>,
+<a class="ulink" href="http://www.illc.uva.nl/Publications/ResearchReports/MoL-2003-02.text.pdf" target="_top">indonesian</a>,
+<a class="ulink" href="http://www.ercim.eu/publication/ws-proceedings/CLEF2/savoy.pdf" target="_top">light_italian</a>,
+<a class="ulink" href="http://dl.acm.org/citation.cfm?id=1141523&amp;dl=ACM&amp;coll=DL&amp;CFID=179095584&amp;CFTOKEN=80067181" target="_top">light_portuguese</a>,
+<a class="ulink" href="http://www.inf.ufrgs.br/~buriol/papers/Orengo_CLEF07.pdf" target="_top">minimal_portuguese</a>,
+<a class="ulink" href="http://www.inf.ufrgs.br/\~viviane/rslp/index.htm" target="_top">portuguese</a>,
+<a class="ulink" href="http://doc.rero.ch/lm.php?url=1000%2C43%2C4%2C20091209094227-CA%2FDolamic_Ljiljana_-_Indexing_and_Searching_Strategies_for_the_Russian_20091209.pdf" target="_top">light_russian</a>,
+<a class="ulink" href="http://www.ercim.eu/publication/ws-proceedings/CLEF2/savoy.pdf" target="_top">light_spanish</a>,
+<a class="ulink" href="http://clef.isti.cnr.it/2003/WN_web/22.pdf" target="_top">light_swedish</a>.</p><p>For example:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "index" : {
+        "analysis" : {
+            "analyzer" : {
+                "my_analyzer" : {
+                    "tokenizer" : "standard",
+                    "filter" : ["standard", "lowercase", "my_stemmer"]
+                }
+            },
+            "filter" : {
+                "my_stemmer" : {
+                    "type" : "stemmer",
+                    "name" : "light_german"
+                }
+            }
+        }
+    }
+}</pre></div><div class="navfooter"><span class="prev"><a href="analysis-word-delimiter-tokenfilter.html">
+              « 
+              Word Delimiter Token Filter</a>
+           
+        </span><span class="next">
+           
+          <a href="analysis-stemmer-override-tokenfilter.html">Stemmer Override Token Filter
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

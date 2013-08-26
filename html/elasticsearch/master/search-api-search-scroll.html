@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Scroll</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="search-api-request-body.html" title="Request Body" /><link rel="prev" href="search-api-search-search-type.html" title="Search Type" /><link rel="next" href="search-api-search-preference.html" title="Preference" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="search-api.html">Search APIs</a></span> &gt; <span class="breadcrumb-link"><a href="search-api-request-body.html">Request Body</a></span> &gt; <span class="breadcrumb-node">Scroll</span></div><div class="navheader"><span class="prev"><a href="search-api-search-search-type.html">
+              « 
+              Search Type</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api-search-preference.html">Preference
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="search-api-search-scroll"></a>Scroll</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-query.html">Query</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-from-size.html">From / Size</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-sort.html">Sort</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-fields.html">Fields</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-script-fields.html">Script Fields</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-filter.html">Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-highlighting.html">Highlighting</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-rescore.html">Rescoring</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-search-type.html">Search Type</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-scroll.html">Scroll</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-preference.html">Preference</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-explain.html">Explain</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-version.html">Version</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-index-boost.html">Index Boost</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-min-score.html">min_score</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-search-named-filters.html">Named Filters</a></span></dt></dl></div><p>A search request can be scrolled by specifying the <code class="literal">scroll</code> parameter.
+The <code class="literal">scroll</code> parameter is a time value parameter (for example:
+<code class="literal">scroll=5m</code>), indicating for how long the nodes that participate in the
+search will maintain relevant resources in order to continue and support
+it. This is very similar in its idea to opening a cursor against a
+database.</p><p>A <code class="literal">scroll_id</code> is returned from the first search request (and from
+continuous) scroll requests. The <code class="literal">scroll_id</code> should be used when
+scrolling (along with the <code class="literal">scroll</code> parameter, to stop the scroll from
+expiring). The scroll id can also be passed as part of the search
+request body.</p><p><span class="strong"><strong>Note</strong></span>: the <code class="literal">scroll_id</code> changes for each scroll request and only the
+most recent one should be used.</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XGET 'http://localhost:9200/twitter/tweet/_search?scroll=5m' -d '{
+    "query": {
+        "query_string" : {
+            "query" : "some query string here"
+        }
+    }
+}
+'</pre><pre class="programlisting prettyprint noescape lang-js">$ curl -XGET 'http://localhost:9200/_search/scroll?scroll=5m&amp;scroll_id=c2Nhbjs2OzM0NDg1ODpzRlBLc0FXNlNyNm5JWUc1'</pre><p>Scrolling is not intended for real time user requests, it is intended
+for cases like scrolling over large portions of data that exists within
+elasticsearch to reindex it for example.</p><p>For more information on scrolling, see the
+<a class="link" href="search-api-search-search-type.html" title="Search Type">scan</a> search type.</p></div><div class="navfooter"><span class="prev"><a href="search-api-search-search-type.html">
+              « 
+              Search Type</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api-search-preference.html">Preference
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

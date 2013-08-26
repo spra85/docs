@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>EC2 Discovery</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="modules-discovery.html" title="Discovery" /><link rel="prev" href="modules-discovery.html" title="Discovery" /><link rel="next" href="modules-discovery-zen.html" title="Zen Discovery" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="modules.html">Modules</a></span> &gt; <span class="breadcrumb-link"><a href="modules-discovery.html">Discovery</a></span> &gt; <span class="breadcrumb-node">EC2 Discovery</span></div><div class="navheader"><span class="prev"><a href="modules-discovery.html">
+              « 
+              Discovery</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-discovery-zen.html">Zen Discovery
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="modules-discovery-ec2"></a>EC2 Discovery</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="modules-discovery-ec2.html">EC2 Discovery</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="modules-discovery-zen.html">Zen Discovery</a></span></dt></dl></div><p>EC2 discovery allows to use the EC2 APIs to perform automatic discovery
+(similar to multicast in non hostile multicast environments). Here is a
+simple sample configuration:</p><pre class="programlisting prettyprint noescape lang-js">cloud:
+    aws:
+        access_key: AKVAIQBF2RECL7FJWGJQ
+        secret_key: vExyMThREXeRMm/b/LRzEB8jWwvzQeXgjqMX+6br
+
+discovery:
+    type: ec2</pre><p>You’ll need to install the <code class="literal">cloud-aws</code> plugin. Please check the
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-aws" target="_top">plugin website</a>
+to find the most up-to-date version to install before (re)starting
+elasticsearch.</p><p>The following are a list of settings (prefixed with <code class="literal">discovery.ec2</code>)
+that can further control the discovery:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Setting </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">groups</code></p></td><td align="left" valign="top"><p>Either a comma separated list or array based list of
+(security) groups. Only instances with the provided security groups will
+be used in the cluster discovery.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">host_type</code></p></td><td align="left" valign="top"><p>The type of host type to use to communicate with other
+instances. Can be one of <code class="literal">private_ip</code>, <code class="literal">public_ip</code>, <code class="literal">private_dns</code>,
+<code class="literal">public_dns</code>. Defaults to <code class="literal">private_ip</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">availability_zones</code></p></td><td align="left" valign="top"><p>Either a comma separated list or array based list
+of availability zones. Only instances within the provided availability
+zones will be used in the cluster discovery.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">any_group</code></p></td><td align="left" valign="top"><p>If set to <code class="literal">false</code>, will require all security groups to be
+present for the instance to be used for the discovery. Defaults to
+<code class="literal">true</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">ping_timeout</code></p></td><td align="left" valign="top"><p>How long to wait for existing EC2 nodes to reply during
+discovery. Defaults to 3s.</p></td></tr></tbody></table></div><h4><a id="_filtering_by_tags"></a>Filtering by Tags</h4><p>EC2 discovery can also filter machines to include in the cluster based
+on tags (and not just groups). The settings to use include the
+<code class="literal">discovery.ec2.tag.</code> prefix. For example, setting
+<code class="literal">discovery.ec2.tag.stage</code> to <code class="literal">dev</code> will only filter instances with a tag
+key set to <code class="literal">stage</code>, and a value of <code class="literal">dev</code>. Several tags set will require
+all of those tags to be set for the instance to be included.</p><p>One practical use for tag filtering is when an EC2 cluster contains many
+nodes that are not running elasticsearch. In this case (particularly
+with high <code class="literal">ping_timeout</code> values) there is a risk that a new node’s
+discovery phase will end before it has found the cluster (which will
+result in it declaring itself master of a new cluster with the same name
+- highly undesirable). Tagging elasticsearch EC2 nodes and then
+filtering by that tag will resolve this issue.</p><h4><a id="_region"></a>Region</h4><p>The <code class="literal">cloud.aws.region</code> can be set to a region and will automatically use
+the relevant settings for both <code class="literal">ec2</code> and <code class="literal">s3</code>. The available values are:
+<code class="literal">us-east-1</code>, <code class="literal">us-west-1</code>, <code class="literal">ap-southeast-1</code>, <code class="literal">eu-west-1</code>.</p><h4><a id="_automatic_node_attributes"></a>Automatic Node Attributes</h4><p>Though not dependent on actually using <code class="literal">ec2</code> as discovery (but still
+requires the cloud aws plugin installed), the plugin can automatically
+add node attributes relating to EC2 (for example, availability zone,
+that can be used with the awareness allocation feature). In order to
+enable it, set <code class="literal">cloud.node.auto_attributes</code> to <code class="literal">true</code> in the settings.</p></div><div class="navfooter"><span class="prev"><a href="modules-discovery.html">
+              « 
+              Discovery</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-discovery-zen.html">Zen Discovery
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

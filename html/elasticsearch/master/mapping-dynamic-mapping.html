@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Dynamic Mapping</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="mapping.html" title="Mapping" /><link rel="prev" href="mapping-date-format.html" title="Date Format" /><link rel="next" href="mapping-conf-mappings.html" title="Config Mappings" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="mapping.html">Mapping</a></span> &gt; <span class="breadcrumb-node">Dynamic Mapping</span></div><div class="navheader"><span class="prev"><a href="mapping-date-format.html">
+              « 
+              Date Format</a>
+           
+        </span><span class="next">
+           
+          <a href="mapping-conf-mappings.html">Config Mappings
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-dynamic-mapping"></a>Dynamic Mapping</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-fields.html">Fields</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-types.html">Types</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-date-format.html">Date Format</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-dynamic-mapping.html">Dynamic Mapping</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-conf-mappings.html">Config Mappings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-meta.html">Meta</a></span></dt></dl></div><p>Default mappings allow to automatically apply generic mapping definition
+to types that do not have mapping pre defined. This is mainly done
+thanks to the fact that the
+<a class="link" href="mapping-object-type.html" title="Object Type">object mapping</a> and
+namely the <a class="link" href="mapping-root-object-type.html" title="Root Object Type">root object mapping</a> allow for schema-less dynamic addition of unmapped
+fields.</p><p>The default mapping definition is plain mapping definition that is
+embedded within the distribution:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "_default_" : {
+    }
+}</pre><p>Pretty short, no? Basically, everything is defaulted, especially the
+dynamic nature of the root object mapping. The default mapping
+definition can be overridden in several manners. The simplest manner is
+to simply define a file called <code class="literal">default-mapping.json</code> and placed it
+under the <code class="literal">config</code> directory (which can be configured to exist in a
+different location). It can also be explicitly set using the
+<code class="literal">index.mapper.default_mapping_location</code> setting.</p><p>The dynamic creation of mappings for unmapped types can be completely
+disabled by setting <code class="literal">index.mapper.dynamic</code> to <code class="literal">false</code>.</p><p>As an example, here is how we can change the default
+<a class="link" href="mapping-date-format.html" title="Date Format">date_formats</a> used in the
+root and inner object types:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "_default_" : {
+        "date_formats" : ["yyyy-MM-dd", "dd-MM-yyyy", "date_optional_time"],
+    }
+}</pre></div><div class="navfooter"><span class="prev"><a href="mapping-date-format.html">
+              « 
+              Date Format</a>
+           
+        </span><span class="next">
+           
+          <a href="mapping-conf-mappings.html">Config Mappings
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

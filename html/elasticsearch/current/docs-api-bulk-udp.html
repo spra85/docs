@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Bulk UDP API</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="docs-api.html" title="Document APIs" /><link rel="prev" href="docs-api-bulk.html" title="Bulk API" /><link rel="next" href="search-api.html" title="Search APIs" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="docs-api.html">Document APIs</a></span> &gt; <span class="breadcrumb-node">Bulk UDP API</span></div><div class="navheader"><span class="prev"><a href="docs-api-bulk.html">
+              « 
+              Bulk API</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api.html">Search APIs
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="docs-api-bulk-udp"></a>Bulk UDP API</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="docs-api-index_.html">Index API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="docs-api-get.html">Get API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="docs-api-delete.html">Delete API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="docs-api-update.html">Update API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="docs-api-multi-get.html">Multi Get API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="docs-api-bulk.html">Bulk API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="docs-api-bulk-udp.html">Bulk UDP API</a></span></dt></dl></div><p>A Bulk UDP service is a service listening over UDP for bulk format
+requests. The idea is to provide a low latency UDP service that allows
+to easily index data that is not of critical nature.</p><p>The Bulk UDP service is disabled by default, but can be enabled by
+setting <code class="literal">bulk.udp.enabled</code> to <code class="literal">true</code>.</p><p>The bulk UDP service performs internal bulk aggregation of the data and
+then flushes it based on several parameters:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">bulk.udp.bulk_actions</code>
+</span></dt><dd>
+         The number of actions to flush a bulk after,
+        defaults to <code class="literal">1000</code>.
+</dd><dt><span class="term">
+<code class="literal">bulk.udp.bulk_size</code>
+</span></dt><dd>
+         The size of the current bulk request to flush
+        the request once exceeded, defaults to <code class="literal">5mb</code>.
+</dd><dt><span class="term">
+<code class="literal">bulk.udp.flush_interval</code>
+</span></dt><dd>
+         An interval after which the current
+        request is flushed, regardless of the above limits. Defaults to <code class="literal">5s</code>.
+</dd><dt><span class="term">
+<code class="literal">bulk.udp.concurrent_requests</code>
+</span></dt><dd>
+         The number on max in flight bulk
+        requests allowed. Defaults to <code class="literal">4</code>.
+</dd></dl></div><p>The allowed network settings are:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">bulk.udp.host</code>
+</span></dt><dd>
+        The host to bind to, defaults to <code class="literal">network.host</code>
+        which defaults to any.
+</dd><dt><span class="term">
+<code class="literal">bulk.udp.port</code>
+</span></dt><dd>
+        The port to use, defaults to <code class="literal">9700-9800</code>.
+</dd><dt><span class="term">
+<code class="literal">bulk.udp.receive_buffer_size</code>
+</span></dt><dd>
+        The receive buffer size, defaults to <code class="literal">10mb</code>.
+</dd></dl></div><p>Here is an example of how it can be used:</p><pre class="programlisting prettyprint noescape lang-js">&gt; cat bulk.txt
+{ "index" : { "_index" : "test", "_type" : "type1" } }
+{ "field1" : "value1" }
+{ "index" : { "_index" : "test", "_type" : "type1" } }
+{ "field1" : "value1" }</pre><pre class="programlisting prettyprint noescape lang-js">&gt; cat bulk.txt | nc -w 0 -u localhost 9700</pre></div><div class="navfooter"><span class="prev"><a href="docs-api-bulk.html">
+              « 
+              Bulk API</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api.html">Search APIs
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

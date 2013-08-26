@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Suggesters</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="search-api.html" title="Search APIs" /><link rel="prev" href="search-api-facets-geo-distance-facet.html" title="Geo Distance Facets" /><link rel="next" href="search-api-suggesters-term.html" title="Term suggester" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="search-api.html">Search APIs</a></span> &gt; <span class="breadcrumb-node">Suggesters</span></div><div class="navheader"><span class="prev"><a href="search-api-facets-geo-distance-facet.html">
+              « 
+              Geo Distance Facets</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api-suggesters-term.html">Term suggester
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="search-api-suggesters"></a>Suggesters</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-suggesters-term.html">Term suggester</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-suggesters-phrase.html">Phrase Suggester</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-suggesters-completion.html">Completion Suggester</a></span></dt></dl></div><p>The suggest feature suggests similar looking terms based on a provided
+text by using a suggester. The suggest feature is available from version
+<code class="literal">0.90.0.Beta1</code>. Parts of the suggest feature are still under
+development.</p><p>The suggest request part is either defined alongside the query part in a
+<code class="literal">_search</code> request or via the REST <code class="literal">_suggest</code> endpoint.</p><pre class="programlisting prettyprint noescape lang-js">curl -s -XPOST 'localhost:9200/_search' -d '{
+  "query" : {
+    ...
+  },
+  "suggest" : {
+    ...
+  }
+}'</pre><p>Suggest requests executed against the <code class="literal">_suggest</code> endpoint should omit
+the surrounding <code class="literal">suggest</code> element which is only used if the suggest
+request is part of a search.</p><pre class="programlisting prettyprint noescape lang-js">curl -XPOST 'localhost:9200/_suggest' -d '{
+  "my-suggestion" : {
+    "text" : "the amsterdma meetpu",
+    "term" : {
+      "field" : "body"
+    }
+  }
+}'</pre><p>Several suggestions can be specified per request. Each suggestion is
+identified with an arbitrary name. In the example below two suggestions
+are requested. Both <code class="literal">my-suggest-1</code> and <code class="literal">my-suggest-2</code> suggestions use
+the <code class="literal">term</code> suggester, but have a different <code class="literal">text</code>.</p><pre class="programlisting prettyprint noescape lang-js">"suggest" : {
+  "my-suggest-1" : {
+    "text" : "the amsterdma meetpu",
+    "term" : {
+      "field" : "body"
+    }
+  },
+  "my-suggest-2" : {
+    "text" : "the rottredam meetpu",
+    "term" : {
+      "field" : "title",
+    }
+  }
+}</pre><p>The below suggest response example includes the suggestion response for
+<code class="literal">my-suggest-1</code> and <code class="literal">my-suggest-2</code>. Each suggestion part contains
+entries. Each entry is effectively a token from the suggest text and
+contains the suggestion entry text, the original start offset and length
+in the suggest text and if found an arbitrary number of options.</p><pre class="programlisting prettyprint noescape lang-js">{
+  ...
+  "suggest": {
+    "my-suggest-1": [
+      {
+        "text" : "amsterdma",
+        "offset": 4,
+        "length": 9,
+        "options": [
+           ...
+        ]
+      },
+      ...
+    ],
+    "my-suggest-2" : [
+      ...
+    ]
+  }
+  ...
+}</pre><p>Each options array contains an option object that includes the
+suggested text, its document frequency and score compared to the suggest
+entry text. The meaning of the score depends on the used suggester. The
+term suggester’s score is based on the edit distance.</p><pre class="programlisting prettyprint noescape lang-js">"options": [
+  {
+    "text": "amsterdam",
+    "freq": 77,
+    "score": 0.8888889
+  },
+  ...
+]</pre><h3><a id="_global_suggest_text"></a>Global suggest text</h3><p>To avoid repetition of the suggest text, it is possible to define a
+global text. In the example below the suggest text is defined globally
+and applies to the <code class="literal">my-suggest-1</code> and <code class="literal">my-suggest-2</code> suggestions.</p><pre class="programlisting prettyprint noescape lang-js">"suggest" : {
+  "text" : "the amsterdma meetpu"
+  "my-suggest-1" : {
+    "term" : {
+      "field" : "title"
+    }
+  },
+  "my-suggest-2" : {
+    "term" : {
+      "field" : "body"
+    }
+  }
+}</pre><p>The suggest text can in the above example also be specified as
+suggestion specific option. The suggest text specified on suggestion
+level override the suggest text on the global level.</p><h3><a id="_other_suggest_example"></a>Other suggest example.</h3><p>In the below example we request suggestions for the following suggest
+text: <code class="literal">devloping distibutd saerch engies</code> on the <code class="literal">title</code> field with a
+maximum of 3 suggestions per term inside the suggest text. Note that in
+this example we use the <code class="literal">count</code> search type. This isn’t required, but a
+nice optimization. The suggestions are gather in the <code class="literal">query</code> phase and
+in the case that we only care about suggestions (so no hits) we don’t
+need to execute the <code class="literal">fetch</code> phase.</p><pre class="programlisting prettyprint noescape lang-js">curl -s -XPOST 'localhost:9200/_search?search_type=count' -d '{
+  "suggest" : {
+    "my-title-suggestions-1" : {
+      "text" : "devloping distibutd saerch engies",
+      "term" : {
+        "size" : 3,
+        "field" : "title"
+      }
+    }
+  }
+}'</pre><p>The above request could yield the response as stated in the code example
+below. As you can see if we take the first suggested options of each
+suggestion entry we get <code class="literal">developing distributed search engines</code> as
+result.</p><pre class="programlisting prettyprint noescape lang-js">{
+  ...
+  "suggest": {
+    "my-title-suggestions-1": [
+      {
+        "text": "devloping",
+        "offset": 0,
+        "length": 9,
+        "options": [
+          {
+            "text": "developing",
+            "freq": 77,
+            "score": 0.8888889
+          },
+          {
+            "text": "deloping",
+            "freq": 1,
+            "score": 0.875
+          },
+          {
+            "text": "deploying",
+            "freq": 2,
+            "score": 0.7777778
+          }
+        ]
+      },
+      {
+        "text": "distibutd",
+        "offset": 10,
+        "length": 9,
+        "options": [
+          {
+            "text": "distributed",
+            "freq": 217,
+            "score": 0.7777778
+          },
+          {
+            "text": "disributed",
+            "freq": 1,
+            "score": 0.7777778
+          },
+          {
+            "text": "distribute",
+            "freq": 1,
+            "score": 0.7777778
+          }
+        ]
+      },
+      {
+        "text": "saerch",
+        "offset": 20,
+        "length": 6,
+        "options": [
+          {
+            "text": "search",
+            "freq": 1038,
+            "score": 0.8333333
+          },
+          {
+            "text": "smerch",
+            "freq": 3,
+            "score": 0.8333333
+          },
+          {
+            "text": "serch",
+            "freq": 2,
+            "score": 0.8
+          }
+        ]
+      },
+      {
+        "text": "engies",
+        "offset": 27,
+        "length": 6,
+        "options": [
+          {
+            "text": "engines",
+            "freq": 568,
+            "score": 0.8333333
+          },
+          {
+            "text": "engles",
+            "freq": 3,
+            "score": 0.8333333
+          },
+          {
+            "text": "eggies",
+            "freq": 1,
+            "score": 0.8333333
+          }
+        ]
+      }
+    ]
+  }
+  ...
+}</pre></div><div class="navfooter"><span class="prev"><a href="search-api-facets-geo-distance-facet.html">
+              « 
+              Geo Distance Facets</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api-suggesters-term.html">Term suggester
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>
