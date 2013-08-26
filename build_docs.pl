@@ -48,12 +48,12 @@ sub build_local {
         $dir->rmtree;
         $dir->mkpath;
         build_single( $index, $dir, $Opts{toc} );
-        $html = 'index.html';
+        $html = $index->basename;
+        $html =~ s/\.[^.]+/.html/;
     }
     else {
         build_chunked( $index, $dir );
-        $html = $index->basename;
-        $html =~ s/\.[^.]+/.html/;
+        $html = 'index.html';
     }
 
     say "Done";
@@ -176,13 +176,10 @@ sub build_branches {
             mark_built($branch);
         }
 
-        my $html = $index->basename;
-        $html =~ s/\.[^.]+$/.html/;
-
         push @books,
             {
             title  => 'Version: ' . $branch,
-            url    => $branch . '/' . $html,
+            url    => $branch . '/index.html',
             branch => $branch,
             dir    => $dir,
             };
@@ -431,8 +428,8 @@ sub init_env {
     chdir($FindBin::Bin) or die $!;
 
     $ENV{SGML_CATALOG_FILES} = $ENV{XML_CATALOG_FILES} = join ' ',
-        file('resources/docbook-xsl-1.78.1/catalog.xml'),
-        file('resources/docbook-xml-4.5/catalog.xml');
+        file('resources/docbook-xsl-1.78.1/catalog.xml')->absolute,
+        file('resources/docbook-xml-4.5/catalog.xml')->absolute;
 
     $ENV{PATH}
         = dir('resources/asciidoc-8.6.8/')->absolute . ':' . $ENV{PATH};
