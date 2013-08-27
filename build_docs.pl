@@ -128,10 +128,7 @@ sub build_entries {
             local $ENV{GIT_WORK_TREE} = dir($repo)->stringify;
             local $ENV{GIT_DIR}       = $repo->subdir('.git')->stringify;
 
-            my $prefix_dir = $build->subdir($prefix);
-            $prefix_dir->mkpath;
-
-            my @books = build_branches( $prefix_dir, $index, $branches );
+            my @books = build_branches( $prefix, $build, $index, $branches );
             push @toc, finalize( $prefix, $title, \@books, $current );
 
         } or die "ERROR processing book <$title>: $@";
@@ -171,19 +168,22 @@ sub finalize {
 #===================================
 sub build_branches {
 #===================================
-    my ( $build, $index, $branches ) = @_;
+    my ( $prefix, $build, $index, $branches ) = @_;
+
+    my $prefix_dir = $build->subdir($prefix);
+    $prefix_dir->mkpath;
 
     my $src_path = $index->parent;
     my @books;
 
     for my $branch (@$branches) {
         say " - Branch: $branch";
-        my $dir = $build->subdir($branch);
-        my $changed = select_branch( $branch, $src_path, !-e $dir );
+        my $dir = $prefix_dir->subdir($branch);
+        my $changed = select_branch( $prefix, $branch, $src_path, !-e $dir );
 
         if ($changed) {
             build_chunked( $index, $dir );
-            mark_built($branch);
+            mark_built( $prefix, $branch );
         }
 
         push @books,
@@ -312,9 +312,9 @@ sub update_repos {
 #===================================
 sub select_branch {
 #===================================
-    my ( $branch, $path, $force ) = @_;
+    my ( $prefix, $branch, $path, $force ) = @_;
 
-    my $current = sha_for( 'refs/heads/' . "_docs_$branch" );
+    my $current = sha_for( 'refs/heads/' . "_docs_${prefix}_$branch" );
     my $new     = sha_for( 'refs/remotes/origin/' . $branch )
         or die "Remote branch <origin/$branch> doesn't exist";
 
@@ -327,8 +327,8 @@ sub select_branch {
 #===================================
 sub mark_built {
 #===================================
-    my $branch = shift;
-    run( 'git', 'checkout', '-B', "_docs_$branch",
+    my ( $prefix, $branch ) = @_;
+    run( 'git', 'checkout', '-B', "_docs_${prefix}_$branch",
         "refs/remotes/origin/$branch" );
     run( 'git', 'branch', '-D', '_build_docs' );
 }
@@ -361,7 +361,9 @@ sub push_changes {
 sub sha_for {
 #===================================
     my $rev = shift;
-    return eval { run( 'git', 'rev-parse', $rev ) } || '';
+    my $sha = eval { run( 'git', 'rev-parse', $rev ) } || '';
+    chomp $sha;
+    return $sha;
 }
 
 #===================================

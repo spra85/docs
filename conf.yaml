@@ -50,7 +50,7 @@ contents:
           -
             prefix:     elasticsearch/rivers
             title:      Rivers
-            index:      docs/rivers/index.asciidoc
+            index:      docs/river/index.asciidoc
             repo:       elasticsearch
           -
             prefix:     elasticsearch/client/community
