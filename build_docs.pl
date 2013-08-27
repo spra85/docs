@@ -297,8 +297,7 @@ sub update_repos {
 
             if ( $repo->stat ) {
                 say " - Fetching";
-
-                #                run( 'git', 'fetch' );
+                run( 'git', 'fetch' );
             }
             else {
                 say " - Cloning from <$url>";
