@@ -112,8 +112,10 @@ sub build_entries {
             my $conf = $Conf->{repos}{$repo_name}
                 or die "Unknown repo <$repo_name>";
 
-            my $book = $entry->{book}
-                or die "No <book> specified";
+            my $prefix = $entry->{prefix}
+                or die "No <prefix> specified";
+            $prefix =~ s{^/+}{};
+            $prefix =~ s{/+$}{};
 
             my $index = $entry->{index}
                 or die "No <index> specified";
@@ -126,11 +128,11 @@ sub build_entries {
             local $ENV{GIT_WORK_TREE} = dir($repo)->stringify;
             local $ENV{GIT_DIR}       = $repo->subdir('.git')->stringify;
 
-            my $book_dir = $build->subdir($book);
-            $book_dir->mkpath;
+            my $prefix_dir = $build->subdir($prefix);
+            $prefix_dir->mkpath;
 
-            my @books = build_branches( $book_dir, $index, $branches );
-            push @toc, finalize( $book, $title, \@books, $current );
+            my @books = build_branches( $prefix_dir, $index, $branches );
+            push @toc, finalize( $prefix, $title, \@books, $current );
 
         } or die "ERROR processing book <$title>: $@";
     }
@@ -140,7 +142,7 @@ sub build_entries {
 #===================================
 sub finalize {
 #===================================
-    my ( $book, $title, $books, $current, ) = @_;
+    my ( $prefix, $title, $books, $current, ) = @_;
 
     say " - Finalizing";
 
@@ -153,15 +155,15 @@ sub finalize {
     rcopy( $src->{dir}, $dest )
         or die "Couldn't copy <$src->{dir}> to <$dest>: $!";
 
-    return { title => $title, url => $book . '/' . $src->{url} }
+    return { title => $title, url => $prefix . '/' . $src->{url} }
         if @$books == 1;
 
     write_toc( $title, $dest->parent, 'index', $books );
 
     return {
         title    => "$title -- $current",
-        url      => $book . '/' . $src->{url},
-        versions => $book . '/index.html'
+        url      => $prefix . '/' . $src->{url},
+        versions => $prefix . '/index.html'
     };
 
 }

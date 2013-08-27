@@ -5,49 +5,58 @@ paths:
 repos:
     elasticsearch:
         url:        https://github.com/clintongormley/elasticsearch.git
-        current:    master
+        current:    v0.90
         branches:
             - master
+            - v0.90
 
 
     elasticsearch-hadoop:
-        url:        https://github.com/clintongormley/elasticsearch-hadoop.git
+        url:        https://github.com/elasticsearch/elasticsearch-hadoop.git
         current:    master
         branches:
             - master
-            - v0.9
 
 contents_title:     Guide
+
 contents:
     -
         title:      Elasticsearch reference docs
-        book:       elasticsearch
+        prefix:     elasticsearch/reference
         repo:       elasticsearch
         index:      docs/reference/index.asciidoc
 
-#     -
-#         title:      Clients & Integrations
-#         sections:
-#           -
-#             book:       java-api
-#             title:      Java API
-#             repo:       elasticsearch
-#             index:      docs/java-api/index.asciidoc
-#
-#           -
-#             book:       groovy-api
-#             title:      Groovy API
-#             repo:       elasticsearch
-#             index:      docs/groovy-api/index.asciidoc
-#
-#           -
-#             book:       rivers
-#             title:      Rivers
-#             index:      docs/rivers/index.asciidoc
-#             repo:       elasticsearch
-
     -
-        book:       hadoop
+        prefix:     elasticsearch/hadoop
         title:      Elasticsearch-Hadoop
         repo:       elasticsearch-hadoop
         index:      docs/src/reference/asciidoc/index.adoc
+
+    -
+        title:      Clients & Integrations
+        sections:
+          -
+            prefix:     elasticsearch/client/java-api
+            title:      Java API
+            repo:       elasticsearch
+            index:      docs/java-api/index.asciidoc
+
+          -
+            prefix:     elasticsearch/client/groovy-api
+            title:      Groovy API
+            repo:       elasticsearch
+            index:      docs/groovy-api/index.asciidoc
+
+          -
+            prefix:     elasticsearch/rivers
+            title:      Rivers
+            index:      docs/rivers/index.asciidoc
+            repo:       elasticsearch
+          -
+            prefix:     elasticsearch/client/community
+            title:      Community supported clients
+            index:      docs/community/index.asciidoc
+            repo:       elasticsearch
+            branches:   [master]
+            current:    master
+
