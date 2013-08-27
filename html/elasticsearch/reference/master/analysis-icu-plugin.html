@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>ICU Analysis Plugin</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="analysis.html" title="Analysis" /><link rel="prev" href="analysis-pattern-replace-charfilter.html" title="Pattern Replace Char Filter" /><link rel="next" href="modules.html" title="Modules" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="analysis.html">Analysis</a></span> &gt; <span class="breadcrumb-node">ICU Analysis Plugin</span></div><div class="navheader"><span class="prev"><a href="analysis-pattern-replace-charfilter.html">
+              « 
+              Pattern Replace Char Filter</a>
+           
+        </span><span class="next">
+           
+          <a href="modules.html">Modules
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="analysis-icu-plugin"></a>ICU Analysis Plugin</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="analysis-analyzers.html">Analyzers</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="analysis-tokenizers.html">Tokenizers</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="analysis-tokenfilters.html">Token Filters</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="analysis-charfilters.html">Character Filters</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="analysis-icu-plugin.html">ICU Analysis Plugin</a></span></dt></dl></div><p>The <a class="ulink" href="http://icu-project.org/" target="_top">ICU</a> analysis plugin allows for unicode
+normalization, collation and folding. The plugin is called
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-icu" target="_top">elasticsearch-analysis-icu</a>.</p><p>The plugin includes the following analysis components:</p><h3><a id="_icu_normalization"></a>ICU Normalization</h3><p>Normalizes characters as explained
+<a class="ulink" href="http://userguide.icu-project.org/transforms/normalization" target="_top">here</a>. It
+registers itself by default under <code class="literal">icu_normalizer</code> or <code class="literal">icuNormalizer</code>
+using the default settings. Allows for the name parameter to be provided
+which can include the following values: <code class="literal">nfc</code>, <code class="literal">nfkc</code>, and <code class="literal">nfkc_cf</code>.
+Here is a sample settings:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "index" : {
+        "analysis" : {
+            "analyzer" : {
+                "normalization" : {
+                    "tokenizer" : "keyword",
+                    "filter" : ["icu_normalizer"]
+                }
+            }
+        }
+    }
+}</pre><h3><a id="_icu_folding"></a>ICU Folding</h3><p>Folding of unicode characters based on <code class="literal">UTR#30</code>. It registers itself
+under <code class="literal">icu_folding</code> and <code class="literal">icuFolding</code> names.
+The filter also does lowercasing, which means the lowercase filter can
+normally be left out. Sample setting:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "index" : {
+        "analysis" : {
+            "analyzer" : {
+                "folding" : {
+                    "tokenizer" : "keyword",
+                    "filter" : ["icu_folding"]
+                }
+            }
+        }
+    }
+}</pre><h4><a id="_filtering"></a>Filtering</h4><p>The folding can be filtered by a set of unicode characters with the
+parameter <code class="literal">unicodeSetFilter</code>. This is useful for a non-internationalized
+search engine where retaining a set of national characters which are
+primary letters in a specific language is wanted. See syntax for the
+UnicodeSet
+<a class="ulink" href="http://icu-project.org/apiref/icu4j/com/ibm/icu/text/UnicodeSet.html" target="_top">here</a>.</p><p>The Following example excempt Swedish characters from the folding. Note
+that the filtered characters are NOT lowercased which is why we add that
+filter below.</p><pre class="programlisting prettyprint noescape lang-js">{
+    "index" : {
+        "analysis" : {
+            "analyzer" : {
+                "folding" : {
+                    "tokenizer" : "standard",
+                    "filter" : ["my_icu_folding", "lowercase"]
+                }
+            }
+            "filter" : {
+                "my_icu_folding" : {
+                    "type" : "icu_folding"
+                    "unicodeSetFilter" : "[^Ã¥Ã¤Ã¶ÃÃÃ]"
+                }
+            }
+        }
+    }
+}</pre><h3><a id="_icu_collation"></a>ICU Collation</h3><p>Uses collation token filter. Allows to either specify the rules for
+collation (defined
+<a class="ulink" href="http://www.icu-project.org/userguide/Collate_Customization.html" target="_top">here</a>)
+using the <code class="literal">rules</code> parameter (can point to a location or expressed in the
+settings, location can be relative to config location), or using the
+<code class="literal">language</code> parameter (further specialized by country and variant). By
+default registers under <code class="literal">icu_collation</code> or <code class="literal">icuCollation</code> and uses the
+default locale.</p><p>Here is a sample settings:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "index" : {
+        "analysis" : {
+            "analyzer" : {
+                "collation" : {
+                    "tokenizer" : "keyword",
+                    "filter" : ["icu_collation"]
+                }
+            }
+        }
+    }
+}</pre><p>And here is a sample of custom collation:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "index" : {
+        "analysis" : {
+            "analyzer" : {
+                "collation" : {
+                    "tokenizer" : "keyword",
+                    "filter" : ["myCollator"]
+                }
+            },
+            "filter" : {
+                "myCollator" : {
+                    "type" : "icu_collation",
+                    "language" : "en"
+                }
+            }
+        }
+    }
+}</pre></div><div class="navfooter"><span class="prev"><a href="analysis-pattern-replace-charfilter.html">
+              « 
+              Pattern Replace Char Filter</a>
+           
+        </span><span class="next">
+           
+          <a href="modules.html">Modules
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

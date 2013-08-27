@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Histogram Facets</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="search-api-facets.html" title="Facets" /><link rel="prev" href="search-api-facets-range-facet.html" title="Range Facets" /><link rel="next" href="search-api-facets-date-histogram-facet.html" title="Date Histogram Facet" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="search-api.html">Search APIs</a></span> &gt; <span class="breadcrumb-link"><a href="search-api-facets.html">Facets</a></span> &gt; <span class="breadcrumb-node">Histogram Facets</span></div><div class="navheader"><span class="prev"><a href="search-api-facets-range-facet.html">
+              « 
+              Range Facets</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api-facets-date-histogram-facet.html">Date Histogram Facet
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="search-api-facets-histogram-facet"></a>Histogram Facets</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-facets-terms-facet.html">Terms Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-facets-range-facet.html">Range Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-facets-histogram-facet.html">Histogram Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-facets-date-histogram-facet.html">Date Histogram Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-facets-filter-facet.html">Filter Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-facets-query-facet.html">Query Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-facets-statistical-facet.html">Statistical Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-facets-terms-stats-facet.html">Terms Stats Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-api-facets-geo-distance-facet.html">Geo Distance Facets</a></span></dt></dl></div><p>The histogram facet works with numeric data by building a histogram
+across intervals of the field values. Each value is "rounded" into an
+interval (or placed in a bucket), and statistics are provided per
+interval/bucket (count and total). Here is a simple example:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "query" : {
+        "match_all" : {}
+    },
+    "facets" : {
+        "histo1" : {
+            "histogram" : {
+                "field" : "field_name",
+                "interval" : 100
+            }
+        }
+    }
+}</pre><p>The above example will run a histogram facet on the <code class="literal">field_name</code> filed,
+with an <code class="literal">interval</code> of <code class="literal">100</code> (so, for example, a value of <code class="literal">1055</code> will be
+placed within the <code class="literal">1000</code> bucket).</p><p>The interval can also be provided as a time based interval (using the
+time format). This mainly make sense when working on date fields or
+field that represent absolute milliseconds, here is an example:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "query" : {
+        "match_all" : {}
+    },
+    "facets" : {
+        "histo1" : {
+            "histogram" : {
+                "field" : "field_name",
+                "time_interval" : "1.5h"
+            }
+        }
+    }
+}</pre><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_key_and_value_2"></a>Key and Value</h3></div></div></div><p>The histogram facet allows to use a different key and value. The key is
+used to place the hit/document within the appropriate bucket, and the
+value is used to compute statistical data (for example, total). Here is
+an example:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "query" : {
+        "match_all" : {}
+    },
+    "facets" : {
+        "histo1" : {
+            "histogram" : {
+                "key_field" : "key_field_name",
+                "value_field" : "value_field_name",
+                "interval" : 100
+            }
+        }
+    }
+}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_script_key_and_value_2"></a>Script Key and Value</h3></div></div></div><p>Sometimes, some munging of both the key and the value are needed. In the
+key case, before it is rounded into a bucket, and for the value, when
+the statistical data is computed per bucket
+<a class="link" href="modules-scripting.html" title="Scripting">scripts</a> can be used. Here
+is an example:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "query" : {
+        "match_all" : {}
+    },
+    "facets" : {
+        "histo1" : {
+            "histogram" : {
+                "key_script" : "doc['date'].date.minuteOfHour",
+                "value_script" : "doc['num1'].value"
+            }
+        }
+    }
+}</pre><p>In the above sample, we can use a date type field called <code class="literal">date</code> to get
+the minute of hour from it, and the total will be computed based on
+another field <code class="literal">num1</code>. Note, in this case, no <code class="literal">interval</code> was provided, so
+the bucket will be based directly on the <code class="literal">key_script</code> (no rounding).</p><p>Parameters can also be provided to the different scripts (preferable if
+the script is the same, with different values for a specific parameter,
+like "factor"):</p><pre class="programlisting prettyprint noescape lang-js">{
+    "query" : {
+        "match_all" : {}
+    },
+    "facets" : {
+        "histo1" : {
+            "histogram" : {
+                "key_script" : "doc['date'].date.minuteOfHour * factor1",
+                "value_script" : "doc['num1'].value + factor2",
+                "params" : {
+                    "factor1" : 2,
+                    "factor2" : 3
+                }
+            }
+        }
+    }
+}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_memory_considerations_3"></a>Memory Considerations</h3></div></div></div><p>In order to implement the histogram facet, the relevant field values are
+loaded into memory from the index. This means that per shard, there
+should be enough memory to contain them. Since by default, dynamic
+introduced types are <code class="literal">long</code> and <code class="literal">double</code>, one option to reduce the
+memory footprint is to explicitly set the types for the relevant fields
+to either <code class="literal">short</code>, <code class="literal">integer</code>, or <code class="literal">float</code> when possible.</p></div></div><div class="navfooter"><span class="prev"><a href="search-api-facets-range-facet.html">
+              « 
+              Range Facets</a>
+           
+        </span><span class="next">
+           
+          <a href="search-api-facets-date-histogram-facet.html">Date Histogram Facet
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

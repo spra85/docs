@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Mapping</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="index.html" title="Reference" /><link rel="prev" href="query-dsl-type-filter.html" title="Type Filter" /><link rel="next" href="mapping-fields.html" title="Fields" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-node">Mapping</span></div><div class="navheader"><span class="prev"><a href="query-dsl-type-filter.html">
+              « 
+              Type Filter</a>
+           
+        </span><span class="next">
+           
+          <a href="mapping-fields.html">Fields
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="part"><div class="titlepage"><div><div><h1 class="title"><a id="mapping"></a>Mapping</h1></div></div></div><div class="partintro"><div></div><p>Mapping is the process of defining how a document should be mapped to
+the Search Engine, including its searchable characteristics such as
+which fields are searchable and if/how they are tokenized. In
+ElasticSearch, an index may store documents of different "mapping
+types". ElasticSearch allows one to associate multiple mapping
+definitions for each mapping type.</p><p>Explicit mapping is defined on an index/type level. By default, there
+isn’t a need to define an explicit mapping, since one is automatically
+created and registered when a new type or new field is introduced (with
+no performance overhead) and have sensible defaults. Only when the
+defaults need to be overridden must a mapping definition be provided.</p><h3><a id="_mapping_types"></a>Mapping Types</h3><p>Mapping types are a way to divide the documents in an index into logical
+groups. Think of it as tables in a database. Though there is separation
+between types, it’s not a full separation (all end up as a document
+within the same Lucene index).</p><p>Field names with the same name across types are highly recommended to
+have the same type and same mapping characteristics (analysis settings
+for example). There is an effort to allow to explicitly "choose" which
+field to use by using type prefix (<code class="literal">my_type.my_field</code>), but it’s not
+complete, and there are places where it will never work (like faceting
+on the field).</p><p>In practice though, this restriction is almost never an issue. The field
+name usually ends up being a good indication to its "typeness" (e.g.
+"first_name" will always be a string). Note also, that this does not
+apply to the cross index case.</p><h3><a id="_mapping_api"></a>Mapping API</h3><p>To create a mapping, you will need the <a class="link" href="indices-api-put-mapping.html" title="Put Mapping">Put Mapping API</a>, or you can add multiple mappings when you <a class="link" href="indices-api-create-index.html" title="Create Index">create an index</a>.</p><h3><a id="_global_settings_2"></a>Global Settings</h3><p>The <code class="literal">index.mapping.ignore_malformed</code> global setting can be set on the
+index level to allow to ignore malformed content globally across all
+mapping types (malformed content example is trying to index a string
+value as a numeric type).</p><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-fields.html">Fields</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-types.html">Types</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-date-format.html">Date Format</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-dynamic-mapping.html">Dynamic Mapping</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-conf-mappings.html">Config Mappings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="mapping-meta.html">Meta</a></span></dt></dl></div></div></div><div class="navfooter"><span class="prev"><a href="query-dsl-type-filter.html">
+              « 
+              Type Filter</a>
+           
+        </span><span class="next">
+           
+          <a href="mapping-fields.html">Fields
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

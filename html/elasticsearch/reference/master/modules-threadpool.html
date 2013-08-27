@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Thread Pool</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="modules.html" title="Modules" /><link rel="prev" href="modules-scripting.html" title="Scripting" /><link rel="next" href="modules-thrift.html" title="Thrift" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="modules.html">Modules</a></span> &gt; <span class="breadcrumb-node">Thread Pool</span></div><div class="navheader"><span class="prev"><a href="modules-scripting.html">
+              « 
+              Scripting</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-thrift.html">Thrift
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-threadpool"></a>Thread Pool</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-jmx.html">JMX</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt></dl></div><p>A node holds several thread pools in order to improve how threads are
+managed and memory consumption within a node. There are several thread
+pools, but the important ones include:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">index</code>: For index/delete operations, defaults to <code class="literal">fixed</code> type since
+<code class="literal">0.90.0</code>, size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
+</li><li class="listitem">
+<code class="literal">search</code>: For count/search operations, defaults to <code class="literal">fixed</code> type since
+<code class="literal">0.90.0</code>, size <code class="literal">3x # of available processors</code>. (previously type
+<code class="literal">cached</code>)
+</li><li class="listitem">
+<code class="literal">get</code>: For get operations, defaults to <code class="literal">fixed</code> type since <code class="literal">0.90.0</code>,
+size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
+</li><li class="listitem">
+<code class="literal">bulk</code>: For bulk operations, defaults to <code class="literal">fixed</code> type since <code class="literal">0.90.0</code>,
+size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
+</li><li class="listitem">
+<code class="literal">warmer</code>: For segment warm-up operations, defaults to <code class="literal">scaling</code> since
+<code class="literal">0.90.0</code> with a <code class="literal">5m</code> keep-alive. (previously type <code class="literal">cached</code>)
+</li><li class="listitem">
+<code class="literal">refresh</code>: For refresh operations, defaults to <code class="literal">scaling</code> since
+<code class="literal">0.90.0</code> with a <code class="literal">5m</code> keep-alive. (previously type <code class="literal">cached</code>)
+</li></ul></div><p>Changing a specific thread pool can be done by setting its type and
+specific type parameters, for example, changing the <code class="literal">index</code> thread pool
+to <code class="literal">blocking</code> type:</p><pre class="programlisting prettyprint noescape lang-js">threadpool:
+    index:
+        type: blocking
+        min: 1
+        size: 30
+        wait_time: 30s</pre><p>The following are the types of thread pools that can be used and their
+respective parameters:</p><h3><a id="_cache"></a>cache</h3><p>The <code class="literal">cache</code> thread pool is an unbounded thread pool that will spawn a
+thread if there are pending requests. Here is an example of how to set
+it:</p><pre class="programlisting prettyprint noescape lang-js">threadpool:
+    index:
+        type: cached</pre><h3><a id="_fixed"></a>fixed</h3><p>The <code class="literal">fixed</code> thread pool holds a fixed size of threads to handle the
+requests with a queue (optionally bounded) for pending requests that
+have no threads to service them.</p><p>The <code class="literal">size</code> parameter controls the number of threads, and defaults to the
+number of cores times 5.</p><p>The <code class="literal">queue_size</code> allows to control the size of the queue of pending
+requests that have no threads to execute them. By default, it is set to
+<code class="literal">-1</code> which means its unbounded. When a request comes in and the queue is
+full, the <code class="literal">reject_policy</code> parameter can control how it will behave. The
+default, <code class="literal">abort</code>, will simply fail the request. Setting it to <code class="literal">caller</code>
+will cause the request to execute on an IO thread allowing to throttle
+the execution on the networking layer.</p><pre class="programlisting prettyprint noescape lang-js">threadpool:
+    index:
+        type: fixed
+        size: 30
+        queue_size: 1000
+        reject_policy: caller</pre><h3><a id="_blocking"></a>blocking</h3><p>The <code class="literal">blocking</code> pool allows to configure a <code class="literal">min</code> (defaults to <code class="literal">1</code>) and
+<code class="literal">size</code> (defaults to the number of cores times 5) parameters for the
+number of threads.</p><p>It also has a backlog queue with a default <code class="literal">queue_size</code> of <code class="literal">1000</code>. Once
+the queue is full, it will wait for the provided <code class="literal">wait_time</code> (defaults
+to <code class="literal">60s</code>) on the calling IO thread, and fail if it has not been
+executed.</p><pre class="programlisting prettyprint noescape lang-js">threadpool:
+    index:
+        type: blocking
+        min: 1
+        size: 30
+        wait_time: 30s</pre></div><div class="navfooter"><span class="prev"><a href="modules-scripting.html">
+              « 
+              Scripting</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-thrift.html">Thrift
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>
