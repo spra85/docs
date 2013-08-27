@@ -119,8 +119,8 @@ sub build_entries {
                 or die "No <index> specified";
 
             my $repo     = $conf->{dir};
-            my $branches = $conf->{branches};
-            my $current  = $conf->{current};
+            my $branches = $entry->{branches} || $conf->{branches};
+            my $current  = $entry->{current} || $conf->{current};
             $index = file( $repo, $index );
 
             local $ENV{GIT_WORK_TREE} = dir($repo)->stringify;
