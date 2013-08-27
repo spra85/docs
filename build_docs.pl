@@ -24,6 +24,7 @@ GetOptions(
     \%Opts,    #
     'all', 'push',    #
     'single', 'doc=s', 'out=s', 'toc'
+    'verbose'
 );
 
 $Opts{doc}       ? build_local( $Opts{doc} )
@@ -400,8 +401,14 @@ sub _toc {
 sub run {
 #===================================
     my @args = @_;
-
-    my ( $out, $ok ) = capture_merged { system(@args) == 0 };
+    my ( $out, $ok );
+    if ( $Opts{verbose} ) {
+        say "Running: @args";
+        ( $out, $ok ) = tee_merged { system(@args) == 0 };
+    }
+    else {
+        ( $out, $ok ) = capture_merged { system(@args) == 0 };
+    }
 
     die "Error executing: @args\n$out"
         unless $ok;
@@ -458,6 +465,7 @@ sub usage {
 
         Opts:
           --push            Commit the updated docs and push to origin
+          --verbose
 
 USAGE
 }
