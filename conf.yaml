@@ -27,7 +27,7 @@ contents:
         index:      docs/reference/index.asciidoc
 
     -
-        title:      Elasticsearch-Hadoop
+        title:      Elasticsearch for Apache Hadoop
         prefix:     elasticsearch/hadoop
         repo:       elasticsearch-hadoop
         index:      docs/src/reference/asciidoc/index.adoc
