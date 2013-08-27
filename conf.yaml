@@ -21,14 +21,14 @@ contents_title:     Guide
 
 contents:
     -
-        title:      Elasticsearch reference docs
+        title:      Elasticsearch reference
         prefix:     elasticsearch/reference
         repo:       elasticsearch
         index:      docs/reference/index.asciidoc
 
     -
-        prefix:     elasticsearch/hadoop
         title:      Elasticsearch-Hadoop
+        prefix:     elasticsearch/hadoop
         repo:       elasticsearch-hadoop
         index:      docs/src/reference/asciidoc/index.adoc
 
@@ -36,25 +36,25 @@ contents:
         title:      Clients & Integrations
         sections:
           -
-            prefix:     elasticsearch/client/java-api
             title:      Java API
+            prefix:     elasticsearch/client/java-api
             repo:       elasticsearch
             index:      docs/java-api/index.asciidoc
 
           -
-            prefix:     elasticsearch/client/groovy-api
             title:      Groovy API
+            prefix:     elasticsearch/client/groovy-api
             repo:       elasticsearch
             index:      docs/groovy-api/index.asciidoc
 
           -
-            prefix:     elasticsearch/rivers
             title:      Rivers
+            prefix:     elasticsearch/rivers
             index:      docs/river/index.asciidoc
             repo:       elasticsearch
           -
-            prefix:     elasticsearch/client/community
             title:      Community supported clients
+            prefix:     elasticsearch/client/community
             index:      docs/community/index.asciidoc
             repo:       elasticsearch
             branches:   [master]
