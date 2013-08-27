@@ -209,7 +209,10 @@ sub build_chunked {
             -v
             -d book
             -f chunked
-            --xsl-file resources/website_chunked.xsl),
+            --xsl-file resources/website_chunked.xsl
+            --icons
+            ),
+        '-a', 'icons=resources/asciidoc-8.6.8/images/icons/',
         '--destination-dir=' . $build,
         '--xsltproc-opts', '--stringparam chunk.section.depth 1',
         $index
@@ -244,7 +247,10 @@ sub build_single {
             -d book
             -f xhtml
             --xsl-file resources/website.xsl
-            --xsltproc-opts),
+            --icons
+            ),
+        '-a', 'icons=resources/asciidoc-8.6.8/images/icons/',
+        '--xsltproc-opts',
         "--stringparam generate.toc '$toc'",
         '--destination-dir=' . $dest,
         $index
