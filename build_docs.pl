@@ -320,6 +320,8 @@ sub select_branch {
 
     return unless $force || has_changed( $path, $current, $new );
 
+    run( 'git', 'reset',    '--hard' );
+    run( 'git', 'clean',    '--force' );
     run( 'git', 'checkout', '-B', '_build_docs', "origin/$branch" );
     return 1;
 }
