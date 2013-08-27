@@ -10,6 +10,7 @@ use YAML qw(LoadFile);
 use Path::Class qw(dir file);
 use File::Copy::Recursive qw(fcopy rcopy);
 use Capture::Tiny qw(capture_merged tee_merged);
+use Browser::Open qw(open_browser);
 use Data::Dumper;
 use Getopt::Long;
 use v5.10;
@@ -23,7 +24,7 @@ our %Opts = ();
 GetOptions(
     \%Opts,    #
     'all', 'push',    #
-    'single', 'doc=s', 'out=s', 'toc'
+    'single', 'doc=s', 'out=s', 'toc', 'open',
     'verbose'
 );
 
@@ -55,8 +56,16 @@ sub build_local {
         $html = 'index.html';
     }
 
+    $html = $dir->file($html);
+
     say "Done";
-    say "See: " . $dir->file($html);
+    if ( $Opts{open} ) {
+        say "Opening: $html";
+        open_browser($html);
+    }
+    else {
+        say "See: $html";
+    }
 }
 
 #===================================
@@ -450,18 +459,20 @@ sub usage {
 
     Build local docs:
 
-        $0 --doc path/to/index.asciidoc [--out dest/dir/ --single --toc]
+        $0 --doc path/to/index.asciidoc [opts]
 
         Opts:
           --single          Generate a single HTML page.
           --toc             Include a TOC at the beginning of the page.
           --out dest/dir/   Defaults to ./html_docs.
+          --open            Open the docs in a browser once built.
+          --verbose
 
         WARNING: Anything in the `out` dir will be deleted!
 
     Build docs from all repos in conf.yaml:
 
-        $0 --all [--push]
+        $0 --all [opts]
 
         Opts:
           --push            Commit the updated docs and push to origin
