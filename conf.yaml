@@ -5,10 +5,10 @@ paths:
 repos:
     elasticsearch:
         url:        https://github.com/clintongormley/elasticsearch.git
-        current:    v0.90
+        current:    0.90
         branches:
             - master
-            - v0.90
+            - 0.90
 
 
     elasticsearch-hadoop:
