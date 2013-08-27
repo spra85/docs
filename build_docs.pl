@@ -42,7 +42,7 @@ sub build_local {
 
     say "Building HTML from $doc";
 
-    my $dir = dir( $Opts{out} || $Old_Pwd->subdir('html_docs') );
+    my $dir = dir( $Opts{out} || 'html_docs' )->absolute($Old_Pwd);
     my $html;
     if ( $Opts{single} ) {
         $dir->rmtree;
