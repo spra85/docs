@@ -1,5 +1,6 @@
 .gradle
 bin
+.includepath
 .ignorepath
 .settings
 .classpath
@@ -10,5 +11,6 @@ styles.css
 *.ipr
 *.iws
 *.log
+*.xml
 metastore_db
 html_docs/
