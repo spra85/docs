@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use FindBin;
-use lib "$FindBin::Bin/lib";
+use lib "$FindBin::RealBin/lib";
 
 use YAML qw(LoadFile);
 use Path::Class qw(dir file);
@@ -15,11 +15,9 @@ use Getopt::Long;
 use v5.10;
 
 our $Old_Pwd = dir()->absolute;
-chdir($FindBin::Bin) or die $!;
+init_env();
 
 our $Conf = LoadFile('conf.yaml');
-
-init_env();
 
 our %Opts = ();
 GetOptions(
@@ -425,7 +423,7 @@ sub make_dir {
 #===================================
 sub init_env {
 #===================================
-    chdir($FindBin::Bin) or die $!;
+    chdir($FindBin::RealBin) or die $!;
 
     $ENV{SGML_CATALOG_FILES} = $ENV{XML_CATALOG_FILES} = join ' ',
         file('resources/docbook-xsl-1.78.1/catalog.xml')->absolute,
