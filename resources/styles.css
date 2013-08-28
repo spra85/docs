@@ -327,7 +327,7 @@ font-weight: bold;
 	list-style-type: disc;
 	list-style-position: outside;
 	color: #74b73f;
-	padding: 0.2em 0;
+	padding: 0.1em 0;
 }
 
 .guide .book .toc {
@@ -337,4 +337,12 @@ font-weight: bold;
 
 .guide .book .toc dt {
 	display: block;
+}
+
+.guide .variablelist dt {
+	color: #74b73f;
+}
+
+.guide .variablelist dd {
+	margin-bottom: 0.5em;
 }
