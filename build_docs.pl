@@ -117,18 +117,21 @@ sub build_entries {
             $prefix =~ s{^/+}{};
             $prefix =~ s{/+$}{};
 
+            my $prefix_dir = $build->subdir($prefix);
+            $prefix_dir->mkpath;
+
             my $index = $entry->{index}
                 or die "No <index> specified";
 
             my $repo     = $conf->{dir};
             my $branches = $entry->{branches} || $conf->{branches};
             my $current  = $entry->{current} || $conf->{current};
-            $index = file( $repo, $index );
 
             local $ENV{GIT_WORK_TREE} = dir($repo)->stringify;
             local $ENV{GIT_DIR}       = $repo->subdir('.git')->stringify;
 
-            my @books = build_branches( $prefix, $build, $index, $branches );
+            my @books
+                = build_branches( $prefix_dir, $repo, $index, $branches );
             push @toc, finalize( $prefix, $title, \@books, $current );
 
         } or die "ERROR processing book <$title>: $@";
@@ -168,22 +171,21 @@ sub finalize {
 #===================================
 sub build_branches {
 #===================================
-    my ( $prefix, $build, $index, $branches ) = @_;
+    my ( $build, $repo, $index, $branches ) = @_;
 
-    my $prefix_dir = $build->subdir($prefix);
-    $prefix_dir->mkpath;
+    my $src_path = file($index)->parent;
+    $index = $repo->file($index);
 
-    my $src_path = $index->parent;
     my @books;
 
     for my $branch (@$branches) {
         say " - Branch: $branch";
-        my $dir = $prefix_dir->subdir($branch);
-        my $changed = select_branch( $prefix, $branch, $src_path, !-e $dir );
+        my $dir = $build->subdir($branch);
+        my $changed = select_branch( $src_path, $branch, !-e $dir );
 
         if ($changed) {
             build_chunked( $index, $dir );
-            mark_built( $prefix, $branch );
+            mark_built( $src_path, $branch );
         }
 
         push @books,
@@ -312,9 +314,9 @@ sub update_repos {
 #===================================
 sub select_branch {
 #===================================
-    my ( $prefix, $branch, $path, $force ) = @_;
+    my ( $path, $branch, $force ) = @_;
 
-    my $current = sha_for( 'refs/heads/' . "_docs_${prefix}_$branch" );
+    my $current = sha_for( 'refs/heads/' . "_${path}_$branch" );
     my $new     = sha_for( 'refs/remotes/origin/' . $branch )
         or die "Remote branch <origin/$branch> doesn't exist";
 
@@ -329,8 +331,8 @@ sub select_branch {
 #===================================
 sub mark_built {
 #===================================
-    my ( $prefix, $branch ) = @_;
-    run( 'git', 'checkout', '-B', "_docs_${prefix}_$branch",
+    my ( $path, $branch ) = @_;
+    run( 'git', 'checkout', '-B', "_${path}_$branch",
         "refs/remotes/origin/$branch" );
     run( 'git', 'branch', '-D', '_build_docs' );
 }
