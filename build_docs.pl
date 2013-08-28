@@ -2,18 +2,19 @@
 
 use strict;
 use warnings;
+use v5.10;
 
 use FindBin;
 use lib "$FindBin::RealBin/lib";
-
+use ES::Util qw(run $Opts);
+use Getopt::Long;
 use YAML qw(LoadFile);
 use Path::Class qw(dir file);
-use File::Copy::Recursive qw(fcopy rcopy);
-use Capture::Tiny qw(capture_merged tee_merged);
 use Browser::Open qw(open_browser);
-use Data::Dumper;
-use Getopt::Long;
-use v5.10;
+
+use ES::Repo;
+use ES::Book;
+use ES::Toc;
 
 our $Link_Re = qr{
     href="http://www.elasticsearch.org/guide/
@@ -24,19 +25,18 @@ our $Link_Re = qr{
 our $Old_Pwd = dir()->absolute;
 init_env();
 
-our $Conf    = LoadFile('conf.yaml');
+our $Conf = LoadFile('conf.yaml');
 
-our %Opts = ();
 GetOptions(
-    \%Opts,    #
+    $Opts,    #
     'all', 'push',    #
     'single', 'doc=s', 'out=s', 'toc', 'open',
     'verbose'
 );
 
-$Opts{doc}       ? build_local( $Opts{doc} )
-    : $Opts{all} ? build_all()
-    :              usage();
+$Opts->{doc}       ? build_local( $Opts->{doc} )
+    : $Opts->{all} ? build_all()
+    :                usage();
 
 #===================================
 sub build_local {
@@ -48,12 +48,12 @@ sub build_local {
 
     say "Building HTML from $doc";
 
-    my $dir = dir( $Opts{out} || 'html_docs' )->absolute($Old_Pwd);
+    my $dir = dir( $Opts->{out} || 'html_docs' )->absolute($Old_Pwd);
     my $html;
-    if ( $Opts{single} ) {
+    if ( $Opts->{single} ) {
         $dir->rmtree;
         $dir->mkpath;
-        build_single( $index, $dir, $Opts{toc} );
+        build_single( $index, $dir, $Opts->{toc} );
         $html = $index->basename;
         $html =~ s/\.[^.]+/.html/;
     }
@@ -65,7 +65,7 @@ sub build_local {
     $html = $dir->file($html);
 
     say "Done";
-    if ( $Opts{open} ) {
+    if ( $Opts->{open} ) {
         say "Opening: $html";
         open_browser($html);
     }
@@ -77,201 +77,71 @@ sub build_local {
 #===================================
 sub build_all {
 #===================================
+    init_repos();
+
+    my $build_dir = $Conf->{paths}{build}
+        or die "Missing <paths.build> in config";
+
+    $build_dir = dir($build_dir);
+    $build_dir->mkpath;
+
     my $contents = $Conf->{contents}
         or die "Missing <contents> configuration section";
 
-    my $build_dir = make_dir('build');
+    my $toc = ES::Toc->new( $Conf->{contents_title} || 'Guide' );
+    build_entries( $build_dir, $toc, @$contents );
 
-    update_repos();
-
-    my $title = $Conf->{contents_title} || 'Guide';
-    my $toc = build_entries( $build_dir, @$contents );
-    write_toc( $title, $build_dir, 'index', $toc );
+    $toc->write($build_dir);
 
     check_links($build_dir);
 
     push_changes($build_dir)
-        if $Opts{push};
+        if $Opts->{push};
 }
 
 #===================================
 sub build_entries {
 #===================================
-    my ( $build, @entries ) = @_;
+    my ( $build, $toc, @entries ) = @_;
 
-    my @toc;
     while ( my $entry = shift @entries ) {
-
         my $title = $entry->{title}
             or die "Missing title for entry: " . Dumper($entry);
 
         if ( my $sections = $entry->{sections} ) {
-            my $entries = build_entries( $build, @$sections );
-            push @toc, { title => $title, sections => $entries };
+            my $section_toc = ES::Toc->new($title);
+            $toc->add_entry($section_toc);
+            build_entries( $build, $section_toc, @$sections );
             next;
         }
-
-        say "Processing book: $title";
-
-        eval {
-            my $repo_name = $entry->{repo}
-                or die "No <repo> specified";
-
-            my $conf = $Conf->{repos}{$repo_name}
-                or die "Unknown repo <$repo_name>";
-
-            my $prefix = $entry->{prefix}
-                or die "No <prefix> specified";
-            $prefix =~ s{^/+}{};
-            $prefix =~ s{/+$}{};
-
-            my $prefix_dir = $build->subdir($prefix);
-            $prefix_dir->mkpath;
-
-            my $index = $entry->{index}
-                or die "No <index> specified";
-
-            my $repo     = $conf->{dir};
-            my $branches = $entry->{branches} || $conf->{branches};
-            my $current  = $entry->{current} || $conf->{current};
-
-            local $ENV{GIT_WORK_TREE} = dir($repo)->stringify;
-            local $ENV{GIT_DIR}       = $repo->subdir('.git')->stringify;
-
-            my @books
-                = build_branches( $prefix_dir, $repo, $index, $branches );
-            push @toc, finalize( $prefix, $title, \@books, $current );
-
-        } or die "ERROR processing book <$title>: $@";
+        my $book = ES::Book->new(dir=>$build,%$entry);
+        $toc->add_entry( $book->build );
     }
-    return \@toc;
+    return $toc;
 }
 
 #===================================
-sub finalize {
+sub init_repos {
 #===================================
-    my ( $prefix, $title, $books, $current, ) = @_;
+    say "Updating repositories";
 
-    say " - Finalizing";
+    my $repos_dir = $Conf->{paths}{repos}
+        or die "Missing <paths.repos> in config";
 
-    my ($src) = grep { $_->{branch} eq $current } @$books;
-    my $dest = $src->{dir}->parent->subdir('current');
-    $dest->rmtree;
+    $repos_dir = dir($repos_dir);
+    $repos_dir->mkpath;
 
-    $src->{url} =~ s{^[^/]+}{current};
+    my $conf = $Conf->{repos}
+        or die "Missing <repos> in config";
 
-    rcopy( $src->{dir}, $dest )
-        or die "Couldn't copy <$src->{dir}> to <$dest>: $!";
-
-    return { title => $title, url => $prefix . '/' . $src->{url} }
-        if @$books == 1;
-
-    write_toc( $title, $dest->parent, 'index', $books );
-
-    return {
-        title    => "$title -- $current",
-        url      => $prefix . '/' . $src->{url},
-        versions => $prefix . '/index.html'
-    };
-
-}
-
-#===================================
-sub build_branches {
-#===================================
-    my ( $build, $repo, $index, $branches ) = @_;
-
-    my $src_path = file($index)->parent;
-    $index = $repo->file($index);
-
-    my @books;
-
-    for my $branch (@$branches) {
-        say " - Branch: $branch";
-        my $dir = $build->subdir($branch);
-        my $changed = select_branch( $src_path, $branch, !-e $dir );
-
-        if ($changed) {
-            build_chunked( $index, $dir );
-            mark_built( $src_path, $branch );
-        }
-
-        push @books,
-            {
-            title  => 'Version: ' . $branch,
-            url    => $branch . '/index.html',
-            branch => $branch,
-            dir    => $dir,
-            };
+    for my $name ( sort keys %$conf ) {
+        my $repo = ES::Repo->new(
+            name => $name,
+            dir  => $repos_dir,
+            %{ $conf->{$name} }
+        );
+        $repo->update_from_remote();
     }
-    return @books;
-}
-
-#===================================
-sub build_chunked {
-#===================================
-    my ( $index, $dest ) = @_;
-
-    fcopy( 'resources/styles.css', $index->parent )
-        or die "Couldn't copy <styles.css> to <" . $index->parent . ">: $!";
-
-    my $build  = $dest->parent;
-    my $output = run( qw(
-            a2x
-            -v
-            -d book
-            -f chunked
-            --xsl-file resources/website_chunked.xsl
-            --icons
-            ),
-        '-a', 'icons=resources/asciidoc-8.6.8/images/icons/',
-        '--destination-dir=' . $build,
-        '--xsltproc-opts', '--stringparam chunk.section.depth 1',
-        $index
-    );
-
-    my @warn = grep {/(WARNING|ERROR)/} split "\n", $output;
-    die join "\n", @warn
-        if @warn;
-
-    my ($chunk_dir) = grep { -d and /\.chunked$/ } $build->children
-        or die "Couldn't find chunk dir in <$build>";
-
-    $dest->rmtree;
-    rename $chunk_dir, $dest
-        or die "Couldn't move <$chunk_dir> to <$dest>: $!";
-
-}
-
-#===================================
-sub build_single {
-#===================================
-    my ( $index, $dest, $toc ) = @_;
-
-    $toc = $toc ? 'book toc' : '';
-
-    fcopy( 'resources/styles.css', $index->parent )
-        or die "Couldn't copy <styles.css> to <" . $index->parent . ">: $!";
-
-    my $output = run( qw(
-            a2x
-            -v
-            -d book
-            -f xhtml
-            --xsl-file resources/website.xsl
-            --icons
-            ),
-        '-a', 'icons=resources/asciidoc-8.6.8/images/icons/',
-        '--xsltproc-opts',
-        "--stringparam generate.toc '$toc'",
-        '--destination-dir=' . $dest,
-        $index
-    );
-
-    my @warn = grep {/(WARNING|ERROR)/} split "\n", $output;
-    die join "\n", @warn
-        if @warn;
-
 }
 
 #===================================
@@ -347,186 +217,27 @@ sub _check_fragment {
 }
 
 #===================================
-sub update_repos {
-#===================================
-    my $repos = $Conf->{repos}
-        or die "Missing <repos> configuration section";
-
-    my $dir = make_dir('repos');
-
-    for my $name ( sort keys %$repos ) {
-
-        say "Updating repository: $name";
-
-        eval {
-            my $conf = $repos->{$name};
-
-            my $url = $conf->{url}
-                or die "No <url> specified";
-
-            die "No <branches> specified"
-                unless ref $conf->{branches} eq 'ARRAY';
-
-            die "No <current> branch specified"
-                unless $conf->{current};
-
-            die "Current <$conf->{current}> not listed in branches"
-                unless grep { $_ eq $conf->{current} } @{ $conf->{branches} };
-
-            my $repo = $conf->{dir} = $dir->subdir($name);
-
-            local $ENV{GIT_DIR} = $repo->subdir('.git') . '';
-
-            if ( $repo->stat ) {
-                say " - Fetching";
-                run( 'git', 'fetch' );
-            }
-            else {
-                say " - Cloning from <$url>";
-                run( 'git', 'clone', $url, $repo );
-            }
-            1;
-
-        } or die "ERROR updating repository <$name>: $@";
-    }
-}
-
-#===================================
-sub select_branch {
-#===================================
-    my ( $path, $branch, $force ) = @_;
-
-    my $current = sha_for( 'refs/heads/' . "_${path}_$branch" );
-    my $new     = sha_for( 'refs/remotes/origin/' . $branch )
-        or die "Remote branch <origin/$branch> doesn't exist";
-
-    return unless $force || has_changed( $path, $current, $new );
-
-    run( 'git', 'reset',    '--hard' );
-    run( 'git', 'clean',    '--force' );
-    run( 'git', 'checkout', '-B', '_build_docs', "origin/$branch" );
-    return 1;
-}
-
-#===================================
-sub mark_built {
-#===================================
-    my ( $path, $branch ) = @_;
-    run( 'git', 'checkout', '-B', "_${path}_$branch",
-        "refs/remotes/origin/$branch" );
-    run( 'git', 'branch', '-D', '_build_docs' );
-}
-
-#===================================
 sub push_changes {
 #===================================
     my $build_dir = shift;
 
-    run( 'git', 'add', '-A', $build_dir );
+    run qw( git add -A), $build_dir;
 
-    if ( run( 'git', 'status', '-s', '--', $build_dir ) ) {
+    if ( run qw(git status -s -- ), $build_dir ) {
         say "Commiting changes";
-        run( 'git', 'commit', '-m', 'Updated docs' );
+        run qw(git commit -m), 'Updated docs';
 
         say "Rebasing changes";
-        run( 'git', 'pull', '--rebase' );
+        run qw(git pull --rebase );
 
         say "Pushing changes";
-        run( 'git', 'push', 'origin', 'HEAD' );
+        run qw(git push origin HEAD );
 
         say "Changes pushed";
     }
     else {
         say "No changes to commit";
     }
-}
-
-#===================================
-sub sha_for {
-#===================================
-    my $rev = shift;
-    my $sha = eval { run( 'git', 'rev-parse', $rev ) } || '';
-    chomp $sha;
-    return $sha;
-}
-
-#===================================
-sub has_changed {
-#===================================
-    my ( $path, $start, $end ) = @_;
-    return 1 unless $start;
-    return if $start eq $end;
-    return !!run( 'git', 'diff', '--shortstat', $start, $end, '--', $path );
-}
-
-#===================================
-sub write_toc {
-#===================================
-    my ( $title, $build, $name, $toc ) = @_;
-
-    say "Writing TOC: $name.html";
-    my $adoc = join "\n", "= $title", '', _toc( 1, @$toc );
-    my $index = $build->file("$name.asciidoc");
-    $index->spew( iomode => '>:utf8', $adoc );
-    build_single( $index, $build );
-    $index->remove;
-}
-
-#===================================
-sub _toc {
-#===================================
-    my $indent = shift;
-    my @adoc   = '';
-    while ( my $entry = shift @_ ) {
-        my $prefix = '  ' . ( '*' x $indent ) . ' ';
-
-        if ( my $sections = $entry->{sections} ) {
-            push @adoc, $prefix . $entry->{title};
-            push @adoc, _toc( $indent + 1, @$sections );
-        }
-        else {
-            my $versions
-                = $entry->{versions}
-                ? " link:$entry->{versions}" . "[(other versions)]"
-                : '';
-            push @adoc,
-                  $prefix
-                . "link:$entry->{url}"
-                . "[$entry->{title}]"
-                . $versions;
-        }
-    }
-    return @adoc;
-}
-
-#===================================
-sub run {
-#===================================
-    my @args = @_;
-    my ( $out, $ok );
-    if ( $Opts{verbose} ) {
-        say "Running: @args";
-        ( $out, $ok ) = tee_merged { system(@args) == 0 };
-    }
-    else {
-        ( $out, $ok ) = capture_merged { system(@args) == 0 };
-    }
-
-    die "Error executing: @args\n$out"
-        unless $ok;
-
-    return $out;
-}
-
-#===================================
-sub make_dir {
-#===================================
-    my $key  = shift;
-    my $path = $Conf->{paths}{$key}
-        or die "Missing <paths.$key> in config";
-    my $dir = dir($path);
-    $dir->mkpath;
-    return $dir;
 }
 
 #===================================
