@@ -6,7 +6,7 @@ use v5.10;
 
 use FindBin;
 use lib "$FindBin::RealBin/lib";
-use ES::Util qw(run $Opts);
+use ES::Util qw(run $Opts build_chunked build_single);
 use Getopt::Long;
 use YAML qw(LoadFile);
 use Path::Class qw(dir file);
@@ -114,7 +114,7 @@ sub build_entries {
             build_entries( $build, $section_toc, @$sections );
             next;
         }
-        my $book = ES::Book->new(dir=>$build,%$entry);
+        my $book = ES::Book->new( dir => $build, %$entry );
         $toc->add_entry( $book->build );
     }
     return $toc;
