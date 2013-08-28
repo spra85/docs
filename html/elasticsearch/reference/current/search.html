@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Search APIs</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="index.html" title="Reference" /><link rel="prev" href="docs-bulk-udp.html" title="Bulk UDP API" /><link rel="next" href="search-search.html" title="Search" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-node">Search APIs</span></div><div class="navheader"><span class="prev"><a href="docs-bulk-udp.html">
+              « 
+              Bulk UDP API</a>
+           
+        </span><span class="next">
+           
+          <a href="search-search.html">Search
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="part"><div class="titlepage"><div><div><h1 class="title"><a id="search"></a>Search APIs</h1></div></div></div><div class="partintro"><div></div><h2><a id="search-multi-index"></a>Multiple Indices</h2><p>All search APIs support execution across multiple indices, using simple
+<code class="literal">test1,test2,test3</code> notation (or <code class="literal">_all</code> for all indices). It also
+support wildcards, for example: <code class="literal">test*</code>, and the ability to "add" (<code class="literal">+</code>)
+and "remove" (<code class="literal">-</code>), for example: <code class="literal">+test*,-test3</code>.</p><p>All multi indices API support the <code class="literal">ignore_indices</code> option. Setting it to
+<code class="literal">missing</code> will cause indices that do not exists to be ignored from the
+execution. By default, when its not set, the request will fail. Note,
+this feature is available since 0.20 version.</p><h2><a id="_routing_6"></a>Routing</h2><p>When executing a search, it will be broadcasted to all the index/indices
+shards (round robin between replicas). Which shards will be searched on
+can be controlled by providing the <code class="literal">routing</code> parameter. For example,
+when indexing tweets, the routing value can be the user name:</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '{
+    "user" : "kimchy",
+    "postDate" : "2009-11-15T14:12:12",
+    "message" : "trying out Elastic Search"
+}
+'</pre><p>In such a case, if we want to search only on the tweets for a specific
+user, we can specify it as the routing, resulting in the search hitting
+only the relevant shard:</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XGET 'http://localhost:9200/twitter/tweet/_search?routing=kimchy' -d '{
+    "query": {
+        "filtered" : {
+            "query" : {
+                "query_string" : {
+                    "query" : "some query string here"
+                }
+            },
+            "filter" : {
+                "term" : { "user" : "kimchy" }
+            }
+        }
+    }
+}
+'</pre><p>The routing parameter can be multi valued represented as a comma
+separated string. This will result in hitting the relevant shards where
+the routing values match to.</p><h2><a id="_stats_groups"></a>Stats Groups</h2><p>A search can be associated with stats groups, which maintains a
+statistics aggregation per group. It can later be retrieved using the
+<a class="link" href="indices-stats.html" title="Indices Stats">indices stats</a> API
+specifically. For example, here is a search body request that associate
+the request with two different groups:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "query" : {
+        "match_all" : {}
+    },
+    "stats" : ["group1", "group2"]
+}</pre><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-search.html">Search</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-uri-request.html">URI Search</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-request-body.html">Request Body Search</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-facets.html">Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-suggesters.html">Suggesters</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-multi-search.html">Multi Search API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-count.html">Count API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-validate.html">Validate API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-explain.html">Explain API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-percolate.html">Percolate API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-more-like-this.html">More Like This API</a></span></dt></dl></div></div></div><div class="navfooter"><span class="prev"><a href="docs-bulk-udp.html">
+              « 
+              Bulk UDP API</a>
+           
+        </span><span class="next">
+           
+          <a href="search-search.html">Search
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

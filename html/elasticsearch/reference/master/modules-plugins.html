@@ -42,7 +42,7 @@ available under <code class="literal">http://localhost:9200/_plugin/head/</code>
 available under <code class="literal">http://localhost:9200/_plugin/bigdesk/</code>.</p><h4><a id="_mandatory_plugins"></a>Mandatory Plugins</h4><p>If you rely on some plugins, you can define mandatory plugins using the
 <code class="literal">plugin.mandatory</code> attribute, for example, here is a sample config:</p><pre class="programlisting prettyprint noescape lang-js">plugin.mandatory: mapper-attachments,lang-groovy</pre><p>For safety reasons, if a mandatory plugin is not installed, the node
 will not start.</p><h4><a id="_installed_plugins"></a>Installed Plugins</h4><p>A list of the currently loaded plugins can be retrieved using the
-<a class="link" href="cluster-api-nodes-info.html" title="Nodes Info">Node Info API</a>.</p><h3><a id="_known_plugins"></a>Known Plugins</h3><h4><a id="_analysis_plugins"></a>Analysis Plugins</h4><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="link" href="cluster-nodes-info.html" title="Nodes Info">Node Info API</a>.</p><h3><a id="_known_plugins"></a>Known Plugins</h3><h4><a id="_analysis_plugins"></a>Analysis Plugins</h4><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/yakaz/elasticsearch-analysis-combo/" target="_top">Combo Analysis
 Plugin</a> (by Olivier Favre, Yakaz)
 </li><li class="listitem">
@@ -51,10 +51,10 @@ Chinese Analysis Plugin</a> (by elasticsearch team)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-icu" target="_top">ICU
 Analysis plugin</a> (by elasticsearch team)
-*
+</li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-stempel" target="_top">Stempel
 (Polish) Analysis plugin</a> (by elasticsearch team)
-*
+</li><li class="listitem">
 <a class="ulink" href="https://github.com/chytreg/elasticsearch-analysis-morfologik" target="_top">Morfologik
 (Polish) Analysis plugin</a> (by chytreg)
 </li><li class="listitem">
@@ -65,8 +65,8 @@ Analysis plugin</a> (by elasticsearch team)
 Plugin</a> (by Medcl)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/jprante/elasticsearch-analysis-hunspell" target="_top">Hunspell
-Analysis Plugin</a> (by JÃ¶rg Prante)
-*
+Analysis Plugin</a> (by Jörg Prante)
+</li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-kuromoji" target="_top">Japanese
 (Kuromoji) Analysis plugin</a> (by elasticsearch team).
 </li><li class="listitem">
@@ -78,16 +78,16 @@ and English Morphological Analysis Plugin</a> (by Igor Motov)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/medcl/elasticsearch-analysis-pinyin" target="_top">Pinyin Analysis
 Plugin</a> (by Medcl)
-*
+</li><li class="listitem">
 <a class="ulink" href="https://github.com/medcl/elasticsearch-analysis-string2int" target="_top">String2Integer
 Analysis Plugin</a> (by Medcl)
-*
+</li><li class="listitem">
 <a class="ulink" href="https://github.com/barminator/elasticsearch-analysis-annotation" target="_top">Annotation
 Analysis Plugin</a> (by Michal Samek)
 </li></ul></div><h4><a id="_river_plugins"></a>River Plugins</h4><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-river-couchdb" target="_top">CouchDB
 River Plugin</a> (by elasticsearch team)
-*
+</li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-river-wikipedia" target="_top">Wikipedia
 River Plugin</a> (by elasticsearch team)
 </li><li class="listitem">
@@ -115,7 +115,7 @@ Pilato)
 River Plugin</a> (by Steve Samuel)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/jprante/elasticsearch-river-jdbc" target="_top">JDBC River Plugin</a>
-(by JÃ¶rg Prante)
+(by Jörg Prante)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/qotho/elasticsearch-river-jms" target="_top">JMS River Plugin</a> (by
 Steve Sarandos)
@@ -130,7 +130,7 @@ River Plugin</a> (by Richard Louapre)
 Plugin</a> (by Steve Samuel)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/jprante/elasticsearch-river-oai/" target="_top">Open Archives
-Initiative (OAI) River Plugin</a> (by JÃ¶rg Prante)
+Initiative (OAI) River Plugin</a> (by Jörg Prante)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/sksamuel/elasticsearch-river-redis" target="_top">Redis River
 Plugin</a> (by Steve Samuel)
@@ -149,10 +149,12 @@ Plugin</a> (by Sunny Gleason)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/endgameinc/elasticsearch-river-kafka" target="_top">Kafka River
 Plugin</a> (by Endgame Inc.)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/obazoud/elasticsearch-river-git" target="_top">Git River Plugin</a> (by Olivier Bazoud)
 </li></ul></div><h4><a id="_transport_plugins"></a>Transport Plugins</h4><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-transport-wares" target="_top">Servlet
 transport</a> (by elasticsearch team)
-*
+</li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-transport-memcached" target="_top">Memcached
 transport plugin</a> (by elasticsearch team)
 </li><li class="listitem">
@@ -167,7 +169,7 @@ plugin</a> (by Sonian Inc.)
 </li></ul></div><h4><a id="_scripting_plugins"></a>Scripting Plugins</h4><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-lang-python" target="_top">Python
 language Plugin</a> (by elasticsearch team)
-*
+</li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-lang-javascript" target="_top">JavaScript
 language Plugin</a> (by elasticsearch team)
 </li><li class="listitem">
@@ -177,8 +179,7 @@ Plugin</a> (by elasticsearch team)
 <a class="ulink" href="https://github.com/hiredman/elasticsearch-lang-clojure" target="_top">Clojure
 Language Plugin</a> (by Kevin Downey)
 </li></ul></div><h4><a id="_site_plugins_2"></a>Site Plugins</h4><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="https://github.com/lukas-vlcek/bigdesk" target="_top">BigDesk Plugin</a> (by LukÃ¡Å¡
-VlÄ?ek)
+<a class="ulink" href="https://github.com/lukas-vlcek/bigdesk" target="_top">BigDesk Plugin</a> (by Lukáš Vlček)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/mobz/elasticsearch-head" target="_top">Elasticsearch Head Plugin</a>
 (by Ben Birch)
@@ -187,7 +188,7 @@ VlÄ?ek)
 Russo)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/karmi/elasticsearch-paramedic" target="_top">Paramedic Plugin</a> (by
-Karel MinaÅ™Ã­k)
+Karel Minařík)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/polyfractal/elasticsearch-segmentspy" target="_top">SegmentSpy
 Plugin</a> (by Zachary Tong)
@@ -197,33 +198,43 @@ Plugin</a> (by Zachary Tong)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/andrewvc/elastic-hammer" target="_top">Hammer Plugin</a> (by Andrew
 Cholakian)
-</li></ul></div><h4><a id="_misc_plugins"></a>Misc Plugins</h4><p>*
+</li></ul></div><h4><a id="_misc_plugins"></a>Misc Plugins</h4><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-mapper-attachments" target="_top">Mapper
 Attachments Type plugin</a> (by elasticsearch team)
-* <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-hadoop" target="_top">Hadoop Plugin</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-hadoop" target="_top">Hadoop Plugin</a>
 (by elasticsearch team)
-* <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-aws" target="_top">AWS Cloud
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-aws" target="_top">AWS Cloud
 Plugin</a> (by elasticsearch team)
-*
+</li><li class="listitem">
 <a class="ulink" href="https://github.com/mattweber/elasticsearch-mocksolrplugin" target="_top">ElasticSearch
 Mock Solr Plugin</a> (by Matt Weber)
-* <a class="ulink" href="https://github.com/spinscale/elasticsearch-suggest-plugin" target="_top">Suggester
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/spinscale/elasticsearch-suggest-plugin" target="_top">Suggester
 Plugin</a> (by Alexander Reelsen)
-* <a class="ulink" href="https://github.com/medcl/elasticsearch-partialupdate" target="_top">ElasticSearch
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/medcl/elasticsearch-partialupdate" target="_top">ElasticSearch
 PartialUpdate Plugin</a> (by Medcl)
-* <a class="ulink" href="https://github.com/sonian/elasticsearch-zookeeper" target="_top">ZooKeeper Discovery
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/sonian/elasticsearch-zookeeper" target="_top">ZooKeeper Discovery
 Plugin</a> (by Sonian Inc.)
-* <a class="ulink" href="https://github.com/derryx/elasticsearch-changes-plugin" target="_top">ElasticSearch
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/derryx/elasticsearch-changes-plugin" target="_top">ElasticSearch
 Changes Plugin</a> (by Thomas Peuss)
-* <a class="ulink" href="http://tlrx.github.com/elasticsearch-view-plugin" target="_top">ElasticSearch View
+</li><li class="listitem">
+<a class="ulink" href="http://tlrx.github.com/elasticsearch-view-plugin" target="_top">ElasticSearch View
 Plugin</a> (by Tanguy Leroux)
-*
+</li><li class="listitem">
 <a class="ulink" href="https://github.com/viniciusccarvalho/elasticsearch-newrelic" target="_top">ElasticSearch
 New Relic Plugin</a> (by Vinicius Carvalho)
-* <a class="ulink" href="https://github.com/endgameinc/elasticsearch-term-plugin" target="_top">Terms
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/endgameinc/elasticsearch-term-plugin" target="_top">Terms
 Component Plugin</a> (by Endgame Inc.)
-* <a class="ulink" href="https://github.com/carrot2/elasticsearch-carrot2" target="_top">carrot2 Plugin</a>:
-Results clustering with carrot2 (by Dawid Weiss)</p></div><div class="navfooter"><span class="prev"><a href="modules-node.html">
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/carrot2/elasticsearch-carrot2" target="_top">carrot2 Plugin</a>:
+Results clustering with carrot2 (by Dawid Weiss)
+</li></ul></div></div><div class="navfooter"><span class="prev"><a href="modules-node.html">
               « 
               Node</a>
            

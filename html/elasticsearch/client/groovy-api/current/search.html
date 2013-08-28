@@ -8,7 +8,7 @@
           <a href="count.html">Count API
                » 
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="search"></a>Search API</h1></div></div></div><p>The search API is very similar to the
-<a class="ulink" href="http://www.elasticsearch.org/guide/java-api/current/search.html" target="_top">Java search API</a>. The Groovy
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/client/java-api/current/search.html" target="_top">Java search API</a>. The Groovy
 extension allows to provide the search source to execute as a <code class="literal">Closure</code>
 including the query itself (similar to GORM criteria builder):</p><pre class="programlisting prettyprint noescape lang-js">def search = node.client.search {
     indices "test"
@@ -30,8 +30,8 @@ for the query:</p><pre class="programlisting prettyprint noescape lang-js">def s
 search.response.hits.each {SearchHit hit -&gt;
     println "Got hit $hit.id from $hit.index/$hit.type"
 }</pre><p>The format of the search <code class="literal">Closure</code> follows the same JSON syntax as the
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-search.html" target="_top">Search API</a> request.</p><h3><a id="_more_examples"></a>More examples</h3><p>Term query where multiple values are provided (see
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/query-dsl-terms-query.html" target="_top">terms</a>):</p><pre class="programlisting prettyprint noescape lang-js">def search = node.client.search {
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-search.html" target="_top">Search API</a> request.</p><h3><a id="_more_examples"></a>More examples</h3><p>Term query where multiple values are provided (see
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-terms-query.html" target="_top">terms</a>):</p><pre class="programlisting prettyprint noescape lang-js">def search = node.client.search {
     indices "test"
     types "type1"
     source {
@@ -40,7 +40,7 @@ search.response.hits.each {SearchHit hit -&gt;
         }
     }
 }</pre><p>Query string (see
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/query-dsl-query-string-query.html" target="_top">query string</a>):</p><pre class="programlisting prettyprint noescape lang-js">def search = node.client.search {
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-query-string-query.html" target="_top">query string</a>):</p><pre class="programlisting prettyprint noescape lang-js">def search = node.client.search {
     indices "test"
     types "type1"
     source {
@@ -51,7 +51,7 @@ search.response.hits.each {SearchHit hit -&gt;
         }
     }
 }</pre><p>Pagination (see
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-request-from-size.html" target="_top">from/size</a>):</p><pre class="programlisting prettyprint noescape lang-js">def search = node.client.search {
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-request-from-size.html" target="_top">from/size</a>):</p><pre class="programlisting prettyprint noescape lang-js">def search = node.client.search {
     indices "test"
     types "type1"
     source {
@@ -61,7 +61,7 @@ search.response.hits.each {SearchHit hit -&gt;
             term(test: "value")
         }
     }
-}</pre><p>Sorting (see <a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-request-sort.html" target="_top">sort</a>):</p><pre class="programlisting prettyprint noescape lang-js">def search = node.client.search {
+}</pre><p>Sorting (see <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-request-sort.html" target="_top">sort</a>):</p><pre class="programlisting prettyprint noescape lang-js">def search = node.client.search {
     indices "test"
     types "type1"
     source {

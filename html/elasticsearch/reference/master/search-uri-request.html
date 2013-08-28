@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>URI Search</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="search.html" title="Search APIs" /><link rel="prev" href="search-search.html" title="Search" /><link rel="next" href="search-request-body.html" title="Request Body Search" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="search.html">Search APIs</a></span> &gt; <span class="breadcrumb-node">URI Search</span></div><div class="navheader"><span class="prev"><a href="search-search.html">
+              « 
+              Search</a>
+           
+        </span><span class="next">
+           
+          <a href="search-request-body.html">Request Body Search
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="search-uri-request"></a>URI Search</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-search.html">Search</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-uri-request.html">URI Search</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-request-body.html">Request Body Search</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-facets.html">Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-suggesters.html">Suggesters</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-multi-search.html">Multi Search API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-count.html">Count API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-validate.html">Validate API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-explain.html">Explain API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-percolate.html">Percolate API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-more-like-this.html">More Like This API</a></span></dt></dl></div><p>A search request can be executed purely using a URI by providing request
+parameters. Not all search options are exposed when executing a search
+using this mode, but it can be handy for quick "curl tests". Here is an
+example:</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XGET 'http://localhost:9200/twitter/tweet/_search?q=user:kimchy'</pre><p>And here is a sample response:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "_shards":{
+        "total" : 5,
+        "successful" : 5,
+        "failed" : 0
+    },
+    "hits":{
+        "total" : 1,
+        "hits" : [
+            {
+                "_index" : "twitter",
+                "_type" : "tweet",
+                "_id" : "1",
+                "_source" : {
+                    "user" : "kimchy",
+                    "postDate" : "2009-11-15T14:12:12",
+                    "message" : "trying out Elastic Search"
+                }
+            }
+        ]
+    }
+}</pre><h3><a id="_parameters"></a>Parameters</h3><p>The parameters allowed in the URI are:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Name </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">q</code></p></td><td align="left" valign="top"><p>The query string (maps to the <code class="literal">query_string</code> query, see
+<a class="link" href="query-dsl-query-string-query.html" title="Query String Query"><span class="emphasis"><em>Query String Query</em></span></a> for more details).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">df</code></p></td><td align="left" valign="top"><p>The default field to use when no field prefix is defined within the
+query.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">analyzer</code></p></td><td align="left" valign="top"><p>The analyzer name to be used when analyzing the query string.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">default_operator</code></p></td><td align="left" valign="top"><p>The default operator to be used, can be <code class="literal">AND</code> or
+<code class="literal">OR</code>. Defaults to <code class="literal">OR</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">explain</code></p></td><td align="left" valign="top"><p>For each hit, contain an explanation of how scoring of the
+hits was computed.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">fields</code></p></td><td align="left" valign="top"><p>The selective fields of the document to return for each hit
+(either retrieved from the index if stored, or from the <code class="literal">_source</code> if
+not), comma delimited. Defaults to the internal <code class="literal">_source</code> field. Not
+specifying any value will cause no fields to return.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">sort</code></p></td><td align="left" valign="top"><p>Sorting to perform. Can either be in the form of <code class="literal">fieldName</code>, or
+<code class="literal">fieldName:asc</code>/@fieldName:desc@. The fieldName can either be an actual
+field within the document, or the special <code class="literal">_score</code> name to indicate
+sorting based on scores. There can be several <code class="literal">sort</code> parameters (order
+is important).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">track_scores</code></p></td><td align="left" valign="top"><p>When sorting, set to <code class="literal">true</code> in order to still track
+scores and return them as part of each hit.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">timeout</code></p></td><td align="left" valign="top"><p>A search timeout, bounding the search request to be executed
+within the specified time value and bail with the hits accumulated up to
+that point when expired. Defaults to no timeout.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">from</code></p></td><td align="left" valign="top"><p>The starting from index of the hits to return. Defaults to <code class="literal">0</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">size</code></p></td><td align="left" valign="top"><p>The number of hits to return. Defaults to <code class="literal">10</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">search_type</code></p></td><td align="left" valign="top"><p>The type of the search operation to perform. Can be
+<code class="literal">dfs_query_then_fetch</code>, <code class="literal">dfs_query_and_fetch</code>, <code class="literal">query_then_fetch</code>,
+<code class="literal">query_and_fetch</code>, <code class="literal">count</code>, <code class="literal">scan</code>. Defaults to <code class="literal">query_then_fetch</code>. See
+<a class="link" href="search-request-search-type.html" title="Search Type"><span class="emphasis"><em>Search Type</em></span></a> for
+more details on the different types of search that can be performed.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">lowercase_expanded_terms</code></p></td><td align="left" valign="top"><p>Should terms be automatically lowercased or
+not. Defaults to <code class="literal">true</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">analyze_wildcard</code></p></td><td align="left" valign="top"><p>Should wildcard and prefix queries be analyzed or
+not. Defaults to <code class="literal">false</code>.</p></td></tr></tbody></table></div></div><div class="navfooter"><span class="prev"><a href="search-search.html">
+              « 
+              Search</a>
+           
+        </span><span class="next">
+           
+          <a href="search-request-body.html">Request Body Search
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

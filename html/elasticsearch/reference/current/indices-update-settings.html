@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Update Indices Settings</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="indices.html" title="Indices APIs" /><link rel="prev" href="indices-aliases.html" title="Index Aliases" /><link rel="next" href="indices-get-settings.html" title="Get Settings" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="indices.html">Indices APIs</a></span> &gt; <span class="breadcrumb-node">Update Indices Settings</span></div><div class="navheader"><span class="prev"><a href="indices-aliases.html">
+              « 
+              Index Aliases</a>
+           
+        </span><span class="next">
+           
+          <a href="indices-get-settings.html">Get Settings
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="indices-update-settings"></a>Update Indices Settings</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-create-index.html">Create Index</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-delete-index.html">Delete Index</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-exists.html">Indices Exists</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-open-close.html">Open / Close Index API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-put-mapping.html">Put Mapping</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-get-mapping.html">Get Mapping</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-types-exists.html">Types Exists</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-delete-mapping.html">Delete Mapping</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-aliases.html">Index Aliases</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-update-settings.html">Update Indices Settings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-get-settings.html">Get Settings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-analyze.html">Analyze</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-templates.html">Index Templates</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-warmers.html">Warmers</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-status.html">Status</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-stats.html">Indices Stats</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-segments.html">Indices Segments</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-clearcache.html">Clear Cache</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-flush.html">Flush</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-refresh.html">Refresh</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-optimize.html">Optimize</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-gateway-snapshot.html">Gateway Snapshot</a></span></dt></dl></div><p>Change specific index level settings in real time.</p><p>The REST endpoint is <code class="literal">/_settings</code> (to update all indices) or
+<code class="literal">{index}/_settings</code> to update one (or more) indices settings. The body
+of the request includes the updated settings, for example:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "index" : {
+        "number_of_replicas" : 4
+    } }</pre><p>The above will change the number of replicas to 4 from the current
+number of replicas. Here is a curl example:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT 'localhost:9200/my_index/_settings' -d '
+{
+    "index" : {
+        "number_of_replicas" : 4
+    } }
+'</pre><p>Below is the list of settings that can be changed using the update
+settings API:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">index.number_of_replicas</code>
+</p>
+</td><td valign="top">
+<p>
+    The number of replicas each shard has.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.auto_expand_replicas</code>
+</p>
+</td><td valign="top">
+<p>
+    Set to an actual value (like <code class="literal">0-all</code>) or <code class="literal">false</code> to disable it.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.blocks.read_only</code>
+</p>
+</td><td valign="top">
+<p>
+    Set to <code class="literal">true</code> to have the index read only, <code class="literal">false</code> to allow writes
+    and metadata changes.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.blocks.read</code>
+</p>
+</td><td valign="top">
+<p>
+    Set to <code class="literal">true</code> to disable read operations againstthe index.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.blocks.write</code>
+</p>
+</td><td valign="top">
+<p>
+    Set to <code class="literal">true</code> to disable write operations against the index.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.blocks.metadata</code>
+</p>
+</td><td valign="top">
+<p>
+    Set to <code class="literal">true</code> to disable metadata operations against the index.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.refresh_interval</code>
+</p>
+</td><td valign="top">
+<p>
+    The async refresh interval of a shard.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.term_index_interval</code>
+</p>
+</td><td valign="top">
+<p>
+    The Lucene index term interval. Only applies to newly created docs.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.term_index_divisor</code>
+</p>
+</td><td valign="top">
+<p>
+    The Lucene reader term index divisor.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.index_concurrency</code>
+</p>
+</td><td valign="top">
+<p>
+    Defaults to <code class="literal">8</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.codec</code>
+</p>
+</td><td valign="top">
+<p>
+    Codec. Default to <code class="literal">default</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.fail_on_merge_failure</code>
+</p>
+</td><td valign="top">
+<p>
+    Default to <code class="literal">true</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.translog.flush_threshold_ops</code>
+</p>
+</td><td valign="top">
+<p>
+    When to flush based on operations.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.translog.flush_threshold_size</code>
+</p>
+</td><td valign="top">
+<p>
+    When to flush based on translog (bytes) size.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.translog.flush_threshold_period</code>
+</p>
+</td><td valign="top">
+<p>
+    When to flush based on a period of not flushing.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.translog.disable_flush</code>
+</p>
+</td><td valign="top">
+<p>
+    Disables flushing. Note, should be set for a short
+    interval and then enabled.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.cache.filter.max_size</code>
+</p>
+</td><td valign="top">
+<p>
+    The maximum size of filter cache (per segment in shard).
+    Set to <code class="literal">-1</code> to disable.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.cache.filter.expire</code>
+</p>
+</td><td valign="top">
+<p>
+    The expire after access time for filter cache.
+    Set to <code class="literal">-1</code> to disable.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.gateway.snapshot_interval</code>
+</p>
+</td><td valign="top">
+<p>
+    The gateway snapshot interval (only applies to shared gateways).
+    Defaults to 10s.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<a class="link" href="index-modules-merge.html" title="Merge">merge policy</a>
+</p>
+</td><td valign="top">
+<p>
+    All the settings for the merge policy currently configured.
+    A different merge policy can’t be set.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.routing.allocation.include.*</code>
+</p>
+</td><td valign="top">
+<p>
+    A node matching any rule will be allowed to host shards from the index.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.routing.allocation.exclude.*</code>
+</p>
+</td><td valign="top">
+<p>
+    A node matching any rule will NOT be allowed to host shards from the index.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.routing.allocation.require.*</code>
+</p>
+</td><td valign="top">
+<p>
+    Only nodes matching all rules will be allowed to host shards from the index.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.routing.allocation.disable_allocation</code>
+</p>
+</td><td valign="top">
+<p>
+    Disable allocation. Defaults to <code class="literal">false</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.routing.allocation.disable_new_allocation</code>
+</p>
+</td><td valign="top">
+<p>
+    Disable new allocation. Defaults to <code class="literal">false</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.routing.allocation.disable_replica_allocation</code>
+</p>
+</td><td valign="top">
+<p>
+    Disable replica allocation. Defaults to <code class="literal">false</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.routing.allocation.total_shards_per_node</code>
+</p>
+</td><td valign="top">
+<p>
+    Controls the total number of shards allowed to be allocated on a single node. Defaults to unbounded (<code class="literal">-1</code>).
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.recovery.initial_shards</code>
+</p>
+</td><td valign="top">
+<p>
+    When using local gateway a particular shard is recovered only if there can be allocated quorum shards in the cluster. It can be set to:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">quorum</code> (default)
+</li><li class="listitem">
+<code class="literal">quorum-1</code> (or <code class="literal">half</code>)
+</li><li class="listitem">
+<code class="literal">full</code>
+</li><li class="listitem">
+full-1`.
+</li><li class="listitem">
+Number values are also supported, e.g. <code class="literal">1</code>.
+</li></ul></div>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.gc_deletes</code>
+</p>
+<p>
+<code class="literal">index.ttl.disable_purge</code>
+</p>
+</td><td valign="top">
+<p>
+    Disables temporarily the purge of expired docs.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<a class="link" href="index-modules-store.html" title="Store">store level throttling</a>
+</p>
+</td><td valign="top">
+<p>
+    All the settings for the store level throttling policy currently configured.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.translog.fs.type</code>
+</p>
+</td><td valign="top">
+<p>
+    Either <code class="literal">simple</code> or <code class="literal">buffered</code> (default).
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.compound_format</code>
+</p>
+</td><td valign="top">
+<p>
+    See <a class="xref" href="index-modules.html" title="Index Modules">Index Modules</a>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+|<a class="xref" href="index-modules-slowlog.html" title="Index Slow Log"><em>Index Slow Log</em></a>
+</p>
+</td><td valign="top">
+<p>
+    All the settings for slow log.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index.warmer.enabled</code>
+</p>
+</td><td valign="top">
+<p>
+    See <a class="xref" href="indices-warmers.html" title="Warmers"><em>Warmers</em></a>. Defaults to <code class="literal">true</code>.
+</p>
+</td></tr></tbody></table></div><h3><a id="_bulk_indexing_usage"></a>Bulk Indexing Usage</h3><p>For example, the update settings API can be used to dynamically change
+the index from being more performant for bulk indexing, and then move it
+to more real time indexing state. Before the bulk indexing is started,
+use:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/test/_settings -d '{
+    "index" : {
+        "refresh_interval" : "-1"
+    } }'</pre><p>(Another optimization option is to start the index without any replicas,
+and only later adding them, but that really depends on the use case).</p><p>Then, once bulk indexing is done, the settings can be updated (back to
+the defaults for example):</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/test/_settings -d '{
+    "index" : {
+        "refresh_interval" : "1s"
+    } }'</pre><p>And, an optimize should be called:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPOST 'http://localhost:9200/test/_optimize?max_num_segments=5'</pre><h3><a id="_updating_index_analysis"></a>Updating Index Analysis</h3><p>It is also possible to define new <a class="link" href="analysis.html" title="Analysis">analyzers</a> for the index.
+But it is required to <a class="link" href="indices-open-close.html" title="Open / Close Index API">close</a> the index
+first and <a class="link" href="indices-open-close.html" title="Open / Close Index API">open</a> it after the changes are made.</p><p>For example if <code class="literal">content</code> analyzer hasn’t been defined on <code class="literal">myindex</code> yet
+you can use the following commands to add it:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPOST 'localhost:9200/myindex/_close'
+
+curl -XPUT 'localhost:9200/myindex/_settings' -d '{
+  "analysis" : {
+    "analyzer":{
+      "content":{
+        "type":"custom",
+        "tokenizer":"whitespace"
+      }
+    }
+  }
+}'
+
+curl -XPOST 'localhost:9200/myindex/_open'</pre></div><div class="navfooter"><span class="prev"><a href="indices-aliases.html">
+              « 
+              Index Aliases</a>
+           
+        </span><span class="next">
+           
+          <a href="indices-get-settings.html">Get Settings
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

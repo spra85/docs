@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Terms Stats Facet</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="search-facets.html" title="Facets" /><link rel="prev" href="search-facets-statistical-facet.html" title="Statistical Facet" /><link rel="next" href="search-facets-geo-distance-facet.html" title="Geo Distance Facets" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link xmlns="" rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link xmlns="" rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script xmlns="" type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link xmlns="" rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> &gt; <span class="breadcrumb-link"><a href="search.html">Search APIs</a></span> &gt; <span class="breadcrumb-link"><a href="search-facets.html">Facets</a></span> &gt; <span class="breadcrumb-node">Terms Stats Facet</span></div><div class="navheader"><span class="prev"><a href="search-facets-statistical-facet.html">
+              « 
+              Statistical Facet</a>
+           
+        </span><span class="next">
+           
+          <a href="search-facets-geo-distance-facet.html">Geo Distance Facets
+               » 
+            </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="search-facets-terms-stats-facet"></a>Terms Stats Facet</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-terms-facet.html">Terms Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-range-facet.html">Range Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-histogram-facet.html">Histogram Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-date-histogram-facet.html">Date Histogram Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-filter-facet.html">Filter Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-query-facet.html">Query Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-statistical-facet.html">Statistical Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-terms-stats-facet.html">Terms Stats Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-geo-distance-facet.html">Geo Distance Facets</a></span></dt></dl></div><p>The <code class="literal">terms_stats</code> facet combines both the
+<a class="link" href="search-facets-terms-facet.html" title="Terms Facet">terms</a> and
+<a class="link" href="search-facets-statistical-facet.html" title="Statistical Facet">statistical</a>
+allowing to compute stats computed on a field, per term value driven by
+another field. For example:</p><pre class="programlisting prettyprint noescape lang-js">{
+    "query" : {
+        "match_all" : {  }
+    },
+    "facets" : {
+        "tag_price_stats" : {
+            "terms_stats" : {
+                "key_field" : "tag",
+                "value_field" : "price"
+            }
+        }
+    }
+}</pre><p>The <code class="literal">size</code> parameter controls how many facet entries will be returned.
+It defaults to <code class="literal">10</code>. Setting it to 0 will return all terms matching the
+hits (be careful not to return too many results).</p><p>Ordering is done by setting <code class="literal">order</code>, with possible values of <code class="literal">term</code>,
+<code class="literal">reverse_term</code>, <code class="literal">count</code>, <code class="literal">reverse_count</code>, <code class="literal">total</code>, <code class="literal">reverse_total</code>,
+<code class="literal">min</code>, <code class="literal">reverse_min</code>, <code class="literal">max</code>, <code class="literal">reverse_max</code>, <code class="literal">mean</code>, <code class="literal">reverse_mean</code>.
+Defaults to <code class="literal">count</code>.</p><p>The value computed can also be a script, using the <code class="literal">value_script</code>
+instead of <code class="literal">value_field</code>, in which case the <code class="literal">lang</code> can control its
+language, and <code class="literal">params</code> allow to provide custom parameters (as in other
+scripted components).</p><p>Note, the terms stats can work with multi valued key fields, or multi
+valued value fields, but not when both are multi valued (as ordering is
+not maintained).</p></div><div class="navfooter"><span class="prev"><a href="search-facets-statistical-facet.html">
+              « 
+              Statistical Facet</a>
+           
+        </span><span class="next">
+           
+          <a href="search-facets-geo-distance-facet.html">Geo Distance Facets
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

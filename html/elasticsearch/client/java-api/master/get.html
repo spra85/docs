@@ -12,7 +12,7 @@ its id. The following example gets a JSON document from an index called
 twitter, under a type called tweet, with id valued 1:</p><pre class="programlisting prettyprint noescape lang-java">GetResponse response = client.prepareGet("twitter", "tweet", "1")
         .execute()
         .actionGet();</pre><p>For more information on the index operation, check out the REST
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/docs-api-get.html" target="_top">get</a> docs.</p><h3><a id="_operation_threading_2"></a>Operation Threading</h3><p>The get API allows to set the threading model the operation will be
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/docs-get.html" target="_top">get</a> docs.</p><h3><a id="_operation_threading_2"></a>Operation Threading</h3><p>The get API allows to set the threading model the operation will be
 performed when the actual execution of the API is performed on the same
 node (the API is executed on a shard that is allocated on the same
 server).</p><p>The options are to execute the operation on a different thread, or to

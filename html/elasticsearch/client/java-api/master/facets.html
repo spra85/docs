@@ -8,14 +8,14 @@
           <a href="percolate.html">Percolate API
                » 
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="facets"></a>Facets</h1></div></div></div><p>Elasticsearch provides a full Java API to play with facets. See the
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-facets.html" target="_top">Facets guide</a>.</p><p>Use the factory for facet builders (<code class="literal">FacetBuilders</code>) and add each facet
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-facets.html" target="_top">Facets guide</a>.</p><p>Use the factory for facet builders (<code class="literal">FacetBuilders</code>) and add each facet
 you want to compute when querying and add it to your search request:</p><pre class="programlisting prettyprint noescape lang-java">SearchResponse sr = node.client().prepareSearch()
         .setQuery( /* your query */ )
         .addFacet( /* add a facet */ )
         .execute().actionGet();</pre><p>Note that you can add more than one facet. See
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-search.html" target="_top">Search Java API</a> for details.</p><p>To build facet requests, use <code class="literal">FacetBuilders</code> helpers. Just import them
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-search.html" target="_top">Search Java API</a> for details.</p><p>To build facet requests, use <code class="literal">FacetBuilders</code> helpers. Just import them
 in your class:</p><pre class="programlisting prettyprint noescape lang-java">import org.elasticsearch.search.facet.FacetBuilders.*;</pre><h3><a id="_facets"></a>Facets</h3><h4><a id="_terms_facet"></a>Terms Facet</h4><p>Here is how you can use
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-facets-terms-facet.html" target="_top">Terms Facet</a>
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-facets-terms-facet.html" target="_top">Terms Facet</a>
 with Java API.</p><h5><a id="_prepare_facet_request"></a>Prepare facet request</h5><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint noescape lang-java">FacetBuilders.termsFacet("f")
     .field("brand")
     .size(10);</pre><h5><a id="_use_facet_response"></a>Use facet response</h5><p>Import Facet definition classes:</p><pre class="programlisting prettyprint noescape lang-java">import org.elasticsearch.search.facet.terms.*;</pre><pre class="programlisting prettyprint noescape lang-java">// sr is here your SearchResponse object
@@ -30,7 +30,7 @@ for (TermsFacet.Entry entry : f) {
     entry.getTerm();    // Term
     entry.getCount();   // Doc count
 }</pre><h4><a id="_range_facet"></a>Range Facet</h4><p>Here is how you can use
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-facets-range-facet.html" target="_top">Range Facet</a>
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-facets-range-facet.html" target="_top">Range Facet</a>
 with Java API.</p><h5><a id="_prepare_facet_request_2"></a>Prepare facet request</h5><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint noescape lang-java">FacetBuilders.rangeFacet("f")
     .field("price")         // Field to compute on
     .addUnboundedFrom(3)    // from -infinity to 3 (excluded)
@@ -48,7 +48,7 @@ for (RangeFacet.Entry entry : f) {
     entry.getMean();    // Mean
     entry.getTotal();   // Sum of values
 }</pre><h4><a id="_histogram_facet"></a>Histogram Facet</h4><p>Here is how you can use
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-facets-histogram-facet.html" target="_top">Histogram
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-facets-histogram-facet.html" target="_top">Histogram
 Facet</a> with Java API.</p><h5><a id="_prepare_facet_request_3"></a>Prepare facet request</h5><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint noescape lang-java">HistogramFacetBuilder facet = FacetBuilders.histogramFacet("f")
     .field("price")
     .interval(1);</pre><h5><a id="_use_facet_response_3"></a>Use facet response</h5><p>Import Facet definition classes:</p><pre class="programlisting prettyprint noescape lang-java">import org.elasticsearch.search.facet.histogram.*;</pre><pre class="programlisting prettyprint noescape lang-java">// sr is here your SearchResponse object
@@ -59,7 +59,7 @@ for (HistogramFacet.Entry entry : f) {
     entry.getKey();     // Key (X-Axis)
     entry.getCount();   // Doc count (Y-Axis)
 }</pre><h4><a id="_date_histogram_facet"></a>Date Histogram Facet</h4><p>Here is how you can use
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-facets-date-histogram-facet.html" target="_top">Date
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-facets-date-histogram-facet.html" target="_top">Date
 Histogram Facet</a> with Java API.</p><h5><a id="_prepare_facet_request_4"></a>Prepare facet request</h5><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint noescape lang-java">FacetBuilders.dateHistogramFacet("f")
     .field("date")      // Your date field
     .interval("year");  // You can also use "quarter", "month", "week", "day",
@@ -71,7 +71,7 @@ for (DateHistogramFacet.Entry entry : f) {
     entry.getTime();    // Date in ms since epoch (X-Axis)
     entry.getCount();   // Doc count (Y-Axis)
 }</pre><h4><a id="_filter_facet_not_facet_filter"></a>Filter Facet (not facet filter)</h4><p>Here is how you can use
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-facets-filter-facet.html" target="_top">Filter Facet</a>
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-facets-filter-facet.html" target="_top">Filter Facet</a>
 with Java API.</p><p>If you are looking on how to apply a filter to a facet, have a look at
 <a class="ulink" href="#facet-filter" target="_top">facet filter</a> using Java API.</p><h5><a id="_prepare_facet_request_5"></a>Prepare facet request</h5><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint noescape lang-java">FacetBuilders.filterFacet("f",
     FilterBuilders.termFilter("brand", "heineken"));    // Your Filter here</pre><p>See <a class="link" href="query-dsl-filters.html" title="Query DSL - Filters">Filters</a> to
@@ -79,14 +79,14 @@ learn how to build filters using Java.</p><h5><a id="_use_facet_response_5"></a>
 FilterFacet f = (FilterFacet) sr.facets().facetsAsMap().get("f");
 
 f.getCount();   // Number of docs that matched</pre><h4><a id="_query_facet"></a>Query Facet</h4><p>Here is how you can use
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-facets-query-facet.html" target="_top">Query Facet</a>
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-facets-query-facet.html" target="_top">Query Facet</a>
 with Java API.</p><h5><a id="_prepare_facet_request_6"></a>Prepare facet request</h5><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint noescape lang-java">FacetBuilders.queryFacet("f",
     QueryBuilders.matchQuery("brand", "heineken"));</pre><h5><a id="_use_facet_response_6"></a>Use facet response</h5><p>Import Facet definition classes:</p><pre class="programlisting prettyprint noescape lang-java">import org.elasticsearch.search.facet.query.*;</pre><pre class="programlisting prettyprint noescape lang-java">// sr is here your SearchResponse object
 QueryFacet f = (QueryFacet) sr.facets().facetsAsMap().get("f");
 
 f.getCount();   // Number of docs that matched</pre><p>See <a class="link" href="query-dsl-queries.html" title="Query DSL - Queries">Queries</a> to
 learn how to build queries using Java.</p><h4><a id="_statistical"></a>Statistical</h4><p>Here is how you can use
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-facets-statistical-facet.html" target="_top">Statistical
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-facets-statistical-facet.html" target="_top">Statistical
 Facet</a> with Java API.</p><h5><a id="_prepare_facet_request_7"></a>Prepare facet request</h5><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint noescape lang-java">FacetBuilders.statisticalFacet("f")
    .field("price");</pre><h5><a id="_use_facet_response_7"></a>Use facet response</h5><p>Import Facet definition classes:</p><pre class="programlisting prettyprint noescape lang-java">import org.elasticsearch.search.facet.statistical.*;</pre><pre class="programlisting prettyprint noescape lang-java">// sr is here your SearchResponse object
 StatisticalFacet f = (StatisticalFacet) sr.facets().facetsAsMap().get("f");
@@ -99,7 +99,7 @@ f.getTotal();           // Sum of values
 f.getStdDeviation();    // Standard Deviation
 f.getSumOfSquares();    // Sum of Squares
 f.getVariance();        // Variance</pre><h4><a id="_terms_stats_facet"></a>Terms Stats Facet</h4><p>Here is how you can use
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-facets-terms-stats-facet.html" target="_top">Terms
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-facets-terms-stats-facet.html" target="_top">Terms
 Stats Facet</a> with Java API.</p><h5><a id="_prepare_facet_request_8"></a>Prepare facet request</h5><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint noescape lang-java">FacetBuilders.termsStatsFacet("f")
     .keyField("brand")
     .valueField("price");</pre><h5><a id="_use_facet_response_8"></a>Use facet response</h5><p>Import Facet definition classes:</p><pre class="programlisting prettyprint noescape lang-java">import org.elasticsearch.search.facet.termsstats.*;</pre><pre class="programlisting prettyprint noescape lang-java">// sr is here your SearchResponse object
@@ -117,7 +117,7 @@ for (TermsStatsFacet.Entry entry : f) {
     entry.getMean();            // Mean
     entry.getTotal();           // Sum of values
 }</pre><h4><a id="_geo_distance_facet"></a>Geo Distance Facet</h4><p>Here is how you can use
-<a class="ulink" href="http://www.elasticsearch.org/guide/reference/current/search-api-facets-geo-distance-facet.html" target="_top">Geo
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-facets-geo-distance-facet.html" target="_top">Geo
 Distance Facet</a> with Java API.</p><h5><a id="_prepare_facet_request_9"></a>Prepare facet request</h5><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint noescape lang-java">FacetBuilders.geoDistanceFacet("f")
     .field("pin.location")              // Field containing coordinates we want to compare with
     .point(40, -70)                     // Point from where we start (0)

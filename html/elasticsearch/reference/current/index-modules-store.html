@@ -30,7 +30,7 @@ the index to make use of it (generating new segments that use
 compression).</p><p>Best compression, compared to _source level compression, will mainly
 happen when indexing smaller documents (less than 64k). The price on the
 other hand is the fact that for each doc returned, a block will need to
-be decompressed (its fast though) in order to extract the document data.</p><h3><a id="_store_level_throttling"></a>Store Level Throttling</h3><p>(0.19.5 and above).</p><p>The way Lucene, the IR library elasticsearch uses under the covers,
+be decompressed (its fast though) in order to extract the document data.</p><h3><a id="_store_level_throttling_3"></a>Store Level Throttling</h3><p>(0.19.5 and above).</p><p>The way Lucene, the IR library elasticsearch uses under the covers,
 works is by creating immutable segments (up to deletes) and constantly
 merging them (the merge policy settings allow to control how those
 merges happen). The merge process happens in an asynchronous manner

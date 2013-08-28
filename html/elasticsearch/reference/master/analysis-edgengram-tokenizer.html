@@ -11,8 +11,7 @@
 start at the beginning of a token.</p><p>The following are settings that can be set for a <code class="literal">edgeNGram</code> tokenizer
 type:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /></colgroup><thead><tr><th align="left" valign="top">Setting </th><th align="left" valign="top">Description </th><th align="left" valign="top">Default value</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">min_gram</code></p></td><td align="left" valign="top"><p>Minimum size in codepoints of a single n-gram</p></td><td align="left" valign="top"><p><code class="literal">1</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">max_gram</code></p></td><td align="left" valign="top"><p>Maximum size in codepoints of a single n-gram</p></td><td align="left" valign="top"><p><code class="literal">2</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">token_chars</code></p></td><td align="left" valign="top"><p>(Since <code class="literal">0.90.2</code>) Characters classes to keep in the
 tokens, Elasticsearch will split on characters that don’t belong to any
-of these classes.</p></td><td align="left" valign="top"><p><code class="literal">[]</code> (Keep all characters)</p></td></tr></tbody></table></div><p>There used to be a <code class="literal">side</code> parameter up to <code class="literal">0.90.1</code> but it is now
-deprecated.</p><p><code class="literal">token_chars</code> accepts the following character classes:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+of these classes.</p></td><td align="left" valign="top"><p><code class="literal">[]</code> (Keep all characters)</p></td></tr></tbody></table></div><p><code class="literal">token_chars</code> accepts the following character classes:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">letter</code>
 </p>
@@ -74,7 +73,12 @@ for example <code class="literal">$</code> or <code class="literal">â</code
     }'
 
     curl 'localhost:9200/test/_analyze?pretty=1&amp;analyzer=my_edge_ngram_analyzer' -d 'FC Schalke 04'
-    # FC, Sc, Sch, Scha, Schal, 04</pre></div><div class="navfooter"><span class="prev"><a href="analysis-standard-tokenizer.html">
+    # FC, Sc, Sch, Scha, Schal, 04</pre><h4><a id="_literal_side_literal_deprecated"></a><code class="literal">side</code> deprecated</h4><p>There used to be a @side@ parameter up to <code class="literal">0.90.1</code> but it is now deprecated. In
+order to emulate the behavior of <code class="literal">"side" : "BACK"</code> a
+<a class="link" href="analysis-reverse-tokenfilter.html" title="Reverse Token Filter"><code class="literal">reverse</code> token filter</a>  should be used together
+with the <a class="link" href="analysis-edgengram-tokenfilter.html" title="Edge NGram Token Filter"><code class="literal">edgeNGram</code> token filter</a>. The
+<code class="literal">edgeNGram</code> filter must be enclosed in <code class="literal">reverse</code> filters like this:</p><pre class="programlisting prettyprint noescape lang-js">    "filter" : ["reverse", "edgeNGram", "reverse"]</pre><p>which essentially reverses the token, builds front <code class="literal">EdgeNGrams</code> and reverses
+the ngram again. This has the same effect as the previous <code class="literal">"side" : "BACK"</code> setting.</p></div><div class="navfooter"><span class="prev"><a href="analysis-standard-tokenizer.html">
               « 
               Standard Tokenizer</a>
            

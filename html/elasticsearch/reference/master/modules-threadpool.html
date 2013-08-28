@@ -9,38 +9,75 @@
                » 
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-threadpool"></a>Thread Pool</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-jmx.html">JMX</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt></dl></div><p>A node holds several thread pools in order to improve how threads are
 managed and memory consumption within a node. There are several thread
-pools, but the important ones include:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<code class="literal">index</code>: For index/delete operations, defaults to <code class="literal">fixed</code> type since
-<code class="literal">0.90.0</code>, size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
-</li><li class="listitem">
-<code class="literal">search</code>: For count/search operations, defaults to <code class="literal">fixed</code> type since
-<code class="literal">0.90.0</code>, size <code class="literal">3x # of available processors</code>. (previously type
-<code class="literal">cached</code>)
-</li><li class="listitem">
-<code class="literal">get</code>: For get operations, defaults to <code class="literal">fixed</code> type since <code class="literal">0.90.0</code>,
-size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
-</li><li class="listitem">
-<code class="literal">bulk</code>: For bulk operations, defaults to <code class="literal">fixed</code> type since <code class="literal">0.90.0</code>,
-size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
-</li><li class="listitem">
-<code class="literal">warmer</code>: For segment warm-up operations, defaults to <code class="literal">scaling</code> since
-<code class="literal">0.90.0</code> with a <code class="literal">5m</code> keep-alive. (previously type <code class="literal">cached</code>)
-</li><li class="listitem">
-<code class="literal">refresh</code>: For refresh operations, defaults to <code class="literal">scaling</code> since
-<code class="literal">0.90.0</code> with a <code class="literal">5m</code> keep-alive. (previously type <code class="literal">cached</code>)
-</li></ul></div><p>Changing a specific thread pool can be done by setting its type and
+pools, but the important ones include:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">index</code>
+</p>
+</td><td valign="top">
+<p>
+    For index/delete operations, defaults to <code class="literal">fixed</code> type since
+    <code class="literal">0.90.0</code>, size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">search</code>
+</p>
+</td><td valign="top">
+<p>
+    For count/search operations, defaults to <code class="literal">fixed</code> type since
+    <code class="literal">0.90.0</code>, size <code class="literal">3x # of available processors</code>. (previously type
+    <code class="literal">cached</code>)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">get</code>
+</p>
+</td><td valign="top">
+<p>
+    For get operations, defaults to <code class="literal">fixed</code> type since <code class="literal">0.90.0</code>,
+    size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">bulk</code>
+</p>
+</td><td valign="top">
+<p>
+    For bulk operations, defaults to <code class="literal">fixed</code> type since <code class="literal">0.90.0</code>,
+    size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">warmer</code>
+</p>
+</td><td valign="top">
+<p>
+    For segment warm-up operations, defaults to <code class="literal">scaling</code> since
+    <code class="literal">0.90.0</code> with a <code class="literal">5m</code> keep-alive. (previously type <code class="literal">cached</code>)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">refresh</code>
+</p>
+</td><td valign="top">
+<p>
+    For refresh operations, defaults to <code class="literal">scaling</code> since
+    <code class="literal">0.90.0</code> with a <code class="literal">5m</code> keep-alive. (previously type <code class="literal">cached</code>)
+</p>
+</td></tr></tbody></table></div><p>Changing a specific thread pool can be done by setting its type and
 specific type parameters, for example, changing the <code class="literal">index</code> thread pool
 to <code class="literal">blocking</code> type:</p><pre class="programlisting prettyprint noescape lang-js">threadpool:
     index:
         type: blocking
         min: 1
         size: 30
-        wait_time: 30s</pre><p>The following are the types of thread pools that can be used and their
-respective parameters:</p><h3><a id="_cache"></a>cache</h3><p>The <code class="literal">cache</code> thread pool is an unbounded thread pool that will spawn a
+        wait_time: 30s</pre><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>you can update threadpool settings live using
+      <a class="xref" href="cluster-update-settings.html" title="Cluster Update Settings"><em>Cluster Update Settings</em></a>.</p></td></tr></table></div><h3><a id="_thread_pool_types"></a>Thread pool types</h3><p>The following are the types of thread pools that can be used and their
+respective parameters:</p><h4><a id="_literal_cache_literal"></a><code class="literal">cache</code></h4><p>The <code class="literal">cache</code> thread pool is an unbounded thread pool that will spawn a
 thread if there are pending requests. Here is an example of how to set
 it:</p><pre class="programlisting prettyprint noescape lang-js">threadpool:
     index:
-        type: cached</pre><h3><a id="_fixed"></a>fixed</h3><p>The <code class="literal">fixed</code> thread pool holds a fixed size of threads to handle the
+        type: cached</pre><h4><a id="_literal_fixed_literal"></a><code class="literal">fixed</code></h4><p>The <code class="literal">fixed</code> thread pool holds a fixed size of threads to handle the
 requests with a queue (optionally bounded) for pending requests that
 have no threads to service them.</p><p>The <code class="literal">size</code> parameter controls the number of threads, and defaults to the
 number of cores times 5.</p><p>The <code class="literal">queue_size</code> allows to control the size of the queue of pending
@@ -54,7 +91,7 @@ the execution on the networking layer.</p><pre class="programlisting prettyprint
         type: fixed
         size: 30
         queue_size: 1000
-        reject_policy: caller</pre><h3><a id="_blocking"></a>blocking</h3><p>The <code class="literal">blocking</code> pool allows to configure a <code class="literal">min</code> (defaults to <code class="literal">1</code>) and
+        reject_policy: caller</pre><h4><a id="_literal_blocking_literal"></a><code class="literal">blocking</code></h4><p>The <code class="literal">blocking</code> pool allows to configure a <code class="literal">min</code> (defaults to <code class="literal">1</code>) and
 <code class="literal">size</code> (defaults to the number of cores times 5) parameters for the
 number of threads.</p><p>It also has a backlog queue with a default <code class="literal">queue_size</code> of <code class="literal">1000</code>. Once
 the queue is full, it will wait for the provided <code class="literal">wait_time</code> (defaults

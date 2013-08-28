@@ -53,7 +53,7 @@ mean more than the content (part) in the <code class="literal">_all</code> field
     }
 }</pre><p>The <code class="literal">_all</code> fields allows for <code class="literal">store</code>, <code class="literal">term_vector</code> and <code class="literal">analyzer</code> (with
 specific <code class="literal">index_analyzer</code> and <code class="literal">search_analyzer</code>) to be set.</p><h4><a id="_highlighting"></a>Highlighting</h4><p>For any field to allow
-<a class="link" href="search-api-request-highlighting.html" title="Highlighting">highlighting</a> it has
+<a class="link" href="search-request-highlighting.html" title="Highlighting">highlighting</a> it has
 to be either stored or part of the <code class="literal">_source</code> field. By default <code class="literal">_all</code>
 field does not qualify for either, so highlighting for it does not yield
 any data.</p><p>Although it is possible to <code class="literal">store</code> the <code class="literal">_all</code> field, it is basically an

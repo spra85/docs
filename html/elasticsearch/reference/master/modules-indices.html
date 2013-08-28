@@ -17,7 +17,82 @@ This amount is then divided between all the different shards. Also, if
 percentage is used, allow to set <code class="literal">min_index_buffer_size</code> (defaults to
 <code class="literal">48mb</code>) and <code class="literal">max_index_buffer_size</code> which by default is unbounded.</p><p>The <code class="literal">indices.memory.min_shard_index_buffer_size</code> allows to set a hard
 lower limit for the memory allocated per shard for its own indexing
-buffer. It defaults to <code class="literal">4mb</code>.</p></div><div class="navfooter"><span class="prev"><a href="modules-http.html">
+buffer. It defaults to <code class="literal">4mb</code>.</p><h3><a id="_ttl_interval_2"></a>TTL interval</h3><p>You can dynamically set the <code class="literal">indices.ttl.interval</code> allows to set how
+often expired documents will be automatically deleted. The default value
+is 60s.</p><p>The deletion orders are processed by bulk. You can set
+<code class="literal">indices.ttl.bulk_size</code> to fit your needs. The default value is 10000.</p><p>See also <a class="xref" href="mapping-ttl-field.html" title="_ttl"><code class="literal">_ttl</code></a>.</p><h3><a id="_recovery_2"></a>Recovery</h3><p>The following settings can be set to manage recovery policy:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">indices.recovery.concurrent_streams</code>
+</p>
+</td><td valign="top">
+<p>
+    defaults to <code class="literal">3</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">indices.recovery.file_chunk_size</code>
+</p>
+</td><td valign="top">
+<p>
+    defaults to <code class="literal">512kb</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">indices.recovery.translog_ops</code>
+</p>
+</td><td valign="top">
+<p>
+    defaults to <code class="literal">1000</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">indices.recovery.translog_size</code>
+</p>
+</td><td valign="top">
+<p>
+    defaults to <code class="literal">512kb</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">indices.recovery.compress</code>
+</p>
+</td><td valign="top">
+<p>
+    defaults to <code class="literal">true</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">indices.recovery.max_bytes_per_sec</code>
+</p>
+</td><td valign="top">
+<p>
+    since 0.90.1, defaults to <code class="literal">20mb</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">indices.recovery.max_size_per_sec</code>
+</p>
+</td><td valign="top">
+<p>
+    deprecated from 0.90.1. Replaced by <code class="literal">indices.recovery.max_bytes_per_sec</code>.
+</p>
+</td></tr></tbody></table></div><h3><a id="_store_level_throttling_2"></a>Store level throttling</h3><p>The following settings can be set to control store throttling:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">indices.store.throttle.type</code>
+</p>
+</td><td valign="top">
+<p>
+    could be <code class="literal">merge</code> (default), <code class="literal">not</code> or <code class="literal">all</code>. See <a class="xref" href="index-modules-store.html" title="Store"><em>Store</em></a>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">indices.store.throttle.max_bytes_per_sec</code>
+</p>
+</td><td valign="top">
+<p>
+    defaults to <code class="literal">20mb</code>.
+</p>
+</td></tr></tbody></table></div></div><div class="navfooter"><span class="prev"><a href="modules-http.html">
               « 
               HTTP</a>
            
