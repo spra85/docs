@@ -12,15 +12,10 @@ use YAML qw(LoadFile);
 use Path::Class qw(dir file);
 use Browser::Open qw(open_browser);
 
-use ES::Repo;
-use ES::Book;
-use ES::Toc;
-
-our $Link_Re = qr{
-    href="http://www.elasticsearch.org/guide/
-    ([^"\#]+)           # path
-    (?:\#([^"]+))?      # fragment
-}x;
+use ES::Repo();
+use ES::Book();
+use ES::Toc();
+use ES::LinkCheck();
 
 our $Old_Pwd = dir()->absolute;
 init_env();
@@ -93,7 +88,13 @@ sub build_all {
 
     $toc->write($build_dir);
 
-    check_links($build_dir);
+    my $links = ES::LinkCheck->new($build_dir);
+    if ( $links->check ) {
+        say $links->report;
+    }
+    else {
+        die $links->report;
+    }
 
     push_changes($build_dir)
         if $Opts->{push};
@@ -142,78 +143,6 @@ sub init_repos {
         );
         $repo->update_from_remote();
     }
-}
-
-#===================================
-sub check_links {
-#===================================
-    my $dir = shift;
-
-    say "Checking cross-document links";
-
-    my $seen = {};
-    my $bad  = {};
-    $dir->recurse(
-        callback => sub {
-            my $item = shift;
-
-            if ( $item->is_dir ) {
-                return $item->basename eq 'images'
-                    ? $item->PRUNE
-                    : 1;
-            }
-            _check_links( $dir, $item, $seen, $bad )
-                if $item->basename =~ /\.html$/;
-        }
-    );
-
-    return unless keys %$bad;
-    my @error = "Bad cross-document links:";
-    for my $file ( sort keys %$bad ) {
-        push @error, "  $file:";
-        push @error, map {"   - $_"} sort keys %{ $bad->{$file} };
-    }
-    die join "\n", @error, '';
-}
-
-#===================================
-sub _check_links {
-#===================================
-    my ( $dir, $file, $seen, $bad ) = @_;
-    my $contents = $file->slurp( iomode => '<:encoding(UTF-8)' );
-    while ( $contents =~ m{$Link_Re}g ) {
-        my $path     = $1;
-        my $fragment = $2;
-        my $dest     = $dir->file($path);
-        my $exists
-            = exists $seen->{$path}
-            ? $seen->{$path}
-            : $seen->{$path} = -e $dest;
-
-        unless ($exists) {
-            $bad->{$file}{$path}++;
-            next;
-        }
-
-        if ($fragment) {
-            my $full = "$path#$fragment";
-            $exists
-                = exists $seen->{$full}
-                ? $seen->{$full}
-                : $seen->{$full} = _check_fragment( $dest, $fragment );
-            $bad->{$file}{$full}++
-                unless $exists;
-        }
-    }
-
-}
-
-#===================================
-sub _check_fragment {
-#===================================
-    my ( $file, $fragment ) = @_;
-    my $contents = $file->slurp( iomode => '<:encoding(UTF-8)' );
-    return $contents =~ m/<a id="$fragment"/;
 }
 
 #===================================
