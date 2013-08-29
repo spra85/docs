@@ -56,19 +56,42 @@ sub update_from_remote {
 
     local $ENV{GIT_DIR} = $self->git_dir;
 
+    my $name = $self->name;
     eval {
-        if ( $dir->stat ) {
-            say " - Fetching ".$self->name;
-            run qw(git fetch);
-        }
-        else {
+        unless ( $self->_try_to_fetch ) {
             my $url = $self->url;
-            say " - Cloning $self->name from <$url>";
+            say " - Cloning $name from <$url>";
             run 'git', 'clone', $url, $dir;
         }
         1;
     }
-        or die "Error updating repo <$self->name>: $@";
+        or die "Error updating repo <$name>: $@";
+}
+
+#===================================
+sub _try_to_fetch {
+#===================================
+    my $self = shift;
+    my $dir  = $self->dir;
+    return unless -e $dir;
+
+    my $remote = eval { run qw(git remote -v) } || '';
+    $remote =~ /^origin\s+(\S+)/;
+
+    unless ($1) {
+        say " - Repo dir <$dir> exists but is not a repo. Deleting";
+        $dir->rmtree;
+        return;
+    }
+
+    my $name = $self->name;
+    my $url  = $self->url;
+    if ( $1 ne $url ) {
+        say " - Updating remote for <$name> to: $url";
+        run qw(git remote set-url origin), $url;
+    }
+    say " - Fetching: " . $self->name;
+    return 1;
 }
 
 #===================================
@@ -100,7 +123,8 @@ sub has_changed {
 
     my $new = $self->_sha_for("refs/remotes/origin/$branch")
         or die "Remote branch <origin/$branch> doesn't exist "
-        . "in repo <$self->name>";
+        . "in repo "
+        . $self->name;
 
     my $old = $self->_sha_for("refs/heads/$tracker")
         or return 1;
