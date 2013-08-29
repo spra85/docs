@@ -4,7 +4,7 @@ paths:
 
 repos:
     elasticsearch:
-        url:        https://github.com/clintongormley/elasticsearch.git
+        url:        https://github.com/elasticsearch/elasticsearch.git
         current:    0.90
         branches:
             - master
