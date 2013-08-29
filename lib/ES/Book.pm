@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use v5.10;
 use Data::Dumper qw(Dumper);
-use ES::Util qw(run $Opts build_chunked);
+use ES::Util qw(run build_chunked);
 use Path::Class();
 use ES::Repo();
 use File::Copy::Recursive qw(fcopy rcopy);
@@ -84,45 +84,64 @@ sub build {
             say "   - Reusing existing";
         }
 
-        my $url = $branch . '/index.html';
+        my $url   = $branch . '/index.html';
+        my $title = 'Version: ' . $branch;
 
         if ( $branch eq $current ) {
             say "   - Copying to current";
+            $url = 'current/index.html';
+            $title .= ' (current)';
             my $current_dir = $dir->subdir('current');
             $current_dir->rmtree;
             rcopy( $branch_dir, $current_dir )
                 or die "Couldn't copy <$branch_dir> to <$current_dir>: $!";
-            $url = 'current/index.html';
         }
-        $toc->add_entry(
-            {   title => 'Version: ' . $branch,
-                url   => $url
-            }
-        );
-
+        $toc->add_entry( { title => $title, url => $url } );
     }
 
-    my $versions;
+    my $versions = $self->prefix . '/index.html';
     if ( @$branches > 1 ) {
-        $versions = $self->prefix . '/index.html';
+        say " - Writing versions TOC";
         $toc->write($dir);
     }
+    else {
+        $dir->file($versions)->remove;
+        undef $versions;
+    }
+
+    $self->remove_old_branches;
 
     return {
-        title    => $self->title .($versions ? " -- $current" : '') ,
+        title => $self->title . ( $versions ? " -- $current" : '' ),
         url      => $self->prefix . '/current/index.html',
         versions => $versions,
     };
 }
 
 #===================================
-sub title { shift->{title}}
-sub dir { shift->{dir}}
-sub repo { shift->{repo}}
-sub prefix { shift->{prefix}}
-sub index { shift->{index}}
-sub branches { shift->{branches}}
-sub current { shift->{current}}
+sub remove_old_branches {
+#===================================
+    my $self     = shift;
+    my %branches = map { $_ => 1 } ( @{ $self->branches }, 'current' );
+    my $dir      = $self->dir;
+
+    for my $child ( $dir->children ) {
+        next unless $child->is_dir;
+        my $version = $child->basename;
+        next if $branches{$version};
+        say " - Deleting old branch: $version";
+        $child->rmtree;
+    }
+}
+
+#===================================
+sub title    { shift->{title} }
+sub dir      { shift->{dir} }
+sub repo     { shift->{repo} }
+sub prefix   { shift->{prefix} }
+sub index    { shift->{index} }
+sub branches { shift->{branches} }
+sub current  { shift->{current} }
 #===================================
 
 1;
