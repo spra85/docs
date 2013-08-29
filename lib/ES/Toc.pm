@@ -13,7 +13,6 @@ sub new {
         title   => $title,
         entries => []
     }, $class;
-
 }
 
 #===================================
@@ -29,13 +28,13 @@ sub write {
     my ( $self, $dir ) = @_;
 
     my $index = $dir->file('index.html');
-    say "Writing TOC: $index";
 
-    my $adoc = join "\n", "= ".$self->title, '', $self->render(1);
-
+    my $adoc = join "\n", "= " . $self->title, '', $self->render(1);
     my $adoc_file = $dir->file('index.asciidoc');
     $adoc_file->spew( iomode => '>:utf8', $adoc );
+
     build_single( $adoc_file, $dir );
+
     $adoc_file->remove;
 }
 
@@ -48,12 +47,12 @@ sub render {
     my $prefix = ' ' . ( '*' x $indent ) . ' ';
 
     for my $entry ( $self->entries ) {
-        if ( ref ($entry) eq 'ES::Toc' ) {
+        if ( ref($entry) eq 'ES::Toc' ) {
             push @adoc, $prefix . $entry->{title};
             push @adoc, $entry->render( $indent + 1 );
         }
         else {
-            push @adoc, $prefix."link:$entry->{url}" . "[$entry->{title}]";
+            push @adoc, $prefix . "link:$entry->{url}" . "[$entry->{title}]";
             if ( $entry->{versions} ) {
                 $adoc[-1]
                     .= " (see link:$entry->{versions}" . "[other versions])";
@@ -104,7 +103,7 @@ sub _toc {
 }
 
 #===================================
-sub title { shift->{title}}
-sub entries { @{shift->{entries}}}
+sub title   { shift->{title} }
+sub entries { @{ shift->{entries} } }
 #===================================
 1;

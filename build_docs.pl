@@ -86,6 +86,7 @@ sub build_all {
     my $toc = ES::Toc->new( $Conf->{contents_title} || 'Guide' );
     build_entries( $build_dir, $toc, @$contents );
 
+    say "Writing main TOC";
     $toc->write($build_dir);
 
     my $links = ES::LinkCheck->new($build_dir);
