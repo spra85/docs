@@ -8,9 +8,9 @@ use File::Copy::Recursive qw(fcopy rcopy);
 use Capture::Tiny qw(capture_merged tee_merged);
 
 require Exporter;
-our @ISA = qw(Exporter);
+our @ISA       = qw(Exporter);
 our @EXPORT_OK = qw(run $Opts build_chunked build_single);
-our $Opts = {};
+our $Opts      = {};
 
 #===================================
 sub build_chunked {
@@ -41,6 +41,8 @@ sub build_chunked {
 
     my ($chunk_dir) = grep { -d and /\.chunked$/ } $build->children
         or die "Couldn't find chunk dir in <$build>";
+
+    to_html5($chunk_dir);
 
     $dest->rmtree;
     rename $chunk_dir, $dest
@@ -76,12 +78,24 @@ sub build_single {
     my @warn = grep {/(WARNING|ERROR)/} split "\n", $output;
     die join "\n", @warn
         if @warn;
-
+    to_html5($dest);
 }
 
+#===================================
+sub to_html5 {
+#===================================
+    my $dir = shift;
+    for my $file ( $dir->children ) {
+        next if $file->is_dir or $file->basename !~ /\.html$/;
+        my $contents = $file->slurp( iomode => '<:encoding(UTF-8)' );
+        $contents =~ s/^<!DOCTYPE[^>]+>/<!DOCTYPE html>/;
+        $contents =~ s/\s+xmlns="[^"]*"//g;
+        $file->spew( iomode => '>:utf8', $contents );
+    }
+}
 
 #===================================
-sub run (@){
+sub run (@) {
 #===================================
     my @args = @_;
     my ( $out, $ok );
