@@ -58,7 +58,7 @@
   <xsl:template match="programlisting" mode="common.html.attributes">
     <xsl:param name="class">
       <xsl:value-of select="local-name(.)" />
-      <xsl:if test="@language != ''"> prettyprint noescape lang-<xsl:value-of select="@language" /></xsl:if>
+      <xsl:if test="@language != ''"> prettyprint lang-<xsl:value-of select="@language" /></xsl:if>
     </xsl:param>
     <xsl:param name="inherit" select="0"/>
     <xsl:call-template name="generate.html.lang"/>
