@@ -13,10 +13,10 @@ across one or more types. The query can either be provided using the
 <a class="link" href="query-dsl-queries.html" title="Query DSL - Queries">query Java API</a> or
 the <a class="link" href="query-dsl-filters.html" title="Query DSL - Filters">filter Java API</a>.
 The body of the search request is built using the
-<code class="literal">SearchSourceBuilder</code>. Here is an example:</p><pre class="programlisting prettyprint noescape lang-java">import org.elasticsearch.action.search.SearchResponse;
+<code class="literal">SearchSourceBuilder</code>. Here is an example:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.index.query.FilterBuilders.*;
-import org.elasticsearch.index.query.QueryBuilders.*;</pre><pre class="programlisting prettyprint noescape lang-java">SearchResponse response = client.prepareSearch("index1", "index2")
+import org.elasticsearch.index.query.QueryBuilders.*;</pre><pre class="programlisting prettyprint lang-java">SearchResponse response = client.prepareSearch("index1", "index2")
         .setTypes("type1", "type2")
         .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
         .setQuery(QueryBuilders.termQuery("multi", "test"))             // Query
@@ -24,10 +24,10 @@ import org.elasticsearch.index.query.QueryBuilders.*;</pre><pre class="programli
         .setFrom(0).setSize(60).setExplain(true)
         .execute()
         .actionGet();</pre><p>Note that all parameters are optional. Here is the smallest search call
-you can write:</p><pre class="programlisting prettyprint noescape lang-java">// MatchAll on the whole cluster with all default options
+you can write:</p><pre class="programlisting prettyprint lang-java">// MatchAll on the whole cluster with all default options
 SearchResponse response = client.prepareSearch().execute().actionGet();</pre><p>For more information on the search operation, check out the REST
 <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search.html" target="_top">search</a> docs.</p><h3><a id="_using_scrolls_in_java"></a>Using scrolls in Java</h3><p>Read the <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-request-scroll.html" target="_top">scroll documentation</a>
-first!</p><pre class="programlisting prettyprint noescape lang-java">import static org.elasticsearch.index.query.FilterBuilders.*;
+first!</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.index.query.FilterBuilders.*;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 QueryBuilder qb = termQuery("multi", "test");
@@ -56,7 +56,7 @@ search operation will be executed on the calling thread. The
 a single different thread for all local shards. The <code class="literal">THREAD_PER_SHARD</code>
 mode means that the search operation will be executed on a different
 thread for each local shard.</p><p>The default mode is <code class="literal">SINGLE_THREAD</code>.</p><h3><a id="_multisearch_api"></a>MultiSearch API</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-multi-search.html" target="_top">MultiSearch API Query</a>
-documentation</p><pre class="programlisting prettyprint noescape lang-java">SearchRequestBuilder srb1 = node.client()
+documentation</p><pre class="programlisting prettyprint lang-java">SearchRequestBuilder srb1 = node.client()
     .prepareSearch().setQuery(QueryBuilders.queryString("elasticsearch")).setSize(1);
 SearchRequestBuilder srb2 = node.client()
     .prepareSearch().setQuery(QueryBuilders.matchQuery("name", "kimchy")).setSize(1);
@@ -71,7 +71,7 @@ long nbHits = 0;
 for (MultiSearchResponse.Item item : sr.responses()) {
     SearchResponse response = item.response();
     nbHits += response.hits().totalHits();
-}</pre><h3><a id="_using_facets"></a>Using Facets</h3><p>The following code shows how to add two facets within your search:</p><pre class="programlisting prettyprint noescape lang-java">SearchResponse sr = node.client().prepareSearch()
+}</pre><h3><a id="_using_facets"></a>Using Facets</h3><p>The following code shows how to add two facets within your search:</p><pre class="programlisting prettyprint lang-java">SearchResponse sr = node.client().prepareSearch()
     .setQuery(QueryBuilders.matchAllQuery())
     .addFacet(FacetBuilders.termsFacet("f1").field("field"))
     .addFacet(FacetBuilders.dateHistogramFacet("f2").field("birth").interval("year"))

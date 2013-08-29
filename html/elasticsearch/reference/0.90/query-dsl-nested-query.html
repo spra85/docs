@@ -12,7 +12,7 @@
 query is executed against the nested objects / docs as if they were
 indexed as separate docs (they are, internally) and resulting in the
 root parent doc (or parent nested mapping). Here is a sample mapping we
-will work with:</p><pre class="programlisting prettyprint noescape lang-js">{
+will work with:</p><pre class="programlisting prettyprint lang-js">{
     "type1" : {
         "properties" : {
             "obj1" : {
@@ -20,7 +20,7 @@ will work with:</p><pre class="programlisting prettyprint noescape lang-js">{
             }
         }
     }
-}</pre><p>And here is a sample nested query usage:</p><pre class="programlisting prettyprint noescape lang-js">{
+}</pre><p>And here is a sample nested query usage:</p><pre class="programlisting prettyprint lang-js">{
     "nested" : {
         "path" : "obj1",
         "score_mode" : "avg",

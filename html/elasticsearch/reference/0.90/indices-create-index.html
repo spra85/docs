@@ -10,7 +10,7 @@
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="indices-create-index"></a>Create Index</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-create-index.html">Create Index</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-delete-index.html">Delete Index</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-exists.html">Indices Exists</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-open-close.html">Open / Close Index API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-put-mapping.html">Put Mapping</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-get-mapping.html">Get Mapping</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-types-exists.html">Types Exists</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-delete-mapping.html">Delete Mapping</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-aliases.html">Index Aliases</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-update-settings.html">Update Indices Settings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-get-settings.html">Get Settings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-analyze.html">Analyze</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-templates.html">Index Templates</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-warmers.html">Warmers</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-status.html">Status</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-stats.html">Indices Stats</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-segments.html">Indices Segments</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-clearcache.html">Clear Cache</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-flush.html">Flush</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-refresh.html">Refresh</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-optimize.html">Optimize</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="indices-gateway-snapshot.html">Gateway Snapshot</a></span></dt></dl></div><p>The create index API allows to instantiate an index. ElasticSearch
 provides support for multiple indices, including executing operations
 across several indices. Each index created can have specific settings
-associated with it.</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XPUT 'http://localhost:9200/twitter/'
+associated with it.</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT 'http://localhost:9200/twitter/'
 
 $ curl -XPUT 'http://localhost:9200/twitter/' -d '
 index :
@@ -19,20 +19,20 @@ index :
 '</pre><p>The above second curl example shows how an index called <code class="literal">twitter</code> can be
 created with specific settings for it using <a class="ulink" href="http://www.yaml.org" target="_top">YAML</a>.
 In this case, creating an index with 3 shards, each with 2 replicas. The
-index settings can also be defined with <a class="ulink" href="http://www.json.org" target="_top">JSON</a>:</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XPUT 'http://localhost:9200/twitter/' -d '{
+index settings can also be defined with <a class="ulink" href="http://www.json.org" target="_top">JSON</a>:</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT 'http://localhost:9200/twitter/' -d '{
     "settings" : {
         "index" : {
             "number_of_shards" : 3,
             "number_of_replicas" : 2
         }
     }
-}'</pre><p>or more simplified</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XPUT 'http://localhost:9200/twitter/' -d '{
+}'</pre><p>or more simplified</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT 'http://localhost:9200/twitter/' -d '{
     "settings" : {
         "number_of_shards" : 3,
         "number_of_replicas" : 2
     }
 }'</pre><p><span class="emphasis"><em>Note you do not have to explicitly specify <code class="literal">index</code> section inside
-<code class="literal">settings</code> section.</em></span></p><h3><a id="_mappings"></a>Mappings</h3><p>The create index API allows to provide a set of one or more mappings:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPOST localhost:9200/test -d '{
+<code class="literal">settings</code> section.</em></span></p><h3><a id="_mappings"></a>Mappings</h3><p>The create index API allows to provide a set of one or more mappings:</p><pre class="programlisting prettyprint lang-js">curl -XPOST localhost:9200/test -d '{
     "settings" : {
         "number_of_shards" : 1
     },

@@ -11,7 +11,7 @@
 scoring of it optionally with a computation derived from other field
 values in the doc (numeric ones) using
 <a class="link" href="modules-scripting.html" title="Scripting">script expression</a>. Here is
-a simple sample:</p><pre class="programlisting prettyprint noescape lang-js">"custom_score" : {
+a simple sample:</p><pre class="programlisting prettyprint lang-js">"custom_score" : {
     "query" : {
         ....
     },
@@ -20,7 +20,7 @@ a simple sample:</p><pre class="programlisting prettyprint noescape lang-js">"cu
 <code class="literal">_score</code> script parameter can be used to retrieve the score based on the
 wrapped query.</p><h4><a id="_script_parameters"></a>Script Parameters</h4><p>Scripts are cached for faster execution. If the script has parameters
 that it needs to take into account, it is preferable to use the same
-script, and provide parameters to it:</p><pre class="programlisting prettyprint noescape lang-js">"custom_score" : {
+script, and provide parameters to it:</p><pre class="programlisting prettyprint lang-js">"custom_score" : {
     "query" : {
         ....
     },

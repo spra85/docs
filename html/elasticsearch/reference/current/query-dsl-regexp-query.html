@@ -11,18 +11,18 @@
 regular expression chosen. Matching everything like <code class="literal">.*</code> is very slow as
 well as using lookaround regular expressions. If possible, you should
 try to use a long prefix before your regular expression starts. Wildcard
-matchers like <code class="literal">.*?+</code> will mostly lower performance.</p><pre class="programlisting prettyprint noescape lang-js">{
+matchers like <code class="literal">.*?+</code> will mostly lower performance.</p><pre class="programlisting prettyprint lang-js">{
     "regexp":{
         "name.first": "s.*y"
     }
-}</pre><p>Boosting is also supported</p><pre class="programlisting prettyprint noescape lang-js">{
+}</pre><p>Boosting is also supported</p><pre class="programlisting prettyprint lang-js">{
     "regexp":{
         "name.first":{
             "value":"s.*y",
             "boost":1.2
         }
     }
-}</pre><p>You can also use special flags</p><pre class="programlisting prettyprint noescape lang-js">{
+}</pre><p>You can also use special flags</p><pre class="programlisting prettyprint lang-js">{
     "regexp":{
         "name.first": "s.*y",
         "flags" : "INTERSECTION|COMPLEMENT|EMPTY"

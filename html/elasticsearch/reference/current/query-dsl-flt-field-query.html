@@ -11,7 +11,7 @@
 query, except that it runs against a single field. It provides nicer
 query DSL over the generic <code class="literal">fuzzy_like_this</code> query, and support typed
 fields query (automatically wraps typed fields with type filter to match
-only on the specific type).</p><pre class="programlisting prettyprint noescape lang-js">{
+only on the specific type).</p><pre class="programlisting prettyprint lang-js">{
     "fuzzy_like_this_field" : {
         "name.first" : {
             "like_text" : "text like this one",

@@ -8,7 +8,7 @@
           <a href="search-facets-range-facet.html">Range Facets
                » 
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="search-facets-terms-facet"></a>Terms Facet</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-terms-facet.html">Terms Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-range-facet.html">Range Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-histogram-facet.html">Histogram Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-date-histogram-facet.html">Date Histogram Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-filter-facet.html">Filter Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-query-facet.html">Query Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-statistical-facet.html">Statistical Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-terms-stats-facet.html">Terms Stats Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-geo-distance-facet.html">Geo Distance Facets</a></span></dt></dl></div><p>Allow to specify field facets that return the N most frequent terms. For
-example:</p><pre class="programlisting prettyprint noescape lang-js">{
+example:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {  }
     },
@@ -23,7 +23,7 @@ example:</p><pre class="programlisting prettyprint noescape lang-js">{
 }</pre><p>It is preferred to have the terms facet executed on a non analyzed
 field, or a field without a large number of terms it breaks to.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_ordering"></a>Ordering</h3></div></div></div><p>Allow to control the ordering of the terms facets, to be ordered by
 <code class="literal">count</code>, <code class="literal">term</code>, <code class="literal">reverse_count</code> or <code class="literal">reverse_term</code>. The default is
-<code class="literal">count</code>. Here is an example:</p><pre class="programlisting prettyprint noescape lang-js">{
+<code class="literal">count</code>. Here is an example:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {  }
     },
@@ -38,7 +38,7 @@ field, or a field without a large number of terms it breaks to.</p><div class="s
     }
 }</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_all_terms"></a>All Terms</h3></div></div></div><p>Allow to get all the terms in the terms facet, ones that do not match a
 hit, will have a count of 0. Note, this should not be used with fields
-that have many terms.</p><pre class="programlisting prettyprint noescape lang-js">{
+that have many terms.</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {  }
     },
@@ -51,7 +51,7 @@ that have many terms.</p><pre class="programlisting prettyprint noescape lang-js
         }
     }
 }</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_excluding_terms"></a>Excluding Terms</h3></div></div></div><p>It is possible to specify a set of terms that should be excluded from
-the terms facet request result:</p><pre class="programlisting prettyprint noescape lang-js">{
+the terms facet request result:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : { }
     },
@@ -64,7 +64,7 @@ the terms facet request result:</p><pre class="programlisting prettyprint noesca
         }
     }
 }</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_regex_patterns"></a>Regex Patterns</h3></div></div></div><p>The terms API allows to define regex expression that will control which
-terms will be included in the faceted list, here is an example:</p><pre class="programlisting prettyprint noescape lang-js">{
+terms will be included in the faceted list, here is an example:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : { }
     },
@@ -85,7 +85,7 @@ its inclusion or not.</p><p>The script can either return a boolean value, with <
 in the facet collection, and <code class="literal">false</code> to exclude it from the facet
 collection.</p><p>Another option is for the script to return a <code class="literal">string</code> controlling the
 term that will be used to count against. The script execution will
-include the term variable which is the current field term used.</p><p>For example:</p><pre class="programlisting prettyprint noescape lang-js">{
+include the term variable which is the current field term used.</p><p>For example:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {  }
     },
@@ -98,7 +98,7 @@ include the term variable which is the current field term used.</p><p>For exampl
             }
         }
     }
-}</pre><p>And using the boolean feature:</p><pre class="programlisting prettyprint noescape lang-js">{
+}</pre><p>And using the boolean feature:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {  }
     },
@@ -112,7 +112,7 @@ include the term variable which is the current field term used.</p><p>For exampl
         }
     }
 }</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_multi_fields"></a>Multi Fields</h3></div></div></div><p>The term facet can be executed against more than one field, returning
-the aggregation result across those fields. For example:</p><pre class="programlisting prettyprint noescape lang-js">{
+the aggregation result across those fields. For example:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {  }
     },
@@ -129,7 +129,7 @@ given doc. A <code class="literal">script_field</code> (or <code class="literal"
 <code class="literal">field</code> or <code class="literal">fields</code> are provided) can be set to provide it.</p><p>As an example, a search request (that is quite "heavy") can be executed
 and use either <code class="literal">_source</code> itself or <code class="literal">_fields</code> (for stored fields) without
 needing to load the terms to memory (at the expense of much slower
-execution of the search, and causing more IO load):</p><pre class="programlisting prettyprint noescape lang-js">{
+execution of the search, and causing more IO load):</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {  }
     },
@@ -141,7 +141,7 @@ execution of the search, and causing more IO load):</p><pre class="programlistin
             }
         }
     }
-}</pre><p>Or:</p><pre class="programlisting prettyprint noescape lang-js">{
+}</pre><p>Or:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {  }
     },

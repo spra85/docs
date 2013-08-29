@@ -16,14 +16,14 @@ execution. By default, when its not set, the request will fail. Note,
 this feature is available since 0.20 version.</p><h2><a id="_routing_6"></a>Routing</h2><p>When executing a search, it will be broadcasted to all the index/indices
 shards (round robin between replicas). Which shards will be searched on
 can be controlled by providing the <code class="literal">routing</code> parameter. For example,
-when indexing tweets, the routing value can be the user name:</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '{
+when indexing tweets, the routing value can be the user name:</p><pre class="programlisting prettyprint lang-js">$ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '{
     "user" : "kimchy",
     "postDate" : "2009-11-15T14:12:12",
     "message" : "trying out Elastic Search"
 }
 '</pre><p>In such a case, if we want to search only on the tweets for a specific
 user, we can specify it as the routing, resulting in the search hitting
-only the relevant shard:</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XGET 'http://localhost:9200/twitter/tweet/_search?routing=kimchy' -d '{
+only the relevant shard:</p><pre class="programlisting prettyprint lang-js">$ curl -XGET 'http://localhost:9200/twitter/tweet/_search?routing=kimchy' -d '{
     "query": {
         "filtered" : {
             "query" : {
@@ -43,7 +43,7 @@ the routing values match to.</p><h2><a id="_stats_groups"></a>Stats Groups</h2><
 statistics aggregation per group. It can later be retrieved using the
 <a class="link" href="indices-stats.html" title="Indices Stats">indices stats</a> API
 specifically. For example, here is a search body request that associate
-the request with two different groups:</p><pre class="programlisting prettyprint noescape lang-js">{
+the request with two different groups:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {}
     },

@@ -18,7 +18,7 @@ and get them.</p><p>Index warmup can be disabled by setting <code class="literal
 <code class="literal">false</code>. It is supported as a realtime setting using update settings
 API. This can be handy when doing initial bulk indexing, disabling pre
 registered warmers to make indexing faster and less expensive and then
-enable it.</p><h3><a id="_index_creation_templates"></a>Index Creation / Templates</h3><p>Warmers can be registered when an index gets created, for example:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/test -d '{
+enable it.</p><h3><a id="_index_creation_templates"></a>Index Creation / Templates</h3><p>Warmers can be registered when an index gets created, for example:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test -d '{
     "warmers" : {
         "warmer_1" : {
             "types" : [],
@@ -32,7 +32,7 @@ enable it.</p><h3><a id="_index_creation_templates"></a>Index Creation / Templat
             }
         }
     }
-}'</pre><p>Or, in an index template:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/_template/template_1 -d '
+}'</pre><p>Or, in an index template:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/_template/template_1 -d '
 {
     "template" : "te*",
     "warmers" : {
@@ -53,7 +53,7 @@ with the body composing of a regular search request. Types can be
 provided as part of the URI if the search request is designed to be run
 only against the specific types.</p><p>Here is an example that registers a warmup called <code class="literal">warmer_1</code> against
 index <code class="literal">test</code> (can be alias or several indices), for a search request
-that runs against all types:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/test/_warmer/warmer_1 -d '{
+that runs against all types:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test/_warmer/warmer_1 -d '{
     "query" : {
         "match_all" : {}
     },
@@ -64,7 +64,7 @@ that runs against all types:</p><pre class="programlisting prettyprint noescape 
             }
         }
     }
-}'</pre><p>And an example that registers a warmup against specific types:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/test/type1/_warmer/warmer_1 -d '{
+}'</pre><p>And an example that registers a warmup against specific types:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test/type1/_warmer/warmer_1 -d '{
     "query" : {
         "match_all" : {}
     },
@@ -77,7 +77,7 @@ that runs against all types:</p><pre class="programlisting prettyprint noescape 
     }
 }'</pre><h3><a id="_delete_warmer"></a>Delete Warmer</h3><p>Removing a warmer can be done against an index (or alias / indices)
 based on its name. The provided name can be a simple wildcard expression
-or omitted to remove all warmers. Some samples:</p><pre class="programlisting prettyprint noescape lang-js"># delete warmer named warmer_1 on test index
+or omitted to remove all warmers. Some samples:</p><pre class="programlisting prettyprint lang-js"># delete warmer named warmer_1 on test index
 curl -XDELETE localhost:9200/test/_warmer/warmer_1
 
 # delete all warmers that start with warm on test index
@@ -86,7 +86,7 @@ curl -XDELETE localhost:9200/test/_warmer/warm*
 # delete all warmers for test index
 curl -XDELETE localhost:9200/test/_warmer/</pre><h3><a id="_getting_warmer"></a>GETting Warmer</h3><p>Getting a warmer for specific index (or alias, or several indices) based
 on its name. The provided name can be a simple wildcard expression or
-omitted to get all warmers. Some examples:</p><pre class="programlisting prettyprint noescape lang-js"># get warmer named warmer_1 on test index
+omitted to get all warmers. Some examples:</p><pre class="programlisting prettyprint lang-js"># get warmer named warmer_1 on test index
 curl -XGET localhost:9200/test/_warmer/warmer_1
 
 # get all warmers that start with warm on test index

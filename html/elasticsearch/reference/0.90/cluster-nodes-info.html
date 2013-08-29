@@ -8,7 +8,7 @@
           <a href="cluster-nodes-hot-threads.html">Nodes hot_threads
                » 
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="cluster-nodes-info"></a>Nodes Info</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-health.html">Cluster Health</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-state.html">Cluster State</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-reroute.html">Cluster Reroute</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-update-settings.html">Cluster Update Settings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-nodes-stats.html">Nodes Stats</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-nodes-info.html">Nodes Info</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-nodes-hot-threads.html">Nodes hot_threads</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-nodes-shutdown.html">Nodes Shutdown</a></span></dt></dl></div><p>The cluster nodes info API allows to retrieve one or more (or all) of
-the cluster nodes information.</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/_cluster/nodes'
+the cluster nodes information.</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/_cluster/nodes'
 curl -XGET 'http://localhost:9200/_cluster/nodes/nodeId1,nodeId2'
 
 # Shorter Format
@@ -18,7 +18,7 @@ The second command selectively retrieves nodes information of only
 <code class="literal">nodeId1</code> and <code class="literal">nodeId2</code>. All the nodes selective options are explained
 <a class="link" href="cluster.html#cluster-nodes" title="Nodes">here</a>.</p><p>By default, it just returns the attributes and core settings for a node.
 It also allows to get information on <code class="literal">settings</code>, <code class="literal">os</code>, <code class="literal">process</code>, <code class="literal">jvm</code>,
-<code class="literal">thread_pool</code>, <code class="literal">network</code>, <code class="literal">transport</code>, <code class="literal">http</code> and <code class="literal">plugin</code>:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/_nodes?os=true&amp;process=true'
+<code class="literal">thread_pool</code>, <code class="literal">network</code>, <code class="literal">transport</code>, <code class="literal">http</code> and <code class="literal">plugin</code>:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/_nodes?os=true&amp;process=true'
 curl -XGET 'http://localhost:9200/_nodes/10.0.0.1/?os=true&amp;process=true'
 
 # Or, specific type endpoint:
@@ -35,7 +35,7 @@ plugins per node:</p><div class="itemizedlist"><ul class="itemizedlist" type="di
 <code class="literal">jvm</code>: <code class="literal">true</code> if the plugin is a plugin running in the JVM
 </li><li class="listitem">
 <code class="literal">url</code>: URL if the plugin is a site plugin
-</li></ul></div><p>The result will look similar to:</p><pre class="programlisting prettyprint noescape lang-js">{
+</li></ul></div><p>The result will look similar to:</p><pre class="programlisting prettyprint lang-js">{
   "ok" : true,
   "cluster_name" : "test-cluster-MacBook-Air-de-David.local",
   "nodes" : {
@@ -66,7 +66,7 @@ plugins per node:</p><div class="itemizedlist"><ul class="itemizedlist" type="di
   }
 }</pre><p>if your <code class="literal">plugin</code> data is subject to change use
 <code class="literal">plugins.info_refresh_interval</code> to change or disable the caching
-interval:</p><pre class="programlisting prettyprint noescape lang-js"># Change cache to 20 seconds
+interval:</p><pre class="programlisting prettyprint lang-js"># Change cache to 20 seconds
 plugins.info_refresh_interval: 20s
 
 # Infinite cache

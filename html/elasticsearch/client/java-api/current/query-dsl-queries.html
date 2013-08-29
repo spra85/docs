@@ -10,22 +10,22 @@
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="query-dsl-queries"></a>Query DSL - Queries</h1></div></div></div><p>elasticsearch provides a full Java query dsl in a similar manner to the
 REST <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl.html" target="_top">Query DSL</a>. The factory for query
 builders is <code class="literal">QueryBuilders</code>. Once your query is ready, you can use the
-<a class="link" href="search.html" title="Search API">Search API</a>.</p><p>See also how to build <a class="link" href="query-dsl-filters.html" title="Query DSL - Filters">Filters</a></p><p>To use <code class="literal">QueryBuilders</code> just import them in your class:</p><pre class="programlisting prettyprint noescape lang-java">import org.elasticsearch.index.query.QueryBuilders.*;</pre><p>Note that you can easily print (aka debug) JSON generated queries using
+<a class="link" href="search.html" title="Search API">Search API</a>.</p><p>See also how to build <a class="link" href="query-dsl-filters.html" title="Query DSL - Filters">Filters</a></p><p>To use <code class="literal">QueryBuilders</code> just import them in your class:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.index.query.QueryBuilders.*;</pre><p>Note that you can easily print (aka debug) JSON generated queries using
 <code class="literal">toString()</code> method on <code class="literal">QueryBuilder</code> object.</p><p>The <code class="literal">QueryBuilder</code> can then be used with any API that accepts a query,
-such as <code class="literal">count</code> and <code class="literal">search</code>.</p><h3><a id="_match_query"></a>Match Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-match-query.html" target="_top">Match Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilder qb = QueryBuilders.matchQuery("name", "kimchy elasticsearch");</pre><h3><a id="_multimatch_query"></a>MultiMatch Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-multi-match-query.html" target="_top">MultiMatch
-Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilder qb = QueryBuilders.multiMatchQuery(
+such as <code class="literal">count</code> and <code class="literal">search</code>.</p><h3><a id="_match_query"></a>Match Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-match-query.html" target="_top">Match Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilder qb = QueryBuilders.matchQuery("name", "kimchy elasticsearch");</pre><h3><a id="_multimatch_query"></a>MultiMatch Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-multi-match-query.html" target="_top">MultiMatch
+Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilder qb = QueryBuilders.multiMatchQuery(
     "kimchy elasticsearch",     // Text you are looking for
     "user", "message"           // Fields you query on
-    );</pre><h3><a id="_boolean_query"></a>Boolean Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-bool-query.html" target="_top">Boolean Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilder qb = QueryBuilders
+    );</pre><h3><a id="_boolean_query"></a>Boolean Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-bool-query.html" target="_top">Boolean Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilder qb = QueryBuilders
                     .boolQuery()
                     .must(termQuery("content", "test1"))
                     .must(termQuery("content", "test4"))
                     .mustNot(termQuery("content", "test2"))
-                    .should(termQuery("content", "test3"));</pre><h3><a id="_boosting_query"></a>Boosting Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-boosting-query.html" target="_top">Boosting Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.boostingQuery()
+                    .should(termQuery("content", "test3"));</pre><h3><a id="_boosting_query"></a>Boosting Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-boosting-query.html" target="_top">Boosting Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.boostingQuery()
             .positive(QueryBuilders.termQuery("name","kimchy"))
             .negative(QueryBuilders.termQuery("name","dadoonet"))
-            .negativeBoost(0.2f);</pre><h3><a id="_ids_query"></a>IDs Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-ids-query.html" target="_top">IDs Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.idsQuery().ids("1", "2");</pre><h3><a id="_custom_score_query"></a>Custom Score Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-custom-score-query.html" target="_top">Custom Score
-Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.customScoreQuery(QueryBuilders.matchAllQuery())   // Your query here
+            .negativeBoost(0.2f);</pre><h3><a id="_ids_query"></a>IDs Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-ids-query.html" target="_top">IDs Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.idsQuery().ids("1", "2");</pre><h3><a id="_custom_score_query"></a>Custom Score Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-custom-score-query.html" target="_top">Custom Score
+Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.customScoreQuery(QueryBuilders.matchAllQuery())   // Your query here
                 .script("_score * doc['price'].value");         // Your script here
 
 // If the script have parameters, use the same script and provide parameters to it.
@@ -34,25 +34,25 @@ QueryBuilders.customScoreQuery(QueryBuilders.matchAllQuery())
                 .param("param1", 2)
                 .param("param2", 3.1);</pre><h3><a id="_custom_boost_factor_query"></a>Custom Boost Factor Query</h3><p>See
 <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-custom-boost-factor-query.html" target="_top">Custom
-Boost Factor Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.customBoostFactorQuery(QueryBuilders.matchAllQuery()) // Your query
+Boost Factor Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.customBoostFactorQuery(QueryBuilders.matchAllQuery()) // Your query
                 .boostFactor(3.1f);</pre><h3><a id="_constant_score_query"></a>Constant Score Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-constant-score-query.html" target="_top">Constant
-Score Query</a></p><pre class="programlisting prettyprint noescape lang-java">// Using with Filters
+Score Query</a></p><pre class="programlisting prettyprint lang-java">// Using with Filters
 QueryBuilders.constantScoreQuery(FilterBuilders.termFilter("name","kimchy"))
                 .boost(2.0f);
 
 // With Queries
 QueryBuilders.constantScoreQuery(QueryBuilders.termQuery("name","kimchy"))
                 .boost(2.0f);</pre><h3><a id="_disjunction_max_query"></a>Disjunction Max Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-dis-max-query.html" target="_top">Disjunction Max
-Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.disMaxQuery()
+Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.disMaxQuery()
                 .add(QueryBuilders.termQuery("name","kimchy"))          // Your queries
                 .add(QueryBuilders.termQuery("name","elasticsearch"))   // Your queries
                 .boost(1.2f)
-                .tieBreaker(0.7f);</pre><h3><a id="_field_query"></a>Field Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-field-query.html" target="_top">Field Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.fieldQuery("name", "+kimchy -dadoonet");
+                .tieBreaker(0.7f);</pre><h3><a id="_field_query"></a>Field Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-field-query.html" target="_top">Field Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.fieldQuery("name", "+kimchy -dadoonet");
 
 // Note that you can write the same query using queryString query.
 QueryBuilders.queryString("+kimchy -dadoonet").field("name");</pre><h3><a id="_fuzzy_like_this_field_query_flt_and_flt_field"></a>Fuzzy Like This (Field) Query (flt and flt_field)</h3><p>See:
  * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-flt-query.html" target="_top">Fuzzy Like This Query</a>
- * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-flt-field-query.html" target="_top">Fuzzy Like This Field Query</a></p><pre class="programlisting prettyprint noescape lang-java">// flt Query
+ * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-flt-field-query.html" target="_top">Fuzzy Like This Field Query</a></p><pre class="programlisting prettyprint lang-java">// flt Query
 QueryBuilders.fuzzyLikeThisQuery("name.first", "name.last")     // Fields
                 .likeText("text like this one")                 // Text
                 .maxQueryTerms(12);                             // Max num of Terms
@@ -61,18 +61,18 @@ QueryBuilders.fuzzyLikeThisQuery("name.first", "name.last")     // Fields
 // flt_field Query
 QueryBuilders.fuzzyLikeThisFieldQuery("name.first")             // Only on single field
                 .likeText("text like this one")
-                .maxQueryTerms(12);</pre><h3><a id="_fuzzyquery"></a>FuzzyQuery</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-fuzzy-query.html" target="_top">Fuzzy Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilder qb = QueryBuilders.fuzzyQuery("name", "kimzhy");</pre><h3><a id="_has_child_has_parent"></a>Has Child / Has Parent</h3><p>See:
+                .maxQueryTerms(12);</pre><h3><a id="_fuzzyquery"></a>FuzzyQuery</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-fuzzy-query.html" target="_top">Fuzzy Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilder qb = QueryBuilders.fuzzyQuery("name", "kimzhy");</pre><h3><a id="_has_child_has_parent"></a>Has Child / Has Parent</h3><p>See:
  * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-has-child-query.html" target="_top">Has Child Query</a>
- * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-has-parent-query.html" target="_top">Has Parent</a></p><pre class="programlisting prettyprint noescape lang-java">// Has Child
+ * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-has-parent-query.html" target="_top">Has Parent</a></p><pre class="programlisting prettyprint lang-java">// Has Child
 QueryBuilders.hasChildQuery("blog_tag",
                 QueryBuilders.termQuery("tag","something"))
 
 // Has Parent
 QueryBuilders.hasParentQuery("blog",
                 QueryBuilders.termQuery("tag","something"));</pre><h3><a id="_matchall_query"></a>MatchAll Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-match-all-query.html" target="_top">Match All
-Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilder qb = QueryBuilders.matchAllQuery();</pre><h3><a id="_fuzzy_like_this_field_query_flt_and_flt_field_2"></a>Fuzzy Like This (Field) Query (flt and flt_field)</h3><p>See:
+Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilder qb = QueryBuilders.matchAllQuery();</pre><h3><a id="_fuzzy_like_this_field_query_flt_and_flt_field_2"></a>Fuzzy Like This (Field) Query (flt and flt_field)</h3><p>See:
  * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-mlt-query.html" target="_top">More Like This Query</a>
- * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-mlt-field-query.html" target="_top">More Like This Field Query</a></p><pre class="programlisting prettyprint noescape lang-java">// mlt Query
+ * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-mlt-field-query.html" target="_top">More Like This Field Query</a></p><pre class="programlisting prettyprint lang-java">// mlt Query
 QueryBuilders.moreLikeThisQuery("name.first", "name.last")      // Fields
                 .likeText("text like this one")                 // Text
                 .minTermFreq(1)                                 // Ignore Threshold
@@ -83,7 +83,7 @@ QueryBuilders.moreLikeThisQuery("name.first", "name.last")      // Fields
 QueryBuilders.moreLikeThisFieldQuery("name.first")              // Only on single field
                 .likeText("text like this one")
                 .minTermFreq(1)
-                .maxQueryTerms(12);</pre><h3><a id="_prefix_query"></a>Prefix Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-prefix-query.html" target="_top">Prefix Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.prefixQuery("brand", "heine");</pre><h3><a id="_querystring_query"></a>QueryString Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-query-string-query.html" target="_top">QueryString Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilder qb = QueryBuilders.queryString("+kimchy -elasticsearch");</pre><h3><a id="_range_query"></a>Range Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-range-query.html" target="_top">Range Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilder qb = QueryBuilders
+                .maxQueryTerms(12);</pre><h3><a id="_prefix_query"></a>Prefix Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-prefix-query.html" target="_top">Prefix Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.prefixQuery("brand", "heine");</pre><h3><a id="_querystring_query"></a>QueryString Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-query-string-query.html" target="_top">QueryString Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilder qb = QueryBuilders.queryString("+kimchy -elasticsearch");</pre><h3><a id="_range_query"></a>Range Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-range-query.html" target="_top">Range Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilder qb = QueryBuilders
                     .rangeQuery("price")
                     .from(5)
                     .to(10)
@@ -93,7 +93,7 @@ QueryBuilders.moreLikeThisFieldQuery("name.first")              // Only on singl
  * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-span-near-query.html" target="_top">Span Near Query</a>
  * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-span-not-query.html" target="_top">Span Not Query</a>
  * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-span-or-query.html" target="_top">Span Or Query</a>
- * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-span-term-query.html" target="_top">Span Term Query</a></p><pre class="programlisting prettyprint noescape lang-java">// Span First
+ * <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-span-term-query.html" target="_top">Span Term Query</a></p><pre class="programlisting prettyprint lang-java">// Span First
 QueryBuilders.spanFirstQuery(
                 QueryBuilders.spanTermQuery("user", "kimchy"),  // Query
                 3                                               // Max End position
@@ -120,26 +120,26 @@ QueryBuilders.spanOrQuery()
     .clause(QueryBuilders.spanTermQuery("field","value3"));
 
 // Span Term
-QueryBuilders.spanTermQuery("user","kimchy");</pre><h3><a id="_term_query"></a>Term Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-term-query.html" target="_top">Term Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilder qb = QueryBuilders.termQuery("name", "kimchy");</pre><h3><a id="_terms_query"></a>Terms Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-terms-query.html" target="_top">Terms Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.termsQuery("tags",    // field
+QueryBuilders.spanTermQuery("user","kimchy");</pre><h3><a id="_term_query"></a>Term Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-term-query.html" target="_top">Term Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilder qb = QueryBuilders.termQuery("name", "kimchy");</pre><h3><a id="_terms_query"></a>Terms Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-terms-query.html" target="_top">Terms Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.termsQuery("tags",    // field
     "blue", "pill")                 // values
-    .minimumMatch(1);               // How many terms must match</pre><h3><a id="_top_children_query"></a>Top Children Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-top-children-query.html" target="_top">Top Children Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.topChildrenQuery(
+    .minimumMatch(1);               // How many terms must match</pre><h3><a id="_top_children_query"></a>Top Children Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-top-children-query.html" target="_top">Top Children Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.topChildrenQuery(
         "blog_tag",                                 // field
         QueryBuilders.termQuery("tag", "something") // Query
     )
     .score("max")                                   // max, sum or avg
     .factor(5)
-    .incrementalFactor(2);</pre><h3><a id="_wildcard_query"></a>Wildcard Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-wildcard-query.html" target="_top">Wildcard Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.wildcardQuery("user", "k?mc*");</pre><h3><a id="_nested_query"></a>Nested Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-nested-query.html" target="_top">Nested Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.nestedQuery("obj1",               // Path
+    .incrementalFactor(2);</pre><h3><a id="_wildcard_query"></a>Wildcard Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-wildcard-query.html" target="_top">Wildcard Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.wildcardQuery("user", "k?mc*");</pre><h3><a id="_nested_query"></a>Nested Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-nested-query.html" target="_top">Nested Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.nestedQuery("obj1",               // Path
                 QueryBuilders.boolQuery()       // Your query
                         .must(QueryBuilders.matchQuery("obj1.name", "blue"))
                         .must(QueryBuilders.rangeQuery("obj1.count").gt(5))
             )
             .scoreMode("avg");                  // max, total, avg or none</pre><h3><a id="_custom_filters_score_query"></a>Custom Filters Score Query</h3><p>See
-<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-custom-filters-score-query.html" target="_top">Custom Filters Score Query</a></p><pre class="programlisting prettyprint noescape lang-java">QueryBuilders.customFiltersScoreQuery(
+<a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-custom-filters-score-query.html" target="_top">Custom Filters Score Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.customFiltersScoreQuery(
                 QueryBuilders.matchAllQuery())  // Query
             // Filters with their boost factors
             .add(FilterBuilders.rangeFilter("age").from(0).to(10), 3)
             .add(FilterBuilders.rangeFilter("age").from(10).to(20), 2)
-            .scoreMode("first");    // first, min, max, total, avg or multiply</pre><h3><a id="_indices_query"></a>Indices Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-indices-query.html" target="_top">Indices Query</a></p><pre class="programlisting prettyprint noescape lang-java">// Using another query when no match for the main one
+            .scoreMode("first");    // first, min, max, total, avg or multiply</pre><h3><a id="_indices_query"></a>Indices Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-indices-query.html" target="_top">Indices Query</a></p><pre class="programlisting prettyprint lang-java">// Using another query when no match for the main one
 QueryBuilders.indicesQuery(
                 QueryBuilders.termQuery("tag", "wow"),
                 "index1", "index2"
@@ -153,7 +153,7 @@ QueryBuilders.indicesQuery(
             )
             .noMatchQuery("all");       // all or none</pre><h3><a id="_geoshape_query"></a>GeoShape Query</h3><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/query-dsl-geo-shape-query.html" target="_top">GeoShape Query</a></p><p>Note: the <code class="literal">geo_shape</code> type uses <code class="literal">Spatial4J</code> and <code class="literal">JTS</code>, both of which are
 optional dependencies. Consequently you must add <code class="literal">Spatial4J</code> and <code class="literal">JTS</code>
-to your classpath in order to use this type:</p><pre class="programlisting prettyprint noescape lang-java">&lt;dependency&gt;
+to your classpath in order to use this type:</p><pre class="programlisting prettyprint lang-java">&lt;dependency&gt;
     &lt;groupId&gt;com.spatial4j&lt;/groupId&gt;
     &lt;artifactId&gt;spatial4j&lt;/artifactId&gt;
     &lt;version&gt;0.3&lt;/version&gt;
@@ -169,13 +169,13 @@ to your classpath in order to use this type:</p><pre class="programlisting prett
             &lt;artifactId&gt;xercesImpl&lt;/artifactId&gt;
         &lt;/exclusion&gt;
     &lt;/exclusions&gt;
-&lt;/dependency&gt;</pre><pre class="programlisting prettyprint noescape lang-java">// Import Spatial4J shapes
+&lt;/dependency&gt;</pre><pre class="programlisting prettyprint lang-java">// Import Spatial4J shapes
 import com.spatial4j.core.context.SpatialContext;
 import com.spatial4j.core.shape.Shape;
 import com.spatial4j.core.shape.impl.RectangleImpl;
 
 // Also import ShapeRelation
-import org.elasticsearch.common.geo.ShapeRelation;</pre><pre class="programlisting prettyprint noescape lang-java">// Shape within another
+import org.elasticsearch.common.geo.ShapeRelation;</pre><pre class="programlisting prettyprint lang-java">// Shape within another
 QueryBuilders.geoShapeQuery("location",
                 new RectangleImpl(0,10,0,10,SpatialContext.GEO))
             .relation(ShapeRelation.WITHIN);

@@ -25,7 +25,7 @@ used just when indexing, and the <code class="literal">default_search</code> can
 configure a default analyzer that will be used just when searching.</p><h3><a id="_aliasing_analyzers"></a>Aliasing Analyzers</h3><p>Analyzers can be aliased to have several registered lookup names
 associated with them. For example, the following will allow
 the <code class="literal">standard</code> analyzer to also be referenced with <code class="literal">alias1</code>
-and <code class="literal">alias2</code> values.</p><pre class="programlisting prettyprint noescape lang-js">index :
+and <code class="literal">alias2</code> values.</p><pre class="programlisting prettyprint lang-js">index :
   analysis :
     analyzer :
       standard :

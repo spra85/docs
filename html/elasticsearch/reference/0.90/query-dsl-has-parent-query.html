@@ -13,7 +13,7 @@ filter, by automatically wrapping the filter with a constant_score (when
 using the default score type). It has the same syntax as the
 <a class="link" href="query-dsl-has-parent-filter.html" title="Has Parent Filter">has_parent</a>
 filter. This query is experimental and is available from version
-<code class="literal">0.19.10</code>.</p><pre class="programlisting prettyprint noescape lang-js">{
+<code class="literal">0.19.10</code>.</p><pre class="programlisting prettyprint lang-js">{
     "has_parent" : {
         "parent_type" : "blog",
         "query" : {
@@ -29,7 +29,7 @@ case equal to the boost on the <code class="literal">has_parent</code> query (De
 the score type is set to <code class="literal">score</code>, then the score of the matching parent
 document is aggregated into the child documents belonging to the
 matching parent document. The score type can be specified with the
-<code class="literal">score_type</code> field inside the <code class="literal">has_parent</code> query:</p><pre class="programlisting prettyprint noescape lang-js">{
+<code class="literal">score_type</code> field inside the <code class="literal">has_parent</code> query:</p><pre class="programlisting prettyprint lang-js">{
     "has_parent" : {
         "parent_type" : "blog",
         "score_type" : "score",
@@ -42,7 +42,7 @@ matching parent document. The score type can be specified with the
 }</pre><h4><a id="_scope_3"></a>Scope</h4><p>The <code class="literal">_scope</code> support has been removed from version <code class="literal">0.90.beta1</code>. See:
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch/issues/2606" target="_top">https://github.com/elasticsearch/elasticsearch/issues/2606</a></p><p>A <code class="literal">_scope</code> can be defined on the filter allowing to run facets on the
 same scope name that will work against the parent documents. For
-example:</p><pre class="programlisting prettyprint noescape lang-js">{
+example:</p><pre class="programlisting prettyprint lang-js">{
     "has_parent" : {
         "_scope" : "my_scope",
         "parent_type" : "blog",

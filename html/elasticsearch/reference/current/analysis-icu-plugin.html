@@ -14,7 +14,7 @@ normalization, collation and folding. The plugin is called
 registers itself by default under <code class="literal">icu_normalizer</code> or <code class="literal">icuNormalizer</code>
 using the default settings. Allows for the name parameter to be provided
 which can include the following values: <code class="literal">nfc</code>, <code class="literal">nfkc</code>, and <code class="literal">nfkc_cf</code>.
-Here is a sample settings:</p><pre class="programlisting prettyprint noescape lang-js">{
+Here is a sample settings:</p><pre class="programlisting prettyprint lang-js">{
     "index" : {
         "analysis" : {
             "analyzer" : {
@@ -28,7 +28,7 @@ Here is a sample settings:</p><pre class="programlisting prettyprint noescape la
 }</pre><h3><a id="_icu_folding"></a>ICU Folding</h3><p>Folding of unicode characters based on <code class="literal">UTR#30</code>. It registers itself
 under <code class="literal">icu_folding</code> and <code class="literal">icuFolding</code> names.
 The filter also does lowercasing, which means the lowercase filter can
-normally be left out. Sample setting:</p><pre class="programlisting prettyprint noescape lang-js">{
+normally be left out. Sample setting:</p><pre class="programlisting prettyprint lang-js">{
     "index" : {
         "analysis" : {
             "analyzer" : {
@@ -46,7 +46,7 @@ primary letters in a specific language is wanted. See syntax for the
 UnicodeSet
 <a class="ulink" href="http://icu-project.org/apiref/icu4j/com/ibm/icu/text/UnicodeSet.html" target="_top">here</a>.</p><p>The Following example excempt Swedish characters from the folding. Note
 that the filtered characters are NOT lowercased which is why we add that
-filter below.</p><pre class="programlisting prettyprint noescape lang-js">{
+filter below.</p><pre class="programlisting prettyprint lang-js">{
     "index" : {
         "analysis" : {
             "analyzer" : {
@@ -70,7 +70,7 @@ using the <code class="literal">rules</code> parameter (can point to a location 
 settings, location can be relative to config location), or using the
 <code class="literal">language</code> parameter (further specialized by country and variant). By
 default registers under <code class="literal">icu_collation</code> or <code class="literal">icuCollation</code> and uses the
-default locale.</p><p>Here is a sample settings:</p><pre class="programlisting prettyprint noescape lang-js">{
+default locale.</p><p>Here is a sample settings:</p><pre class="programlisting prettyprint lang-js">{
     "index" : {
         "analysis" : {
             "analyzer" : {
@@ -81,7 +81,7 @@ default locale.</p><p>Here is a sample settings:</p><pre class="programlisting p
             }
         }
     }
-}</pre><p>And here is a sample of custom collation:</p><pre class="programlisting prettyprint noescape lang-js">{
+}</pre><p>And here is a sample of custom collation:</p><pre class="programlisting prettyprint lang-js">{
     "index" : {
         "analysis" : {
             "analyzer" : {

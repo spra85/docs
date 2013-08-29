@@ -13,7 +13,7 @@ more easily build a concise match type query over multiple fields
 instead of using a relatively more expressive query by using multiple
 match queries within a <code class="literal">bool</code> query.</p><p>The structure of the query is a bit different. Instead of a nested json
 object defining the query field, there is a top json level field for
-defining the query fields. Example:</p><pre class="programlisting prettyprint noescape lang-js">{
+defining the query fields. Example:</p><pre class="programlisting prettyprint lang-js">{
   "multi_match" : {
     "query" : "this is a test",
     "fields" : [ "subject", "message" ]
@@ -33,7 +33,7 @@ or a <code class="literal">bool</code> query. Defaults to <code class="literal">
 and higher scoring fields. Only applicable when <code class="literal">use_dis_max</code> is set to
 true. Defaults to <code class="literal">0.0</code>.
 </li></ul></div><p>The query accepts all the options that a regular <code class="literal">match</code> query accepts.</p><h4><a id="_boosting"></a>Boosting</h4><p>The <code class="literal">multi_match</code> query supports field boosting via <code class="literal">^</code> notation in the
-fields json field.</p><pre class="programlisting prettyprint noescape lang-js">{
+fields json field.</p><pre class="programlisting prettyprint lang-js">{
   "multi_match" : {
     "query" : "this is a test",
     "fields" : [ "subject^2", "message" ]

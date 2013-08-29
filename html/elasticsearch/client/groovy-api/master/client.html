@@ -11,7 +11,7 @@
 wrapper on top of the Java <code class="literal">Client</code>) is simple. The most common way to
 get a client is by starting an embedded <code class="literal">Node</code> which acts as a node
 within the cluster.</p><h3><a id="_node_client"></a>Node Client</h3><p>A Node based client is the simplest form to get a <code class="literal">GClient</code> to start
-executing operations against elasticsearch.</p><pre class="programlisting prettyprint noescape lang-js">import org.elasticsearch.groovy.client.GClient
+executing operations against elasticsearch.</p><pre class="programlisting prettyprint lang-js">import org.elasticsearch.groovy.client.GClient
 import org.elasticsearch.groovy.node.GNode
 import static org.elasticsearch.groovy.node.GNodeBuilder.nodeBuilder
 
@@ -24,7 +24,7 @@ GClient client = node.client();
 
 node.close();</pre><p>Since elasticsearch allows to configure it using JSON based settings,
 the configuration itself can be done using a closure that represent the
-JSON:</p><pre class="programlisting prettyprint noescape lang-js">import org.elasticsearch.groovy.node.GNode
+JSON:</p><pre class="programlisting prettyprint lang-js">import org.elasticsearch.groovy.node.GNode
 import org.elasticsearch.groovy.node.GNodeBuilder
 import static org.elasticsearch.groovy.node.GNodeBuilder.*
 

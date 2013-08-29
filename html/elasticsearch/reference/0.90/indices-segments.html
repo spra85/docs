@@ -11,7 +11,7 @@
 is built with. Allows to be used to provide more information on the
 state of a shard and an index, possibly optimization information, data
 "wasted" on deletes, and so on.</p><p>Endpoints include segments for a specific index, several indices, or
-all:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/test/_segments'
+all:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/test/_segments'
 curl -XGET 'http://localhost:9200/test1,test2/_segments'
 curl -XGET 'http://localhost:9200/_segments'</pre></div><div class="navfooter"><span class="prev"><a href="indices-stats.html">
               « 

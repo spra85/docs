@@ -10,7 +10,7 @@
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="percolate"></a>Percolate API</h1></div></div></div><p>The percolator allows to register queries against an index, and then
 send <code class="literal">percolate</code> requests which include a doc, and getting back the
 queries that match on that doc out of the set of registered queries.</p><p>Read the main <a class="ulink" href="http://www.elasticsearch.org/guide/elasticsearch/reference/current/search-percolate.html" target="_top">percolate</a>
-documentation before reading this guide.</p><pre class="programlisting prettyprint noescape lang-java">//This is the query we're registering in the percolator
+documentation before reading this guide.</p><pre class="programlisting prettyprint lang-java">//This is the query we're registering in the percolator
 QueryBuilder qb = termQuery("content", "amazing");
 
 //Index the query = register it in the percolator
@@ -22,7 +22,7 @@ client.prepareIndex("_percolator", "myIndexName", "myDesignatedQueryName")
     .setRefresh(true) // Needed when the query shall be available immediately
     .execute().actionGet();</pre><p>This indexes the above term query under the name
 <span class="strong"><strong>myDesignatedQueryName</strong></span>.</p><p>In order to check a document against the registered queries, use this
-code:</p><pre class="programlisting prettyprint noescape lang-java">//Build a document to check against the percolator
+code:</p><pre class="programlisting prettyprint lang-java">//Build a document to check against the percolator
 XContentBuilder docBuilder = XContentFactory.jsonBuilder().startObject();
 docBuilder.field("doc").startObject(); //This is needed to designate the document
 docBuilder.field("content", "This is amazing!");

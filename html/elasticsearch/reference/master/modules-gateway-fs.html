@@ -13,7 +13,7 @@ version. Please use the
 instead.</strong></span></p><p>The file system based gateway stores the cluster meta data and indices
 in a <span class="strong"><strong>shared</strong></span> file system. Note, since it is a distributed system, the
 file system should be shared between all different nodes. Here is an
-example config to enable it:</p><pre class="programlisting prettyprint noescape lang-js">gateway:
+example config to enable it:</p><pre class="programlisting prettyprint lang-js">gateway:
     type: fs</pre><h4><a id="_location"></a>location</h4><p>The location where the gateway stores the cluster state can be set using
 the <code class="literal">gateway.fs.location</code> setting. By default, it will be stored under
 the <code class="literal">work</code> directory. Note, the <code class="literal">work</code> directory is considered a

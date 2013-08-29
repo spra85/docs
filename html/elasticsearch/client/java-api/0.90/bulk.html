@@ -8,7 +8,7 @@
           <a href="search.html">Search API
                » 
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="bulk"></a>Bulk API</h1></div></div></div><p>The bulk API allows one to index and delete several documents in a
-single request. Here is a sample usage:</p><pre class="programlisting prettyprint noescape lang-java">import static org.elasticsearch.common.xcontent.XContentFactory.*;
+single request. Here is a sample usage:</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.common.xcontent.XContentFactory.*;
 
 BulkRequestBuilder bulkRequest = client.prepareBulk();
 

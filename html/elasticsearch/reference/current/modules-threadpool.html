@@ -66,7 +66,7 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 </p>
 </td></tr></tbody></table></div><p>Changing a specific thread pool can be done by setting its type and
 specific type parameters, for example, changing the <code class="literal">index</code> thread pool
-to <code class="literal">blocking</code> type:</p><pre class="programlisting prettyprint noescape lang-js">threadpool:
+to <code class="literal">blocking</code> type:</p><pre class="programlisting prettyprint lang-js">threadpool:
     index:
         type: blocking
         min: 1
@@ -75,7 +75,7 @@ to <code class="literal">blocking</code> type:</p><pre class="programlisting pre
       <a class="xref" href="cluster-update-settings.html" title="Cluster Update Settings"><em>Cluster Update Settings</em></a>.</p></td></tr></table></div><h3><a id="_thread_pool_types"></a>Thread pool types</h3><p>The following are the types of thread pools that can be used and their
 respective parameters:</p><h4><a id="_literal_cache_literal"></a><code class="literal">cache</code></h4><p>The <code class="literal">cache</code> thread pool is an unbounded thread pool that will spawn a
 thread if there are pending requests. Here is an example of how to set
-it:</p><pre class="programlisting prettyprint noescape lang-js">threadpool:
+it:</p><pre class="programlisting prettyprint lang-js">threadpool:
     index:
         type: cached</pre><h4><a id="_literal_fixed_literal"></a><code class="literal">fixed</code></h4><p>The <code class="literal">fixed</code> thread pool holds a fixed size of threads to handle the
 requests with a queue (optionally bounded) for pending requests that
@@ -86,7 +86,7 @@ requests that have no threads to execute them. By default, it is set to
 full, the <code class="literal">reject_policy</code> parameter can control how it will behave. The
 default, <code class="literal">abort</code>, will simply fail the request. Setting it to <code class="literal">caller</code>
 will cause the request to execute on an IO thread allowing to throttle
-the execution on the networking layer.</p><pre class="programlisting prettyprint noescape lang-js">threadpool:
+the execution on the networking layer.</p><pre class="programlisting prettyprint lang-js">threadpool:
     index:
         type: fixed
         size: 30
@@ -96,7 +96,7 @@ the execution on the networking layer.</p><pre class="programlisting prettyprint
 number of threads.</p><p>It also has a backlog queue with a default <code class="literal">queue_size</code> of <code class="literal">1000</code>. Once
 the queue is full, it will wait for the provided <code class="literal">wait_time</code> (defaults
 to <code class="literal">60s</code>) on the calling IO thread, and fail if it has not been
-executed.</p><pre class="programlisting prettyprint noescape lang-js">threadpool:
+executed.</p><pre class="programlisting prettyprint lang-js">threadpool:
     index:
         type: blocking
         min: 1

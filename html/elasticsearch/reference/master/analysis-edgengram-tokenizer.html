@@ -51,7 +51,7 @@ for example <code class="literal">!</code> or <code class="literal">"</code>
 <p>
 for example <code class="literal">$</code> or <code class="literal">â</code>
 </p>
-</td></tr></tbody></table></div><h4><a id="_example_2"></a>Example</h4><pre class="programlisting prettyprint noescape lang-js">    curl -XPUT 'localhost:9200/test' -d '
+</td></tr></tbody></table></div><h4><a id="_example_2"></a>Example</h4><pre class="programlisting prettyprint lang-js">    curl -XPUT 'localhost:9200/test' -d '
     {
         "settings" : {
             "analysis" : {
@@ -77,7 +77,7 @@ for example <code class="literal">$</code> or <code class="literal">â</code
 order to emulate the behavior of <code class="literal">"side" : "BACK"</code> a
 <a class="link" href="analysis-reverse-tokenfilter.html" title="Reverse Token Filter"><code class="literal">reverse</code> token filter</a>  should be used together
 with the <a class="link" href="analysis-edgengram-tokenfilter.html" title="Edge NGram Token Filter"><code class="literal">edgeNGram</code> token filter</a>. The
-<code class="literal">edgeNGram</code> filter must be enclosed in <code class="literal">reverse</code> filters like this:</p><pre class="programlisting prettyprint noescape lang-js">    "filter" : ["reverse", "edgeNGram", "reverse"]</pre><p>which essentially reverses the token, builds front <code class="literal">EdgeNGrams</code> and reverses
+<code class="literal">edgeNGram</code> filter must be enclosed in <code class="literal">reverse</code> filters like this:</p><pre class="programlisting prettyprint lang-js">    "filter" : ["reverse", "edgeNGram", "reverse"]</pre><p>which essentially reverses the token, builds front <code class="literal">EdgeNGrams</code> and reverses
 the ngram again. This has the same effect as the previous <code class="literal">"side" : "BACK"</code> setting.</p></div><div class="navfooter"><span class="prev"><a href="analysis-standard-tokenizer.html">
               « 
               Standard Tokenizer</a>

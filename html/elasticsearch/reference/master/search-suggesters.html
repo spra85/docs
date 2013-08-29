@@ -11,7 +11,7 @@
 text by using a suggester. The suggest feature is available from version
 <code class="literal">0.90.0.Beta1</code>. Parts of the suggest feature are still under
 development.</p><p>The suggest request part is either defined alongside the query part in a
-<code class="literal">_search</code> request or via the REST <code class="literal">_suggest</code> endpoint.</p><pre class="programlisting prettyprint noescape lang-js">curl -s -XPOST 'localhost:9200/_search' -d '{
+<code class="literal">_search</code> request or via the REST <code class="literal">_suggest</code> endpoint.</p><pre class="programlisting prettyprint lang-js">curl -s -XPOST 'localhost:9200/_search' -d '{
   "query" : {
     ...
   },
@@ -20,7 +20,7 @@ development.</p><p>The suggest request part is either defined alongside the quer
   }
 }'</pre><p>Suggest requests executed against the <code class="literal">_suggest</code> endpoint should omit
 the surrounding <code class="literal">suggest</code> element which is only used if the suggest
-request is part of a search.</p><pre class="programlisting prettyprint noescape lang-js">curl -XPOST 'localhost:9200/_suggest' -d '{
+request is part of a search.</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/_suggest' -d '{
   "my-suggestion" : {
     "text" : "the amsterdma meetpu",
     "term" : {
@@ -30,7 +30,7 @@ request is part of a search.</p><pre class="programlisting prettyprint noescape 
 }'</pre><p>Several suggestions can be specified per request. Each suggestion is
 identified with an arbitrary name. In the example below two suggestions
 are requested. Both <code class="literal">my-suggest-1</code> and <code class="literal">my-suggest-2</code> suggestions use
-the <code class="literal">term</code> suggester, but have a different <code class="literal">text</code>.</p><pre class="programlisting prettyprint noescape lang-js">"suggest" : {
+the <code class="literal">term</code> suggester, but have a different <code class="literal">text</code>.</p><pre class="programlisting prettyprint lang-js">"suggest" : {
   "my-suggest-1" : {
     "text" : "the amsterdma meetpu",
     "term" : {
@@ -47,7 +47,7 @@ the <code class="literal">term</code> suggester, but have a different <code clas
 <code class="literal">my-suggest-1</code> and <code class="literal">my-suggest-2</code>. Each suggestion part contains
 entries. Each entry is effectively a token from the suggest text and
 contains the suggestion entry text, the original start offset and length
-in the suggest text and if found an arbitrary number of options.</p><pre class="programlisting prettyprint noescape lang-js">{
+in the suggest text and if found an arbitrary number of options.</p><pre class="programlisting prettyprint lang-js">{
   ...
   "suggest": {
     "my-suggest-1": [
@@ -69,7 +69,7 @@ in the suggest text and if found an arbitrary number of options.</p><pre class="
 }</pre><p>Each options array contains an option object that includes the
 suggested text, its document frequency and score compared to the suggest
 entry text. The meaning of the score depends on the used suggester. The
-term suggester’s score is based on the edit distance.</p><pre class="programlisting prettyprint noescape lang-js">"options": [
+term suggester’s score is based on the edit distance.</p><pre class="programlisting prettyprint lang-js">"options": [
   {
     "text": "amsterdam",
     "freq": 77,
@@ -78,7 +78,7 @@ term suggester’s score is based on the edit distance.</p><pre class="programli
   ...
 ]</pre><h3><a id="_global_suggest_text"></a>Global suggest text</h3><p>To avoid repetition of the suggest text, it is possible to define a
 global text. In the example below the suggest text is defined globally
-and applies to the <code class="literal">my-suggest-1</code> and <code class="literal">my-suggest-2</code> suggestions.</p><pre class="programlisting prettyprint noescape lang-js">"suggest" : {
+and applies to the <code class="literal">my-suggest-1</code> and <code class="literal">my-suggest-2</code> suggestions.</p><pre class="programlisting prettyprint lang-js">"suggest" : {
   "text" : "the amsterdma meetpu"
   "my-suggest-1" : {
     "term" : {
@@ -98,7 +98,7 @@ maximum of 3 suggestions per term inside the suggest text. Note that in
 this example we use the <code class="literal">count</code> search type. This isn’t required, but a
 nice optimization. The suggestions are gather in the <code class="literal">query</code> phase and
 in the case that we only care about suggestions (so no hits) we don’t
-need to execute the <code class="literal">fetch</code> phase.</p><pre class="programlisting prettyprint noescape lang-js">curl -s -XPOST 'localhost:9200/_search?search_type=count' -d '{
+need to execute the <code class="literal">fetch</code> phase.</p><pre class="programlisting prettyprint lang-js">curl -s -XPOST 'localhost:9200/_search?search_type=count' -d '{
   "suggest" : {
     "my-title-suggestions-1" : {
       "text" : "devloping distibutd saerch engies",
@@ -111,7 +111,7 @@ need to execute the <code class="literal">fetch</code> phase.</p><pre class="pro
 }'</pre><p>The above request could yield the response as stated in the code example
 below. As you can see if we take the first suggested options of each
 suggestion entry we get <code class="literal">developing distributed search engines</code> as
-result.</p><pre class="programlisting prettyprint noescape lang-js">{
+result.</p><pre class="programlisting prettyprint lang-js">{
   ...
   "suggest": {
     "my-title-suggestions-1": [

@@ -8,7 +8,7 @@
           <a href="query-dsl-type-filter.html">Type Filter
                » 
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="query-dsl-terms-filter"></a>Terms Filter</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-and-filter.html">And Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-bool-filter.html">Bool Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-exists-filter.html">Exists Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-geo-bounding-box-filter.html">Geo Bounding Box Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-geo-distance-filter.html">Geo Distance Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-geo-distance-range-filter.html">Geo Distance Range Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-geo-polygon-filter.html">Geo Polygon Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-geo-shape-filter.html">GeoShape Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-geohash-cell-filter.html">Geohash Cell Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-has-child-filter.html">Has Child Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-has-parent-filter.html">Has Parent Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-ids-filter.html">Ids Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-limit-filter.html">Limit Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-match-all-filter.html">Match All Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-missing-filter.html">Missing Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-nested-filter.html">Nested Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-not-filter.html">Not Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-numeric-range-filter.html">Numeric Range Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-or-filter.html">Or Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-prefix-filter.html">Prefix Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-query-filter.html">Query Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-range-filter.html">Range Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-regexp-filter.html">Regexp Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-script-filter.html">Script Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-term-filter.html">Term Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-terms-filter.html">Terms Filter</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="query-dsl-type-filter.html">Type Filter</a></span></dt></dl></div><p>Filters documents that have fields that match any of the provided terms
-(<span class="strong"><strong>not analyzed</strong></span>). For example:</p><pre class="programlisting prettyprint noescape lang-js">{
+(<span class="strong"><strong>not analyzed</strong></span>). For example:</p><pre class="programlisting prettyprint lang-js">{
     "constant_score" : {
         "filter" : {
             "terms" : { "user" : ["kimchy", "elasticsearch"]}
@@ -62,7 +62,7 @@ them in the more compact model that terms filter provides.</p><p>The <code class
 you can use: <code class="literal">bool_nocache</code>, <code class="literal">and_nocache</code> or <code class="literal">or_nocache</code> instead, but
 be aware that this will affect performance.</p><p>The "total" terms filter caching can still be explicitly controlled
 using the <code class="literal">_cache</code> option. Note the default value for it depends on the
-execution value.</p><p>For example:</p><pre class="programlisting prettyprint noescape lang-js">{
+execution value.</p><p>For example:</p><pre class="programlisting prettyprint lang-js">{
     "constant_score" : {
         "filter" : {
             "terms" : {
@@ -151,7 +151,7 @@ This cache has the following options:</p><div class="variablelist"><dl class="va
 </dd></dl></div><p><code class="literal">indices.cache.filter.terms.expire_after_write</code>:
     The time after the last write an entry should expire. Disabled by default.</p><p>All options for the lookup of the documents cache can only be configured
 via the <code class="literal">elasticsearch.yml</code> file.</p><p>When using the terms lookup the <code class="literal">execution</code> option isn’t taken into
-account and behaves as if the execution mode was set to <code class="literal">plain</code>.</p><h4><a id="_terms_lookup_twitter_example"></a>Terms lookup twitter example</h4><pre class="programlisting prettyprint noescape lang-js"># index the information for user with id 2, specifically, its followers
+account and behaves as if the execution mode was set to <code class="literal">plain</code>.</p><h4><a id="_terms_lookup_twitter_example"></a>Terms lookup twitter example</h4><pre class="programlisting prettyprint lang-js"># index the information for user with id 2, specifically, its followers
 curl -XPUT localhost:9200/users/user/2 -d '{
    "followers" : ["1", "3"]
 }'
@@ -183,8 +183,8 @@ followers will not be fetched if the filter is already cached in the
 filter cache, and with internal LRU cache for fetching external values
 for the terms filter. Also, the entry in the filter cache will not hold
 <code class="literal">all</code> the terms reducing the memory required for it.</p><p><code class="literal">_cache_key</code> is recommended to be set, so its simple to clear the cache
-associated with it using the clear cache API. For example:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPOST 'localhost:9200/tweets/_cache/clear?filter_keys=user_2_friends'</pre><p>The structure of the external terms document can also include array of
-inner objects, for example:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/users/user/2 -d '{
+associated with it using the clear cache API. For example:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/tweets/_cache/clear?filter_keys=user_2_friends'</pre><p>The structure of the external terms document can also include array of
+inner objects, for example:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/users/user/2 -d '{
  "followers" : [
    {
      "id" : "1"

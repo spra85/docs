@@ -10,7 +10,7 @@
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="search-facets-statistical-facet"></a>Statistical Facet</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-terms-facet.html">Terms Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-range-facet.html">Range Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-histogram-facet.html">Histogram Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-date-histogram-facet.html">Date Histogram Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-filter-facet.html">Filter Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-query-facet.html">Query Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-statistical-facet.html">Statistical Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-terms-stats-facet.html">Terms Stats Facet</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="search-facets-geo-distance-facet.html">Geo Distance Facets</a></span></dt></dl></div><p>Statistical facet allows to compute statistical data on a numeric
 fields. The statistical data include count, total, sum of squares, mean
 (average), minimum, maximum, variance, and standard deviation. Here is
-an example:</p><pre class="programlisting prettyprint noescape lang-js">{
+an example:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {}
     },
@@ -26,7 +26,7 @@ the statistical information. Sometimes, several fields values represent
 the statistics we want to compute, or some sort of mathematical
 evaluation. The script field allows to define a
 <a class="link" href="modules-scripting.html" title="Scripting">script</a> to evaluate, with
-its value used to compute the statistical information. For example:</p><pre class="programlisting prettyprint noescape lang-js">{
+its value used to compute the statistical information. For example:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {}
     },
@@ -39,7 +39,7 @@ its value used to compute the statistical information. For example:</p><pre clas
     }
 }</pre><p>Parameters can also be provided to the different scripts (preferable if
 the script is the same, with different values for a specific parameter,
-like "factor"):</p><pre class="programlisting prettyprint noescape lang-js">{
+like "factor"):</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {}
     },
@@ -54,7 +54,7 @@ like "factor"):</p><pre class="programlisting prettyprint noescape lang-js">{
         }
     }
 }</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_multi_field"></a>Multi Field</h3></div></div></div><p>The statistical facet can be executed against more than one field,
-returning the aggregation result across those fields. For example:</p><pre class="programlisting prettyprint noescape lang-js">{
+returning the aggregation result across those fields. For example:</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
         "match_all" : {}
     },

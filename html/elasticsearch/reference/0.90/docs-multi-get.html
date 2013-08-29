@@ -11,7 +11,7 @@
 (optional) and id (and possibly routing). The response includes a <code class="literal">docs</code>
 array with all the fetched documents, each element similar in structure
 to a document provided by the <a class="link" href="docs-get.html" title="Get API">get</a>
-API. Here is an example:</p><pre class="programlisting prettyprint noescape lang-js">curl 'localhost:9200/_mget' -d '{
+API. Here is an example:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/_mget' -d '{
     "docs" : [
         {
             "_index" : "test",
@@ -25,7 +25,7 @@ API. Here is an example:</p><pre class="programlisting prettyprint noescape lang
         }
     ]
 }'</pre><p>The <code class="literal">mget</code> endpoint can also be used against an index (in which case it
-is not required in the body):</p><pre class="programlisting prettyprint noescape lang-js">curl 'localhost:9200/test/_mget' -d '{
+is not required in the body):</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/test/_mget' -d '{
     "docs" : [
         {
             "_type" : "type",
@@ -36,7 +36,7 @@ is not required in the body):</p><pre class="programlisting prettyprint noescape
             "_id" : "2"
         }
     ]
-}'</pre><p>And type:</p><pre class="programlisting prettyprint noescape lang-js">curl 'localhost:9200/test/type/_mget' -d '{
+}'</pre><p>And type:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/test/type/_mget' -d '{
     "docs" : [
         {
             "_id" : "1"
@@ -46,10 +46,10 @@ is not required in the body):</p><pre class="programlisting prettyprint noescape
         }
     ]
 }'</pre><p>In which case, the <code class="literal">ids</code> element can directly be used to simplify the
-request:</p><pre class="programlisting prettyprint noescape lang-js">curl 'localhost:9200/test/type/_mget' -d '{
+request:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/test/type/_mget' -d '{
     "ids" : ["1", "2"]
 }'</pre><h3><a id="_fields_2"></a>Fields</h3><p>Specific fields can be specified to be retrieved per document to get.
-For example:</p><pre class="programlisting prettyprint noescape lang-js">curl 'localhost:9200/_mget' -d '{
+For example:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/_mget' -d '{
     "docs" : [
         {
             "_index" : "test",

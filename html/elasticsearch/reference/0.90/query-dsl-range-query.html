@@ -11,7 +11,7 @@
 The type of the Lucene query depends on the field type, for <code class="literal">string</code>
 fields, the <code class="literal">TermRangeQuery</code>, while for number/date fields, the query is
 a <code class="literal">NumericRangeQuery</code>. The following example returns all documents where
-<code class="literal">age</code> is between <code class="literal">10</code> and <code class="literal">20</code>:</p><pre class="programlisting prettyprint noescape lang-js">{
+<code class="literal">age</code> is between <code class="literal">10</code> and <code class="literal">20</code>:</p><pre class="programlisting prettyprint lang-js">{
     "range" : {
         "age" : {
             "from" : 10,

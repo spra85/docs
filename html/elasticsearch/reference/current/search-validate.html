@@ -8,12 +8,12 @@
           <a href="search-explain.html">Explain API
                » 
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="search-validate"></a>Validate API</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-search.html">Search</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-uri-request.html">URI Search</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-request-body.html">Request Body Search</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-facets.html">Facets</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-suggesters.html">Suggesters</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-multi-search.html">Multi Search API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-count.html">Count API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-validate.html">Validate API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-explain.html">Explain API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-percolate.html">Percolate API</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="search-more-like-this.html">More Like This API</a></span></dt></dl></div><p>The validate API allows a user to validate a potentially expensive query
-without executing it. The following example shows how it can be used:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
+without executing it. The following example shows how it can be used:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
     "user" : "kimchy",
     "post_date" : "2009-11-15T14:12:12",
     "message" : "trying out Elastic Search"
-}'</pre><p>When the query is valid, the response contains <code class="literal">valid:true</code>:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/twitter/_validate/query?q=user:foo'
-{"valid":true,"_shards":{"total":1,"successful":1,"failed":0}}</pre><p>Or, with a request body:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query' -d '{
+}'</pre><p>When the query is valid, the response contains <code class="literal">valid:true</code>:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/_validate/query?q=user:foo'
+{"valid":true,"_shards":{"total":1,"successful":1,"failed":0}}</pre><p>Or, with a request body:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query' -d '{
   "filtered" : {
     "query" : {
       "query_string" : {
@@ -27,9 +27,9 @@ without executing it. The following example shows how it can be used:</p><pre cl
 }'
 {"valid":true,"_shards":{"total":1,"successful":1,"failed":0}}</pre><p>If the query is invalid, <code class="literal">valid</code> will be <code class="literal">false</code>. Here the query is
 invalid because ElasticSearch knows the post_date field should be a date
-due to dynamic mapping, and <span class="emphasis"><em>foo</em></span> does not correctly parse into a date:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query?q=post_date:foo'
+due to dynamic mapping, and <span class="emphasis"><em>foo</em></span> does not correctly parse into a date:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query?q=post_date:foo'
 {"valid":false,"_shards":{"total":1,"successful":1,"failed":0}}</pre><p>An <code class="literal">explain</code> parameter can be specified to get more detailed information
-about why a query failed:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query?q=post_date:foo&amp;pretty=true&amp;explain=true'
+about why a query failed:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/_validate/query?q=post_date:foo&amp;pretty=true&amp;explain=true'
 {
   "valid" : false,
   "_shards" : {

@@ -17,14 +17,14 @@ continuous) scroll requests. The <code class="literal">scroll_id</code> should b
 scrolling (along with the <code class="literal">scroll</code> parameter, to stop the scroll from
 expiring). The scroll id can also be passed as part of the search
 request body.</p><p><span class="strong"><strong>Note</strong></span>: the <code class="literal">scroll_id</code> changes for each scroll request and only the
-most recent one should be used.</p><pre class="programlisting prettyprint noescape lang-js">$ curl -XGET 'http://localhost:9200/twitter/tweet/_search?scroll=5m' -d '{
+most recent one should be used.</p><pre class="programlisting prettyprint lang-js">$ curl -XGET 'http://localhost:9200/twitter/tweet/_search?scroll=5m' -d '{
     "query": {
         "query_string" : {
             "query" : "some query string here"
         }
     }
 }
-'</pre><pre class="programlisting prettyprint noescape lang-js">$ curl -XGET 'http://localhost:9200/_search/scroll?scroll=5m&amp;scroll_id=c2Nhbjs2OzM0NDg1ODpzRlBLc0FXNlNyNm5JWUc1'</pre><p>Scrolling is not intended for real time user requests, it is intended
+'</pre><pre class="programlisting prettyprint lang-js">$ curl -XGET 'http://localhost:9200/_search/scroll?scroll=5m&amp;scroll_id=c2Nhbjs2OzM0NDg1ODpzRlBLc0FXNlNyNm5JWUc1'</pre><p>Scrolling is not intended for real time user requests, it is intended
 for cases like scrolling over large portions of data that exists within
 elasticsearch to reindex it for example.</p><p>For more information on scrolling, see the
 <a class="link" href="search-request-search-type.html" title="Search Type">scan</a> search type.</p></div><div class="navfooter"><span class="prev"><a href="search-request-search-type.html">

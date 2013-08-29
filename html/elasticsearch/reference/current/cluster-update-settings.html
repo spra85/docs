@@ -9,21 +9,21 @@
                » 
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="cluster-update-settings"></a>Cluster Update Settings</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-health.html">Cluster Health</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-state.html">Cluster State</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-reroute.html">Cluster Reroute</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-update-settings.html">Cluster Update Settings</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-nodes-stats.html">Nodes Stats</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-nodes-info.html">Nodes Info</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-nodes-hot-threads.html">Nodes hot_threads</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="chapter"><a href="cluster-nodes-shutdown.html">Nodes Shutdown</a></span></dt></dl></div><p>Allows to update cluster wide specific settings. Settings updated can
 either be persistent (applied cross restarts) or transient (will not
-survive a full cluster restart). Here is an example:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/_cluster/settings -d '{
+survive a full cluster restart). Here is an example:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/_cluster/settings -d '{
     "persistent" : {
         "discovery.zen.minimum_master_nodes" : 2
     }
-}'</pre><p>Or:</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT localhost:9200/_cluster/settings -d '{
+}'</pre><p>Or:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/_cluster/settings -d '{
     "transient" : {
         "discovery.zen.minimum_master_nodes" : 2
     }
 }'</pre><p>The cluster responds with the settings updated. So the response for the
-last example will be:</p><pre class="programlisting prettyprint noescape lang-js">{
+last example will be:</p><pre class="programlisting prettyprint lang-js">{
     "persistent" : {},
     "transient" : {
         "discovery.zen.minimum_master_nodes" : "2"
     }
-}'</pre><p>Cluster wide settings can be returned using:</p><pre class="programlisting prettyprint noescape lang-js">curl -XGET localhost:9200/_cluster/settings</pre><p>There is a specific list of settings that can be updated, those include:</p><h3><a id="_cluster_settings"></a>Cluster settings</h3><h4><a id="_routing_allocation"></a>Routing allocation</h4><h5><a id="_awareness"></a>Awareness</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+}'</pre><p>Cluster wide settings can be returned using:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_cluster/settings</pre><p>There is a specific list of settings that can be updated, those include:</p><h3><a id="_cluster_settings"></a>Cluster settings</h3><h4><a id="_routing_allocation"></a>Routing allocation</h4><h5><a id="_awareness"></a>Awareness</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.awareness.attributes</code>
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.

@@ -8,7 +8,7 @@
           <a href="mapping-geo-shape-type.html">Geo Shape Type
                » 
             </a></span></div><div xmlns="http://www.w3.org/1999/xhtml" class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-geo-point-type"></a>Geo Point Type</h2></div></div></div><div xmlns="" class="toc"><dl><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="mapping-multi-field-type.html">Multi Field Type</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt xmlns="http://www.w3.org/1999/xhtml"><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>Mapper type called <code class="literal">geo_point</code> to support geo based points. The
-declaration looks as follows:</p><pre class="programlisting prettyprint noescape lang-js">{
+declaration looks as follows:</p><pre class="programlisting prettyprint lang-js">{
     "pin" : {
         "properties" : {
             "location" : {
@@ -25,23 +25,23 @@ memory checks, or using the indexed lat lon values, and it really
 depends on the data set which one performs better. Note though, that
 indexed lat lon only make sense when there is a single geo point value
 for the field, and not multi values.</p><h4><a id="_input_structure"></a>Input Structure</h4><p>The above mapping defines a <code class="literal">geo_point</code>, which accepts different
-formats. The following formats are supported:</p><h5><a id="_lat_lon_as_properties_5"></a>Lat Lon as Properties</h5><pre class="programlisting prettyprint noescape lang-js">{
+formats. The following formats are supported:</p><h5><a id="_lat_lon_as_properties_5"></a>Lat Lon as Properties</h5><pre class="programlisting prettyprint lang-js">{
     "pin" : {
         "location" : {
             "lat" : 41.12,
             "lon" : -71.34
         }
     }
-}</pre><h5><a id="_lat_lon_as_string_6"></a>Lat Lon as String</h5><p>Format in <code class="literal">lat,lon</code>.</p><pre class="programlisting prettyprint noescape lang-js">{
+}</pre><h5><a id="_lat_lon_as_string_6"></a>Lat Lon as String</h5><p>Format in <code class="literal">lat,lon</code>.</p><pre class="programlisting prettyprint lang-js">{
     "pin" : {
         "location" : "41.12,-71.34"
     }
-}</pre><h5><a id="_geohash_6"></a>Geohash</h5><pre class="programlisting prettyprint noescape lang-js">{
+}</pre><h5><a id="_geohash_6"></a>Geohash</h5><pre class="programlisting prettyprint lang-js">{
     "pin" : {
         "location" : "drm3btev3e86"
     }
 }</pre><h5><a id="_lat_lon_as_array_5"></a>Lat Lon as Array</h5><p>Format in <code class="literal">[lon, lat]</code>, note, the order of lon/lat here in order to
-conform with <a class="ulink" href="http://geojson.org/" target="_top">GeoJSON</a>.</p><pre class="programlisting prettyprint noescape lang-js">{
+conform with <a class="ulink" href="http://geojson.org/" target="_top">GeoJSON</a>.</p><pre class="programlisting prettyprint lang-js">{
     "pin" : {
         "location" : [-71.34, 41.12]
     }

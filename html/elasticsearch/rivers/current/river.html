@@ -16,13 +16,13 @@ different rivers implementations accept a document called <code class="literal">
 at the very least has the type of the river (twitter / couchdb / …)
 associated with it. Creating a river is a simple curl request to index
 that <code class="literal">_meta</code> document (there is actually a <code class="literal">dummy</code> river used for
-testing):</p><pre class="programlisting prettyprint noescape lang-js">curl -XPUT 'localhost:9200/_river/my_river/_meta' -d '{
+testing):</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'localhost:9200/_river/my_river/_meta' -d '{
     "type" : "dummy"
 }'</pre><p>A river can also have more data associated with it in the form of more
 documents indexed under the given index type (the river name). For
 example, storing the last indexed state can be stored in a document that
 holds it.</p><p>Deleting a river is a call to delete the type (and all documents
-associated with it):</p><pre class="programlisting prettyprint noescape lang-js">curl -XDELETE 'localhost:9200/_river/my_river/'</pre><h2><a id="_cluster_allocation"></a>Cluster Allocation</h2><p>Rivers are singletons within the cluster. They get allocated
+associated with it):</p><pre class="programlisting prettyprint lang-js">curl -XDELETE 'localhost:9200/_river/my_river/'</pre><h2><a id="_cluster_allocation"></a>Cluster Allocation</h2><p>Rivers are singletons within the cluster. They get allocated
 automatically to one of the nodes and run. If that node fails, an river
 will be automatically allocated to another node.</p><p>River allocation on nodes can be controlled on each node. The
 <code class="literal">node.river</code> can be set to <code class="literal">_none_</code> disabling any river allocation to
