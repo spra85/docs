@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use v5.10;
 
-use ES::Util qw(run);
+use ES::Util qw(run sha_for);
 
 my %Repos;
 
