@@ -3,6 +3,7 @@ package ES::LinkCheck;
 use strict;
 use warnings;
 use v5.10;
+use ES::Util qw(run);
 
 our $Link_Re = qr{
     href="http://www.elasticsearch.org/guide/
@@ -99,9 +100,9 @@ sub _fragment_exists {
     my $seen = $self->seen;
 
     unless ( exists $seen->{"$path#$frag"} ) {
-        my $contents = $file->slurp( iomode => '<:encoding(UTF-8)' );
-        while ( $contents =~ /<a id="([^"]+)"/g ) {
-            $seen->{"$path#$1"} = 1;
+        my $frags = run qw(xsltproc resources/extract_ids.xsl), $file;
+        if ($frags) {
+            $seen->{"$path#$_"} = 1 for split "\n", $frags;
         }
     }
     return $seen->{"$path#$frag"} ||= 0;
