@@ -121,12 +121,12 @@ sub has_changed {
 
     local $ENV{GIT_DIR} = $self->git_dir;
 
-    my $new = $self->_sha_for("refs/remotes/origin/$branch")
+    my $new = sha_for("refs/remotes/origin/$branch")
         or die "Remote branch <origin/$branch> doesn't exist "
         . "in repo "
         . $self->name;
 
-    my $old = $self->_sha_for("refs/heads/$tracker")
+    my $old = sha_for("refs/heads/$tracker")
         or return 1;
 
     return if $old eq $new;
@@ -156,15 +156,6 @@ sub tracker_branch {
     my $path   = shift or die "No <path> specified";
     my $branch = shift or die "No <branch> specified";
     return "_${path}_${branch}";
-}
-
-#===================================
-sub _sha_for {
-#===================================
-    my ( $self, $rev ) = @_;
-    my $sha = eval { run 'git', 'rev-parse', $rev } || '';
-    chomp $sha;
-    return $sha;
 }
 
 #===================================

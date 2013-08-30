@@ -9,7 +9,7 @@ use Capture::Tiny qw(capture_merged tee_merged);
 
 require Exporter;
 our @ISA       = qw(Exporter);
-our @EXPORT_OK = qw(run $Opts build_chunked build_single);
+our @EXPORT_OK = qw(run $Opts build_chunked build_single sha_for);
 our $Opts      = {};
 
 #===================================
@@ -112,5 +112,16 @@ sub run (@) {
 
     return $out;
 }
+
+#===================================
+sub sha_for {
+#===================================
+    my $rev = shift;
+    my $sha = eval { run 'git', 'rev-parse', $rev } || '';
+    chomp $sha;
+    return $sha;
+}
+
+
 
 1
