@@ -63,11 +63,14 @@ sub index_docs {
     my $aliases = $e->get_aliases( index => 'docs', ignore_missing => 1 )
         || {};
 
-    if ( my ($current) = keys %$aliases ) {
+    my $current;
+    if ( ($current) = keys %$aliases ) {
         push @actions, { remove => { alias => 'docs', index => $current } };
     }
 
     $e->aliases( actions => \@actions );
+    $e->delete_index( index => $current )
+        if $current;
 }
 
 #===================================
