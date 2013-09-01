@@ -6,7 +6,7 @@ use v5.10;
 
 use FindBin;
 use lib "$FindBin::RealBin/lib";
-use ES::Util qw(run $Opts build_chunked build_single);
+use ES::Util qw(run $Opts build_chunked build_single sha_for);
 use Getopt::Long;
 use YAML qw(LoadFile);
 use Path::Class qw(dir file);
@@ -159,14 +159,20 @@ sub push_changes {
 
         say "Rebasing changes";
         run qw(git pull --rebase );
+    }
 
+    my $remote_sha = eval {
+        my $remote = run qw(git rev-parse --symbolic-full-name @{u});
+        chomp $remote;
+        return sha_for($remote);
+    } || '';
+
+    if ( sha_for('HEAD') ne $remote_sha ) {
         say "Pushing changes";
         run qw(git push origin HEAD );
-
-        say "Changes pushed";
     }
     else {
-        say "No changes to commit";
+        say "No changes to push";
     }
 }
 
