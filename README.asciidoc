@@ -1,0 +1,196 @@
+= Docs HOWTO
+:doctype: book
+
+== Setting up the build environment
+
+[float]
+=== Requirements
+
+First, you need to make sure that you have the following installed:
+
+* `perl` -- system `perl` is fine
+* `python` -- system `python` is fine
+* `xsltproc` -- if not already installed, see http://www.sagehill.net/docbookxsl/InstallingAProcessor.html[Installing a Processor]
+
+[float]
+=== Cloning the repository
+
+Clone the `docs` repository with:
+
+[source,shell]
+----------------------------
+git clone git@github.com:elasticsearch/docs.git
+----------------------------
+
+You can test that everything is working correctly by building
+this README as follows:
+
+[source,shell]
+----------------------------
+cd docs/
+./build_docs.pl --doc README.asciidoc --single --toc --open
+----------------------------
+
+This should convert `README.asciidoc` into the HTML file 
+`./html_docs/README.html`, and open it in your browser.
+
+== Building documentation
+
+The `build_docs.pl` executable can be used to build the documentation 
+from a locally checked out repository, or to build all the 
+documentation that will be uploaded to the website.
+
+Create a symbolic link to `build_docs.pl` to make it more convenient
+to use:
+
+[source,shell]
+----------------------------
+sudo ln -s `pwd`/build_docs.pl /usr/local/bin/build_docs.pl
+----------------------------
+
+[[local]]
+=== Building from a local repo
+
+When you are making changes to documentation in a locally checked
+out repository, and you want to check that they are building
+correctly, use `build_docs.pl` with the `--doc` parameter to
+generate the HTML version of the docs:
+
+[source,shell]
+----------------------------
+cd path/to/your/repo
+build_docs.pl --doc path/to/index.asciidoc 
+----------------------------
+
+[float]
+==== Specifying a different output dir
+
+By default, the HTML docs are generated in `./html_docs`. You can 
+change the output directory with the `--out` parameter:
+
+[source,shell]
+----------------------------
+build_docs.pl --doc path/to/index.asciidoc --out output/dir/
+----------------------------
+
+WARNING: The `output/dir/` will be deleted and recreated, so don't point it at a directory with contents that you want to keep.
+
+[float]
+==== Viewing the docs
+
+To view the generated docs in your web broweser immediately after
+the build has finished, use the `--open` parameter:
+
+[source,shell]
+----------------------------
+build_docs.pl --doc path/to/index.asciidoc --open
+----------------------------
+
+[float]
+==== Single- or multi-page
+
+By default, the build process generates an HTML file per 
+part/chapter/section.  To generate all of the docs in a single
+file instead, use the `--single` parameter:
+
+[source,shell]
+----------------------------
+build_docs.pl --doc path/to/index.asciidoc --single
+----------------------------
+
+And if you want a table of contents added at the beginning
+of the single page output, add the `--toc` parameter:
+
+[source,shell]
+----------------------------
+build_docs.pl --doc path/to/index.asciidoc --single --toc
+----------------------------
+
+NOTE: The multi-page output always contains tables-of-content
+where appropriate.
+
+[float]
+==== Correcting errors
+
+Asciidoc is converted to DocBook, which is then converted to HTML.
+DocBook is strict, which means that you have to follow the rules
+(see <<asciidoc-guide>>) otherwise the build process will throw
+an error.
+
+The most common errors are:
+
+* Asciidoc syntax error, eg `=Title` instead of `= Title` or
+  unclosed block delimiters, eg `======` or `------`
+* incorrect order of elements, eg `= Title` followed by 
+  a `=== Level 3` header
+* Linking to an non-existent ID
+
+[[website]]
+=== Building the website docs
+
+Usually you don't need to build all the docs that will be uploaded
+to the website, but if you are linking between documents (e.g.
+between the Java API docs and the main reference documentation),
+then building all of the docs will report any missing links.
+
+You can build all the docs with:
+
+[source,shell]
+----------------------------
+build_docs.pl --all
+----------------------------
+
+The first time you run this will be slow as it needs to:
+
+* clone each repository 
+* build the docs for each branch
+
+Subsequent runs will pull any changes to the repos and only build the 
+branches that have changed.
+
+[float]
+==== Checking your changes
+
+Because the docs are built from the remote repositories, you will
+need to push your changes to the main repo before running
+`build_docs.pl --all`.
+
+Assuming you have already checked that your docs build correctly
+using the <<local,local build process>>, the only other errors
+that might occur at this stage are bad cross-document links.
+
+Once the docs build correctly, you don't need to do anything more.
+The changes that you have pushed to your repository will be 
+picked up automatically by the docs build service.
+
+[[config]]
+=== Adding new docs or new branches
+
+The documentation that appears on the http://elasticsearch.org/guide
+website is controlled by the
+https://github.com/elasticsearch/docs/blob/master/conf.yaml[`conf.yaml`] file in the `docs` repo.
+
+You can add a new repository under the `repos` section, if it
+doesn't already exist, and you can add a new ``book'' under the
+`contents` section.  
+
+The `repos.$NAME.branches[]` key lists all of the branches which
+should be built -- all of these branches will be available on the
+website -- while `repos.$NAME.current` lists the branch which 
+should be used as the default version on the site.
+
+NOTE: The `branches` and `current` settings can be overridden in
+the config for each book.  For instance, the ``Community Clients``
+docs are built only from the `master` branch.
+
+When you release a new version of your code, you need to add
+a new `branch` to the config and to update the `current` branch
+for your project.  Commit the change to `conf.yaml` and push
+to the remote `docs` repo.
+
+[[asciidoc-guide]]
+== Asciidoc Guide
+
+Foo
+
+
