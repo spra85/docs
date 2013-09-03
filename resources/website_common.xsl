@@ -6,7 +6,7 @@
   <xsl:param name="html.stylesheet"></xsl:param>
 
   <!-- nav -->
-  <xsl:param name="part.autolabel"          select="1"/>
+  <xsl:param name="part.autolabel"          select="0"/>
   <xsl:param name="chapter.autolabel"       select="0"/>
   <xsl:param name="section.autolabel"       select="0"/>
 
