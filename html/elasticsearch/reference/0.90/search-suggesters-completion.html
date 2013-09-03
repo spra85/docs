@@ -50,10 +50,13 @@ curl -X PUT localhost:9200/music/song/_mapping -d '{
 <code class="literal">payloads</code>
 </span></dt><dd>
     Enables the storing of payloads, defaults to <code class="literal">false</code>
-</dd></dl></div><p><code class="literal">preserve_separators</code>:
+</dd><dt><span class="term">
+<code class="literal">preserve_separators</code>
+</span></dt><dd>
     Preserves the separators, defaults to <code class="literal">true</code>.
     If disabled, you could find a field starting with <code class="literal">Foo Fighters</code>, if you
-    suggest for <code class="literal">foof</code>.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+    suggest for <code class="literal">foof</code>.
+</dd><dt><span class="term">
 <code class="literal">preserve_position_increments</code>
 </span></dt><dd>
     Enables position increments, defaults
@@ -62,6 +65,15 @@ curl -X PUT localhost:9200/music/song/_mapping -d '{
     could also achieve this by indexing two inputs, <code class="literal">Beatles</code> and
     <code class="literal">The Beatles</code>, no need to change a simple analyzer, if you are able to
     enrich your data.
+</dd><dt><span class="term">
+<code class="literal">max_input_len</code>
+</span></dt><dd>
+    Limits the length of a single input, defaults to <code class="literal">50</code> UTF-16 code points.
+    This limit is only used at index time to reduce the total number of
+    characters per input string in order to prevent massive inputs from
+    bloating the underlying datastructure. The most usecases won’t be influenced
+    by the default value since prefix completions hardly grow beyond prefixes longer
+    than a handful of characters.
 </dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_indexing"></a>Indexing</h3></div></div></div><pre class="programlisting prettyprint lang-js">curl -X PUT 'localhost:9200/music/song/1?refresh=true' -d '{
     "name" : "Nevermind",
     "suggest" : {

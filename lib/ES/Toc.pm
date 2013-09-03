@@ -55,7 +55,7 @@ sub render {
             push @adoc, $prefix . "link:$entry->{url}" . "[$entry->{title}]";
             if ( $entry->{versions} ) {
                 $adoc[-1]
-                    .= " (see link:$entry->{versions}" . "[other versions])";
+                    .= " --  link:$entry->{versions}" . "[other versions]";
             }
         }
     }
