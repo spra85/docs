@@ -16,8 +16,8 @@ action_and_meta_data\n
 optional_source\n
 ....
 action_and_meta_data\n
-optional_source\n</pre><p><span class="strong"><strong>NOTE</strong></span>: the final line of data must end with a newline character <code class="literal">\n</code>.</p><p>The possible actions are <code class="literal">index</code>, <code class="literal">create</code>, <code class="literal">delete</code> and since version
-<code class="literal">0.90.1</code> also <code class="literal">update</code>. <code class="literal">index</code> and <code class="literal">create</code> expect a source on the next
+optional_source\n</pre><p><span class="strong"><strong>NOTE</strong></span>: the final line of data must end with a newline character <code class="literal">\n</code>.</p><p>The possible actions are <code class="literal">index</code>, <code class="literal">create</code>, <code class="literal">delete</code> and <code class="literal">update</code>.
+<code class="literal">index</code> and <code class="literal">create</code> expect a source on the next
 line, and have the same semantics as the <code class="literal">op_type</code> parameter to the
 standard index API (i.e. create will fail if a document with the same
 index and type exists already, whereas index will add or replace a

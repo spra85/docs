@@ -17,10 +17,7 @@ using:</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {
         "_id" : {"index": "not_analyzed", "store" : "yes"}
     }
-}</pre><p>In order to maintain backward compatibility, a node level setting
-<code class="literal">index.mapping._id.indexed</code> can be set to <code class="literal">true</code> to make sure that the
-id is indexed when upgrading to <code class="literal">0.16</code>, though it’s recommended to not
-index the id.</p><p>The <code class="literal">_id</code> mapping can also be associated with a <code class="literal">path</code> that will be used
+}</pre><p>The <code class="literal">_id</code> mapping can also be associated with a <code class="literal">path</code> that will be used
 to extract the id from a different location in the source document. For
 example, having the following mapping:</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {

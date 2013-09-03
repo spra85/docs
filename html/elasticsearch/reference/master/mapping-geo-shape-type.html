@@ -16,10 +16,7 @@ or <a class="link" href="query-dsl-geo-shape-query.html" title="GeoShape Query">
 <a class="ulink" href="https://github.com/spatial4j/spatial4j" target="_top">Spatial4J</a> and
 <a class="ulink" href="http://www.vividsolutions.com/jts/jtshome.htm" target="_top">JTS</a>, both of which are
 optional dependencies. Consequently you must add Spatial4J v0.3 and JTS
-v1.12 to your classpath in order to use this type.</p><p>Note, the implementation of geo_shape was modified in an API breaking
-way in 0.90. Implementations prior to this version had significant
-issues and users are recommended to update to the latest version of
-Elasticsearch if they wish to use the geo_shape functionality.</p><h4><a id="_mapping_options_2"></a>Mapping Options</h4><p>The geo_shape mapping maps geo_json geometry objects to the geo_shape
+v1.12 to your classpath in order to use this type.</p><h4><a id="_mapping_options_2"></a>Mapping Options</h4><p>The geo_shape mapping maps geo_json geometry objects to the geo_shape
 type. To enable it, users must explicitly map fields to the geo_shape
 type.</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Option </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">tree</code></p></td><td align="left" valign="top"><p>Name of the PrefixTree implementation to be used: <code class="literal">geohash</code> for
 GeohashPrefixTree and <code class="literal">quadtree</code> for QuadPrefixTree. Defaults to

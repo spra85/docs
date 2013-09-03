@@ -31,8 +31,7 @@ Here is an example:</p><pre class="programlisting prettyprint lang-js">{
 <code class="literal">synonym</code> analyzer is then configured with the filter. Additional
 settings are: <code class="literal">ignore_case</code> (defaults to <code class="literal">false</code>), and <code class="literal">expand</code>
 (defaults to <code class="literal">true</code>).</p><p>The <code class="literal">tokenizer</code> parameter controls the tokenizers that will be used to
-tokenize the synonym, and defaults to the <code class="literal">whitespace</code> tokenizer.</p><p>As of elasticsearch 0.17.9 two synonym formats are supported: Solr,
-WordNet.</p><h4><a id="_solr_synonyms"></a>Solr synonyms</h4><p>The following is a sample format of the file:</p><pre class="programlisting prettyprint lang-js"># blank lines and lines starting with pound are comments.
+tokenize the synonym, and defaults to the <code class="literal">whitespace</code> tokenizer.</p><p>Two synonym formats are supported: Solr, WordNet.</p><h4><a id="_solr_synonyms"></a>Solr synonyms</h4><p>The following is a sample format of the file:</p><pre class="programlisting prettyprint lang-js"># blank lines and lines starting with pound are comments.
 
 #Explicit mappings match any token sequence on the LHS of "=&gt;"
 #and replace with all alternatives on the RHS.  These types of mappings

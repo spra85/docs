@@ -21,7 +21,7 @@ set to <code class="literal">value1</code> and <code class="literal">value2</cod
 nodes except for nodes with a <code class="literal">tag</code> of value <code class="literal">value3</code> by setting
 <code class="literal">index.routing.allocation.exclude.tag</code> to <code class="literal">value3</code>. For example:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test/_settings -d '{
     "index.routing.allocation.exclude.tag" : "value3"
-}'</pre><p>From version 0.90, <code class="literal">index.routing.allocation.require.*</code> can be used to
+}'</pre><p><code class="literal">index.routing.allocation.require.*</code> can be used to
 specify a number of rules, all of which MUST match in order for a shard
 to be allocated to a node. This is in contrast to <code class="literal">include</code> which will
 include a node if ANY rule matches.</p><p>The <code class="literal">include</code>, <code class="literal">exclude</code> and <code class="literal">require</code> values can have generic simple

@@ -129,10 +129,7 @@ multi valued properly.</p><p>For example, let’s use the following mapping:</p>
             "count" : 6
         }
     ]
-}</pre><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note: Nested Query Facets"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left">Nested Query Facets</th></tr><tr><td align="left" valign="top"><p>Scoped filters and queries have been removed from version <code class="literal">0.90.0.Beta1</code>
-instead the facet / queries need be repeated as <code class="literal">facet_filter</code>. More
-information about this can be found in
-<a class="ulink" href="https://github.com/elasticsearch/elasticsearch/issues/2606" target="_top">issue 2606</a></p></td></tr></table></div><h4><a id="_all_nested_matching_root_documents"></a>All Nested Matching Root Documents</h4><p>Another option is to run the facet on all the nested documents matching
+}</pre><h4><a id="_all_nested_matching_root_documents"></a>All Nested Matching Root Documents</h4><p>Another option is to run the facet on all the nested documents matching
 the root objects that the main query will end up producing. For example:</p><pre class="programlisting prettyprint lang-js">{
     "query": {
         "match_all": {}

@@ -12,7 +12,7 @@ The operation gets the document (collocated with the shard) from the
 index, runs the script (with optional script language and parameters),
 and index back the result (also allows to delete, or ignore the
 operation). It uses versioning to make sure no updates have happened
-during the "get" and "reindex". (available from <code class="literal">0.19</code> onwards).</p><p>Note, this operation still means full reindex of the document, it just
+during the "get" and "reindex".</p><p>Note, this operation still means full reindex of the document, it just
 removes some network roundtrips and reduces chances of version conflicts
 between the get and the index. The <code class="literal">_source</code> field need to be enabled
 for this feature to work.</p><p>For example, lets index a simple doc:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test/type1/1 -d '{
@@ -45,7 +45,7 @@ ctx._source.tags.contains(tag) ? ctx.op = \"none\" : ctx._source.tags += tag
 // Will update
 ctx._source.tags.contains(tag) ? (ctx.op = \"none\") : ctx._source.tags += tag
 // Also works
-if (ctx._source.tags.contains(tag)) { ctx.op = \"none\" } else { ctx._source.tags += tag }</pre><p>The update API also support passing a partial document (since 0.20),
+if (ctx._source.tags.contains(tag)) { ctx.op = \"none\" } else { ctx._source.tags += tag }</pre><p>The update API also support passing a partial document,
 which will be merged into the existing document (simple recursive merge,
 inner merging of objects, replacing core "keys/values" and arrays). For
 example:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
@@ -53,7 +53,7 @@ example:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localho
         "name" : "new_name"
     }
 }'</pre><p>If both <code class="literal">doc</code> and <code class="literal">script</code> is specified, then <code class="literal">doc</code> is ignored. Best is
-to put your field pairs of the partial document in the script itself.</p><p>There is also support for <code class="literal">upsert</code> (since 0.20). If the document does
+to put your field pairs of the partial document in the script itself.</p><p>There is also support for <code class="literal">upsert</code>. If the document does
 not already exists, the content of the <code class="literal">upsert</code> element will be used to
 index the fresh doc:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
     "script" : "ctx._source.counter += count",
@@ -63,7 +63,7 @@ index the fresh doc:</p><pre class="programlisting prettyprint lang-js">curl -XP
     "upsert" : {
         "counter" : 1
     }
-}'</pre><p>Last it also supports <code class="literal">doc_as_upsert</code> (since 0.90.2). So that the
+}'</pre><p>Last it also supports <code class="literal">doc_as_upsert</code>. So that the
 provided document will be inserted if the document does not already
 exist. This will reduce the amount of data that needs to be sent to
 elasticsearch.</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
@@ -139,8 +139,8 @@ Refresh the index immediately after the operation occurs,
 </p>
 </td><td valign="top">
 <p>
-return the relevant fields from the document updated
-                (since 0.20). Support <code class="literal">_source</code> to return the full updated
+return the relevant fields from the updated document.
+                Support <code class="literal">_source</code> to return the full updated
                 source.
 </p>
 </td></tr></tbody></table></div><p>And also support <code class="literal">retry_on_conflict</code> which controls how many times to

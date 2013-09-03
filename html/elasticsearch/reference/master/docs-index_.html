@@ -42,8 +42,7 @@ Automatic mapping creation can be disabled by setting
 <code class="literal">index.mapper.dynamic</code> to <code class="literal">false</code> in the config files of all nodes (or
 on the specific index settings).</p><p>Automatic index creation can include a pattern based white/black list,
 for example, set <code class="literal">action.auto_create_index</code> to <code class="literal">+aaa*,-bbb*,+ccc*,-*</code> (+
-meaning allowed, and - meaning disallowed). Note, this feature is
-available since 0.20.</p><h3><a id="_versioning"></a>Versioning</h3><p>Each indexed document is given a version number. The associated
+meaning allowed, and - meaning disallowed).</p><h3><a id="_versioning"></a>Versioning</h3><p>Each indexed document is given a version number. The associated
 <code class="literal">version</code> number is returned as part of the response to the index API
 request. The index API optionally allows for
 <a class="ulink" href="http://en.wikipedia.org/wiki/Optimistic_concurrency_control" target="_top">optimistic

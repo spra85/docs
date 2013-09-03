@@ -11,8 +11,7 @@
 executed in the parent document space, which is specified by the parent
 type. This filter return child documents which associated parents have
 matched. For the rest <code class="literal">has_parent</code> filter has the same options and works
-in the same manner as the <code class="literal">has_child</code> filter.</p><p>The <code class="literal">has_parent</code> filter is available from version <code class="literal">0.19.10</code>. This is an
-experimental filter.</p><h4><a id="_filter_example"></a>Filter example</h4><pre class="programlisting prettyprint lang-js">{
+in the same manner as the <code class="literal">has_child</code> filter.</p><h4><a id="_filter_example"></a>Filter example</h4><pre class="programlisting prettyprint lang-js">{
     "has_parent" : {
         "parent_type" : "blog",
         "query" : {

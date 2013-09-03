@@ -114,7 +114,7 @@ curl -XGET 'http://localhost:9200/_nodes/process/stats'
 curl -XGET 'http://localhost:9200/_nodes/10.0.0.1/process/stats'
 # or, if you like the other way
 curl -XGET 'http://localhost:9200/_nodes/stats/process'
-curl -XGET 'http://localhost:9200/_nodes/10.0.0.1/stats/process'</pre><p>The <code class="literal">all</code> flag can be set to return all the stats.</p><h3><a id="_field_data_statistics"></a>Field data statistics</h3><p>From 0.90, you can get information about field data memory usage on node
+curl -XGET 'http://localhost:9200/_nodes/10.0.0.1/stats/process'</pre><p>The <code class="literal">all</code> flag can be set to return all the stats.</p><h3><a id="_field_data_statistics"></a>Field data statistics</h3><p>You can get information about field data memory usage on node
 level or on index level.</p><pre class="programlisting prettyprint lang-js"># Node Stats
 curl localhost:9200/_nodes/stats/indices/fielddata/field1,field2?pretty
 

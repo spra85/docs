@@ -28,9 +28,7 @@ perform the discovery.</p><h4><a id="_master_election"></a>Master Election</h4><
 elected or joined to. This is done automatically. The
 <code class="literal">discovery.zen.ping_timeout</code> (which defaults to <code class="literal">3s</code>) allows to
 configure the election to handle cases of slow or congested networks
-(higher values assure less chance of failure). Note, this setting was
-changed from 0.15.1 onwards, prior it was called
-<code class="literal">discovery.zen.initial_ping_timeout</code>.</p><p>Nodes can be excluded from becoming a master by setting <code class="literal">node.master</code> to
+(higher values assure less chance of failure).</p><p>Nodes can be excluded from becoming a master by setting <code class="literal">node.master</code> to
 <code class="literal">false</code>. Note, once a node is a client node (<code class="literal">node.client</code> set to
 <code class="literal">true</code>), it will not be allowed to become a master (<code class="literal">node.master</code> is
 automatically set to <code class="literal">false</code>).</p><p>The <code class="literal">discovery.zen.minimum_master_nodes</code> allows to control the minimum

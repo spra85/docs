@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>How it Works</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Rivers" /><link rel="up" href="index.html" title="Rivers" /><link rel="prev" href="river.html" title="Intro" /><link rel="next" href="_cluster_allocation.html" title="Cluster Allocation" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1376314515" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1375472072"></script><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Rivers</a></span> &gt; <span class="breadcrumb-node">How it Works</span></div><div class="navheader"><span class="prev"><a href="river.html">
+              « 
+              Intro</a>
+           
+        </span><span class="next">
+           
+          <a href="_cluster_allocation.html">Cluster Allocation
+               » 
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_how_it_works"></a>How it Works</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="river.html">Intro</a></span></dt><dt><span class="chapter"><a href="_how_it_works.html">How it Works</a></span></dt><dt><span class="chapter"><a href="_cluster_allocation.html">Cluster Allocation</a></span></dt><dt><span class="chapter"><a href="_status.html">Status</a></span></dt><dt><span class="chapter"><a href="river-couchdb.html">CouchDB River</a></span></dt><dt><span class="chapter"><a href="river-rabbitmq.html">RabbitMQ River</a></span></dt><dt><span class="chapter"><a href="river-twitter.html">Twitter River</a></span></dt><dt><span class="chapter"><a href="river-wikipedia.html">Wikipedia River</a></span></dt></dl></div><p>A river instance (and its name) is a type within the <code class="literal">_river</code> index. All
+different rivers implementations accept a document called <code class="literal">_meta</code> that
+at the very least has the type of the river (twitter / couchdb / …)
+associated with it. Creating a river is a simple curl request to index
+that <code class="literal">_meta</code> document (there is actually a <code class="literal">dummy</code> river used for
+testing):</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'localhost:9200/_river/my_river/_meta' -d '{
+    "type" : "dummy"
+}'</pre><p>A river can also have more data associated with it in the form of more
+documents indexed under the given index type (the river name). For
+example, storing the last indexed state can be stored in a document that
+holds it.</p><p>Deleting a river is a call to delete the type (and all documents
+associated with it):</p><pre class="programlisting prettyprint lang-js">curl -XDELETE 'localhost:9200/_river/my_river/'</pre></div><div class="navfooter"><span class="prev"><a href="river.html">
+              « 
+              Intro</a>
+           
+        </span><span class="next">
+           
+          <a href="_cluster_allocation.html">Cluster Allocation
+               » 
+            </a></span></div></article></section></div></div></div><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script></body></html>

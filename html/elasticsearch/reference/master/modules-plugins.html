@@ -7,37 +7,26 @@
            
           <a href="modules-scripting.html">Scripting
                » 
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-plugins"></a>Plugins</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="modules-jmx.html">JMX</a></span></dt><dt><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt></dl></div><h3><a id="_plugins"></a>Plugins</h3><p>Plugins are a way to enhance the basic elasticsearch functionality in a
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-plugins"></a>Plugins</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt></dl></div><h3><a id="_plugins"></a>Plugins</h3><p>Plugins are a way to enhance the basic elasticsearch functionality in a
 custom manner. They range from adding custom mapping types, custom
 analyzers (in a more built in fashion), native scripts, custom discovery
 and more.</p><h4><a id="_installing_plugins"></a>Installing plugins</h4><p>Installing plugins can either be done manually by placing them under the
 <code class="literal">plugins</code> directory, or using the <code class="literal">plugin</code> script. Several plugins can
 be found under the <a class="ulink" href="https://github.com/elasticsearch" target="_top">elasticsearch</a>
-organization in GitHub, starting with <code class="literal">elasticsearch-</code>.</p><p>Starting from 0.90.2, installing plugins typically take the form of
-<code class="literal">plugin --install &lt;org&gt;/&lt;user/component&gt;/&lt;version&gt;</code>. The plugins will be
+organization in GitHub, starting with <code class="literal">elasticsearch-</code>.</p><p>Installing plugins typically take the following form:</p><pre class="programlisting prettyprint lang-shell">plugin --install &lt;org&gt;/&lt;user/component&gt;/&lt;version&gt;</pre><p>The plugins will be
 automatically downloaded in this case from <code class="literal">download.elasticsearch.org</code>,
 and in case they don’t exist there, from maven (central and sonatype).</p><p>Note that when the plugin is located in maven central or sonatype
 repository, <code class="literal">&lt;org&gt;</code> is the artifact <code class="literal">groupId</code> and <code class="literal">&lt;user/component&gt;</code> is
-the <code class="literal">artifactId</code>.</p><p>For prior version, the older form is
-<code class="literal">plugin -install &lt;org&gt;/&lt;user/component&gt;/&lt;version&gt;</code></p><p>A plugin can also be installed directly by specifying the URL for it,
-for example:
-<code class="literal">bin/plugin --url file://path/to/plugin --install plugin-name</code> or
-<code class="literal">bin/plugin -url file://path/to/plugin -install plugin-name</code> for older
-version.</p><p>Starting from 0.90.2, for more information about plugins, you can run
-<code class="literal">bin/plugin -h</code>.</p><h4><a id="_site_plugins"></a>Site Plugins</h4><p>Plugins can have "sites" in them, any plugin that exists under the
+the <code class="literal">artifactId</code>.</p><p>A plugin can also be installed directly by specifying the URL for it,
+for example:</p><pre class="programlisting prettyprint lang-shell">bin/plugin --url file://path/to/plugin --install plugin-name</pre><p>You can run <code class="literal">bin/plugin -h</code>.</p><h4><a id="_site_plugins"></a>Site Plugins</h4><p>Plugins can have "sites" in them, any plugin that exists under the
 <code class="literal">plugins</code> directory with a <code class="literal">_site</code> directory, its content will be
 statically served when hitting <code class="literal">/_plugin/[plugin_name]/</code> url. Those can
 be added even after the process has started.</p><p>Installed plugins that do not contain any java related content, will
 automatically be detected as site plugins, and their content will be
 moved under <code class="literal">_site</code>.</p><p>The ability to install plugins from Github allows to easily install site
 plugins hosted there by downloading the actual repo, for example,
-running:</p><pre class="programlisting prettyprint lang-js"># From 0.90.2
-bin/plugin --install mobz/elasticsearch-head
-bin/plugin --install lukas-vlcek/bigdesk
-
-# From a prior version
-bin/plugin -install mobz/elasticsearch-head
-bin/plugin -install lukas-vlcek/bigdesk</pre><p>Will install both of those site plugins, with <code class="literal">elasticsearch-head</code>
+running:</p><pre class="programlisting prettyprint lang-js">bin/plugin --install mobz/elasticsearch-head
+bin/plugin --install lukas-vlcek/bigdesk</pre><p>Will install both of those site plugins, with <code class="literal">elasticsearch-head</code>
 available under <code class="literal">http://localhost:9200/_plugin/head/</code> and <code class="literal">bigdesk</code>
 available under <code class="literal">http://localhost:9200/_plugin/bigdesk/</code>.</p><h4><a id="_mandatory_plugins"></a>Mandatory Plugins</h4><p>If you rely on some plugins, you can define mandatory plugins using the
 <code class="literal">plugin.mandatory</code> attribute, for example, here is a sample config:</p><pre class="programlisting prettyprint lang-js">plugin.mandatory: mapper-attachments,lang-groovy</pre><p>For safety reasons, if a mandatory plugin is not installed, the node

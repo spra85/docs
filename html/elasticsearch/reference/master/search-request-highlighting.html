@@ -38,7 +38,7 @@ the index to be bigger):</p><pre class="programlisting prettyprint lang-js">{
     "type_name" : {
         "content" : {"term_vector" : "with_positions_offsets"}
     }
-}</pre><p>Since <code class="literal">0.20.2</code> the field name support wildcard notation, for example,
+}</pre><p>The field name supports wildcard notation, for example,
 using <code class="literal">comment_*</code> which will cause all fields that match the expression
 to be highlighted.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_highlighting_tags"></a>Highlighting Tags</h3></div></div></div><p>By default, the highlighting will wrap highlighted text in <code class="literal">&lt;em&gt;</code> and
 <code class="literal">&lt;/em&gt;</code>. This can be controlled by setting <code class="literal">pre_tags</code> and <code class="literal">post_tags</code>,

@@ -18,18 +18,7 @@ example:</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {
         "_source" : {"enabled" : false}
     }
-}</pre><h4><a id="_compression"></a>Compression</h4><p><span class="strong"><strong>From version 0.90 onwards, all stored fields (including <code class="literal">_source</code>) are
-always compressed.</strong></span></p><p>For versions before 0.90:</p><p>The source field can be compressed (LZF) when stored in the index. This
-can greatly reduce the index size, as well as possibly improving
-performance (when decompression overhead is better than loading a bigger
-source from disk). The code takes special care to decompress the source
-only when needed, for example decompressing it directly into the REST
-stream of a result.</p><p>In order to enable compression, the <code class="literal">compress</code> option should be set to
-<code class="literal">true</code>. By default it is set to <code class="literal">false</code>. Note, this can be changed on an
-existing index, as a mix of compressed and uncompressed sources is
-supported.</p><p>Moreover, a <code class="literal">compress_threshold</code> can be set to control when the source
-will be compressed. It accepts a byte size value (for example <code class="literal">100b</code>,
-<code class="literal">10kb</code>). Note, <code class="literal">compress</code> should be set to <code class="literal">true</code>.</p><h4><a id="_includes_excludes"></a>Includes / Excludes</h4><p>Allow to specify paths in the source that would be included / excluded
+}</pre><h4><a id="_includes_excludes"></a>Includes / Excludes</h4><p>Allow to specify paths in the source that would be included / excluded
 when it’s stored, supporting <code class="literal">*</code> as wildcard annotation. For example:</p><pre class="programlisting prettyprint lang-js">{
     "my_type" : {
         "_source" : {

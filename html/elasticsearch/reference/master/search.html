@@ -12,8 +12,7 @@
 support wildcards, for example: <code class="literal">test*</code>, and the ability to "add" (<code class="literal">+</code>)
 and "remove" (<code class="literal">-</code>), for example: <code class="literal">+test*,-test3</code>.</p><p>All multi indices API support the <code class="literal">ignore_indices</code> option. Setting it to
 <code class="literal">missing</code> will cause indices that do not exists to be ignored from the
-execution. By default, when its not set, the request will fail. Note,
-this feature is available since 0.20 version.</p><h2><a id="_routing_6"></a>Routing</h2><p>When executing a search, it will be broadcasted to all the index/indices
+execution. By default, when its not set, the request will fail.</p><h2><a id="_routing_6"></a>Routing</h2><p>When executing a search, it will be broadcasted to all the index/indices
 shards (round robin between replicas). Which shards will be searched on
 can be controlled by providing the <code class="literal">routing</code> parameter. For example,
 when indexing tweets, the routing value can be the user name:</p><pre class="programlisting prettyprint lang-js">$ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '{

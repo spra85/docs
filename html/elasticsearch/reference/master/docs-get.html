@@ -36,10 +36,9 @@ to fetch the first document matching the id across all types.</p><h3><a id="_fie
 returned (by default, the <code class="literal">_source</code> field) by passing the <code class="literal">fields</code>
 parameter. For example:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/1?fields=title,content'</pre><p>The returned fields will either be loaded if they are stored, or fetched
 from the <code class="literal">_source</code> (parsed and extracted). It also supports sub objects
-extraction from _source, like <code class="literal">obj1.obj2</code>.</p><h3><a id="_getting_the__source_directly"></a>Getting the _source directly</h3><p>Since version <code class="literal">0.90.1</code> there is a new rest end point that allows the
-source to be returned directly without any additional content around it.
-The get endpoint has the following structure:
-<code class="literal">{index}/{type}/{id}/_source</code>. Curl example:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/1/_source'</pre><p>Note, there is also a HEAD variant for the new _source endpoint. Curl
+extraction from _source, like <code class="literal">obj1.obj2</code>.</p><h3><a id="_getting_the__source_directly"></a>Getting the _source directly</h3><p>Use the <code class="literal">/{index}/{type}/{id}/_source</code> endpoint to get
+just the <code class="literal">_source</code> field of the document,
+without any additional content around it. For example:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/1/_source'</pre><p>Note, there is also a HEAD variant for the _source endpoint. Curl
 example:</p><pre class="programlisting prettyprint lang-js">curl -XHEAD 'http://localhost:9200/twitter/tweet/1/_source'</pre><h3><a id="_routing_2"></a>Routing</h3><p>When indexing using the ability to control the routing, in order to get
 a document, the routing value should also be provided. For example:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/1?routing=kimchy'</pre><p>The above will get a tweet with id 1, but will be routed based on the
 user. Note, issuing a get without the correct routing, will cause the
