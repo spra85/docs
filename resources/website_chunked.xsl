@@ -37,7 +37,7 @@
                                            |.//bridgehead[@renderas='sect1'
                                                           and $bridgehead.in.toc != 0]"/>
     <xsl:choose>
-      <xsl:when test="count($nodes) = 0 or $chunk.section.depth = 0">
+      <xsl:when test="count($nodes) &lt; 2 or $chunk.section.depth = 0">
         <xsl:for-each select="parent::book | parent::part">
           <xsl:call-template name="division.toc">
             <xsl:with-param name="toc-context" select="." />
