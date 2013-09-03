@@ -25,7 +25,7 @@ our $Conf = LoadFile('conf.yaml');
 GetOptions(
     $Opts,    #
     'all', 'push',    #
-    'single', 'doc=s', 'out=s', 'toc', 'open',
+    'single', 'doc=s', 'out=s', 'toc', 'open', 'chunk=i',
     'verbose'
 );
 
@@ -53,7 +53,8 @@ sub build_local {
         $html =~ s/\.[^.]+/.html/;
     }
     else {
-        build_chunked( $index, $dir );
+        my $chunk = $Opts->{chunk} || 0;
+        build_chunked( $index, $dir, $chunk );
         $html = 'index.html';
     }
 
@@ -202,9 +203,11 @@ sub usage {
         $0 --doc path/to/index.asciidoc [opts]
 
         Opts:
-          --single          Generate a single HTML page.
+          --single          Generate a single HTML page, instead of
+                            a chunking into a file per chapter
           --toc             Include a TOC at the beginning of the page.
           --out dest/dir/   Defaults to ./html_docs.
+          --chunk 1         Also chunk sections into separate files
           --open            Open the docs in a browser once built.
           --verbose
 

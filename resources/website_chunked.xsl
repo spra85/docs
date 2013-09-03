@@ -13,7 +13,8 @@
   <xsl:param name="chunker.output.omit-xml-declaration">yes</xsl:param>
 
   <!-- toc -->
-  <xsl:param name="generate.section.toc.level"  select="1"/>
+  <xsl:param name="generate.section.toc.level"  select="$chunk.section.depth"/>
+  <xsl:param name="toc.section.depth"           select="$chunk.section.depth"/>
   <xsl:param name="toc.max.depth"               select="1"/>
   <xsl:param name="generate.toc">
     book      toc
@@ -36,8 +37,8 @@
                                            |.//bridgehead[@renderas='sect1'
                                                           and $bridgehead.in.toc != 0]"/>
     <xsl:choose>
-      <xsl:when test="count($nodes) = 0">
-        <xsl:for-each select="ancestor::part">
+      <xsl:when test="count($nodes) = 0 or $chunk.section.depth = 0">
+        <xsl:for-each select="parent::book | parent::part">
           <xsl:call-template name="division.toc">
             <xsl:with-param name="toc-context" select="." />
           </xsl:call-template>

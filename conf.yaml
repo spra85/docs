@@ -25,6 +25,7 @@ contents:
         prefix:     elasticsearch/reference
         repo:       elasticsearch
         index:      docs/reference/index.asciidoc
+        chunk:      1
 
     -
         title:      Elasticsearch for Apache Hadoop

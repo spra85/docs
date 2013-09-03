@@ -15,23 +15,20 @@ our $Opts      = {};
 #===================================
 sub build_chunked {
 #===================================
-    my ( $index, $dest ) = @_;
+    my ( $index, $dest, $chunk ) = @_;
 
     fcopy( 'resources/styles.css', $index->parent )
         or die "Couldn't copy <styles.css> to <" . $index->parent . ">: $!";
 
     my $build  = $dest->parent;
     my $output = run( qw(
-            a2x
-            -v
-            -d book
-            -f chunked
+            a2x -v -d book -f chunked --icons
             --xsl-file resources/website_chunked.xsl
-            --icons
             ),
-        '-a', 'icons=resources/asciidoc-8.6.8/images/icons/',
+        '--asciidoc-opts', '-fresources/es-asciidoc.conf',
+        '-a',              'icons=resources/asciidoc-8.6.8/images/icons/',
+        '--xsltproc-opts', "--stringparam chunk.section.depth $chunk",
         '--destination-dir=' . $build,
-        '--xsltproc-opts', '--stringparam chunk.section.depth 1',
         $index
     );
 
@@ -61,14 +58,11 @@ sub build_single {
         or die "Couldn't copy <styles.css> to <" . $index->parent . ">: $!";
 
     my $output = run( qw(
-            a2x
-            -v
-            -d book
-            -f xhtml
+            a2x -v -d book -f xhtml --icons
             --xsl-file resources/website.xsl
-            --icons
             ),
-        '-a', 'icons=resources/asciidoc-8.6.8/images/icons/',
+        '--asciidoc-opts', '-fresources/es-asciidoc.conf',
+        '-a',              'icons=resources/asciidoc-8.6.8/images/icons/',
         '--xsltproc-opts',
         "--stringparam generate.toc '$toc'",
         '--destination-dir=' . $dest,
@@ -121,7 +115,5 @@ sub sha_for {
     chomp $sha;
     return $sha;
 }
-
-
 
 1

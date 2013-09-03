@@ -29,6 +29,8 @@ sub new {
     my $index = $args{index}
         or die "No <index> specfied for book <$title>";
 
+    my $chunk = $args{chunk} || 0;
+
     my $branches = $args{branches} || $repo->branches;
     my $current  = $args{current}  || $repo->current;
 
@@ -63,6 +65,8 @@ sub build {
     my $src_path = $index->parent;
     my $toc      = ES::Toc->new( $self->title );
     my $dir      = $self->dir;
+    my $chunk    = $self->chunk;
+
     $dir->mkpath;
 
     for my $branch (@$branches) {
@@ -77,7 +81,7 @@ sub build {
         if ($changed) {
             say "   - Building";
             $repo->checkout( $src_path, $branch );
-            build_chunked( $repo->dir->file($index), $branch_dir );
+            build_chunked( $repo->dir->file($index), $branch_dir, $chunk );
             $repo->mark_done( $src_path, $branch );
         }
         else {
@@ -139,6 +143,7 @@ sub title    { shift->{title} }
 sub dir      { shift->{dir} }
 sub repo     { shift->{repo} }
 sub prefix   { shift->{prefix} }
+sub chunk    { shift->{chunk} }
 sub index    { shift->{index} }
 sub branches { shift->{branches} }
 sub current  { shift->{current} }
