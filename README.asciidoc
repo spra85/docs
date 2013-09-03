@@ -14,6 +14,8 @@ First, you need to make sure that you have the following installed:
 * `xsltproc` -- if not already installed, see 
                 http://www.sagehill.net/docbookxsl/InstallingAProcessor.html[Installing a Processor]
 
+TIP: Windows users are recommended to use http://www.cygwin.com/[Cygwin] (select `asciidoc` package and `libxslt`).
+
 [float]
 == Cloning the repository
 
@@ -205,6 +207,7 @@ it generates valid DocBook output.
 Below I include most of the Asciidoc syntax that you will
 need.  For more, you can take a look at the
 http://powerman.name/doc/asciidoc[Asciidoc Cheat Sheet]
+http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[Asciidoctor Quick Syntax]
 or the official http://www.methods.co.nz/asciidoc/userguide.html[Asciidoc User Guide].
 --
 
