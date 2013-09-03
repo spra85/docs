@@ -1,19 +1,21 @@
 = Docs HOWTO
-:doctype: book
+:ref:  http://www.elasticsearch.org/guide/elasticsearch/reference/current
 
-== Setting up the build environment
+[[setup]]
+== Getting started
 
 [float]
-=== Requirements
+== Requirements
 
 First, you need to make sure that you have the following installed:
 
-* `perl` -- system `perl` is fine
-* `python` -- system `python` is fine
-* `xsltproc` -- if not already installed, see http://www.sagehill.net/docbookxsl/InstallingAProcessor.html[Installing a Processor]
+* `perl`     -- system `perl` is fine
+* `python`   -- system `python` is fine
+* `xsltproc` -- if not already installed, see 
+                http://www.sagehill.net/docbookxsl/InstallingAProcessor.html[Installing a Processor]
 
 [float]
-=== Cloning the repository
+== Cloning the repository
 
 Clone the `docs` repository with:
 
@@ -22,20 +24,26 @@ Clone the `docs` repository with:
 git clone git@github.com:elasticsearch/docs.git
 ----------------------------
 
+[float]
+== Building this README
+
 You can test that everything is working correctly by building
 this README as follows:
 
 [source,shell]
 ----------------------------
 cd docs/
-./build_docs.pl --doc README.asciidoc --single --toc --open
+./build_docs.pl --doc README.asciidoc --open
 ----------------------------
 
-This should convert `README.asciidoc` into the HTML file 
-`./html_docs/README.html`, and open it in your browser.
+This should convert `README.asciidoc` into HTML and open it 
+in your browser.
 
-== Building documentation
+[[build]]
+= Building documentation
 
+[partintro]
+--
 The `build_docs.pl` executable can be used to build the documentation 
 from a locally checked out repository, or to build all the 
 documentation that will be uploaded to the website.
@@ -47,9 +55,10 @@ to use:
 ----------------------------
 sudo ln -s `pwd`/build_docs.pl /usr/local/bin/build_docs.pl
 ----------------------------
+--
 
 [[local]]
-=== Building from a local repo
+== For a local repo
 
 When you are making changes to documentation in a locally checked
 out repository, and you want to check that they are building
@@ -62,8 +71,7 @@ cd path/to/your/repo
 build_docs.pl --doc path/to/index.asciidoc 
 ----------------------------
 
-[float]
-==== Specifying a different output dir
+=== Specifying a different output dir
 
 By default, the HTML docs are generated in `./html_docs`. You can 
 change the output directory with the `--out` parameter:
@@ -75,8 +83,7 @@ build_docs.pl --doc path/to/index.asciidoc --out output/dir/
 
 WARNING: The `output/dir/` will be deleted and recreated, so don't point it at a directory with contents that you want to keep.
 
-[float]
-==== Viewing the docs
+=== Viewing the docs
 
 To view the generated docs in your web broweser immediately after
 the build has finished, use the `--open` parameter:
@@ -86,8 +93,7 @@ the build has finished, use the `--open` parameter:
 build_docs.pl --doc path/to/index.asciidoc --open
 ----------------------------
 
-[float]
-==== Single- or multi-page
+=== Single- or multi-page
 
 By default, the build process generates an HTML file per 
 part/chapter/section.  To generate all of the docs in a single
@@ -109,8 +115,7 @@ build_docs.pl --doc path/to/index.asciidoc --single --toc
 NOTE: The multi-page output always contains tables-of-content
 where appropriate.
 
-[float]
-==== Correcting errors
+=== Correcting errors
 
 Asciidoc is converted to DocBook, which is then converted to HTML.
 DocBook is strict, which means that you have to follow the rules
@@ -120,13 +125,13 @@ an error.
 The most common errors are:
 
 * Asciidoc syntax error, eg `=Title` instead of `= Title` or
-  unclosed block delimiters, eg `======` or `------`
+  unclosed block delimiters, ie `======` or `------`
 * incorrect order of elements, eg `= Title` followed by 
   a `=== Level 3` header
 * Linking to an non-existent ID
 
 [[website]]
-=== Building the website docs
+== For the website
 
 Usually you don't need to build all the docs that will be uploaded
 to the website, but if you are linking between documents (e.g.
@@ -148,8 +153,7 @@ The first time you run this will be slow as it needs to:
 Subsequent runs will pull any changes to the repos and only build the 
 branches that have changed.
 
-[float]
-==== Checking your changes
+=== Checking your changes
 
 Because the docs are built from the remote repositories, you will
 need to push your changes to the main repo before running
@@ -164,7 +168,7 @@ The changes that you have pushed to your repository will be
 picked up automatically by the docs build service.
 
 [[config]]
-=== Adding new docs or new branches
+== Adding new docs or new branches
 
 The documentation that appears on the http://elasticsearch.org/guide
 website is controlled by the
@@ -189,8 +193,973 @@ for your project.  Commit the change to `conf.yaml` and push
 to the remote `docs` repo.
 
 [[asciidoc-guide]]
-== Asciidoc Guide
+= Asciidoc Guide
 
-Foo
+[partintro]
+--
+Asciidoc is a powerful markup language that is easy to read as
+plain text.  In general, it is pretty simple to use, but
+there are some rules that you have to follow to ensure that
+it generates valid DocBook output.
 
+Below I include most of the Asciidoc syntax that you will
+need.  For more, you can take a look at the
+http://powerman.name/doc/asciidoc[Asciidoc Cheat Sheet]
+or the official http://www.methods.co.nz/asciidoc/userguide.html[Asciidoc User Guide].
+--
+
+[[structure]]
+== Basic book structure
+
+Asciidocs can be built as a `book`, `article`, `manpage` etc.  
+All our docs are built as a `book`, and thus follow the 
+layout for books.  The most basic structure is as follows:
+
+[source,asciidoc]
+----------------------------------
+= Book title                # level 0
+
+== Chapter title            # level 1
+
+=== Section title           # level 2
+
+==== Section title          # level 3
+
+===== Section title         # level 4
+----------------------------------
+
+Usually this structure will be sufficient for most of your
+documentation needs. More complicated ``books'', such
+as the {ref}[Elasticsearch reference docs], however,
+require a few additional elements, described on the 
+following pages.
+
+=== Filenames
+
+By default, each chapter will generate a new _chunk_ 
+or HTML file.  You can control the name of the file 
+by giving the header an ID, as follows:
+
+[source,asciidoc]
+----------------------------------
+[[intro-to-xyz]]
+== Intro to XYZ
+----------------------------------
+
+This chapter would then be written to a file called 
+`intro-to-xyz.html`.  If no ID is provided, then a
+filename will be auto-generated.  See <<chunking>>
+for more.
+
+These IDs are also used to link to sections within each
+book.  See <<linking>>.
+
+
+[[multi-part]]
+== Multi-part books
+
+Books may also be divided into multiple parts, which are indicated 
+with `level 0` headers:
+
+[source,asciidoc]
+----------------------------------
+= Book title                # level 0
+
+= Part title                # level 0
+
+== Chapter title            # level 1
+
+=== Section title           # level 2
+
+... etc ...
+----------------------------------
+
+Each `part` also creates a new _chunk_ or HTML file.
+
+=== Part intro
+
+A `part` may include text before the first `chapter`, but 
+it must be marked with `[partintro]` in order to be valid:
+
+[source,asciidoc]
+----------------------------------
+= Book title                # level 0
+
+= Part one                  # level 0
+
+[partintro]
+A paragraph introducing this Part
+
+== Chapter title            # level 1
+
+... etc ...
+----------------------------------
+
+Longer `partintro`s should be wrapped in an
+http://www.methods.co.nz/asciidoc/userguide.html#X29[_open block_]
+which starts and ends with two dashes: `--`:
+
+[source,asciidoc]
+----------------------------------
+= Part two                  # level 0
+
+[partintro]
+.A partintro title
+-- <1>
+This section may contain multiple paragraphs.  
+
+[float]
+== A header should use `[float]`
+
+Everything up to the closing -- marker 
+will be considered part of the partintro.
+-- <1>
+
+== Chapter title           # level 2
+
+... etc ...
+----------------------------------
+
+<1> The _open block_ delimiters
+
+[[optional-sections]]
+== Optional sections
+
+Books may include other sections such as a _preamble_, a _preface_,
+a _glossary_ or _appendices_.
+
+=== Preamble
+
+[source,asciidoc]
+----------------------------------
+= Book title                # level 0
+
+.Optional preamble title
+Preamble text...
+
+----------------------------------
+
+=== Preface and Appendix
+
+[source,asciidoc]
+----------------------------------
+[preface]
+= Preface title             # level 0
+
+=== Preface header          # level 2 <1>
+
+= Part one                  # level 0
+----------------------------------
+
+and
+
+[source,asciidoc]
+----------------------------------
+[appendix]
+= Appendix title            # level 0
+
+=== Appendix header         # level 2 <1>
+----------------------------------
+
+<1> Any headers in the appendix or in the preface start 
+    out-of-sequence at `level 2`, not at `level 1`.
+
+[sect3]
+=== Glossary
+
+[source,asciidoc]
+----------------------------------
+[glossary]
+= Glossary title            # level 0
+
+[glossary]
+Term one::
+    Defn for term one
+
+Term two::
+    Defn for term two
+----------------------------------
+
+[NOTE]
+==================================
+The two `[glossary]` elements above have different purposes: 
+
+ * The first marks this section of the document as a glossary, to be included in the table of contents
+ * The second marks the definitions list as type `glossary`
+==================================
+
+
+=== Also see
+
+If you need to use some of these more advanced structural 
+elements, have a look at the example of a multi-part book
+included in this repo in https://github.com/elasticsearch/docs/blob/master/resources/asciidoc-8.6.8/doc/book-multi.txt[`resources/asciidoc-8.6.8/doc/book-multi.txt`].
+
+[[paragraphs]]
+== Paragraphs
+
+A paragraph consists of multiple lines of text which start
+in the left hand column:
+
+[source,asciidoc]
+----------------------------------
+This is a paragraph
+even though it contains 
+line breaks.
+
+This is a second paragraph.
+----------------------------------
+
+=== Paragraph titles
+
+Like most elements, a paragraph can have a title:
+
+.Paragraph with a title
+==================================
+[source,asciidoc]
+----------------------------------
+.Paragraph title
+Text of my paragraph
+----------------------------------
+
+.Paragraph title
+Text of my paragraph
+==================================
+
+[[admon-paras]]
+=== Admonition paragraphs
+
+A paragraph which starts with `TIP:`, `NOTE:`, `IMPORTANT:`, 
+`WARNING:` or `CAUTION:` is rendered as an _admonition_ paragraph,
+eg:
+
+[source,asciidoc]
+----------------------------------
+NOTE: Compare admonition paragraphs with <<admon-blocks>>.
+----------------------------------
+
+This renders as:
+
+NOTE: Compare admonition paragraphs
+with <<admon-blocks>>.
+
+=== Literal paragraphs
+
+Literal paragraphs, which are rendered as `<pre>`
+blocks without any source highlighting, must be
+indented:
+
+.A literal paragraph
+==================================
+[source,asciidoc]
+----------------------------------
+.Optional title
+
+    This para must
+    be indented
+----------------------------------
+
+.Optional title
+    This para must
+    be indented
+==================================
+
+See also <<code-blocks>> for blocks with
+syntax highlighting.
+
+[[text]]
+== Inline text
+
+Inline text can be formatted as follows:
+
+[horizontal]
+`_emphasis_`::              _emphasis_
+`*bold*`::                  *bold*
++\`mono`+::                 `mono`
++\`\`double quoted''+::     ``double quoted''
++\`single quoted'+::        `single quoted'
+`^superscript^`::           ^superscript^
+`~subscript~`::             ~subscript~
+
+These formatting characters expect to adjoin whitespace or
+common punctuation characters.  To combine *bold* with emphasis,
+double up the quotes (ie use `__` and `**`):
+
+.Combining bold and emphasis
+==================================
+[source,asciidoc]
+----------------------------------
+This example co__mb**in**es__ bold and emphasis
+----------------------------------
+
+This example co__mb**in**es__ bold and emphasis.
+==================================
+
+Unwanted quotes can be escaped with a `\` character.
+
+=== Replacement characters
+
+Certain runs of ASCII characters are replaced as follows:
+
+[horizontal]
+`--`::      -- (em dash)
+`...`::     ...
+`->`::      ->
+`<-`::      <-
+`=>`::      =>
+`<=`::      <=
+`(C)`::     (C)
+`(TM)`::    (TM)
+`(R)`::     (R)
+
+[[linking]]
+== Linking
+
+You can link to any block in the document that has an ID -- an
+identifier before the block which is wrapped in double 
+square brackets: `[[ID]]`
+
+[source,asciidoc]
+----------------------------------
+[[para-id]]
+This paragraph can be linked to using the ID `para-id`.
+----------------------------------
+
+When you need to combine an ID with a _style_, you can
+either specify each on a separate line:
+
+[source,asciidoc]
+----------------------------------
+[[note-id]]
+[NOTE]
+===============================
+This note can be linked to using the ID `note-id`.
+===============================
+----------------------------------
+
+or in one line:
+
+[source,asciidoc]
+----------------------------------
+["NOTE",id="note-id"] <1>
+===============================
+This note can be linked to using the ID `note-id`.
+===============================
+----------------------------------
+
+<1> In the one line format, the `NOTE` must be enclosed
+    in double quotes.
+
+Both of the above render as:
+
+["NOTE",id="note-id"]
+===============================
+This note can be linked to using the ID `note-id`.
+===============================
+
+The `ID` is added to the HTML document as an `<a>` anchor
+and, as explained in <<chunking>>, the `ID` is used as the 
+filename for sections which are chunked -- written to 
+separate HTML files.
+
+=== Internal links
+
+You can link to any ID within a document using double
+angle brackets:
+
+.Links with default link text
+==================================
+[source,asciidoc]
+----------------------------------
+* <<setup>>
+* <<structure>>
+* <<note-id>> 
+----------------------------------
+
+* <<setup>>
+* <<structure>>
+* <<note-id>>
+==================================
+
+It will use the title associated with each ID as the 
+link text.  In the example above, `note-id` is not associated
+with any title, which is why the text is rendered as `"Note"`.
+
+Alternative link text can be provided as a second parameter
+inside the angle brackets:
+
+.Links with custom link text
+==================================
+
+[source,asciidoc]
+----------------------------------
+See the <<note-id,note about IDs>>.
+----------------------------------
+
+See the <<note-id,note about IDs>>.
+
+==================================
+
+=== External links
+
+Links to external websites can just be added as normal 
+inline text, optionally with custom link text in 
+square brackets:
+
+.External links
+==================================
+
+[source,asciidoc]
+----------------------------------
+See http://github.com/elasticsearch
+or  http://github.com/elasticsearch/docs[this repository]
+----------------------------------
+
+See http://github.com/elasticsearch
+or  http://github.com/elasticsearch/docs[this repository]
+
+==================================
+
+The existence of external links is not confirmed by
+the build process.
+
+=== Cross document links
+
+Links to other Elasticsearch docs are essentially the
+same as external links. However, for conciseness and
+maintainability, you should use an _attribute_ to 
+represent the absolute URL of the docs.
+
+Attributes can be added to the beginning of the docs,
+under the book title:
+
+.Using attributes for cross-document linking
+==================================
+
+[source,asciidoc]
+----------------------------------
+= My Book Title
+:ref:  http://www.elasticsearch.org/guide/elasticsearch/reference/current
+
+Here is a link to the {ref}/search.html[search page]
+----------------------------------
+
+Here is a link to the {ref}/search.html[search page]
+==================================
+
+The main benefit of using attributes for cross document links is 
+that, when the docs for an old version contain links that
+no longer exist in the `current` branch, you can update 
+all the links in the document to point to the older version,
+by just updating a single attribute.
+
+Cross document links are checked when `build_docs.pl` is
+run with the `--all` parameter.  See <<website>>.
+
+[[lists]]
+== Lists
+
+=== Bullet points
+
+Bullet point lists are written using asterisks:
+
+.Bullet points
+==================================
+[source,asciidoc]
+----------------------------------
+.Optional title
+* Point
+* Point
+** Sub-point 
+*** Sub-sub-point
+* A point can have multiple paragraphs
++
+But use a `+` instead of an empty line between paras.
+
+An empty line signifies the end of the list.
+----------------------------------
+
+.Optional title
+* Point
+* Point
+** Sub-point 
+** Sub-point
+* A point can have multiple paragraphs
++
+But use a `+` instead of an empty line between paras
+
+An empty line signifies the end of the list.
+==================================
+
+=== Ordered lists
+
+Ordered lists use `.` instead of `*`, and will alternate
+between numbers and letters automatically:
+
+.An ordered list
+==================================
+[source,asciidoc]
+----------------------------------
+.Optional title
+. foo
+.. bar
+... baz
+.... balloo
+----------------------------------
+
+.Optional title
+. foo
+.. bar
+... baz
+.... balloo
+==================================
+
+Alternatively, you can control whether it uses a number
+or a letter as follows:
+
+.Controlling the counters
+==================================
+[source,asciidoc]
+----------------------------------
+a. Start with a letter
+b. Another letter
+  1. Now numbers
+  2.  And more numbers
+----------------------------------
+
+a. Start with a letter
+b. Another letter
+  1. Now numbers
+  2. And more numbers
+==================================
+
+=== Definition lists
+
+Definition lists are used to define terms. The term must be 
+followed by a double colon `::` eg:
+
+.A vertical definition list
+==================================
+[source,asciidoc]
+----------------------------------
+term one::      Definition for term one
+term two::
+                Can start on the next line
+term three::    A definition can have multiple
++
+paragraphs, but use `+` to separate them
+
+term four:::    Definitions can be nested
+                by adding more colons
+term five::     A definition can even include
+                lists:
+                * point one
+                * point two
+----------------------------------
+
+term one::      Definition for term one
+term two::
+                Can start on the next line
+term three::    A definition can have multiple
++
+paragraphs, but use `+` to separate them
+
+term four:::    Definitions can be nested
+                by adding more colons
+term five::     A definition can even include
+                lists:
+                * point one
+                * point two
+==================================
+
+[[horizonta-defn-list]]
+=== Horizontal definition lists
+
+Often definition lists are better rendered
+horizontally, eg:
+
+.A horizontal definition list
+==================================
+[source,asciidoc]
+----------------------------------
+[horizontal]
+term one::      Definition for term one
+term two::
+                Can start on the next line
+term three::    A definition can have multiple
++
+paragraphs, but use `+` to separate them
+
+term four:::    Definitions can be nested
+                by adding more colons
+term five::     A definition can even include
+                lists:
+                * point one
+                * point two
+----------------------------------
+
+[horizontal]
+term one::      Definition for term one
+term two::
+                Can start on the next line
+term three::    A definition can have multiple
++
+paragraphs, but use `+` to separate them
+
+term four:::    Definitions can be nested
+                by adding more colons
+term five::     A definition can even include
+                lists:
+                * point one
+                * point two
+==================================
+
+[[blocks]]
+== Blocks
+
+Blocks are used for special blocks of content, such as 
+<<code-blocks>>, <<examples>>, <<sidebars>> and
+<<admon-blocks>>.
+
+Blocks are delimited with a start and end line which uses
+the same characters, like `=====`.
+
+[[code-blocks]]
+=== Code blocks
+
+Code blocks are rendered as `<pre>` blocks, and use
+syntax highlighting, eg:
+
+.A code block
+==================================
+[source,asciidoc]
+--
+.Optional title
+[source,js]
+----------------------------------
+{
+    "query": "foo bar"
+}
+----------------------------------
+--
+
+.Optional title
+[source,js]
+----------------------------------
+{
+    "query": "foo bar"
+}
+----------------------------------
+==================================
+
+IMPORTANT: The language to use for source highlighting
+-- eg `js` above -- *must* be specified, otherwise Asciidoc 
+emits invalid DocBook.
+
+=== Callouts
+
+Code blocks can use _callouts_ to add an explanatory 
+footnote to a particular line of code:
+
+.Code block with callouts
+==================================
+[source,asciidoc]
+--
+[source,js]
+----------------------------------
+{
+    "query": "foo bar" \<1>
+}
+----------------------------------
+
+\<1> Here's the explanation
+--
+
+[source,js]
+----------------------------------
+{
+    "query": "foo bar" <1>
+}
+----------------------------------
+
+<1> Here's the explanation
+==================================
+
+[[admon-blocks]]
+=== Admonition blocks
+
+Admonition blocks are much the same as <<admon-paras>>, except that 
+they can be longer and contain more than just a paragraph.  
+For instance:
+
+
+[source,asciidoc]
+--
+[NOTE]
+=========================
+This note contains a list:
+
+* foo
+* bar
+* baz
+
+and some code
+
+[source,js]
+----------------------------------
+{ "query": "foo bar"}
+----------------------------------
+=========================
+--
+
+This renders as:
+
+[NOTE]
+=========================
+This note contains a list:
+
+* foo
+* bar
+* baz
+
+and some code
+
+[source,js]
+----------------------------------
+{ "query": "foo bar"}
+----------------------------------
+=========================
+
+[[sidebars]]
+=== Sidebars
+
+Sidebars are used to highlight a block of 
+content that is outside the usual flow of text:
+
+[source,asciidoc]
+----------------------------------
+.Optional title
+**********************************
+So why does the `bulk` API have such a
+funny format?  Sit down and I'll tell you
+all about it!
+**********************************
+----------------------------------
+
+.Optional title
+**********************************
+So why does the `bulk` API have such a
+funny format?  Sit down and I'll tell you
+all about it!
+**********************************
+
+
+[[examples]]
+=== Example blocks
+
+Example blocks contain normal text which is used as an
+example.  The title, if any, is labelled as an example
+and numbered:
+
+[source,asciidoc]
+----------------------------------
+.My first example
+========================================
+Text explaining the first example.
+========================================
+
+.My second example
+========================================
+Text explaining the second example.
+========================================
+----------------------------------
+
+This renders as:
+
+.My first example
+========================================
+Text explaining the first example.
+========================================
+
+.My second example
+========================================
+Text explaining the second example.
+========================================
+
+CAUTION: The `===` and `---` delimiters can 
+sometimes be confused with a header, resulting
+in an error.  To resolve this, add newlines
+between the delimiter and the content 
+before and after it.
+
+[[includes]]
+== Including files
+
+For long documentation, you probably want to break up
+the Asciidoc files into smaller units, and just 
+include them where appropriate:
+
+[source,asciidoc]
+----------------------------------
+\include::myfolder/mydoc.asciidoc[]
+
+----------------------------------
+
+Paths are relative to the file which
+contains the `include` statement.
+
+[[images]]
+== Images
+
+Any images you want to include should be saved in a folder
+in your repo, and included using a path relative
+to the document where the `image::` statement appears.
+
+[source,asciidoc]
+----------------------------------
+[[cat]]
+.A scaredy cat
+image::resources/cat.jpg[Alt text]
+
+A link to <<cat>>
+----------------------------------
+
+[[cat]]
+.A scaredy cat
+image::resources/cat.jpg[Alt text]
+
+A link to <<cat>>
+
+=== Width and height
+
+The `width` and/or `height` of the image can be
+specified in pixels or as a percentage:
+
+[source,asciidoc]
+----------------------------------
+image::resources/cat.jpg["Alt text",width=50]
+image::resources/cat.jpg["Alt text",width="20%"]
+----------------------------------
+
+image::resources/cat.jpg["Alt text",width=50]
+image::resources/cat.jpg["Alt text",width="20%"]
+
+=== Alignment
+
+Images are left-aligned by default, but they can
+be centred or right-aligned:
+
+[source,asciidoc]
+----------------------------------
+image::resources/cat.jpg["Alt text",width=100,align="left"]
+image::resources/cat.jpg["Alt text",width=100,align="right"]
+image::resources/cat.jpg["Alt text",width=100,align="center"]
+----------------------------------
+
+image::resources/cat.jpg["Alt text",width=100,align="left"]
+image::resources/cat.jpg["Alt text",width=100,align="right"]
+image::resources/cat.jpg["Alt text",width=100,align="center"]
+
+[[tables]]
+== Tables
+
+In general, tables are frowned upon in DocBook as they 
+don't display well in formats other than HTML, eg PDF,
+ePub, etc.
+
+It's almost always better to use <<horizonta-defn-list>>
+instead, but if you really want to use tables, you 
+can read about them http://www.methods.co.nz/asciidoc/userguide.html#_tables[here].
+
+
+[[chunking]]
+== Controlling chunking
+
+In <<structure>>, we said that each `part` or `chapter` generates
+a new _chunk_ or HTML file.  For more complex documentation,
+you may want the first level of `section`s to also generate
+new chunks.
+
+For instance, in the ES reference docs, we have:
+
+[source,asciidoc]
+----------------------------------
+= Search APIs               # part
+
+== Request body search      # chapter
+
+=== Query                   # section level 1
+
+=== From/Size               # section level 1
+
+... etc ...
+----------------------------------
+
+There are too many parameters for ``Request body search''
+to list them all on one page.  In this case, it
+is worth turning on chunking for top level sections.
+
+=== Enabling section chunking
+
+To enable section chunking when building docs in a <<local,local repository>>,
+pass the `--chunk` parameter:
+
+[source,shell]
+----------------------------------
+build_docs.pl --doc path/to/index.asciidoc --chunk 1
+----------------------------------
+
+To enable section chunking when building docs <<website,for the website>>,
+add `chunk: 1` to the 
+https://github.com/elasticsearch/docs/blob/master/conf.yaml[`conf.yaml`] file in the `docs` repo.
+
+[source,yaml]
+----------------------------------
+contents:
+    -
+        title:      Elasticsearch reference
+        prefix:     elasticsearch/reference
+        repo:       elasticsearch
+        index:      docs/reference/index.asciidoc
+        chunk:      1 <1>
+----------------------------------
+
+<1> Chunking is enabled for this book
+
+=== Chunking selected sections
+
+If you enable session chunking, you will probably find
+that you have a few short sections which you want to keep on
+the same page.  
+
+To do this, you can use the `[float]` marker before a
+section header, to tell Asciidoc that what follows isn't
+a ``real'' header:
+
+[source,asciidoc]
+----------------------------------
+[[chapter-one]]
+== chapter               # new chunk
+
+[[section-one]]
+=== Section one         # new chunk
+
+[[section-two]]
+[float]
+=== Section two         # same chunk
+
+[[section-three]]
+=== Section three       # new chunk
+----------------------------------
+
+The above would produce three HTML files,
+named for their IDs:
+
+* `chapter-one.html`
+* `section-one.html` which would also contain
+  ``Section two''
+* `section-three.html`
+
+To link to ``Section two'' from an external 
+document, you would use the URL: `section-one.html#section-two`
 
