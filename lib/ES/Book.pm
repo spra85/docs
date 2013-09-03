@@ -45,6 +45,7 @@ sub new {
         dir      => $dir->subdir($prefix),
         repo     => $repo,
         prefix   => $prefix,
+        chunk    => $chunk,
         index    => Path::Class::file($index),
         branches => $branches,
         current  => $current
