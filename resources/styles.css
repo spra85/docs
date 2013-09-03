@@ -346,3 +346,35 @@ font-weight: bold;
 .guide .variablelist dd {
 	margin-bottom: 0.5em;
 }
+
+.guide .example {
+	margin: 0;
+}
+
+.guide .example .title {
+	margin: 0 0 0 10px;
+}
+.guide .example-contents {
+	border:	1px solid #f0f0f0;
+	border-width: 1px;
+	border-radius: 5px;
+	background: #fdfdfd;
+	padding: 10px 10px 0;
+}
+
+.guide .sidebar {
+	border: 3px solid #74b73f;
+	border-radius: 5px;
+	background: #f8f8f0;
+	padding: 10px 10px 0;
+	margin:	0 10px;
+}
+
+.guide .sidebar .title {
+	margin: 0;
+}
+
+.guide .sidebar .titlepage {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 10px;
+}
