@@ -276,15 +276,24 @@ h1,h2,h3,h4,h5,.breadcrumbs span, .breadcrumbs a, .navheader a, .navfooter a{
 text-transform:lowercase;
 }
 
+.guide .guide_content h1,
+.chapter .titlepage h2 {
+	font-size: 50px;
+	line-height: 56px;
+	font-weight: bold;
+}
+
+.section .titlepage h2 {
+	font-size: 38px;
+	line-height: 44px;
+	font-weight: bold;
+}
+
+
 .breadcrumbs a, .breadcrumbs span {
 	font-weight: bold;
 }
 
-.guide h1.title, .guide h2.title {
-font-size: 50px;
-line-height: 56px;
-font-weight: bold;
-}
 
 .guide .navheader span,
 .guide .navfooter span {
