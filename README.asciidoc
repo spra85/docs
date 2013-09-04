@@ -1011,6 +1011,118 @@ include them where appropriate:
 Paths are relative to the file which
 contains the `include` statement.
 
+[[changes]]
+== Additions and deprecations
+
+Documentation is built for various branches, eg `0.90`,
+`1.00`, `master`.  However, we release versions 
+`0.90.0`, `0.90.1`, etc, which are all based on the 
+`0.90` branch.
+
+When adding new functionality to a branch, or deprecating
+existing functionality, you can mark the change as 
+_added_ or _deprecated_ as follows:
+
+=== Inline notifications
+
+Use inline notifications for small changes, such as
+the addition or deprecation of individual parameters.
+
+[source,asciidoc]
+----------------------------------
+[horizontal]
+`foo.bar`::   Does XYZ. added[0.90.4]
+`foo.baz`::   Does XYZ. deprecated[0.90.4]
+----------------------------------
+
+[horizontal]
+`foo.bar`::   Does XYZ. added[0.90.4]
+`foo.baz`::   Does XYZ. deprecated[0.90.4]
+
+You can also include details about additional
+notes in the notifications which show up when the
+user hovers over it:
+
+[source,asciidoc]
+----------------------------------
+[horizontal]
+`foo.bar`::   Does XYZ. added[0.90.4,Replaces `foo.baz`]
+`foo.baz`::   Does XYZ. deprecated[0.90.4,Replaced by `foo.bar`]
+----------------------------------
+
+[horizontal]
+`foo.bar`::   Does XYZ. added[0.90.4,Replaces `foo.baz`]
+`foo.baz`::   Does XYZ. deprecated[0.90.4,Replaced by `foo.bar`]
+
+=== Section notifications
+
+Use section notifications to mark an entire chapter or
+section as _added_/_deleted_.  Notifications can just refer
+to the version in which the change was made:
+
+[source,asciidoc]
+----------------------------------
+==== New section
+
+added[0.90.4]
+
+Text about new functionality...
+
+==== Old section
+
+deprecated[0.90.4]
+
+Text about old functionality...
+----------------------------------
+
+==== New section
+
+added[0.90.4]
+
+Text about new functionality...
+
+==== Old section
+
+deprecated[0.90.4]
+
+Text about old functionality...
+
+==== With details...
+
+Or they can include extra text, including more
+Asciidoc markup:
+
+[source,asciidoc]
+----------------------------------
+[[new-section]]
+==== New section
+
+added[0.90.4,Replaces `foo.bar`. See <<old-section>>]
+
+Text about new functionality...
+
+[[old-section]]
+==== Old section
+
+deprecated[0.90.4,Replace by `foo.baz`. See <<new-section>>]
+
+Text about old functionality...
+----------------------------------
+
+[[new-section]]
+==== New section
+
+added[0.90.4,Replaces `foo.bar`. See <<old-section>>]
+
+Text about new functionality...
+
+[[old-section]]
+==== Old section
+
+deprecated[0.90.4,Replace by `foo.baz`. See <<new-section>>]
+
+Text about old functionality...
+
 [[images]]
 == Images
 

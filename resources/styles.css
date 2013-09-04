@@ -385,3 +385,48 @@ text-transform:lowercase;
 	margin-bottom: 10px;
 }
 
+.guide .deprecated,
+.guide .added {
+	position: relative;
+}
+
+.guide .deprecated .version,
+.guide .added .version {
+	font-family:Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace!important;
+	font-size: 0.8em;
+	border-bottom: 1px dashed #74b73f;
+}
+
+.guide .deprecated .version {
+	text-decoration: line-through;
+}
+
+.guide .deprecated .detail,
+.guide .added .detail {
+	min-width: 250px;
+	position: absolute;	
+	padding: 15px;
+	border: 3px solid #e8e8e8;
+	background: white;
+	opacity: 0;
+	color: white;
+	left: -20000px;
+	bottom: 20px;
+	line-height: 1.2em;
+}
+
+.guide .deprecated:hover ,
+.guide .added:hover {
+	color: black;
+	transition: all 0.3s ease;
+}
+
+.guide .deprecated:hover .detail,
+.guide .added:hover .detail {
+	z-index: 10000;
+	left: -5em;
+	opacity: 1;
+	color: #555;
+	transition: color 0.5s ease;
+}
+
