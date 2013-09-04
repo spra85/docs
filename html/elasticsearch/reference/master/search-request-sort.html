@@ -11,7 +11,7 @@
 reversed as well. The sort is defined on a per field level, with special
 field name for <code class="literal">_score</code> to sort by score.</p><pre class="programlisting prettyprint lang-js">{
     "sort" : [
-        { "post_date" : {"order" : "asc"} },
+        { "post_date" : {"order" : "asc"}},
         "user",
         { "name" : "desc" },
         { "age" : "desc" },
@@ -102,8 +102,9 @@ participate in sorting.</p><pre class="programlisting prettyprint lang-js">curl 
        }
     ]
 }'</pre><p>Nested sorting is also supported when sorting by
-scripts and sorting by geo distance.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_missing_values"></a>Missing Values</h3></div></div></div><p>Numeric fields support specific handling for missing fields in a doc.
-The <code class="literal">missing</code> value can be <code class="literal">_last</code>, <code class="literal">_first</code>, or a custom value (that
+scripts and sorting by geo distance.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_missing_values"></a>Missing Values</h3></div></div></div><p>The <code class="literal">missing</code> parameter specifies how docs which are missing
+the field should be treated: The <code class="literal">missing</code> value can be
+set to <code class="literal">_last</code>, <code class="literal">_first</code>, or a custom value (that
 will be used for missing docs as the sort value). For example:</p><pre class="programlisting prettyprint lang-js">{
     "sort" : [
         { "price" : {"missing" : "_last"} },

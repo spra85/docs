@@ -139,7 +139,56 @@ type as <code class="literal">completion</code>.</p><pre class="programlisting p
 appropriately. If you configured a weight for a suggestion, this weight
 is used as <code class="literal">score</code>. Also the <code class="literal">text</code> field uses the <code class="literal">output</code> of your
 indexed suggestion, if configured, otherwise the matched part of the
-<code class="literal">input</code> field.</p></div></div><div class="navfooter"><span class="prev"><a href="search-suggesters-phrase.html">
+<code class="literal">input</code> field.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_fuzzy_queries"></a>Fuzzy queries</h3></div></div></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Added in 0.90.4.</p></td></tr></table></div><p>The completion suggester also supports fuzzy queries - this means,
+you can actually have a typo in your search and still get results back.</p><pre class="programlisting prettyprint lang-js">curl -X POST 'localhost:9200/music/_suggest?pretty' -d '{
+    "song-suggest" : {
+        "text" : "n",
+        "completion" : {
+            "field" : "suggest",
+            "fuzzy" : {
+                "edit_distance" : 2
+            }
+        }
+    }
+}'</pre><p>The fuzzy query can take specific fuzzy parameters.
+The following parameters are supported:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">edit_distance</code>
+</p>
+</td><td valign="top">
+<p>
+    Maximum edit distance, defaults to <code class="literal">1</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">transpositions</code>
+</p>
+</td><td valign="top">
+<p>
+    Sets if transpositions should be counted
+    as one or two changes, defaults to <code class="literal">true</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">min_length</code>
+</p>
+</td><td valign="top">
+<p>
+    Minimum length of the input before fuzzy
+    suggestions are returned, defaults <code class="literal">3</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">prefix_length</code>
+</p>
+</td><td valign="top">
+<p>
+    Minimum length of the input, which is not
+    checked for fuzzy alternatives, defaults to <code class="literal">1</code>
+</p>
+</td></tr></tbody></table></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>If you want to stick with the default values, but
+      still use fuzzy, you can either use <code class="literal">fuzzy: {}</code>
+      or <code class="literal">fuzzy: true</code>.</p></td></tr></table></div></div></div><div class="navfooter"><span class="prev"><a href="search-suggesters-phrase.html">
               « 
               Phrase Suggester</a>
            

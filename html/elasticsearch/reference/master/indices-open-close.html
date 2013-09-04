@@ -14,7 +14,12 @@ A closed index can be opened which will then go through the normal
 recovery process.</p><p>The REST endpoint is <code class="literal">/{index}/_close</code> and <code class="literal">/{index}/_open</code>. For
 example:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/my_index/_close'
 
-curl -XPOST 'localhost:9200/my_index/_open'</pre></div><div class="navfooter"><span class="prev"><a href="indices-exists.html">
+curl -XPOST 'localhost:9200/my_index/_open'</pre><p>It is possible to open and close multiple indices. An error will be thrown
+if the request explicitly refers to a missing index. This behaviour can be
+disabled using the <code class="literal">ignore_indices=missing</code> parameter.</p><p>All indices can be opened or closed at once using <code class="literal">_all</code> as the index name
+or specifying patterns that identify them all (e.g. <code class="literal">*</code>).
+Closing all indices can be disabled by setting the <code class="literal">action.disable_close_all_indices</code>
+flag in the config file to <code class="literal">true</code>.</p></div><div class="navfooter"><span class="prev"><a href="indices-exists.html">
               « 
               Indices Exists</a>
            

@@ -53,7 +53,9 @@ expression which matches terms beginning with <code class="literal">#</code>:</p
         analyzer:  "whitespace"
         fielddata: {
             filter: {
-                regex: "^#.*"
+                regex: {
+                    pattern: "^#.*"
+                }
             }
         }
     }
@@ -63,7 +65,9 @@ expression which matches terms beginning with <code class="literal">#</code>:</p
         analyzer:  "whitespace"
         fielddata: {
             filter: {
-                regex:                "^#.*",
+                regex: {
+                    pattern:          "^#.*",
+                },
                 frequency: {
                     min:              0.001,
                     max:              0.1,

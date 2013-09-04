@@ -93,9 +93,10 @@ against can be configured using the <code class="literal">date_formats</code> an
 example, if we added age and its value is a number, then it can’t be
 treated as a string.</p><p>The <code class="literal">dynamic</code> parameter can also be set to <code class="literal">strict</code>, meaning that not
 only new fields will not be introduced into the mapping, parsing
-(indexing) docs with such new fields will fail.</p><h4><a id="_enabled_3"></a>enabled</h4><p>The <code class="literal">enabled</code> flag allows to disable parsing and adding a named object
-completely. This is handy when a portion of the JSON document passed
-should not be indexed. For example:</p><pre class="programlisting prettyprint lang-js">{
+(indexing) docs with such new fields will fail.</p><h4><a id="_enabled_3"></a>enabled</h4><p>The <code class="literal">enabled</code> flag allows to disable parsing and indexing a named object
+completely. This is handy when a portion of the JSON document contains
+arbitrary JSON which should not be indexed, nor added to the mapping.
+For example:</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {
         "properties" : {
             "person" : {

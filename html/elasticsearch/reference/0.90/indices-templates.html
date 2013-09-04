@@ -26,7 +26,8 @@ will be applied to the index created. For example:</p><pre class="programlisting
 The settings and mappings will be applied to any index name that matches
 the <code class="literal">te*</code> template.</p><h3><a id="_deleting_a_template"></a>Deleting a Template</h3><p>Index templates are identified by a name (in the above case
 <code class="literal">template_1</code>) and can be delete as well:</p><pre class="programlisting prettyprint lang-js">curl -XDELETE localhost:9200/_template/template_1</pre><h3><a id="_getting_a_template"></a>GETting a Template</h3><p>Index templates are identified by a name (in the above case
-<code class="literal">template_1</code>) and can be retrieved using the following:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_template/template_1</pre><p>To get list of all index templates you can use
+<code class="literal">template_1</code>) and can be retrieved using the following:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_template/template_1</pre><p>added::[0.90.4] You can also match several templates
+by using wildcards like:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_template/temp*</pre><p>To get list of all index templates you can use
 <a class="link" href="cluster-state.html" title="Cluster State">Cluster State</a> API
 and check for the metadata/templates section of the response.</p><h3><a id="_multiple_template_matching"></a>Multiple Template Matching</h3><p>Multiple index templates can potentially match an index, in this case,
 both the settings and mappings are merged into the final configuration

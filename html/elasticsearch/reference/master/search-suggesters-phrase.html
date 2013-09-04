@@ -33,7 +33,11 @@ request:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localho
           "field" : "body",
           "suggest_mode" : "always",
           "min_word_len" : 1
-        } ]
+        } ],
+        "highlight": {
+          "pre_tag": "&lt;em&gt;",
+          "post_tag": "&lt;/em&gt;"
+        }
       }
     }
   }
@@ -62,9 +66,11 @@ can contain misspellings (See parameter descriptions below).</p><pre class="prog
       "length" : 17,
       "options" : [ {
         "text" : "xorr the god jewel",
+        "highlighted": "&lt;em&gt;xorr&lt;/em&gt; the &lt;em&gt;god&lt;/em&gt; jewel",
         "score" : 0.17877324
       }, {
         "text" : "xor the god jewel",
+        "highlighted": "xor the &lt;em&gt;god&lt;/em&gt; jewel",
         "score" : 0.14231323
       } ]
     } ]
@@ -175,6 +181,19 @@ can contain misspellings (See parameter descriptions below).</p><pre class="prog
 </td><td valign="top">
 <p>
     Sets the text / query to provide suggestions for.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">highlight</code>
+</p>
+</td><td valign="top">
+<p>
+    Sets up suggestion highlighting.  If not provided then
+    no <code class="literal">highlighted</code> field is returned.  If provided must
+    contain exactly <code class="literal">pre_tag</code> and <code class="literal">post_tag</code> which are
+    wrapped around the changed tokens.  If multiple tokens
+    in a row are changed the entire phrase of changed tokens
+    is wrapped rather than each token.
 </p>
 </td></tr></tbody></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_smoothing_models"></a>Smoothing Models</h3></div></div></div><p>The <code class="literal">phrase</code> suggester supports multiple smoothing models to balance
 weight between infrequent grams (grams (shingles) are not existing in
