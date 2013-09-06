@@ -388,6 +388,7 @@ text-transform:lowercase;
 .guide .deprecated,
 .guide .added {
 	position: relative;
+	font-size: 16px;
 }
 
 .guide .deprecated .version,
@@ -404,7 +405,7 @@ text-transform:lowercase;
 .guide .deprecated .detail,
 .guide .added .detail {
 	min-width: 250px;
-	position: absolute;	
+	position: absolute;
 	padding: 15px;
 	border: 3px solid #e8e8e8;
 	background: white;
@@ -430,3 +431,7 @@ text-transform:lowercase;
 	transition: color 0.5s ease;
 }
 
+.guide .toc .added,
+.guide .toc .deprecated {
+	display: none;
+}
