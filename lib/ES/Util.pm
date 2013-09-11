@@ -12,6 +12,14 @@ our @ISA       = qw(Exporter);
 our @EXPORT_OK = qw(run $Opts build_chunked build_single sha_for);
 our $Opts      = {};
 
+our $HTML_Header = <<'HTML';
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+HTML
+
 #===================================
 sub build_chunked {
 #===================================
@@ -75,6 +83,7 @@ sub build_single {
     to_html5($dest);
 }
 
+
 #===================================
 sub to_html5 {
 #===================================
@@ -82,8 +91,8 @@ sub to_html5 {
     for my $file ( $dir->children ) {
         next if $file->is_dir or $file->basename !~ /\.html$/;
         my $contents = $file->slurp( iomode => '<:encoding(UTF-8)' );
-        $contents =~ s/^<!DOCTYPE[^>]+>/<!DOCTYPE html>/;
         $contents =~ s/\s+xmlns="[^"]*"//g;
+        $contents =~ s/^<!DOCTYPE[^>]+>\n<html>/$HTML_Header/;
         $file->spew( iomode => '>:utf8', $contents );
     }
 }
