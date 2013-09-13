@@ -22,14 +22,14 @@ contents_title:     Guide
 contents:
     -
         title:      Elasticsearch reference
-        prefix:     elasticsearch/reference
+        prefix:     en/elasticsearch/reference
         repo:       elasticsearch
         index:      docs/reference/index.asciidoc
         chunk:      1
 
     -
         title:      Elasticsearch for Apache Hadoop
-        prefix:     elasticsearch/hadoop
+        prefix:     en/elasticsearch/hadoop
         repo:       elasticsearch-hadoop
         index:      docs/src/reference/asciidoc/index.adoc
 
@@ -38,24 +38,24 @@ contents:
         sections:
           -
             title:      Java API
-            prefix:     elasticsearch/client/java-api
+            prefix:     en/elasticsearch/client/java-api
             repo:       elasticsearch
             index:      docs/java-api/index.asciidoc
 
           -
             title:      Groovy API
-            prefix:     elasticsearch/client/groovy-api
+            prefix:     en/elasticsearch/client/groovy-api
             repo:       elasticsearch
             index:      docs/groovy-api/index.asciidoc
 
           -
             title:      Rivers
-            prefix:     elasticsearch/rivers
+            prefix:     en/elasticsearch/rivers
             index:      docs/river/index.asciidoc
             repo:       elasticsearch
           -
             title:      Community supported clients
-            prefix:     elasticsearch/client/community
+            prefix:     en/elasticsearch/client/community
             index:      docs/community/index.asciidoc
             repo:       elasticsearch
             branches:   [master]
