@@ -15,8 +15,9 @@ use Getopt::Long;
 
 chdir($FindBin::RealBin) or die $!;
 
-our $Conf = LoadFile('conf.yaml');
-our $e = ElasticSearch->new( servers => $ENV{ES_HOST} );
+our $URL_Base = '/guide';
+our $Conf     = LoadFile('conf.yaml');
+our $e        = ElasticSearch->new( servers => $ENV{ES_HOST} );
 
 GetOptions( $Opts, 'force', 'verbose' );
 
@@ -77,6 +78,7 @@ sub index_docs {
 sub load_docs {
 #===================================
     my ( $dir, $prefix ) = @_;
+    my $length_dir = length($dir);
     my $book_dir = $dir->subdir( $prefix, 'current' );
 
     my @docs;
@@ -84,17 +86,21 @@ sub load_docs {
         next if $file->is_dir;
 
         my $name = $file->basename;
-        next if $name eq 'index.html' or $name !~ /\.html$/;
+        next if $name eq 'index.html' or $name !~ s/\.html$//;
 
         my ( $title, $text ) = load_file($file);
         next unless $title;
 
+        my $url = $URL_Base . substr( $file, $length_dir );
         push @docs,
             {
+            _id  => $url,
             data => {
                 book  => $prefix,
                 title => $title,
-                text  => $text
+                text  => $text,
+                url   => $url,
+                path  => "/$prefix/$name",
             }
             };
     }
@@ -133,7 +139,8 @@ sub books {
 sub index_settings {
 #===================================
     return {
-        analysis => {
+        number_of_shards => 1,
+        analysis         => {
             analyzer => {
                 content => {
                     type      => 'custom',
@@ -204,10 +211,13 @@ sub mappings {
                 title => {
                     type   => 'multi_field',
                     fields => {
-                        title => { type => 'string', analyzer => 'content' },
+                        title => {
+                            type     => 'string',
+                            analyzer => 'content',
+                        },
                         shingles => {
                             type     => 'string',
-                            analyzer => 'shingles'
+                            analyzer => 'shingles',
                         },
                         ngrams => {
                             type            => 'string',
@@ -231,6 +241,10 @@ sub mappings {
                         }
                     }
                 },
+                path => {
+                    type  => 'string',
+                    index => 'not_analyzed',
+                }
             }
         }
     };
