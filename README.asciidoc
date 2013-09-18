@@ -11,7 +11,7 @@ First, you need to make sure that you have the following installed:
 
 * `perl`     -- system `perl` is fine
 * `python`   -- system `python` is fine
-* `xsltproc` -- if not already installed, see 
+* `xsltproc` -- if not already installed, see
                 http://www.sagehill.net/docbookxsl/InstallingAProcessor.html[Installing a Processor]
 
 TIP: Windows users are recommended to use http://www.cygwin.com/[Cygwin] (install `asciidoc` package and `libxslt`).
@@ -38,7 +38,7 @@ cd docs/
 ./build_docs.pl --doc README.asciidoc --open
 ----------------------------
 
-This should convert `README.asciidoc` into HTML and open it 
+This should convert `README.asciidoc` into HTML and open it
 in your browser.
 
 [[build]]
@@ -46,8 +46,8 @@ in your browser.
 
 [partintro]
 --
-The `build_docs.pl` executable can be used to build the documentation 
-from a locally checked out repository, or to build all the 
+The `build_docs.pl` executable can be used to build the documentation
+from a locally checked out repository, or to build all the
 documentation that will be uploaded to the website.
 
 Create a symbolic link to `build_docs.pl` to make it more convenient
@@ -70,12 +70,12 @@ generate the HTML version of the docs:
 [source,shell]
 ----------------------------
 cd path/to/your/repo
-build_docs.pl --doc path/to/index.asciidoc 
+build_docs.pl --doc path/to/index.asciidoc
 ----------------------------
 
 === Specifying a different output dir
 
-By default, the HTML docs are generated in `./html_docs`. You can 
+By default, the HTML docs are generated in `./html_docs`. You can
 change the output directory with the `--out` parameter:
 
 [source,shell]
@@ -97,7 +97,7 @@ build_docs.pl --doc path/to/index.asciidoc --open
 
 === Single- or multi-page
 
-By default, the build process generates an HTML file per 
+By default, the build process generates an HTML file per
 part/chapter/section.  To generate all of the docs in a single
 file instead, use the `--single` parameter:
 
@@ -128,7 +128,7 @@ The most common errors are:
 
 * Asciidoc syntax error, eg `=Title` instead of `= Title` or
   unclosed block delimiters, ie `======` or `------`
-* incorrect order of elements, eg `= Title` followed by 
+* incorrect order of elements, eg `= Title` followed by
   a `=== Level 3` header
 * Linking to an non-existent ID
 
@@ -149,10 +149,10 @@ build_docs.pl --all
 
 The first time you run this will be slow as it needs to:
 
-* clone each repository 
+* clone each repository
 * build the docs for each branch
 
-Subsequent runs will pull any changes to the repos and only build the 
+Subsequent runs will pull any changes to the repos and only build the
 branches that have changed.
 
 === Checking your changes
@@ -166,7 +166,7 @@ using the <<local,local build process>>, the only other errors
 that might occur at this stage are bad cross-document links.
 
 Once the docs build correctly, you don't need to do anything more.
-The changes that you have pushed to your repository will be 
+The changes that you have pushed to your repository will be
 picked up automatically by the docs build service.
 
 [[config]]
@@ -178,11 +178,11 @@ https://github.com/elasticsearch/docs/blob/master/conf.yaml[`conf.yaml`] file in
 
 You can add a new repository under the `repos` section, if it
 doesn't already exist, and you can add a new ``book'' under the
-`contents` section.  
+`contents` section.
 
 The `repos.$NAME.branches[]` key lists all of the branches which
 should be built -- all of these branches will be available on the
-website -- while `repos.$NAME.current` lists the branch which 
+website -- while `repos.$NAME.current` lists the branch which
 should be used as the default version on the site.
 
 NOTE: The `branches` and `current` settings can be overridden in
@@ -214,8 +214,8 @@ or the official http://www.methods.co.nz/asciidoc/userguide.html[Asciidoc User G
 [[structure]]
 == Basic book structure
 
-Asciidocs can be built as a `book`, `article`, `manpage` etc.  
-All our docs are built as a `book`, and thus follow the 
+Asciidocs can be built as a `book`, `article`, `manpage` etc.
+All our docs are built as a `book`, and thus follow the
 layout for books.  The most basic structure is as follows:
 
 [source,asciidoc]
@@ -234,13 +234,13 @@ layout for books.  The most basic structure is as follows:
 Usually this structure will be sufficient for most of your
 documentation needs. More complicated ``books'', such
 as the {ref}[Elasticsearch reference docs], however,
-require a few additional elements, described on the 
+require a few additional elements, described on the
 following pages.
 
 === Filenames
 
-By default, each chapter will generate a new _chunk_ 
-or HTML file.  You can control the name of the file 
+By default, each chapter will generate a new _chunk_
+or HTML file.  You can control the name of the file
 by giving the header an ID, as follows:
 
 [source,asciidoc]
@@ -249,7 +249,7 @@ by giving the header an ID, as follows:
 == Intro to XYZ
 ----------------------------------
 
-This chapter would then be written to a file called 
+This chapter would then be written to a file called
 `intro-to-xyz.html`.  If no ID is provided, then a
 filename will be auto-generated.  See <<chunking>>
 for more.
@@ -261,7 +261,7 @@ book.  See <<linking>>.
 [[multi-part]]
 == Multi-part books
 
-Books may also be divided into multiple parts, which are indicated 
+Books may also be divided into multiple parts, which are indicated
 with `level 0` headers:
 
 [source,asciidoc]
@@ -281,7 +281,7 @@ Each `part` also creates a new _chunk_ or HTML file.
 
 === Part intro
 
-A `part` may include text before the first `chapter`, but 
+A `part` may include text before the first `chapter`, but
 it must be marked with `[partintro]` in order to be valid:
 
 [source,asciidoc]
@@ -298,7 +298,7 @@ A paragraph introducing this Part
 ... etc ...
 ----------------------------------
 
-Longer `partintro`s should be wrapped in an
+Longer `partintro` blocks should be wrapped in an
 http://www.methods.co.nz/asciidoc/userguide.html#X29[_open block_]
 which starts and ends with two dashes: `--`:
 
@@ -309,12 +309,12 @@ which starts and ends with two dashes: `--`:
 [partintro]
 .A partintro title
 -- <1>
-This section may contain multiple paragraphs.  
+This section may contain multiple paragraphs.
 
 [float]
 == A header should use `[float]`
 
-Everything up to the closing -- marker 
+Everything up to the closing -- marker
 will be considered part of the partintro.
 -- <1>
 
@@ -364,7 +364,7 @@ and
 === Appendix header         # level 2 <1>
 ----------------------------------
 
-<1> Any headers in the appendix or in the preface start 
+<1> Any headers in the appendix or in the preface start
     out-of-sequence at `level 2`, not at `level 1`.
 
 [sect3]
@@ -385,7 +385,7 @@ Term two::
 
 [NOTE]
 ==================================
-The two `[glossary]` elements above have different purposes: 
+The two `[glossary]` elements above have different purposes:
 
  * The first marks this section of the document as a glossary, to be included in the table of contents
  * The second marks the definitions list as type `glossary`
@@ -394,7 +394,7 @@ The two `[glossary]` elements above have different purposes:
 
 === Also see
 
-If you need to use some of these more advanced structural 
+If you need to use some of these more advanced structural
 elements, have a look at the example of a multi-part book
 included in this repo in https://github.com/elasticsearch/docs/blob/master/resources/asciidoc-8.6.8/doc/book-multi.txt[`resources/asciidoc-8.6.8/doc/book-multi.txt`].
 
@@ -407,7 +407,7 @@ in the left hand column:
 [source,asciidoc]
 ----------------------------------
 This is a paragraph
-even though it contains 
+even though it contains
 line breaks.
 
 This is a second paragraph.
@@ -432,7 +432,7 @@ Text of my paragraph
 [[admon-paras]]
 === Admonition paragraphs
 
-A paragraph which starts with `TIP:`, `NOTE:`, `IMPORTANT:`, 
+A paragraph which starts with `TIP:`, `NOTE:`, `IMPORTANT:`,
 `WARNING:` or `CAUTION:` is rendered as an _admonition_ paragraph,
 eg:
 
@@ -519,7 +519,7 @@ Certain runs of ASCII characters are replaced as follows:
 == Linking
 
 You can link to any block in the document that has an ID -- an
-identifier before the block which is wrapped in double 
+identifier before the block which is wrapped in double
 square brackets: `[[ID]]`
 
 [source,asciidoc]
@@ -561,8 +561,8 @@ This note can be linked to using the ID `note-id`.
 ===============================
 
 The `ID` is added to the HTML document as an `<a>` anchor
-and, as explained in <<chunking>>, the `ID` is used as the 
-filename for sections which are chunked -- written to 
+and, as explained in <<chunking>>, the `ID` is used as the
+filename for sections which are chunked -- written to
 separate HTML files.
 
 === Internal links
@@ -576,7 +576,7 @@ angle brackets:
 ----------------------------------
 * <<setup>>
 * <<structure>>
-* <<note-id>> 
+* <<note-id>>
 ----------------------------------
 
 * <<setup>>
@@ -584,7 +584,7 @@ angle brackets:
 * <<note-id>>
 ==================================
 
-It will use the title associated with each ID as the 
+It will use the title associated with each ID as the
 link text.  In the example above, `note-id` is not associated
 with any title, which is why the text is rendered as `"Note"`.
 
@@ -605,8 +605,8 @@ See the <<note-id,note about IDs>>.
 
 === External links
 
-Links to external websites can just be added as normal 
-inline text, optionally with custom link text in 
+Links to external websites can just be added as normal
+inline text, optionally with custom link text in
 square brackets:
 
 .External links
@@ -630,7 +630,7 @@ the build process.
 
 Links to other Elasticsearch docs are essentially the
 same as external links. However, for conciseness and
-maintainability, you should use an _attribute_ to 
+maintainability, you should use an _attribute_ to
 represent the absolute URL of the docs.
 
 Attributes can be added to the beginning of the docs,
@@ -650,9 +650,9 @@ Here is a link to the {ref}/search.html[search page]
 Here is a link to the {ref}/search.html[search page]
 ==================================
 
-The main benefit of using attributes for cross document links is 
+The main benefit of using attributes for cross document links is
 that, when the docs for an old version contain links that
-no longer exist in the `current` branch, you can update 
+no longer exist in the `current` branch, you can update
 all the links in the document to point to the older version,
 by just updating a single attribute.
 
@@ -673,7 +673,7 @@ Bullet point lists are written using asterisks:
 .Optional title
 * Point
 * Point
-** Sub-point 
+** Sub-point
 *** Sub-sub-point
 * A point can have multiple paragraphs
 +
@@ -685,7 +685,7 @@ An empty line signifies the end of the list.
 .Optional title
 * Point
 * Point
-** Sub-point 
+** Sub-point
 ** Sub-point
 * A point can have multiple paragraphs
 +
@@ -738,7 +738,7 @@ b. Another letter
 
 === Definition lists
 
-Definition lists are used to define terms. The term must be 
+Definition lists are used to define terms. The term must be
 followed by a double colon `::` eg:
 
 .A vertical definition list
@@ -820,7 +820,7 @@ term five::     A definition can even include
 [[blocks]]
 == Blocks
 
-Blocks are used for special blocks of content, such as 
+Blocks are used for special blocks of content, such as
 <<code-blocks>>, <<examples>>, <<sidebars>> and
 <<admon-blocks>>.
 
@@ -856,12 +856,12 @@ syntax highlighting, eg:
 ==================================
 
 IMPORTANT: The language to use for source highlighting
--- eg `js` above -- *must* be specified, otherwise Asciidoc 
+-- eg `js` above -- *must* be specified, otherwise Asciidoc
 emits invalid DocBook.
 
 === Callouts
 
-Code blocks can use _callouts_ to add an explanatory 
+Code blocks can use _callouts_ to add an explanatory
 footnote to a particular line of code:
 
 .Code block with callouts
@@ -891,8 +891,8 @@ footnote to a particular line of code:
 [[admon-blocks]]
 === Admonition blocks
 
-Admonition blocks are much the same as <<admon-paras>>, except that 
-they can be longer and contain more than just a paragraph.  
+Admonition blocks are much the same as <<admon-paras>>, except that
+they can be longer and contain more than just a paragraph.
 For instance:
 
 
@@ -936,7 +936,7 @@ and some code
 [[sidebars]]
 === Sidebars
 
-Sidebars are used to highlight a block of 
+Sidebars are used to highlight a block of
 content that is outside the usual flow of text:
 
 [source,asciidoc]
@@ -989,17 +989,17 @@ Text explaining the first example.
 Text explaining the second example.
 ========================================
 
-CAUTION: The `===` and `---` delimiters can 
+CAUTION: The `===` and `---` delimiters can
 sometimes be confused with a header, resulting
 in an error.  To resolve this, add newlines
-between the delimiter and the content 
+between the delimiter and the content
 before and after it.
 
 [[includes]]
 == Including files
 
 For long documentation, you probably want to break up
-the Asciidoc files into smaller units, and just 
+the Asciidoc files into smaller units, and just
 include them where appropriate:
 
 [source,asciidoc]
@@ -1015,12 +1015,12 @@ contains the `include` statement.
 == Additions and deprecations
 
 Documentation is built for various branches, eg `0.90`,
-`1.00`, `master`.  However, we release versions 
-`0.90.0`, `0.90.1`, etc, which are all based on the 
+`1.00`, `master`.  However, we release versions
+`0.90.0`, `0.90.1`, etc, which are all based on the
 `0.90` branch.
 
 When adding new functionality to a branch, or deprecating
-existing functionality, you can mark the change as 
+existing functionality, you can mark the change as
 _added_ or _deprecated_ as follows:
 
 === Inline notifications
@@ -1178,12 +1178,12 @@ image::resources/cat.jpg["Alt text",width=100,align="center"]
 [[tables]]
 == Tables
 
-In general, tables are frowned upon in DocBook as they 
+In general, tables are frowned upon in DocBook as they
 don't display well in formats other than HTML, eg PDF,
 ePub, etc.
 
 It's almost always better to use <<horizonta-defn-list>>
-instead, but if you really want to use tables, you 
+instead, but if you really want to use tables, you
 can read about them http://www.methods.co.nz/asciidoc/userguide.html#_tables[here].
 
 
@@ -1225,7 +1225,7 @@ build_docs.pl --doc path/to/index.asciidoc --chunk 1
 ----------------------------------
 
 To enable section chunking when building docs <<website,for the website>>,
-add `chunk: 1` to the 
+add `chunk: 1` to the
 https://github.com/elasticsearch/docs/blob/master/conf.yaml[`conf.yaml`] file in the `docs` repo.
 
 [source,yaml]
@@ -1245,7 +1245,7 @@ contents:
 
 If you enable session chunking, you will probably find
 that you have a few short sections which you want to keep on
-the same page.  
+the same page.
 
 To do this, you can use the `[float]` marker before a
 section header, to tell Asciidoc that what follows isn't
@@ -1275,6 +1275,6 @@ named for their IDs:
   ``Section two''
 * `section-three.html`
 
-To link to ``Section two'' from an external 
+To link to ``Section two'' from an external
 document, you would use the URL: `section-one.html#section-two`
 
