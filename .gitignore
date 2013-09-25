@@ -4,7 +4,7 @@ bin
 .ignorepath
 .settings
 .classpath
-styles.css
+/styles.css
 .project
 .repos/*/
 *.iml
