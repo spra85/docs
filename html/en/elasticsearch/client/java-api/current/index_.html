@@ -22,8 +22,8 @@
            
           <a href="get.html">Get API
                » 
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="index_"></a>Index API</h1></div></div></div><div class="toc"><dl><dt><span class="preface"><a href="java-api.html">Preface</a></span></dt><dt><span class="chapter"><a href="_maven_repository.html">Maven Repository</a></span></dt><dt><span class="chapter"><a href="client.html">Client</a></span></dt><dt><span class="chapter"><a href="index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="get.html">Get API</a></span></dt><dt><span class="chapter"><a href="delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="search.html">Search API</a></span></dt><dt><span class="chapter"><a href="count.html">Count API</a></span></dt><dt><span class="chapter"><a href="delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="percolate.html">Percolate API</a></span></dt><dt><span class="chapter"><a href="query-dsl-queries.html">Query DSL - Queries</a></span></dt><dt><span class="chapter"><a href="query-dsl-filters.html">Query DSL - Filters</a></span></dt></dl></div><p>The index API allows one to index a typed JSON document into a specific
-index and make it searchable.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_generate_json_document"></a>Generate JSON document</h2></div></div></div><p>There are different way of generating JSON document:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="index_"></a>Index API</h1></div></div></div><div class="toc"><dl><dt><span class="preface"><a href="java-api.html">Preface</a></span></dt><dt><span class="chapter"><a href="_maven_repository.html">Maven Repository</a></span></dt><dt><span class="chapter"><a href="client.html">Client</a></span></dt><dt><span class="chapter"><a href="index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="get.html">Get API</a></span></dt><dt><span class="chapter"><a href="delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="search.html">Search API</a></span></dt><dt><span class="chapter"><a href="count.html">Count API</a></span></dt><dt><span class="chapter"><a href="delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="java-facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="percolate.html">Percolate API</a></span></dt><dt><span class="chapter"><a href="query-dsl-queries.html">Query DSL - Queries</a></span></dt><dt><span class="chapter"><a href="query-dsl-filters.html">Query DSL - Filters</a></span></dt></dl></div><p>The index API allows one to index a typed JSON document into a specific
+index and make it searchable.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="generate"></a>Generate JSON document</h2></div></div></div><p>There are different way of generating JSON document:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Manually (aka do it yourself) using native <code class="literal">byte[]</code> or as a <code class="literal">String</code>
 </li><li class="listitem">
 Using <code class="literal">Map</code> that will be automatically converted to its JSON
@@ -42,11 +42,11 @@ dates regarding to the
         "\"user\":\"kimchy\"," +
         "\"postDate\":\"2013-01-30\"," +
         "\"message\":\"trying out Elastic Search\"," +
-    "}";</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_using_map"></a>Using Map</h3></div></div></div><p>Map is a key:values pair collection. It represents very well a JSON
+    "}";</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="using-map"></a>Using Map</h3></div></div></div><p>Map is a key:values pair collection. It represents very well a JSON
 structure:</p><pre class="programlisting prettyprint lang-java">Map&lt;String, Object&gt; json = new HashMap&lt;String, Object&gt;();
 json.put("user","kimchy");
 json.put("postDate",new Date());
-json.put("message","trying out Elastic Search");</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_serialize_your_beans"></a>Serialize your beans</h3></div></div></div><p>Elasticsearch already use Jackson but shade it under
+json.put("message","trying out Elastic Search");</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="beans"></a>Serialize your beans</h3></div></div></div><p>Elasticsearch already use Jackson but shade it under
 <code class="literal">org.elasticsearch.common.jackson</code> package.
  So, you can add your own Jackson version in your <code class="literal">pom.xml</code> file or in
 your classpath. See <a class="ulink" href="http://wiki.fasterxml.com/JacksonDownload" target="_top">Jackson
@@ -60,7 +60,7 @@ Download Page</a>.</p><p>For example:</p><pre class="programlisting prettyprint 
 ObjectMapper mapper = new ObjectMapper(); // create once, reuse
 
 // generate json
-String json = mapper.writeValueAsString(yourbeaninstance);</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_use_elasticsearch_helpers"></a>Use Elasticsearch helpers</h3></div></div></div><p>Elasticsearch provides built-in helpers to generate JSON content.</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.common.xcontent.XContentFactory.*;
+String json = mapper.writeValueAsString(yourbeaninstance);</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="helpers"></a>Use Elasticsearch helpers</h3></div></div></div><p>Elasticsearch provides built-in helpers to generate JSON content.</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.common.xcontent.XContentFactory.*;
 
 XContentBuilder builder = jsonBuilder()
     .startObject()
@@ -71,7 +71,7 @@ XContentBuilder builder = jsonBuilder()
 <code class="literal">endArray()</code> methods. By the way, <code class="literal">field</code> method
  accept many object types. You can pass directly numbers, dates and even
 other XContentBuilder objects.</p><p>If you need to see the generated JSON content, you can use the
-@string()@method.</p><pre class="programlisting prettyprint lang-java">String json = builder.string();</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_index_document"></a>Index document</h2></div></div></div><p>The following example indexes a JSON document into an index called
+@string()@method.</p><pre class="programlisting prettyprint lang-java">String json = builder.string();</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="index-doc"></a>Index document</h2></div></div></div><p>The following example indexes a JSON document into an index called
 twitter, under a type called tweet, with id valued 1:</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.common.xcontent.XContentFactory.*;
 
 IndexResponse response = client.prepareIndex("twitter", "tweet", "1")
