@@ -29,8 +29,7 @@ sub write {
 
     my $index = $dir->file('index.html');
 
-    my $adoc = join "\n",
-        ( "[[toc-title]]", "= " . $self->title, '', $self->render(1) );
+    my $adoc = join "\n", "= " . $self->title, '', $self->render(1);
     my $adoc_file = $dir->file('index.asciidoc');
     $adoc_file->spew( iomode => '>:utf8', $adoc );
 
