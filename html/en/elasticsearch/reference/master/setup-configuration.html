@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Configuration</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="setup.html" title="Setup" /><link rel="prev" href="setup.html" title="Setup" /><link rel="next" href="setup-service.html" title="Running As a Service on Linux" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://staging.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://staging.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://staging.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><link rel="stylesheet" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Configuration</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="setup.html" title="Setup" /><link rel="prev" href="setup.html" title="Setup" /><link rel="next" href="setup-service.html" title="Running As a Service on Linux" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://staging.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://staging.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://staging.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
         _gaq.push(['_trackPageview']);
@@ -33,7 +33,7 @@ that will be allocated to elasticsearch java process. It will allocate
 the same value to both min and max values, though those can be set
 explicitly (not recommended) by setting <code class="literal">ES_MIN_MEM</code> (defaults to
 <code class="literal">256m</code>), and <code class="literal">ES_MAX_MEM</code> (defaults to <code class="literal">1gb</code>).</p><p>It is recommended to set the min and max memory to the same value, and
-enable <a class="link" href="setup-configuration.html#setup-configuration-memory" title="Memory Settings"><code class="literal">mlockall</code></a>.</p><h3><a id="_system_configuration"></a>System Configuration</h3><h4><a id="_file_descriptors"></a>File Descriptors</h4><p>Make sure to increase the number of open files descriptors on the
+enable <a class="link" href="setup-configuration.html#setup-configuration-memory" title="Memory Settings"><code class="literal">mlockall</code></a>.</p><h3><a id="system"></a>System Configuration</h3><h4><a id="file-descriptors"></a>File Descriptors</h4><p>Make sure to increase the number of open files descriptors on the
 machine (or for the user running elasticsearch). Setting it to 32k or
 even 64k is recommended.</p><p>In order to test how many open files the process can open, start it with
 <code class="literal">-Des.max-open-files</code> set to <code class="literal">true</code>. This will print the number of open
@@ -47,7 +47,7 @@ systems.</p><p>In order to see if this works or not, set the <code class="litera
 DEBUG level. A solution to "Unknown mlockall error 0" can be to set
 <code class="literal">ulimit -l unlimited</code>.</p><p>Note, <code class="literal">mlockall</code> might cause the JVM or shell
 session to exit if it fails to allocate the memory (because not enough
-memory is available on the machine).</p><h3><a id="_elasticsearch_settings"></a>Elasticsearch Settings</h3><p><span class="strong"><strong>elasticsearch</strong></span> configuration files can be found under <code class="literal">ES_HOME/config</code>
+memory is available on the machine).</p><h3><a id="settings"></a>Elasticsearch Settings</h3><p><span class="strong"><strong>elasticsearch</strong></span> configuration files can be found under <code class="literal">ES_HOME/config</code>
 folder. The folder comes with two files, the <code class="literal">elasticsearch.yml</code> for
 configuring ElasticSearch different
 <a class="link" href="modules.html" title="Modules">modules</a>, and <code class="literal">logging.yml</code> for
@@ -57,12 +57,12 @@ bind and publish to:</p><pre class="programlisting prettyprint lang-js">network 
     host : 10.0.0.4</pre><p><span class="strong"><strong>elasticsearch</strong></span> configuration files can be found under <code class="literal">ES_HOME/config</code>
 folder. The folder comes with two files, the <code class="literal">elasticsearch.yml</code> for
 configuring ElasticSearch different <a class="link" href="modules.html" title="Modules">modules</a>, and <code class="literal">logging.yml</code>
-for configuring the ElasticSearch logging.</p><h4><a id="_paths"></a>Paths</h4><p>In production use, you will almost certainly want to change paths for
+for configuring the ElasticSearch logging.</p><h4><a id="paths"></a>Paths</h4><p>In production use, you will almost certainly want to change paths for
 data and log files:</p><pre class="programlisting prettyprint lang-js">path:
   logs: /var/log/elasticsearch
-  data: /var/data/elasticsearch</pre><h4><a id="_cluster_name"></a>Cluster name</h4><p>Also, don’t forget to give your production cluster a name, which is used
+  data: /var/data/elasticsearch</pre><h4><a id="cluster-name"></a>Cluster name</h4><p>Also, don’t forget to give your production cluster a name, which is used
 to discover and auto-join other nodes:</p><pre class="programlisting prettyprint lang-js">cluster:
-  name: &lt;NAME OF YOUR CLUSTER&gt;</pre><h4><a id="_node_name"></a>Node name</h4><p>You may also want to change the default node name for each node to
+  name: &lt;NAME OF YOUR CLUSTER&gt;</pre><h4><a id="node-name"></a>Node name</h4><p>You may also want to change the default node name for each node to
 something like the display hostname. By default ElasticSearch will
 randomly pick a Marvel character name from a list of around 3000 names
 when your node starts up.</p><pre class="programlisting prettyprint lang-js">node:
@@ -71,7 +71,7 @@ example, the above gets collapsed into <code class="literal">network.host</code>
 its easy to support other configuration formats, for example,
 <a class="ulink" href="http://www.json.org" target="_top">JSON</a>. If JSON is a preferred configuration format,
 simply rename the <code class="literal">elasticsearch.yml</code> file to <code class="literal">elasticsearch.json</code> and
-add:</p><h4><a id="_configuration_styles"></a>Configuration styles</h4><pre class="programlisting prettyprint lang-js">{
+add:</p><h4><a id="styles"></a>Configuration styles</h4><pre class="programlisting prettyprint lang-js">{
     "network" : {
         "host" : "10.0.0.4"
     }
@@ -85,7 +85,7 @@ file which will resolve to an environment setting, for example:</p><pre class="p
         "host" : "${ES_NET_HOST}"
     }
 }</pre><p>The location of the configuration file can be set externally using a
-system property:</p><pre class="programlisting prettyprint lang-js">$ elasticsearch -f -Des.config=/path/to/config/file</pre><h3><a id="_index_settings"></a>Index Settings</h3><p>Indices created within the cluster can provide their own settings. For
+system property:</p><pre class="programlisting prettyprint lang-js">$ elasticsearch -f -Des.config=/path/to/config/file</pre><h3><a id="configuration-index-settings"></a>Index Settings</h3><p>Indices created within the cluster can provide their own settings. For
 example, the following creates an index with memory based storage
 instead of the default file system based one (the format can be either
 YAML or JSON):</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT http://localhost:9200/kimchy/ -d \
@@ -101,7 +101,7 @@ started with the mentioned configuration will store the index in memory
 <span class="strong"><strong>unless the index explicitly sets it</strong></span>. In other words, any index level
 settings override what is set in the node configuration. Of course, the
 above can also be set as a "collapsed" setting, for example:</p><pre class="programlisting prettyprint lang-js">$ elasticsearch -f -Des.index.store.type=memory</pre><p>All of the index level configuration can be found within each
-<a class="link" href="index-modules.html" title="Index Modules">index module</a>.</p><h3><a id="_logging"></a>Logging</h3><p>ElasticSearch uses an internal logging abstraction and comes, out of the
+<a class="link" href="index-modules.html" title="Index Modules">index module</a>.</p><h3><a id="logging"></a>Logging</h3><p>ElasticSearch uses an internal logging abstraction and comes, out of the
 box, with <a class="ulink" href="http://logging.apache.org/log4j/" target="_top">log4j</a>. It tries to simplify
 log4j configuration by using <a class="ulink" href="http://www.yaml.org/" target="_top">YAML</a> to configure it,
 and the logging configuration file is <code class="literal">config/logging.yml</code> file.</p></div><div class="navfooter"><span class="prev"><a href="setup.html">

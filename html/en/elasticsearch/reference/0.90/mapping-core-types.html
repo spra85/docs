@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Core Types</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="mapping-types.html" title="Types" /><link rel="prev" href="mapping-types.html" title="Types" /><link rel="next" href="mapping-array-type.html" title="Array Type" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://staging.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://staging.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://staging.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><link rel="stylesheet" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Core Types</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="mapping-types.html" title="Types" /><link rel="prev" href="mapping-types.html" title="Types" /><link rel="next" href="mapping-array-type.html" title="Array Type" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://staging.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://staging.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://staging.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
         _gaq.push(['_trackPageview']);
@@ -43,7 +43,7 @@ core types:</p><pre class="programlisting prettyprint lang-js">{
             "rank" : {"type" : "float"}
         }
     }
-}</pre><h4><a id="_string"></a>String</h4><p>The text based string type is the most basic type, and contains one or
+}</pre><h4><a id="string"></a>String</h4><p>The text based string type is the most basic type, and contains one or
 more characters. An example mapping can be:</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {
         "properties" : {
@@ -101,7 +101,7 @@ with the indexed value. For example:</p><pre class="programlisting prettyprint l
 Otherwise, the structure would interpret "message" as a value of type
 "object". The key <code class="literal">_value</code> (or <code class="literal">value</code>) in the inner document specifies
 the real string content that should eventually be indexed. The <code class="literal">_boost</code>
-(or <code class="literal">boost</code>) key specifies the per field document boost (here 2.0).</p><h4><a id="_number"></a>Number</h4><p>A number based type supporting <code class="literal">float</code>, <code class="literal">double</code>, <code class="literal">byte</code>, <code class="literal">short</code>,
+(or <code class="literal">boost</code>) key specifies the per field document boost (here 2.0).</p><h4><a id="number"></a>Number</h4><p>A number based type supporting <code class="literal">float</code>, <code class="literal">double</code>, <code class="literal">byte</code>, <code class="literal">short</code>,
 <code class="literal">integer</code>, and <code class="literal">long</code>. It uses specific constructs within Lucene in
 order to support numeric values. The number types have the same ranges
 as corresponding
@@ -129,7 +129,7 @@ each number value). Defaults to <code class="literal">4</code>.</p></td></tr><tr
 all.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">include_in_all</code></p></td><td align="left" valign="top"><p>Should the field be included in the <code class="literal">_all</code> field (if
 enabled). If <code class="literal">index</code> is set to <code class="literal">no</code> this defaults to <code class="literal">false</code>, otherwise,
 defaults to <code class="literal">true</code> or to the parent <code class="literal">object</code> type setting.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">ignore_malformed</code></p></td><td align="left" valign="top"><p>Ignored a malformed number. Defaults to <code class="literal">false</code>.
-(Since @0.19.9).</p></td></tr></tbody></table></div><h4><a id="_date"></a>Date</h4><p>The date type is a special type which maps to JSON string type. It
+(Since @0.19.9).</p></td></tr></tbody></table></div><h4><a id="date"></a>Date</h4><p>The date type is a special type which maps to JSON string type. It
 follows a specific format that can be explicitly set. All dates are
 <code class="literal">UTC</code>. Internally, a date maps to a number type <code class="literal">long</code>, with the added
 parsing stage from string to long and from long to string. An example
@@ -156,7 +156,7 @@ each number value). Defaults to <code class="literal">4</code>.</p></td></tr><tr
 all.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">include_in_all</code></p></td><td align="left" valign="top"><p>Should the field be included in the <code class="literal">_all</code> field (if
 enabled). If <code class="literal">index</code> is set to <code class="literal">no</code> this defaults to <code class="literal">false</code>, otherwise,
 defaults to <code class="literal">true</code> or to the parent <code class="literal">object</code> type setting.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">ignore_malformed</code></p></td><td align="left" valign="top"><p>Ignored a malformed number. Defaults to <code class="literal">false</code>.
-(Since @0.19.9).</p></td></tr></tbody></table></div><h4><a id="_boolean_3"></a>Boolean</h4><p>The boolean type Maps to the JSON boolean type. It ends up storing
+(Since @0.19.9).</p></td></tr></tbody></table></div><h4><a id="boolean"></a>Boolean</h4><p>The boolean type Maps to the JSON boolean type. It ends up storing
 within the index either <code class="literal">T</code> or <code class="literal">F</code>, with automatic translation to <code class="literal">true</code>
 and <code class="literal">false</code> respectively.</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {
@@ -178,7 +178,7 @@ in <code class="literal">_source</code>, have <code class="literal">include_in_a
 <code class="literal">null_value</code> as the field value. Defaults to not adding the field at
 all.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">include_in_all</code></p></td><td align="left" valign="top"><p>Should the field be included in the <code class="literal">_all</code> field (if
 enabled). If <code class="literal">index</code> is set to <code class="literal">no</code> this defaults to <code class="literal">false</code>, otherwise,
-defaults to <code class="literal">true</code> or to the parent <code class="literal">object</code> type setting.</p></td></tr></tbody></table></div><h4><a id="_binary"></a>Binary</h4><p>The binary type is a base64 representation of binary data that can be
+defaults to <code class="literal">true</code> or to the parent <code class="literal">object</code> type setting.</p></td></tr></tbody></table></div><h4><a id="binary"></a>Binary</h4><p>The binary type is a base64 representation of binary data that can be
 stored in the index. The field is stored by default and not indexed at
 all.</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {
@@ -190,7 +190,7 @@ all.</p><pre class="programlisting prettyprint lang-js">{
     }
 }</pre><p>The following table lists all the attributes that can be used with the
 binary type:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Attribute </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">index_name</code></p></td><td align="left" valign="top"><p>The name of the field that will be stored in the index.
-Defaults to the property/field name.</p></td></tr></tbody></table></div><h4><a id="_fielddata_filters"></a>Fielddata filters</h4><p>It is possible to control which field values are loaded into memory,
+Defaults to the property/field name.</p></td></tr></tbody></table></div><h4><a id="fielddata-filters"></a>Fielddata filters</h4><p>It is possible to control which field values are loaded into memory,
 which is particularly useful for faceting on string fields, using
 fielddata filters, which are explained in detail in the
 <a class="link" href="index-modules-fielddata.html" title="Field data">Fielddata</a> section.</p><p>Fielddata filters can exclude terms which do not match a regex, or which
@@ -212,7 +212,7 @@ don’t fall between a <code class="literal">min</code> and <code class="literal
 }</pre><p>These filters can be updated on an existing field mapping and will take
 effect the next time the fielddata for a segment is loaded. Use the
 <a class="link" href="indices-clearcache.html" title="Clear Cache">Clear Cache</a> API
-to reload the fielddata using the new filters.</p><h4><a id="_postings_format"></a>Postings format</h4><p>Posting formats define how fields are written into the index and how
+to reload the fielddata using the new filters.</p><h4><a id="postings"></a>Postings format</h4><p>Posting formats define how fields are written into the index and how
 fields are represented into memory. Posting formats can be defined per
 field via the <code class="literal">postings_format</code> option. Postings format are configurable
 since version <code class="literal">0.90.0.Beta1</code>. Elasticsearch has several builtin
@@ -264,7 +264,7 @@ attribute:</p><pre class="programlisting prettyprint lang-js">{
 }</pre><p>On top of using the built-in posting formats it is possible define
 custom postings format. See
 <a class="link" href="index-modules-codec.html" title="Codec module">codec module</a> for more
-information.</p><h4><a id="_similarity"></a>Similarity</h4><p>From version <code class="literal">0.90.Beta1</code> Elasticsearch includes changes from Lucene 4
+information.</p><h4><a id="similarity"></a>Similarity</h4><p>From version <code class="literal">0.90.Beta1</code> Elasticsearch includes changes from Lucene 4
 that allows you to configure a similarity (scoring algorithm) per field.
 Allowing users a simpler extension beyond the usual TF/IDF algorithm. As
 part of this, new algorithms have been added including BM25. Also as

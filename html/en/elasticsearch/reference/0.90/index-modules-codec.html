@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Codec module</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="index-modules.html" title="Index Modules" /><link rel="prev" href="index-modules-fielddata.html" title="Field data" /><link rel="next" href="index-modules-similarity.html" title="Similarity module" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://staging.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://staging.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://staging.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><link rel="stylesheet" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Codec module</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="index-modules.html" title="Index Modules" /><link rel="prev" href="index-modules-fielddata.html" title="Field data" /><link rel="next" href="index-modules-similarity.html" title="Similarity module" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://staging.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://staging.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://staging.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
         _gaq.push(['_trackPageview']);
@@ -27,7 +27,7 @@ postings format is the part of the codec that responsible for reading
 and writing the term dictionary, postings lists and positions, payloads
 and offsets stored in the postings list.</p><p>Configuring custom postings formats is an expert feature and most likely
 using the builtin postings formats will suite your needs as is described
-in the <a class="link" href="mapping-core-types.html" title="Core Types">mapping section</a></p><p>Codecs are available in Elasticsearch from version <code class="literal">0.90.0.beta1</code>.</p><h3><a id="_configuring_a_custom_postings_format"></a>Configuring a custom postings format</h3><p>Custom postings format can be defined in the index settings in the
+in the <a class="link" href="mapping-core-types.html" title="Core Types">mapping section</a></p><p>Codecs are available in Elasticsearch from version <code class="literal">0.90.0.beta1</code>.</p><h3><a id="custom-postings"></a>Configuring a custom postings format</h3><p>Custom postings format can be defined in the index settings in the
 <code class="literal">codec</code> part. The <code class="literal">codec</code> part can be configured when creating an index
 or updating index settings. An example on how to define your custom
 postings format:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'http://localhost:9200/twitter/' -d '{
@@ -50,7 +50,7 @@ postings format:</p><pre class="programlisting prettyprint lang-js">curl -XPUT '
          "second_person_id" : {"type" : "string", "postings_format" : "my_format"}
      }
   }
-}</pre><h3><a id="_available_postings_formats"></a>Available postings formats</h3><h4><a id="_direct_postings_format"></a>Direct postings format</h4><p>Wraps the default postings format for on-disk storage, but then at read
+}</pre><h3><a id="_available_postings_formats"></a>Available postings formats</h3><h4><a id="direct-postings"></a>Direct postings format</h4><p>Wraps the default postings format for on-disk storage, but then at read
 time loads and stores all terms &amp; postings directly in RAM. This
 postings format makes no effort to compress the terms and posting list
 and therefore is memory intensive, but because of this it gives a
@@ -67,7 +67,7 @@ in a single segment.</p><p>This postings format offers the following parameters:
     Terms with a lower document frequency use a
     single array object representation for postings and positions. The
     default is <span class="strong"><strong>32</strong></span>.
-</dd></dl></div><p>Type name: <code class="literal">direct</code></p><h4><a id="_memory_postings_format"></a>Memory postings format</h4><p>A postings format that stores terms &amp; postings (docs, positions,
+</dd></dl></div><p>Type name: <code class="literal">direct</code></p><h4><a id="memory-postings"></a>Memory postings format</h4><p>A postings format that stores terms &amp; postings (docs, positions,
 payloads) in RAM, using an FST. This postings format does write to disk,
 but loads everything into memory. The memory postings format has the
 following options:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
@@ -86,7 +86,7 @@ following options:</p><div class="variablelist"><dl class="variablelist"><dt><sp
     be slow), <code class="literal">0.5</code> (Fast, at most 50% memory overhead, always select a
     reasonably fast implementation), <code class="literal">7</code> (Fastest, at most 700% memory
     overhead, no compression). Default is <code class="literal">0.2</code>.
-</dd></dl></div><p>Type name: <code class="literal">memory</code></p><h4><a id="_bloom_filter_posting_format"></a>Bloom filter posting format</h4><p>The bloom filter postings format wraps a delegate postings format and on
+</dd></dl></div><p>Type name: <code class="literal">memory</code></p><h4><a id="bloom-postings"></a>Bloom filter posting format</h4><p>The bloom filter postings format wraps a delegate postings format and on
 top of this creates a bloom filter that is written to disk. During
 opening this bloom filter is loaded into memory and used to offer
 "fast-fail" reads. This postings format is useful for low doc-frequency
@@ -106,7 +106,7 @@ following options:</p><div class="variablelist"><dl class="variablelist"><dt><sp
     and if number of docs per segment is larger than <span class="strong"><strong>10k</strong></span> use <span class="strong"><strong>0.01</strong></span> as
     fpp. The last fallback value is always <span class="strong"><strong>0.03</strong></span>. This example expression
     is also the default.
-</dd></dl></div><p>Type name: <code class="literal">bloom</code></p><h4><a id="_pulsing_postings_format"></a>Pulsing postings format</h4><p>The pulsing implementation in-lines the posting lists for very low
+</dd></dl></div><p>Type name: <code class="literal">bloom</code></p><h4><a id="pulsing-postings"></a>Pulsing postings format</h4><p>The pulsing implementation in-lines the posting lists for very low
 frequent terms in the term dictionary. This is useful to improve lookup
 performance for low-frequent terms. This postings format offers the
 following parameters:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
@@ -126,7 +126,7 @@ following parameters:</p><div class="variablelist"><dl class="variablelist"><dt>
     in-lines posting lists into the term dictionary. Terms with a document
     frequency less or equal to the cutoff will be in-lined. The default is
     <span class="strong"><strong>1</strong></span>.
-</dd></dl></div><p>Type name: <code class="literal">pulsing</code></p><h4><a id="_default_postings_format"></a>Default postings format</h4><p>The default postings format has the following options:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><p>Type name: <code class="literal">pulsing</code></p><h4><a id="default-postings"></a>Default postings format</h4><p>The default postings format has the following options:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">min_block_size</code>
 </span></dt><dd>
     The minimum block size the default Lucene term

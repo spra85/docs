@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Plugins</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="modules.html" title="Modules" /><link rel="prev" href="modules-node.html" title="Node" /><link rel="next" href="modules-scripting.html" title="Scripting" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://staging.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://staging.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://staging.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><link rel="stylesheet" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Plugins</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="modules.html" title="Modules" /><link rel="prev" href="modules-node.html" title="Node" /><link rel="next" href="modules-scripting.html" title="Scripting" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://staging.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://staging.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://staging.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://staging.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://staging.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
         _gaq.push(['_trackPageview']);
@@ -25,7 +25,7 @@
             </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-plugins"></a>Plugins</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt></dl></div><h3><a id="_plugins"></a>Plugins</h3><p>Plugins are a way to enhance the basic elasticsearch functionality in a
 custom manner. They range from adding custom mapping types, custom
 analyzers (in a more built in fashion), native scripts, custom discovery
-and more.</p><h4><a id="_installing_plugins"></a>Installing plugins</h4><p>Installing plugins can either be done manually by placing them under the
+and more.</p><h4><a id="installing"></a>Installing plugins</h4><p>Installing plugins can either be done manually by placing them under the
 <code class="literal">plugins</code> directory, or using the <code class="literal">plugin</code> script. Several plugins can
 be found under the <a class="ulink" href="https://github.com/elasticsearch" target="_top">elasticsearch</a>
 organization in GitHub, starting with <code class="literal">elasticsearch-</code>.</p><p>Installing plugins typically take the following form:</p><pre class="programlisting prettyprint lang-shell">plugin --install &lt;org&gt;/&lt;user/component&gt;/&lt;version&gt;</pre><p>The plugins will be
@@ -33,7 +33,7 @@ automatically downloaded in this case from <code class="literal">download.elasti
 and in case they don’t exist there, from maven (central and sonatype).</p><p>Note that when the plugin is located in maven central or sonatype
 repository, <code class="literal">&lt;org&gt;</code> is the artifact <code class="literal">groupId</code> and <code class="literal">&lt;user/component&gt;</code> is
 the <code class="literal">artifactId</code>.</p><p>A plugin can also be installed directly by specifying the URL for it,
-for example:</p><pre class="programlisting prettyprint lang-shell">bin/plugin --url file://path/to/plugin --install plugin-name</pre><p>You can run <code class="literal">bin/plugin -h</code>.</p><h4><a id="_site_plugins"></a>Site Plugins</h4><p>Plugins can have "sites" in them, any plugin that exists under the
+for example:</p><pre class="programlisting prettyprint lang-shell">bin/plugin --url file://path/to/plugin --install plugin-name</pre><p>You can run <code class="literal">bin/plugin -h</code>.</p><h4><a id="site-plugins"></a>Site Plugins</h4><p>Plugins can have "sites" in them, any plugin that exists under the
 <code class="literal">plugins</code> directory with a <code class="literal">_site</code> directory, its content will be
 statically served when hitting <code class="literal">/_plugin/[plugin_name]/</code> url. Those can
 be added even after the process has started.</p><p>Installed plugins that do not contain any java related content, will
@@ -57,7 +57,7 @@ On the opposite, if you want <code class="literal">plugin</code> script to be si
 </li><li class="listitem">
 <code class="literal">70</code>: other errors
 </li></ul></div><pre class="programlisting prettyprint lang-shell">bin/plugin --install mobz/elasticsearch-head --verbose
-plugin --remove head --silent</pre><h3><a id="_known_plugins"></a>Known Plugins</h3><h4><a id="_analysis_plugins"></a>Analysis Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+plugin --remove head --silent</pre><h3><a id="known-plugins"></a>Known Plugins</h3><h4><a id="analysis-plugins"></a>Analysis Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-icu" target="_top">ICU Analysis plugin</a>
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-kuromoji" target="_top">Japanese (Kuromoji) Analysis plugin</a>.
@@ -85,7 +85,7 @@ plugin --remove head --silent</pre><h3><a id="_known_plugins"></a>Known Plugins<
 <a class="ulink" href="https://github.com/medcl/elasticsearch-analysis-pinyin" target="_top">Pinyin Analysis Plugin</a> (by Medcl)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/medcl/elasticsearch-analysis-string2int" target="_top">String2Integer Analysis Plugin</a> (by Medcl)
-</li></ul></div><h4><a id="_river_plugins"></a>River Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><h4><a id="river"></a>River Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-river-couchdb" target="_top">CouchDB River Plugin</a>
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-river-rabbitmq" target="_top">RabbitMQ River Plugin</a>
@@ -133,7 +133,7 @@ plugin --remove head --silent</pre><h3><a id="_known_plugins"></a>Known Plugins<
 <a class="ulink" href="https://github.com/sunnygleason/elasticsearch-river-st9" target="_top">St9 River Plugin</a> (by Sunny Gleason)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/plombard/SubversionRiver" target="_top">Subversion River Plugin</a> (by Pascal Lombard)
-</li></ul></div><h4><a id="_transport_plugins"></a>Transport Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><h4><a id="transport"></a>Transport Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-transport-memcached" target="_top">Memcached transport plugin</a>
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-transport-thrift" target="_top">Thrift Transport</a>
@@ -143,7 +143,7 @@ plugin --remove head --silent</pre><h3><a id="_known_plugins"></a>Known Plugins<
 <a class="ulink" href="https://github.com/tlrx/transport-zeromq" target="_top">ZeroMQ transport layer plugin</a> (by Tanguy Leroux)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/sonian/elasticsearch-jetty" target="_top">Jetty HTTP transport plugin</a> (by Sonian Inc.)
-</li></ul></div><h4><a id="_scripting_plugins"></a>Scripting Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><h4><a id="scripting"></a>Scripting Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/hiredman/elasticsearch-lang-clojure" target="_top">Clojure Language Plugin</a> (by Kevin Downey)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-lang-groovy" target="_top">Groovy lang Plugin</a>
@@ -151,7 +151,7 @@ plugin --remove head --silent</pre><h3><a id="_known_plugins"></a>Known Plugins<
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-lang-javascript" target="_top">JavaScript language Plugin</a>
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-lang-python" target="_top">Python language Plugin</a>
-</li></ul></div><h4><a id="_site_plugins_2"></a>Site Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><h4><a id="site"></a>Site Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/lukas-vlcek/bigdesk" target="_top">BigDesk Plugin</a> (by Lukáš Vlček)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/mobz/elasticsearch-head" target="_top">Elasticsearch Head Plugin</a> (by Ben Birch)
@@ -165,7 +165,7 @@ plugin --remove head --silent</pre><h3><a id="_known_plugins"></a>Known Plugins<
 <a class="ulink" href="https://github.com/karmi/elasticsearch-paramedic" target="_top">Paramedic Plugin</a> (by Karel Minařík)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/polyfractal/elasticsearch-segmentspy" target="_top">SegmentSpy Plugin</a> (by Zachary Tong)
-</li></ul></div><h4><a id="_misc_plugins"></a>Misc Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><h4><a id="misc"></a>Misc Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-mapper-attachments" target="_top">Mapper Attachments Type plugin</a>
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-hadoop" target="_top">Hadoop Plugin</a>
