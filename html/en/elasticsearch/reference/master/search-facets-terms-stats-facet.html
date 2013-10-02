@@ -40,7 +40,13 @@ another field. For example:</p><pre class="programlisting prettyprint lang-js">{
     }
 }</pre><p>The <code class="literal">size</code> parameter controls how many facet entries will be returned.
 It defaults to <code class="literal">10</code>. Setting it to 0 will return all terms matching the
-hits (be careful not to return too many results).</p><p>Ordering is done by setting <code class="literal">order</code>, with possible values of <code class="literal">term</code>,
+hits (be careful not to return too many results).</p><p>One can also set <code class="literal">shard_size</code> (in addition to <code class="literal">size</code>) which will determine
+how many term entries will be requested from each shard. When dealing
+with field with high cardinality (at least higher than the requested <code class="literal">size</code>)
+The greater <code class="literal">shard_size</code> is - the more accurate the result will be (and the
+more expensive the overall facet computation will be). <code class="literal">shard_size</code> is there
+to enable you to increase accuracy yet still avoid returning too many
+terms_stats entries back to the client.</p><p>Ordering is done by setting <code class="literal">order</code>, with possible values of <code class="literal">term</code>,
 <code class="literal">reverse_term</code>, <code class="literal">count</code>, <code class="literal">reverse_count</code>, <code class="literal">total</code>, <code class="literal">reverse_total</code>,
 <code class="literal">min</code>, <code class="literal">reverse_min</code>, <code class="literal">max</code>, <code class="literal">reverse_max</code>, <code class="literal">mean</code>, <code class="literal">reverse_mean</code>.
 Defaults to <code class="literal">count</code>.</p><p>The value computed can also be a script, using the <code class="literal">value_script</code>
