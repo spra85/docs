@@ -17,6 +17,12 @@ repos:
         branches:
             - master
 
+    elasticsearch-php:
+        url:        https://github.com/elasticsearch/elasticsearch-php
+        current:    master
+        branches:
+            - master
+
 contents_title:     Guide
 
 contents:
@@ -47,6 +53,12 @@ contents:
             prefix:     en/elasticsearch/client/groovy-api
             repo:       elasticsearch
             index:      docs/groovy-api/index.asciidoc
+
+          -
+            title:      PHP API
+            prefix:     en/elasticsearch/client/php-api
+            repo:       elasticsearch-php
+            index:      docs/index.asciidoc
 
           -
             title:      Rivers
