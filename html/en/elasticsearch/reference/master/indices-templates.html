@@ -44,7 +44,9 @@ the <code class="literal">te*</code> template.</p><h3><a id="delete"></a>Deletin
 <code class="literal">template_1</code>) and can be retrieved using the following:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_template/template_1</pre><p>You can also match several templates by using wildcards like:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_template/temp*
 curl -XGET localhost:9200/_template/template_1,template_2</pre><p>To get list of all index templates you can use
 <a class="link" href="cluster-state.html" title="Cluster State">Cluster State</a> API
-and check for the metadata/templates section of the response.</p><p>added::[0.90.4] Or run:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_template/</pre><h3><a id="multiple-templates"></a>Multiple Template Matching</h3><p>Multiple index templates can potentially match an index, in this case,
+and check for the metadata/templates section of the response.</p><p><span class="added">
+      [<span class="version">0.90.4</span>]
+      <span class="detail">Added in 0.90.4.</span></span> Or run:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_template/</pre><h3><a id="multiple-templates"></a>Multiple Template Matching</h3><p>Multiple index templates can potentially match an index, in this case,
 both the settings and mappings are merged into the final configuration
 of the index. The order of the merging can be controlled using the
 <code class="literal">order</code> parameter, with lower order being applied first, and higher
