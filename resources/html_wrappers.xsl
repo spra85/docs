@@ -20,6 +20,7 @@
     <script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1" />
     <script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1" />
     <script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
   </xsl:template>
 
   <!-- Wraps the content in required divs -->
