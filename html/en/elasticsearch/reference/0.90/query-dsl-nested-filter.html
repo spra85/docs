@@ -32,11 +32,11 @@ the <code class="literal">_name</code> value). For example:</p><pre class="progr
         "filter" : {
             "nested" : {
                 "path" : "obj1",
-                "query" : {
+                "filter" : {
                     "bool" : {
                         "must" : [
                             {
-                                "match" : {"obj1.name" : "blue"}
+                                "term" : {"obj1.name" : "blue"}
                             },
                             {
                                 "range" : {"obj1.count" : {"gt" : 5}}
