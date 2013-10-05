@@ -37,7 +37,7 @@
 
     </xsl:call-template>
     <xsl:if test="local-name(.)='book'">
-      <xsl:if test="$local.book.multi_version">
+      <xsl:if test="$local.book.multi_version &gt; 0">
         <p>
            These docs are for branch: <xsl:value-of select="$local.book.version" />.
            <a href="../index.html">Other versions</a>.
