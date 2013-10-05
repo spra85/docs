@@ -86,7 +86,6 @@ sub build_single {
     to_html5($dest);
 }
 
-
 #===================================
 sub to_html5 {
 #===================================
@@ -95,7 +94,10 @@ sub to_html5 {
         next if $file->is_dir or $file->basename !~ /\.html$/;
         my $contents = $file->slurp( iomode => '<:encoding(UTF-8)' );
         $contents =~ s/\s+xmlns="[^"]*"//g;
+        $contents =~ s/\s+xml:lang="[^"]*"//g;
+        $contents =~ s/^<\?xml[^>]+>\n//;
         $contents =~ s/^<!DOCTYPE[^>]+>\n<html>/$HTML_Header/;
+        $contents =~ s/(class="\w+") id="idp\d+"/$1/g;
         $file->spew( iomode => '>:utf8', $contents );
     }
 }

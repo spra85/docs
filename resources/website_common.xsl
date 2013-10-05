@@ -2,6 +2,7 @@
                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- css -->
+  <xsl:param name="generate.id.attributes"  select="1"/>
   <xsl:param name="css.decoration"          select="0"/>
   <xsl:param name="html.stylesheet"></xsl:param>
 
@@ -80,7 +81,7 @@
       </span>
     </span>
   </xsl:template>
-  
+
   <xsl:template match="phrase[@revisionflag='deleted']">
     <span class="deprecated">
       [<span class="version"><xsl:value-of select="attribute::revision" /></span>]
@@ -89,6 +90,6 @@
       </span>
     </span>
   </xsl:template>
-  
+
 </xsl:stylesheet>
 
