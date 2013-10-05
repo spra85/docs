@@ -22,7 +22,7 @@
            
           <a href="index-modules-codec.html">Codec module
                » 
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="index-modules-fielddata"></a>Field data</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="index-modules-codec.html">Codec module</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>The field data cache is used mainly when sorting on or faceting on a
+            </a></span></div><div class="chapter" id="index-modules-fielddata"><div class="titlepage"><div><div><h2 class="title">Field data</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="index-modules-codec.html">Codec module</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>The field data cache is used mainly when sorting on or faceting on a
 field. It loads all the field values to memory in order to provide fast
 document based access to those values. The field data cache can be
 expensive to build for a field, so its recommended to have enough memory
@@ -33,14 +33,14 @@ and  perform poorly.</p><div class="informaltable"><table cellpadding="4px" bord
 eg <code class="literal">30%</code> of node heap space, or an absolute value, eg <code class="literal">12GB</code>. Defaults
 to unbounded.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">indices.fielddata.cache.expire</code></p></td><td align="left" valign="top"><p>A time based setting that expires
 field data after a certain time of inactivity. Defaults to <code class="literal">-1</code>. For
-example, can be set to <code class="literal">5m</code> for a 5 minute expiry.</p></td></tr></tbody></table></div><h3><a id="field-data-filtering"></a>Filtering fielddata</h3><p>It is possible to control which field values are loaded into memory,
+example, can be set to <code class="literal">5m</code> for a 5 minute expiry.</p></td></tr></tbody></table></div><h3 id="field-data-filtering">Filtering fielddata</h3><p>It is possible to control which field values are loaded into memory,
 which is particularly useful for string fields. When specifying the
 <a class="link" href="mapping-core-types.html" title="Core Types">mapping</a> for a field, you
 can also specify a fielddata filter.</p><p>Fielddata filters can be changed using the
 <a class="link" href="indices-put-mapping.html" title="Put Mapping">PUT mapping</a>
 API. After changing the filters, use the
 <a class="link" href="indices-clearcache.html" title="Clear Cache">Clear Cache</a> API
-to reload the fielddata using the new filters.</p><h4><a id="_filtering_by_frequency"></a>Filtering by frequency:</h4><p>The frequency filter allows you to only load terms whose frequency falls
+to reload the fielddata using the new filters.</p><h4 id="_filtering_by_frequency">Filtering by frequency:</h4><p>The frequency filter allows you to only load terms whose frequency falls
 between a <code class="literal">min</code> and <code class="literal">max</code> value, which can be expressed an absolute
 number or as a percentage (eg <code class="literal">0.01</code> is <code class="literal">1%</code>). Frequency is calculated
 <span class="strong"><strong>per segment</strong></span>. Percentages are based on the number of docs which have a
@@ -58,7 +58,7 @@ number of docs that the segment should contain with <code class="literal">min_se
             }
         }
     }
-}</pre><h4><a id="_filtering_by_regex"></a>Filtering by regex</h4><p>Terms can also be filtered by regular expression - only values which
+}</pre><h4 id="_filtering_by_regex">Filtering by regex</h4><p>Terms can also be filtered by regular expression - only values which
 match the regular expression are loaded. Note: the regular expression is
 applied to each term in the field, not to the whole field value. For
 instance, to only load hashtags from a tweet, we can use a regular
@@ -74,7 +74,7 @@ expression which matches terms beginning with <code class="literal">#</code>:</p
             }
         }
     }
-}</pre><h4><a id="_combining_filters"></a>Combining filters</h4><p>The <code class="literal">frequency</code> and <code class="literal">regex</code> filters can be combined:</p><pre class="programlisting prettyprint lang-js">{
+}</pre><h4 id="_combining_filters">Combining filters</h4><p>The <code class="literal">frequency</code> and <code class="literal">regex</code> filters can be combined:</p><pre class="programlisting prettyprint lang-js">{
     tweet: {
         type:      "string",
         analyzer:  "whitespace"
@@ -91,12 +91,12 @@ expression which matches terms beginning with <code class="literal">#</code>:</p
             }
         }
     }
-}</pre><h3><a id="_settings_before_v0_90"></a>Settings before v0.90</h3><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Setting </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">index.cache.field.type</code></p></td><td align="left" valign="top"><p>The default type for the field data cache is
+}</pre><h3 id="_settings_before_v0_90">Settings before v0.90</h3><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Setting </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">index.cache.field.type</code></p></td><td align="left" valign="top"><p>The default type for the field data cache is
 <code class="literal">resident</code> (because of the cost of rebuilding it). Other types include
 <code class="literal">soft</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index.cache.field.max_size</code></p></td><td align="left" valign="top"><p>The max size (count, not byte size) of
 the cache (per search segment in a shard). Defaults to not set (<code class="literal">-1</code>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index.cache.field.expire</code></p></td><td align="left" valign="top"><p>A time based setting that expires filters
 after a certain time of inactivity. Defaults to <code class="literal">-1</code>. For example, can
-be set to <code class="literal">5m</code> for a 5 minute expiry.</p></td></tr></tbody></table></div><h3><a id="field-data-monitoring"></a>Monitoring field data</h3><p>You can monitor memory usage for field data using
+be set to <code class="literal">5m</code> for a 5 minute expiry.</p></td></tr></tbody></table></div><h3 id="field-data-monitoring">Monitoring field data</h3><p>You can monitor memory usage for field data using
 <a class="link" href="cluster-nodes-stats.html" title="Nodes Stats">Nodes Stats API</a></p></div><div class="navfooter"><span class="prev"><a href="index-modules-cache.html">
               « 
               Cache</a>

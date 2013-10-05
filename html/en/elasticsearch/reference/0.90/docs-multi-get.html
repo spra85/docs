@@ -22,7 +22,7 @@
            
           <a href="docs-bulk.html">Bulk API
                » 
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="docs-multi-get"></a>Multi Get API</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="docs-index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="docs-get.html">Get API</a></span></dt><dt><span class="chapter"><a href="docs-delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="docs-update.html">Update API</a></span></dt><dt><span class="chapter"><a href="docs-multi-get.html">Multi Get API</a></span></dt><dt><span class="chapter"><a href="docs-bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="docs-delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="docs-bulk-udp.html">Bulk UDP API</a></span></dt></dl></div><p>Multi GET API allows to get multiple documents based on an index, type
+            </a></span></div><div class="chapter" id="docs-multi-get"><div class="titlepage"><div><div><h2 class="title">Multi Get API</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="docs-index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="docs-get.html">Get API</a></span></dt><dt><span class="chapter"><a href="docs-delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="docs-update.html">Update API</a></span></dt><dt><span class="chapter"><a href="docs-multi-get.html">Multi Get API</a></span></dt><dt><span class="chapter"><a href="docs-bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="docs-delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="docs-bulk-udp.html">Bulk UDP API</a></span></dt></dl></div><p>Multi GET API allows to get multiple documents based on an index, type
 (optional) and id (and possibly routing). The response includes a <code class="literal">docs</code>
 array with all the fetched documents, each element similar in structure
 to a document provided by the <a class="link" href="docs-get.html" title="Get API">get</a>
@@ -63,7 +63,7 @@ is not required in the body):</p><pre class="programlisting prettyprint lang-js"
 }'</pre><p>In which case, the <code class="literal">ids</code> element can directly be used to simplify the
 request:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/test/type/_mget' -d '{
     "ids" : ["1", "2"]
-}'</pre><h3><a id="mget-fields"></a>Fields</h3><p>Specific fields can be specified to be retrieved per document to get.
+}'</pre><h3 id="mget-fields">Fields</h3><p>Specific fields can be specified to be retrieved per document to get.
 For example:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/_mget' -d '{
     "docs" : [
         {
