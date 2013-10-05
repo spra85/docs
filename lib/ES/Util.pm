@@ -28,15 +28,21 @@ sub build_chunked {
     fcopy( 'resources/styles.css', $index->parent )
         or die "Couldn't copy <styles.css> to <" . $index->parent . ">: $!";
 
-    my $chunk  = $opts{chunk} || 0;
-    my $build  = $dest->parent;
-    my $output = run( qw(
-            a2x -v -d book -f chunked --icons
-            --xsl-file resources/website_chunked.xsl
-            ),
-        '--asciidoc-opts', '-fresources/es-asciidoc.conf',
-        '-a',              'icons=resources/asciidoc-8.6.8/images/icons/',
-        '--xsltproc-opts', "--stringparam chunk.section.depth $chunk",
+    my $chunk   = $opts{chunk} || 0;
+    my $build   = $dest->parent;
+    my $version = $opts{version} || 'test build';
+    my $multi   = $opts{multi} || 0;
+    my $output  = run(
+        'a2x', '-v', '--icons',
+        '-d'              => 'book',
+        '-f'              => 'chunked',
+        '--xsl-file'      => 'resources/website_chunked.xsl',
+        '--asciidoc-opts' => '-fresources/es-asciidoc.conf',
+        '-a'              => 'icons=resources/asciidoc-8.6.8/images/icons/',
+        '--xsltproc-opts' => "--stringparam chunk.section.depth $chunk",
+        '--xsltproc-opts' => "--stringparam local.book.version '$version'",
+        '--xsltproc-opts' =>
+            "--stringparam local.book.multi_version '$multi'",
         '--destination-dir=' . $build,
         $index
     );

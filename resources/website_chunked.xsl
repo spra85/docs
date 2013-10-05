@@ -1,15 +1,17 @@
 <xsl:stylesheet version="1.0"
                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:import href="website.xsl"/> 
-  <xsl:import href="asciidoc-8.6.8/docbook-xsl/chunked.xsl"/> 
-  <xsl:import href="html_wrappers.xsl"/> 
-  <xsl:import href="website_common.xsl"/> 
+  <xsl:import href="website.xsl"/>
+  <xsl:import href="asciidoc-8.6.8/docbook-xsl/chunked.xsl"/>
+  <xsl:import href="html_wrappers.xsl"/>
+  <xsl:import href="website_common.xsl"/>
 
   <!-- chunking options -->
-  <xsl:param name="use.id.as.filename"      select="1"/>
-  <xsl:param name="chunk.quietly"           select="1"/>
-  <xsl:param name="chunker.output.encoding" select="'UTF-8'"/>
+  <xsl:param name="local.book.version">test build</xsl:param>
+  <xsl:param name="local.book.multi_version" select="0"/>
+  <xsl:param name="use.id.as.filename"       select="1"/>
+  <xsl:param name="chunk.quietly"            select="1"/>
+  <xsl:param name="chunker.output.encoding"  select="'UTF-8'"/>
   <xsl:param name="chunker.output.omit-xml-declaration">yes</xsl:param>
 
   <!-- toc -->
@@ -22,6 +24,27 @@
     part      toc
     section   toc
   </xsl:param>
+
+  <!-- Include link to other versions on the homepage ToC -->
+  <xsl:template name="division.toc">
+    <xsl:param name="toc-context" select="."/>
+    <xsl:param name="toc.title.p" select="true()"/>
+
+    <xsl:call-template name="make.toc">
+      <xsl:with-param name="toc-context" select="$toc-context"/>
+      <xsl:with-param name="toc.title.p" select="$toc.title.p"/>
+      <xsl:with-param name="nodes" select="part|reference                                          |preface|chapter|appendix                                          |article                                          |topic                                          |bibliography|glossary|index                                          |refentry                                          |bridgehead[$bridgehead.in.toc != 0]"/>
+
+    </xsl:call-template>
+    <xsl:if test="local-name(.)='book'">
+      <xsl:if test="$local.book.multi_version">
+        <p>
+           These docs are for branch: <xsl:value-of select="$local.book.version" />.
+           <a href="../index.html">Other versions</a>.
+        </p>
+      </xsl:if>
+    </xsl:if>
+  </xsl:template>
 
   <!-- generate part-level toc if chapter has no descendants -->
   <xsl:template name="component.toc">
@@ -44,7 +67,7 @@
           </xsl:call-template>
         </xsl:for-each>
       </xsl:when>
-      <xsl:otherwise>                                            
+      <xsl:otherwise>
         <xsl:call-template name="make.toc">
           <xsl:with-param name="toc-context" select="$toc-context"/>
           <xsl:with-param name="nodes" select="$nodes"/>
@@ -78,7 +101,7 @@
   </xsl:template>
 
   <!-- breadcrumbs -->
-  <xsl:template name="breadcrumbs">    
+  <xsl:template name="breadcrumbs">
     <xsl:param name="this.node" select="."/>
     <xsl:if test="local-name(.) != 'book'">
       <div class="breadcrumbs">
@@ -102,6 +125,16 @@
         </span>
       </div>
     </xsl:if>
+  </xsl:template>
+
+  <!-- include the book version in the breadcrumbs -->
+  <xsl:template match="book" mode="title.markup">
+    <xsl:param name="allow-anchors" select="0"/>
+    <xsl:apply-templates select="(bookinfo/title|info/title|title)[1]"
+                         mode="title.markup">
+      <xsl:with-param name="allow-anchors" select="$allow-anchors"/>
+    </xsl:apply-templates>
+    <xsl-text> [</xsl-text><xsl:value-of select="$local.book.version" /><xsl-text>] </xsl-text>
   </xsl:template>
 
   <!-- navigation -->
@@ -171,7 +204,7 @@
                 </xsl:call-template>
               </xsl:attribute>
               <xsl:apply-templates select="$next" mode="object.title.markup"/>
-              &#160;&#187; 
+              &#160;&#187;
             </a>
           </xsl:if>
         </span>
