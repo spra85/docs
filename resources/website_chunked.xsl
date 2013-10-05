@@ -134,7 +134,9 @@
                          mode="title.markup">
       <xsl:with-param name="allow-anchors" select="$allow-anchors"/>
     </xsl:apply-templates>
-    <xsl-text> [</xsl-text><xsl:value-of select="$local.book.version" /><xsl-text>] </xsl-text>
+    <xsl:if test="$local.book.multi_version &gt; 0">
+      <xsl-text> [</xsl-text><xsl:value-of select="$local.book.version" /><xsl-text>] </xsl-text>
+    </xsl:if>
   </xsl:template>
 
   <!-- navigation -->
