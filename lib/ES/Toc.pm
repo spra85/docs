@@ -63,19 +63,6 @@ sub render {
 }
 
 #===================================
-sub write_toc {
-#===================================
-    my ( $title, $build, $name, $toc ) = @_;
-
-    say "Writing TOC: $name.html";
-    my $adoc = join "\n", "= $title", '', _toc( 1, @$toc );
-    my $index = $build->file("$name.asciidoc");
-    $index->spew( iomode => '>:utf8', $adoc );
-    build_single( $index, $build );
-    $adoc->remove;
-}
-
-#===================================
 sub _toc {
 #===================================
     my $indent = shift;

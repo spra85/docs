@@ -48,13 +48,12 @@ sub build_local {
     if ( $Opts->{single} ) {
         $dir->rmtree;
         $dir->mkpath;
-        build_single( $index, $dir, $Opts->{toc} );
+        build_single( $index, $dir, %$Opts );
         $html = $index->basename;
         $html =~ s/\.[^.]+/.html/;
     }
     else {
-        my $chunk = $Opts->{chunk} || 0;
-        build_chunked( $index, $dir, $chunk );
+        build_chunked( $index, $dir, %$Opts );
         $html = 'index.html';
     }
 

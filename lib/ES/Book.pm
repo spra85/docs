@@ -82,7 +82,8 @@ sub build {
         if ($changed) {
             say "   - Building";
             $repo->checkout( $src_path, $branch );
-            build_chunked( $repo->dir->file($index), $branch_dir, $chunk );
+            build_chunked( $repo->dir->file($index),
+                $branch_dir, chunk => $chunk );
             $repo->mark_done( $src_path, $branch );
         }
         else {
