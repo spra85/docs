@@ -64,7 +64,7 @@ while (true) {
         //Handle the hit...
     }
     //Break condition: No hits are returned
-    if (scrollResp.hits().hits().length == 0) {
+    if (scrollResp.getHits().getHits().length == 0) {
         break;
     }
 }</pre></div><div class="section" id="_operation_threading_3"><div class="titlepage"><div><div><h2 class="title">Operation Threading</h2></div></div></div><p>The search API allows to set the threading model the operation will be
@@ -88,9 +88,9 @@ MultiSearchResponse sr = node.client().prepareMultiSearch()
 
 // You will get all individual responses from MultiSearchResponse#responses()
 long nbHits = 0;
-for (MultiSearchResponse.Item item : sr.responses()) {
-    SearchResponse response = item.response();
-    nbHits += response.hits().totalHits();
+for (MultiSearchResponse.Item item : sr.getResponses()) {
+    SearchResponse response = item.getResponse();
+    nbHits += response.getHits().getTotalHits();
 }</pre></div><div class="section" id="java-search-facets"><div class="titlepage"><div><div><h2 class="title">Using Facets</h2></div></div></div><p>The following code shows how to add two facets within your search:</p><pre class="programlisting prettyprint lang-java">SearchResponse sr = node.client().prepareSearch()
     .setQuery(QueryBuilders.matchAllQuery())
     .addFacet(FacetBuilders.termsFacet("f1").field("field"))
@@ -98,8 +98,8 @@ for (MultiSearchResponse.Item item : sr.responses()) {
     .execute().actionGet();
 
 // Get your facet results
-TermsFacet f1 = (TermsFacet) sr.facets().facetsAsMap().get("f1");
-DateHistogramFacet f2 = (DateHistogramFacet) sr.facets().facetsAsMap().get("f2");</pre><p>See <a class="link" href="java-facets.html" title="Facets">Facets Java API</a>
+TermsFacet f1 = (TermsFacet) sr.getFacets().facetsAsMap().get("f1");
+DateHistogramFacet f2 = (DateHistogramFacet) sr.getFacets().facetsAsMap().get("f2");</pre><p>See <a class="link" href="java-facets.html" title="Facets">Facets Java API</a>
 documentation for details.</p></div></div><div class="navfooter"><span class="prev"><a href="bulk.html">
               « 
               Bulk API</a>
