@@ -35,7 +35,18 @@ and  perform poorly.</p><div class="informaltable"><table cellpadding="4px" bord
 eg <code class="literal">30%</code> of node heap space, or an absolute value, eg <code class="literal">12GB</code>. Defaults
 to unbounded.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">indices.fielddata.cache.expire</code></p></td><td align="left" valign="top"><p>A time based setting that expires
 field data after a certain time of inactivity. Defaults to <code class="literal">-1</code>. For
-example, can be set to <code class="literal">5m</code> for a 5 minute expiry.</p></td></tr></tbody></table></div><h3 id="field-data-filtering">Filtering fielddata</h3><p>It is possible to control which field values are loaded into memory,
+example, can be set to <code class="literal">5m</code> for a 5 minute expiry.</p></td></tr></tbody></table></div><h3 id="_fielddata_loading">Fielddata loading</h3><p>By default, field data is loaded lazily, on the first time that a query that
+requires field data is fired. However, this can make the first requests that
+follow a merge operation quite slow since fielddata loading is a heavy
+operation.</p><p>It is possible to force field data to be loaded and cached eagerly through the
+<code class="literal">loading</code> setting of fielddata:</p><pre class="programlisting prettyprint lang-js">{
+    category: {
+        type:      "string",
+        fielddata: {
+            loading: "eager"
+        }
+    }
+}</pre><h3 id="field-data-filtering">Filtering fielddata</h3><p>It is possible to control which field values are loaded into memory,
 which is particularly useful for string fields. When specifying the
 <a class="link" href="mapping-core-types.html" title="Core Types">mapping</a> for a field, you
 can also specify a fielddata filter.</p><p>Fielddata filters can be changed using the
