@@ -263,7 +263,38 @@ attribute:</p><pre class="programlisting prettyprint lang-js">{
 }</pre><p>On top of using the built-in posting formats it is possible define
 custom postings format. See
 <a class="link" href="index-modules-codec.html" title="Codec module">codec module</a> for more
-information.</p><h4><a id="similarity"></a>Similarity</h4><p>Elasticsearch allows you to configure a similarity (scoring algorithm) per field.
+information.</p><h4><a id="_doc_values_format"></a>Doc values format</h4><p>Doc values formats define how fields are written into column-stride storage in
+the index for the purpose of sorting or faceting. Fields that have doc values
+enabled will have special field data instances, which will not be uninverted
+from the inverted index, but directly read from disk. This makes _refresh faster
+and ultimately allows for having field data stored on disk depending on the
+configured doc values format.</p><p>Doc values formats are configurable. Elasticsearch has several builtin formats:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">memory</code>
+</span></dt><dd>
+        A doc values format which stores data in memory. Compared to the default
+        field data implementations, using doc values with this format will have
+        similar performance but will be faster to load, making <span class="emphasis"><em>_refresh</em></span> less
+        time-consuming.
+</dd><dt><span class="term">
+<code class="literal">disk</code>
+</span></dt><dd>
+        A doc values format which stores all data on disk, requiring almost no
+        memory from the JVM at the cost of a slight performance degradation.
+</dd><dt><span class="term">
+<code class="literal">default</code>
+</span></dt><dd>
+        The default Elasticsearch doc values format, offering good performance
+        with low memory usage. This format is used if no format is specified in
+        the field mapping.
+</dd></dl></div><h5><a id="_doc_values_format_example"></a>Doc values format example</h5><p>On all field types, it is possible to configure a <code class="literal">doc_values_format</code> attribute:</p><pre class="programlisting prettyprint lang-js">{
+  "product" : {
+     "properties" : {
+         "price" : {"type" : "integer", "doc_values_format" : "memory"}
+     }
+  }
+}</pre><p>On top of using the built-in doc values formats it is possible to define
+custom doc values formats. See
+<a class="link" href="index-modules-codec.html" title="Codec module">codec module</a> for more information.</p><h4><a id="_similarity"></a>Similarity</h4><p>Elasticsearch allows you to configure a similarity (scoring algorithm) per field.
 Allowing users a simpler extension beyond the usual TF/IDF algorithm. As
 part of this, new algorithms have been added including BM25. Also as
 part of the changes, it is now possible to define a Similarity per

@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Field data</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [master]" /><link rel="up" href="index-modules.html" title="Index Modules" /><link rel="prev" href="index-modules-cache.html" title="Cache" /><link rel="next" href="_field_data_formats.html" title="Field data formats" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Field data formats</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [master]" /><link rel="up" href="index-modules-fielddata.html" title="Field data" /><link rel="prev" href="index-modules-fielddata.html" title="Field data" /><link rel="next" href="index-modules-codec.html" title="Codec module" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -19,32 +19,132 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-51762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51762"><a href="/webinars/">Webinars</a></li><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Documentation</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li><li id="menu-item-4842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4842"><a href="/tutorials/">Tutorials</a></li></ul></li><li id="menu-item-728" class="guide_menu_item menu-item menu-item-type-post_type menu-item-object-page menu-item-728"><a href="/guide/">Guide</a></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">.COM</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference<xsl-text> [</xsl-text>master<xsl-text>] </xsl-text></a></span> &gt; <span class="breadcrumb-link"><a href="index-modules.html">Index Modules</a></span> &gt; <span class="breadcrumb-node">Field data</span></div><div class="navheader"><span class="prev"><a href="index-modules-cache.html">
+      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-51762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51762"><a href="/webinars/">Webinars</a></li><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Documentation</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li><li id="menu-item-4842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4842"><a href="/tutorials/">Tutorials</a></li></ul></li><li id="menu-item-728" class="guide_menu_item menu-item menu-item-type-post_type menu-item-object-page menu-item-728"><a href="/guide/">Guide</a></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">.COM</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference<xsl-text> [</xsl-text>master<xsl-text>] </xsl-text></a></span> &gt; <span class="breadcrumb-link"><a href="index-modules.html">Index Modules</a></span> &gt; <span class="breadcrumb-link"><a href="index-modules-fielddata.html">Field data</a></span> &gt; <span class="breadcrumb-node">Field data formats</span></div><div class="navheader"><span class="prev"><a href="index-modules-fielddata.html">
               « 
-              Cache</a>
+              Field data</a>
            
         </span><span class="next">
            
-          <a href="_field_data_formats.html">Field data formats
+          <a href="index-modules-codec.html">Codec module
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="index-modules-fielddata"></a>Field data</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="index-modules-codec.html">Codec module</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>The field data cache is used mainly when sorting on or faceting on a
-field. It loads all the field values to memory in order to provide fast
-document based access to those values. The field data cache can be
-expensive to build for a field, so its recommended to have enough memory
-to allocate it, and to keep it loaded.</p><p>The amount of memory used for the field
-data cache can be controlled using <code class="literal">indices.fielddata.cache.size</code>. Note:
-reloading  the field data which does not fit into your cache will be expensive
-and  perform poorly.</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Setting </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">indices.fielddata.cache.size</code></p></td><td align="left" valign="top"><p>The max size of the field data cache,
-eg <code class="literal">30%</code> of node heap space, or an absolute value, eg <code class="literal">12GB</code>. Defaults
-to unbounded.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">indices.fielddata.cache.expire</code></p></td><td align="left" valign="top"><p>A time based setting that expires
-field data after a certain time of inactivity. Defaults to <code class="literal">-1</code>. For
-example, can be set to <code class="literal">5m</code> for a 5 minute expiry.</p></td></tr></tbody></table></div></div><div class="navfooter"><span class="prev"><a href="index-modules-cache.html">
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_field_data_formats"></a>Field data formats</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="index-modules-codec.html">Codec module</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>Depending on the field type, there might be several field data types
+available. In particular, string and numeric types support the <code class="literal">doc_values</code>
+format which allows for computing the field data data-structures at indexing
+time and storing them on disk. Although it will make the index larger and may
+be slightly slower, this implementation will be more near-realtime-friendly
+and will require much less memory from the JVM than other implementations.</p><pre class="programlisting prettyprint lang-js">{
+    tag: {
+        type:      "string",
+        fielddata: {
+            format: "fst"
+        }
+    }
+}</pre><h4><a id="_string_field_data_types"></a>String field data types</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">paged_bytes</code> (default)
+</span></dt><dd>
+    Stores unique terms sequentially in a large buffer and maps documents to
+    the indices of the terms they contain in this large buffer.
+</dd><dt><span class="term">
+<code class="literal">fst</code>
+</span></dt><dd>
+    Stores terms in a FST. Slower to build than <code class="literal">paged_bytes</code> but can help lower
+    memory usage if many terms share common prefixes and/or suffixes.
+</dd><dt><span class="term">
+<code class="literal">doc_values</code>
+</span></dt><dd>
+    Computes and stores field data data-structures on disk at indexing time.
+    Lowers memory usage but only works on non-analyzed strings (<code class="literal">index</code>: <code class="literal">no</code> or
+    <code class="literal">not_analyzed</code>) and doesn’t support filtering.
+</dd></dl></div><h4><a id="_numeric_field_data_types"></a>Numeric field data types</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">array</code> (default)
+</span></dt><dd>
+    Stores field values in memory using arrays.
+</dd><dt><span class="term">
+<code class="literal">doc_values</code>
+</span></dt><dd>
+    Computes and stores field data data-structures on disk at indexing time.
+    Doesn’t support filtering.
+</dd></dl></div><h4><a id="_geo_point_field_data_types"></a>Geo point field data types</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">array</code> (default)
+</span></dt><dd>
+    Stores latitudes and longitudes in arrays.
+</dd></dl></div><h3><a id="_fielddata_loading"></a>Fielddata loading</h3><p>By default, field data is loaded lazily, on the first time that a query that
+requires field data is fired. However, this can make the first requests that
+follow a merge operation quite slow since fielddata loading is a heavy
+operation.</p><p>It is possible to force field data to be loaded and cached eagerly through the
+<code class="literal">loading</code> setting of fielddata:</p><pre class="programlisting prettyprint lang-js">{
+    category: {
+        type:      "string",
+        fielddata: {
+            loading: "eager"
+        }
+    }
+}</pre><h3><a id="field-data-filtering"></a>Filtering fielddata</h3><p>It is possible to control which field values are loaded into memory,
+which is particularly useful for string fields. When specifying the
+<a class="link" href="mapping-core-types.html" title="Core Types">mapping</a> for a field, you
+can also specify a fielddata filter.</p><p>Fielddata filters can be changed using the
+<a class="link" href="indices-put-mapping.html" title="Put Mapping">PUT mapping</a>
+API. After changing the filters, use the
+<a class="link" href="indices-clearcache.html" title="Clear Cache">Clear Cache</a> API
+to reload the fielddata using the new filters.</p><h4><a id="_filtering_by_frequency"></a>Filtering by frequency:</h4><p>The frequency filter allows you to only load terms whose frequency falls
+between a <code class="literal">min</code> and <code class="literal">max</code> value, which can be expressed an absolute
+number or as a percentage (eg <code class="literal">0.01</code> is <code class="literal">1%</code>). Frequency is calculated
+<span class="strong"><strong>per segment</strong></span>. Percentages are based on the number of docs which have a
+value for the field, as opposed to all docs in the segment.</p><p>Small segments can be excluded completely by specifying the minimum
+number of docs that the segment should contain with <code class="literal">min_segment_size</code>:</p><pre class="programlisting prettyprint lang-js">{
+    tag: {
+        type:      "string",
+        fielddata: {
+            filter: {
+                frequency: {
+                    min:              0.001,
+                    max:              0.1,
+                    min_segment_size: 500
+                }
+            }
+        }
+    }
+}</pre><h4><a id="_filtering_by_regex"></a>Filtering by regex</h4><p>Terms can also be filtered by regular expression - only values which
+match the regular expression are loaded. Note: the regular expression is
+applied to each term in the field, not to the whole field value. For
+instance, to only load hashtags from a tweet, we can use a regular
+expression which matches terms beginning with <code class="literal">#</code>:</p><pre class="programlisting prettyprint lang-js">{
+    tweet: {
+        type:      "string",
+        analyzer:  "whitespace"
+        fielddata: {
+            filter: {
+                regex: {
+                    pattern: "^#.*"
+                }
+            }
+        }
+    }
+}</pre><h4><a id="_combining_filters"></a>Combining filters</h4><p>The <code class="literal">frequency</code> and <code class="literal">regex</code> filters can be combined:</p><pre class="programlisting prettyprint lang-js">{
+    tweet: {
+        type:      "string",
+        analyzer:  "whitespace"
+        fielddata: {
+            filter: {
+                regex: {
+                    pattern:          "^#.*",
+                },
+                frequency: {
+                    min:              0.001,
+                    max:              0.1,
+                    min_segment_size: 500
+                }
+            }
+        }
+    }
+}</pre><h3><a id="field-data-monitoring"></a>Monitoring field data</h3><p>You can monitor memory usage for field data using
+<a class="link" href="cluster-nodes-stats.html" title="Nodes Stats">Nodes Stats API</a></p></div><div class="navfooter"><span class="prev"><a href="index-modules-fielddata.html">
               « 
-              Cache</a>
+              Field data</a>
            
         </span><span class="next">
            
-          <a href="_field_data_formats.html">Field data formats
+          <a href="index-modules-codec.html">Codec module
                »
             </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>
               Want to
