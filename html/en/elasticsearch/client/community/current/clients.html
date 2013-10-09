@@ -4,7 +4,10 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Clients</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Community Supported Clients" /><link rel="up" href="index.html" title="Community Supported Clients" /><link rel="prev" href="index.html" title="Community Supported Clients" /><link rel="next" href="front-ends.html" title="Front Ends" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
-      jQuery(function() {jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');});
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
     </script><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
@@ -22,10 +25,10 @@
            
           <a href="front-ends.html">Front Ends
                »
-            </a></span></div><div class="chapter" id="clients"><div class="titlepage"><div><div><h1 class="title">Clients</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="clients.html">Clients</a></span></dt><dt><span class="chapter"><a href="front-ends.html">Front Ends</a></span></dt><dt><span class="chapter"><a href="integrations.html">Integrations</a></span></dt><dt><span class="chapter"><a href="misc.html">Misc</a></span></dt><dt><span class="chapter"><a href="health.html">Health and Performance Monitoring</a></span></dt><dt><span class="chapter"><a href="github.html">GitHub</a></span></dt></dl></div><div class="section" id="community-perl"><div class="titlepage"><div><div><h2 class="title">Perl</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="clients"></a>Clients</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="clients.html">Clients</a></span></dt><dt><span class="chapter"><a href="front-ends.html">Front Ends</a></span></dt><dt><span class="chapter"><a href="integrations.html">Integrations</a></span></dt><dt><span class="chapter"><a href="misc.html">Misc</a></span></dt><dt><span class="chapter"><a href="health.html">Health and Performance Monitoring</a></span></dt><dt><span class="chapter"><a href="github.html">GitHub</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-perl"></a>Perl</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="http://github.com/clintongormley/ElasticSearch.pm" target="_top">ElasticSearch.pm</a>:
   Perl client.
-</li></ul></div></div><div class="section" id="community-python"><div class="titlepage"><div><div><h2 class="title">Python</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-python"></a>Python</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="http://github.com/aparo/pyes" target="_top">pyes</a>:
   Python client.
 </li><li class="listitem">
@@ -43,7 +46,7 @@
 </li><li class="listitem">
 <a class="ulink" href="http://intridea.github.io/surfiki-refine-elasticsearch/" target="_top">Surfiki Refine</a>:
   Python Map-Reduce engine targeting Elasticsearch indices.
-</li></ul></div></div><div class="section" id="community-ruby"><div class="titlepage"><div><div><h2 class="title">Ruby</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-ruby"></a>Ruby</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="http://github.com/karmi/tire" target="_top">Tire</a>:
   Ruby API &amp; DSL, with ActiveRecord/ActiveModel integration.
 </li><li class="listitem">
@@ -55,7 +58,7 @@
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/wireframe/elastic_searchable/" target="_top">elastic_searchable</a>:
   Ruby client + Rails integration.
-</li></ul></div></div><div class="section" id="community-php"><div class="titlepage"><div><div><h2 class="title">PHP</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-php"></a>PHP</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="http://github.com/ruflin/Elastica" target="_top">Elastica</a>:
   PHP client.
 </li><li class="listitem">
@@ -63,10 +66,10 @@
 </li><li class="listitem">
 <a class="ulink" href="http://github.com/polyfractal/Sherlock" target="_top">Sherlock</a>:
   PHP client, one-to-one mapping with query DSL, fluid interface.
-</li></ul></div></div><div class="section" id="community-java"><div class="titlepage"><div><div><h2 class="title">Java</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-java"></a>Java</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/searchbox-io/Jest" target="_top">Jest</a>:
   Java Rest client.
-</li></ul></div></div><div class="section" id="community-javascript"><div class="titlepage"><div><div><h2 class="title">Javascript</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-javascript"></a>Javascript</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/fullscale/elastic.js" target="_top">Elastic.js</a>:
   A JavaScript implementation of the ElasticSearch Query DSL and Core API.
 </li><li class="listitem">
@@ -77,7 +80,7 @@
   Node.js client for the ElasticSearch REST API
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/printercu/elastics" target="_top">elastics</a>: Simple tiny client that just works
-</li></ul></div></div><div class="section" id="community-dotnet"><div class="titlepage"><div><div><h2 class="title">.Net</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-dotnet"></a>.Net</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/Yegoroff/PlainElastic.Net" target="_top">PlainElastic.Net</a>:
   .NET client.
 </li><li class="listitem">
@@ -86,7 +89,7 @@
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/medcl/ElasticSearch.Net" target="_top">ElasticSearch.NET</a>:
   .NET client.
-</li></ul></div></div><div class="section" id="community-scala"><div class="titlepage"><div><div><h2 class="title">Scala</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-scala"></a>Scala</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/sksamuel/elastic4s" target="_top">elastic4s</a>:
   Scala DSL.
 </li><li class="listitem">
@@ -95,16 +98,16 @@
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/bsadeh/scalastic" target="_top">scalastic</a>:
   Scala client.
-</li></ul></div></div><div class="section" id="community-clojure"><div class="titlepage"><div><div><h2 class="title">Clojure</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-clojure"></a>Clojure</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="http://github.com/clojurewerkz/elastisch" target="_top">Elastisch</a>:
   Clojure client.
-</li></ul></div></div><div class="section" id="community-go"><div class="titlepage"><div><div><h2 class="title">Go</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-go"></a>Go</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/mattbaird/elastigo" target="_top">elastigo</a>:
   Go client.
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/belogik/goes" target="_top">goes</a>:
   Go lib.
-</li></ul></div></div><div class="section" id="community-erlang"><div class="titlepage"><div><div><h2 class="title">Erlang</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-erlang"></a>Erlang</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="http://github.com/tsloughter/erlastic_search" target="_top">erlastic_search</a>:
   Erlang client using HTTP.
 </li><li class="listitem">
@@ -115,22 +118,22 @@
   An <a class="ulink" href="https://github.com/elixir-lang/elixir" target="_top">Elixir</a> based API/DSL, inspired by
   <a class="ulink" href="http://github.com/karmi/tire" target="_top">Tire</a>. Ready to use in pure Erlang
   environment.
-</li></ul></div></div><div class="section" id="community-eventmachine"><div class="titlepage"><div><div><h2 class="title">EventMachine</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-eventmachine"></a>EventMachine</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="http://github.com/vangberg/em-elasticsearch" target="_top">em-elasticsearch</a>:
   elasticsearch library for eventmachine.
-</li></ul></div></div><div class="section" id="community-command-line"><div class="titlepage"><div><div><h2 class="title">Command Line</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-command-line"></a>Command Line</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/es2unix" target="_top">es2unix</a>:
   Elasticsearch API consumable by the Linux command line.
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/javanna/elasticshell" target="_top">elasticshell</a>:
   command line shell for elasticsearch.
-</li></ul></div></div><div class="section" id="community-ocaml"><div class="titlepage"><div><div><h2 class="title">OCaml</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-ocaml"></a>OCaml</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/tovbinm/ocaml-elasticsearch" target="_top">ocaml-elasticsearch</a>:
   OCaml client for Elasticsearch
-</li></ul></div></div><div class="section" id="community-smalltalk"><div class="titlepage"><div><div><h2 class="title">Smalltalk</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-smalltalk"></a>Smalltalk</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="http://ss3.gemstone.com/ss/Elasticsearch.html" target="_top">Elasticsearch</a> -
   Smalltalk client for Elasticsearch
-</li></ul></div></div><div class="section" id="community-cold-fusion"><div class="titlepage"><div><div><h2 class="title">Cold Fusion</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-cold-fusion"></a>Cold Fusion</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/jasonfill/ColdFusion-ElasticSearch-Client" target="_top">ColdFusion-ElasticSearch-Client</a>
   Cold Fusion client for Elasticsearch
 </li></ul></div></div></div><div class="navfooter"><span class="prev">

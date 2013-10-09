@@ -4,7 +4,10 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>EC2 Discovery</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="modules-discovery.html" title="Discovery" /><link rel="prev" href="modules-discovery.html" title="Discovery" /><link rel="next" href="modules-discovery-zen.html" title="Zen Discovery" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
-      jQuery(function() {jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');});
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
     </script><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
@@ -24,7 +27,7 @@
            
           <a href="modules-discovery-zen.html">Zen Discovery
                »
-            </a></span></div><div class="section" id="modules-discovery-ec2"><div class="titlepage"><div><div><h2 class="title">EC2 Discovery</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="modules-discovery-ec2.html">EC2 Discovery</a></span></dt><dt><span class="section"><a href="modules-discovery-zen.html">Zen Discovery</a></span></dt></dl></div><p>EC2 discovery allows to use the EC2 APIs to perform automatic discovery
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="modules-discovery-ec2"></a>EC2 Discovery</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="modules-discovery-ec2.html">EC2 Discovery</a></span></dt><dt><span class="section"><a href="modules-discovery-zen.html">Zen Discovery</a></span></dt></dl></div><p>EC2 discovery allows to use the EC2 APIs to perform automatic discovery
 (similar to multicast in non hostile multicast environments). Here is a
 simple sample configuration:</p><pre class="programlisting prettyprint lang-js">cloud:
     aws:
@@ -45,7 +48,7 @@ of availability zones. Only instances within the provided availability
 zones will be used in the cluster discovery.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">any_group</code></p></td><td align="left" valign="top"><p>If set to <code class="literal">false</code>, will require all security groups to be
 present for the instance to be used for the discovery. Defaults to
 <code class="literal">true</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">ping_timeout</code></p></td><td align="left" valign="top"><p>How long to wait for existing EC2 nodes to reply during
-discovery. Defaults to 3s.</p></td></tr></tbody></table></div><h4 id="_filtering_by_tags">Filtering by Tags</h4><p>EC2 discovery can also filter machines to include in the cluster based
+discovery. Defaults to 3s.</p></td></tr></tbody></table></div><h4><a id="_filtering_by_tags"></a>Filtering by Tags</h4><p>EC2 discovery can also filter machines to include in the cluster based
 on tags (and not just groups). The settings to use include the
 <code class="literal">discovery.ec2.tag.</code> prefix. For example, setting
 <code class="literal">discovery.ec2.tag.stage</code> to <code class="literal">dev</code> will only filter instances with a tag
@@ -56,9 +59,9 @@ with high <code class="literal">ping_timeout</code> values) there is a risk that
 discovery phase will end before it has found the cluster (which will
 result in it declaring itself master of a new cluster with the same name
 - highly undesirable). Tagging elasticsearch EC2 nodes and then
-filtering by that tag will resolve this issue.</p><h4 id="_region">Region</h4><p>The <code class="literal">cloud.aws.region</code> can be set to a region and will automatically use
+filtering by that tag will resolve this issue.</p><h4><a id="_region"></a>Region</h4><p>The <code class="literal">cloud.aws.region</code> can be set to a region and will automatically use
 the relevant settings for both <code class="literal">ec2</code> and <code class="literal">s3</code>. The available values are:
-<code class="literal">us-east-1</code>, <code class="literal">us-west-1</code>, <code class="literal">ap-southeast-1</code>, <code class="literal">eu-west-1</code>.</p><h4 id="_automatic_node_attributes">Automatic Node Attributes</h4><p>Though not dependent on actually using <code class="literal">ec2</code> as discovery (but still
+<code class="literal">us-east-1</code>, <code class="literal">us-west-1</code>, <code class="literal">ap-southeast-1</code>, <code class="literal">eu-west-1</code>.</p><h4><a id="_automatic_node_attributes"></a>Automatic Node Attributes</h4><p>Though not dependent on actually using <code class="literal">ec2</code> as discovery (but still
 requires the cloud aws plugin installed), the plugin can automatically
 add node attributes relating to EC2 (for example, availability zone,
 that can be used with the awareness allocation feature). In order to

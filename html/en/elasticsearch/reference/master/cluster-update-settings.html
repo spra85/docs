@@ -4,7 +4,10 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Cluster Update Settings</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [master]" /><link rel="up" href="cluster.html" title="Cluster APIs" /><link rel="prev" href="cluster-reroute.html" title="Cluster Reroute" /><link rel="next" href="cluster-nodes-stats.html" title="Nodes Stats" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
-      jQuery(function() {jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');});
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
     </script><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
@@ -24,7 +27,7 @@
            
           <a href="cluster-nodes-stats.html">Nodes Stats
                »
-            </a></span></div><div class="chapter" id="cluster-update-settings"><div class="titlepage"><div><div><h2 class="title">Cluster Update Settings</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="cluster-health.html">Cluster Health</a></span></dt><dt><span class="chapter"><a href="cluster-state.html">Cluster State</a></span></dt><dt><span class="chapter"><a href="cluster-reroute.html">Cluster Reroute</a></span></dt><dt><span class="chapter"><a href="cluster-update-settings.html">Cluster Update Settings</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-stats.html">Nodes Stats</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-info.html">Nodes Info</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-hot-threads.html">Nodes hot_threads</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-shutdown.html">Nodes Shutdown</a></span></dt></dl></div><p>Allows to update cluster wide specific settings. Settings updated can
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="cluster-update-settings"></a>Cluster Update Settings</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="cluster-health.html">Cluster Health</a></span></dt><dt><span class="chapter"><a href="cluster-state.html">Cluster State</a></span></dt><dt><span class="chapter"><a href="cluster-reroute.html">Cluster Reroute</a></span></dt><dt><span class="chapter"><a href="cluster-update-settings.html">Cluster Update Settings</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-stats.html">Nodes Stats</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-info.html">Nodes Info</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-hot-threads.html">Nodes hot_threads</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-shutdown.html">Nodes Shutdown</a></span></dt></dl></div><p>Allows to update cluster wide specific settings. Settings updated can
 either be persistent (applied cross restarts) or transient (will not
 survive a full cluster restart). Here is an example:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/_cluster/settings -d '{
     "persistent" : {
@@ -40,7 +43,7 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
     "transient" : {
         "discovery.zen.minimum_master_nodes" : "2"
     }
-}'</pre><p>Cluster wide settings can be returned using:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_cluster/settings</pre><p>There is a specific list of settings that can be updated, those include:</p><h3 id="cluster-settings">Cluster settings</h3><h4 id="_routing_allocation">Routing allocation</h4><h5 id="_awareness">Awareness</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+}'</pre><p>Cluster wide settings can be returned using:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_cluster/settings</pre><p>There is a specific list of settings that can be updated, those include:</p><h3><a id="cluster-settings"></a>Cluster settings</h3><h4><a id="_routing_allocation"></a>Routing allocation</h4><h5><a id="_awareness"></a>Awareness</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.awareness.attributes</code>
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
@@ -48,7 +51,7 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
 <code class="literal">cluster.routing.allocation.awareness.force.*</code>
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
-</dd></dl></div><h5 id="_balanced_shards">Balanced Shards</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h5><a id="_balanced_shards"></a>Balanced Shards</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.balance.shard</code>
 </span></dt><dd>
      Defines the weight factor for shards allocated on a node
@@ -68,13 +71,13 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
 </span></dt><dd>
       minimal optimization value of operations that should be performed (non
       negative float). Defaults to <code class="literal">1.0f</code>.
-</dd></dl></div><h5 id="_concurrent_rebalance">Concurrent Rebalance</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h5><a id="_concurrent_rebalance"></a>Concurrent Rebalance</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.cluster_concurrent_rebalance</code>
 </span></dt><dd>
        Allow to control how many concurrent rebalancing of shards are
        allowed cluster wide, and default it to <code class="literal">2</code> (integer). <code class="literal">-1</code> for
        unlimited. See also <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
-</dd></dl></div><h5 id="_disable_allocation">Disable allocation</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h5><a id="_disable_allocation"></a>Disable allocation</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.disable_allocation</code>
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
@@ -86,7 +89,7 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
 <code class="literal">cluster.routing.allocation.disable_new_allocation</code>
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
-</dd></dl></div><h5 id="_throttling_allocation">Throttling allocation</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h5><a id="_throttling_allocation"></a>Throttling allocation</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.node_initial_primaries_recoveries</code>
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
@@ -94,7 +97,7 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
 <code class="literal">cluster.routing.allocation.node_concurrent_recoveries</code>
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
-</dd></dl></div><h5 id="_filter_allocation">Filter allocation</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h5><a id="_filter_allocation"></a>Filter allocation</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.include.*</code>
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
@@ -103,19 +106,19 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
 </dd></dl></div><p><code class="literal">cluster.routing.allocation.require.*</code>
-     See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.</p><h4 id="_metadata">Metadata</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+     See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.</p><h4><a id="_metadata"></a>Metadata</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.blocks.read_only</code>
 </span></dt><dd>
       Have the whole cluster read only (indices do not accept write operations), metadata is not allowed to be modified (create or delete indices).
-</dd></dl></div><h4 id="_discovery">Discovery</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h4><a id="_discovery"></a>Discovery</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">discovery.zen.minimum_master_nodes</code>
 </span></dt><dd>
      See <a class="xref" href="modules-discovery-zen.html" title="Zen Discovery">Zen Discovery</a>
-</dd></dl></div><h4 id="_threadpools">Threadpools</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h4><a id="_threadpools"></a>Threadpools</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">threadpool.*</code>
 </span></dt><dd>
      See <a class="xref" href="modules-threadpool.html" title="Thread Pool"><em>Thread Pool</em></a>
-</dd></dl></div><h3 id="cluster-index-settings">Index settings</h3><h4 id="_index_filter_cache">Index filter cache</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h3><a id="cluster-index-settings"></a>Index settings</h3><h4><a id="_index_filter_cache"></a>Index filter cache</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">indices.cache.filter.size</code>
 </span></dt><dd>
      See <a class="xref" href="index-modules-cache.html" title="Cache"><em>Cache</em></a>
@@ -123,11 +126,11 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
 <code class="literal">indices.cache.filter.expire</code> (time)
 </span></dt><dd>
      See <a class="xref" href="index-modules-cache.html" title="Cache"><em>Cache</em></a>
-</dd></dl></div><h4 id="_ttl_interval">TTL interval</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h4><a id="_ttl_interval"></a>TTL interval</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">indices.ttl.interval</code> (time)
 </span></dt><dd>
     See <a class="xref" href="mapping-ttl-field.html" title="_ttl"><code class="literal">_ttl</code></a>
-</dd></dl></div><h4 id="_recovery">Recovery</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h4><a id="_recovery"></a>Recovery</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">indices.recovery.concurrent_streams</code>
 </span></dt><dd>
      See <a class="xref" href="modules-indices.html" title="Indices"><em>Indices</em></a>
@@ -151,7 +154,7 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
 <code class="literal">indices.recovery.max_bytes_per_sec</code>
 </span></dt><dd>
      See <a class="xref" href="modules-indices.html" title="Indices"><em>Indices</em></a>
-</dd></dl></div><h4 id="_store_level_throttling">Store level throttling</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h4><a id="_store_level_throttling"></a>Store level throttling</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">indices.store.throttle.type</code>
 </span></dt><dd>
       See <a class="xref" href="index-modules-store.html" title="Store"><em>Store</em></a>
@@ -159,7 +162,7 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
 <code class="literal">indices.store.throttle.max_bytes_per_sec</code>
 </span></dt><dd>
       See <a class="xref" href="index-modules-store.html" title="Store"><em>Store</em></a>
-</dd></dl></div><h3 id="logger">Logger</h3><p>Logger values can also be updated by setting <code class="literal">logger.</code> prefix. More
+</dd></dl></div><h3><a id="logger"></a>Logger</h3><p>Logger values can also be updated by setting <code class="literal">logger.</code> prefix. More
 settings will be allowed to be updated.</p></div><div class="navfooter"><span class="prev"><a href="cluster-reroute.html">
               « 
               Cluster Reroute</a>

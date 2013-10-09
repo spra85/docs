@@ -4,7 +4,10 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Indices APIs</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [master]" /><link rel="up" href="index.html" title="Reference [master]" /><link rel="prev" href="search-termvectors.html" title="Term Vectors" /><link rel="next" href="indices-create-index.html" title="Create Index" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
-      jQuery(function() {jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');});
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
     </script><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
@@ -24,9 +27,9 @@
            
           <a href="indices-create-index.html">Create Index
                »
-            </a></span></div><div class="part" id="indices"><div class="titlepage"><div><div><h1 class="title">Indices APIs</h1></div></div></div><div class="partintro"><div></div><p>The indices APIs are used to manage individual indices,
+            </a></span></div><div class="part"><div class="titlepage"><div><div><h1 class="title"><a id="indices"></a>Indices APIs</h1></div></div></div><div class="partintro"><div></div><p>The indices APIs are used to manage individual indices,
 index settings, aliases, mappings, index templates
-and warmers.</p><h2 id="index-management">Index management:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+and warmers.</p><h2><a id="index-management"></a>Index management:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="xref" href="indices-create-index.html" title="Create Index"><em>Create Index</em></a>
 </li><li class="listitem">
 <a class="xref" href="indices-delete-index.html" title="Delete Index"><em>Delete Index</em></a>
@@ -34,15 +37,15 @@ and warmers.</p><h2 id="index-management">Index management:</h2><div class="item
 <a class="xref" href="indices-exists.html" title="Indices Exists"><em>Indices Exists</em></a>
 </li><li class="listitem">
 <a class="xref" href="indices-open-close.html" title="Open / Close Index API"><em>Open / Close Index API</em></a>
-</li></ul></div><h2 id="mapping-management">Mapping management:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><h2><a id="mapping-management"></a>Mapping management:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="xref" href="indices-put-mapping.html" title="Put Mapping"><em>Put Mapping</em></a>
 </li><li class="listitem">
 <a class="xref" href="indices-delete-mapping.html" title="Delete Mapping"><em>Delete Mapping</em></a>
 </li><li class="listitem">
 <a class="xref" href="indices-types-exists.html" title="Types Exists"><em>Types Exists</em></a>
-</li></ul></div><h2 id="alias-management">Alias management:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><h2><a id="alias-management"></a>Alias management:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="xref" href="indices-aliases.html" title="Index Aliases"><em>Index Aliases</em></a>
-</li></ul></div><h2 id="index-settings">Index settings:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><h2><a id="index-settings"></a>Index settings:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="xref" href="indices-update-settings.html" title="Update Indices Settings"><em>Update Indices Settings</em></a>
 </li><li class="listitem">
 <a class="xref" href="indices-get-settings.html" title="Get Settings"><em>Get Settings</em></a>
@@ -52,13 +55,13 @@ and warmers.</p><h2 id="index-management">Index management:</h2><div class="item
 <a class="xref" href="indices-templates.html" title="Index Templates"><em>Index Templates</em></a>
 </li><li class="listitem">
 <a class="xref" href="indices-warmers.html" title="Warmers"><em>Warmers</em></a>
-</li></ul></div><h2 id="monitoring">Monitoring:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><h2><a id="monitoring"></a>Monitoring:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="xref" href="indices-status.html" title="Status"><em>Status</em></a>
 </li><li class="listitem">
 <a class="xref" href="indices-stats.html" title="Indices Stats"><em>Indices Stats</em></a>
 </li><li class="listitem">
 <a class="xref" href="indices-segments.html" title="Indices Segments"><em>Indices Segments</em></a>
-</li></ul></div><h2 id="status-management">Status management:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><h2><a id="status-management"></a>Status management:</h2><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="xref" href="indices-clearcache.html" title="Clear Cache"><em>Clear Cache</em></a>
 </li><li class="listitem">
 <a class="xref" href="indices-refresh.html" title="Refresh"><em>Refresh</em></a>

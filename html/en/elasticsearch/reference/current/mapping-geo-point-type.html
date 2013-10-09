@@ -4,7 +4,10 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Geo Point Type</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="mapping-types.html" title="Types" /><link rel="prev" href="mapping-ip-type.html" title="IP Type" /><link rel="next" href="mapping-geo-shape-type.html" title="Geo Shape Type" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
-      jQuery(function() {jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');});
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
     </script><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
@@ -24,7 +27,7 @@
            
           <a href="mapping-geo-shape-type.html">Geo Shape Type
                »
-            </a></span></div><div class="section" id="mapping-geo-point-type"><div class="titlepage"><div><div><h2 class="title">Geo Point Type</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt><span class="section"><a href="mapping-multi-field-type.html">Multi Field Type</a></span></dt><dt><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>Mapper type called <code class="literal">geo_point</code> to support geo based points. The
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-geo-point-type"></a>Geo Point Type</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt><span class="section"><a href="mapping-multi-field-type.html">Multi Field Type</a></span></dt><dt><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>Mapper type called <code class="literal">geo_point</code> to support geo based points. The
 declaration looks as follows:</p><pre class="programlisting prettyprint lang-js">{
     "pin" : {
         "properties" : {
@@ -33,7 +36,7 @@ declaration looks as follows:</p><pre class="programlisting prettyprint lang-js"
             }
         }
     }
-}</pre><h4 id="_indexed_fields">Indexed Fields</h4><p>The <code class="literal">geo_point</code> mapping will index a single field with the format of
+}</pre><h4><a id="_indexed_fields"></a>Indexed Fields</h4><p>The <code class="literal">geo_point</code> mapping will index a single field with the format of
 <code class="literal">lat,lon</code>. The <code class="literal">lat_lon</code> option can be set to also index the <code class="literal">.lat</code> and
 <code class="literal">.lon</code> as numeric fields, and <code class="literal">geohash</code> can be set to <code class="literal">true</code> to also
 index <code class="literal">.geohash</code> value.</p><p>A good practice is to enable indexing <code class="literal">lat_lon</code> as well, since both the
@@ -41,35 +44,35 @@ geo distance and bounding box filters can either be executed using in
 memory checks, or using the indexed lat lon values, and it really
 depends on the data set which one performs better. Note though, that
 indexed lat lon only make sense when there is a single geo point value
-for the field, and not multi values.</p><h4 id="_input_structure">Input Structure</h4><p>The above mapping defines a <code class="literal">geo_point</code>, which accepts different
-formats. The following formats are supported:</p><h5 id="_lat_lon_as_properties_5">Lat Lon as Properties</h5><pre class="programlisting prettyprint lang-js">{
+for the field, and not multi values.</p><h4><a id="_input_structure"></a>Input Structure</h4><p>The above mapping defines a <code class="literal">geo_point</code>, which accepts different
+formats. The following formats are supported:</p><h5><a id="_lat_lon_as_properties_5"></a>Lat Lon as Properties</h5><pre class="programlisting prettyprint lang-js">{
     "pin" : {
         "location" : {
             "lat" : 41.12,
             "lon" : -71.34
         }
     }
-}</pre><h5 id="_lat_lon_as_string_6">Lat Lon as String</h5><p>Format in <code class="literal">lat,lon</code>.</p><pre class="programlisting prettyprint lang-js">{
+}</pre><h5><a id="_lat_lon_as_string_6"></a>Lat Lon as String</h5><p>Format in <code class="literal">lat,lon</code>.</p><pre class="programlisting prettyprint lang-js">{
     "pin" : {
         "location" : "41.12,-71.34"
     }
-}</pre><h5 id="_geohash_6">Geohash</h5><pre class="programlisting prettyprint lang-js">{
+}</pre><h5><a id="_geohash_6"></a>Geohash</h5><pre class="programlisting prettyprint lang-js">{
     "pin" : {
         "location" : "drm3btev3e86"
     }
-}</pre><h5 id="_lat_lon_as_array_5">Lat Lon as Array</h5><p>Format in <code class="literal">[lon, lat]</code>, note, the order of lon/lat here in order to
+}</pre><h5><a id="_lat_lon_as_array_5"></a>Lat Lon as Array</h5><p>Format in <code class="literal">[lon, lat]</code>, note, the order of lon/lat here in order to
 conform with <a class="ulink" href="http://geojson.org/" target="_top">GeoJSON</a>.</p><pre class="programlisting prettyprint lang-js">{
     "pin" : {
         "location" : [-71.34, 41.12]
     }
-}</pre><h4 id="_mapping_options">Mapping Options</h4><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Option </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">lat_lon</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to also index the <code class="literal">.lat</code> and <code class="literal">.lon</code> as fields.
+}</pre><h4><a id="_mapping_options"></a>Mapping Options</h4><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Option </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">lat_lon</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to also index the <code class="literal">.lat</code> and <code class="literal">.lon</code> as fields.
 Defaults to <code class="literal">false</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">geohash</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to also index the <code class="literal">.geohash</code> as a field.
 Defaults to <code class="literal">false</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">geohash_precision</code></p></td><td align="left" valign="top"><p>Sets the geohash precision, defaults to 12.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">validate</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to reject geo points with invalid latitude or
 longitude (default is <code class="literal">false</code>) <span class="strong"><strong>Note</strong></span>: Validation only works when
 normalization has been disabled.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">validate_lat</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to reject geo points with an invalid
 latitude</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">validate_lon</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to reject geo points with an invalid
 longitude</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">normalize</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to normalize latitude and longitude (default
-is <code class="literal">true</code>)</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">normalize_lat</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to normalize latitude</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">normalize_lon</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to normalize longitude</p></td></tr></tbody></table></div><h4 id="_usage_in_scripts">Usage in Scripts</h4><p>When using <code class="literal">doc[geo_field_name]</code> (in the above mapping,
+is <code class="literal">true</code>)</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">normalize_lat</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to normalize latitude</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">normalize_lon</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to normalize longitude</p></td></tr></tbody></table></div><h4><a id="_usage_in_scripts"></a>Usage in Scripts</h4><p>When using <code class="literal">doc[geo_field_name]</code> (in the above mapping,
 <code class="literal">doc['location']</code>), the <code class="literal">doc[...].value</code> returns a <code class="literal">GeoPoint</code>, which
 then allows access to <code class="literal">lat</code> and <code class="literal">lon</code> (for example,
 <code class="literal">doc[...].value.lat</code>). For performance, it is better to access the <code class="literal">lat</code>

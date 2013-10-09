@@ -4,7 +4,10 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Bulk API</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [master]" /><link rel="up" href="docs.html" title="Document APIs" /><link rel="prev" href="docs-multi-get.html" title="Multi Get API" /><link rel="next" href="docs-delete-by-query.html" title="Delete By Query API" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
-      jQuery(function() {jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');});
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
     </script><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
@@ -24,7 +27,7 @@
            
           <a href="docs-delete-by-query.html">Delete By Query API
                »
-            </a></span></div><div class="chapter" id="docs-bulk"><div class="titlepage"><div><div><h2 class="title">Bulk API</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="docs-index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="docs-get.html">Get API</a></span></dt><dt><span class="chapter"><a href="docs-delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="docs-update.html">Update API</a></span></dt><dt><span class="chapter"><a href="docs-multi-get.html">Multi Get API</a></span></dt><dt><span class="chapter"><a href="docs-bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="docs-delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="docs-bulk-udp.html">Bulk UDP API</a></span></dt></dl></div><p>The bulk API makes it possible to perform many index/delete operations
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="docs-bulk"></a>Bulk API</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="docs-index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="docs-get.html">Get API</a></span></dt><dt><span class="chapter"><a href="docs-delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="docs-update.html">Update API</a></span></dt><dt><span class="chapter"><a href="docs-multi-get.html">Multi Get API</a></span></dt><dt><span class="chapter"><a href="docs-bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="docs-delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="docs-bulk-udp.html">Bulk UDP API</a></span></dt></dl></div><p>The bulk API makes it possible to perform many index/delete operations
 in a single API call. This can greatly increase the indexing speed. The
 REST API endpoint is <code class="literal">/_bulk</code>, and it expects the following JSON
 structure:</p><pre class="programlisting prettyprint lang-js">action_and_meta_data\n
@@ -68,20 +71,20 @@ individual results of each action that was performed. The failure of a
 single action does not affect the remaining actions.</p><p>There is no "correct" number of actions to perform in a single bulk
 call. You should experiment with different settings to find the optimum
 size for your particular workload.</p><p>If using the HTTP API, make sure that the client does not send HTTP
-chunks, as this will slow things down.</p><h3 id="bulk-versioning">Versioning</h3><p>Each bulk item can include the version value using the
+chunks, as this will slow things down.</p><h3><a id="bulk-versioning"></a>Versioning</h3><p>Each bulk item can include the version value using the
 <code class="literal">_version</code>/<code class="literal">version</code> field. It automatically follows the behavior of the
 index / delete operation based on the <code class="literal">_version</code> mapping. It also
 support the <code class="literal">version_type</code>/<code class="literal">_version_type</code> when using <code class="literal">external</code>
-versioning.</p><h3 id="bulk-routing">Routing</h3><p>Each bulk item can include the routing value using the
+versioning.</p><h3><a id="bulk-routing"></a>Routing</h3><p>Each bulk item can include the routing value using the
 <code class="literal">_routing</code>/<code class="literal">routing</code> field. It automatically follows the behavior of the
-index / delete operation based on the <code class="literal">_routing</code> mapping.</p><h3 id="percolator">Percolator</h3><p>Each bulk index action can include a percolate value using the
-<code class="literal">_percolate</code>/<code class="literal">percolate</code> field.</p><h3 id="bulk-parent">Parent</h3><p>Each bulk item can include the parent value using the <code class="literal">_parent</code>/<code class="literal">parent</code>
+index / delete operation based on the <code class="literal">_routing</code> mapping.</p><h3><a id="percolator"></a>Percolator</h3><p>Each bulk index action can include a percolate value using the
+<code class="literal">_percolate</code>/<code class="literal">percolate</code> field.</p><h3><a id="bulk-parent"></a>Parent</h3><p>Each bulk item can include the parent value using the <code class="literal">_parent</code>/<code class="literal">parent</code>
 field. It automatically follows the behavior of the index / delete
-operation based on the <code class="literal">_parent</code> / <code class="literal">_routing</code> mapping.</p><h3 id="bulk-timestamp">Timestamp</h3><p>Each bulk item can include the timestamp value using the
+operation based on the <code class="literal">_parent</code> / <code class="literal">_routing</code> mapping.</p><h3><a id="bulk-timestamp"></a>Timestamp</h3><p>Each bulk item can include the timestamp value using the
 <code class="literal">_timestamp</code>/<code class="literal">timestamp</code> field. It automatically follows the behavior of
-the index operation based on the <code class="literal">_timestamp</code> mapping.</p><h3 id="bulk-ttl">TTL</h3><p>Each bulk item can include the ttl value using the <code class="literal">_ttl</code>/<code class="literal">ttl</code> field.
+the index operation based on the <code class="literal">_timestamp</code> mapping.</p><h3><a id="bulk-ttl"></a>TTL</h3><p>Each bulk item can include the ttl value using the <code class="literal">_ttl</code>/<code class="literal">ttl</code> field.
 It automatically follows the behavior of the index operation based on
-the <code class="literal">_ttl</code> mapping.</p><h3 id="bulk-consistency">Write Consistency</h3><p>When making bulk calls, you can require a minimum number of active
+the <code class="literal">_ttl</code> mapping.</p><h3><a id="bulk-consistency"></a>Write Consistency</h3><p>When making bulk calls, you can require a minimum number of active
 shards in the partition through the <code class="literal">consistency</code> parameter. The values
 allowed are <code class="literal">one</code>, <code class="literal">quorum</code>, and <code class="literal">all</code>. It defaults to the node level
 setting of <code class="literal">action.write_consistency</code>, which in turn defaults to
@@ -89,11 +92,11 @@ setting of <code class="literal">action.write_consistency</code>, which in turn 
 at least 2 active shards within the relevant partition (<code class="literal">quorum</code>) for
 the operation to succeed. In a N shards with 1 replica scenario, there
 will need to be a single shard active (in this case, <code class="literal">one</code> and <code class="literal">quorum</code>
-is the same).</p><h3 id="bulk-refresh">Refresh</h3><p>The <code class="literal">refresh</code> parameter can be set to <code class="literal">true</code> in order to refresh the
+is the same).</p><h3><a id="bulk-refresh"></a>Refresh</h3><p>The <code class="literal">refresh</code> parameter can be set to <code class="literal">true</code> in order to refresh the
 relevant shards immediately after the bulk operation has occurred and
 make it searchable, instead of waiting for the normal refresh interval
 to expire. Setting it to <code class="literal">true</code> can trigger additional load, and may
-slow down indexing.</p><h3 id="update">Update</h3><p>When using <code class="literal">update</code> action <code class="literal">_retry_on_conflict</code> can be used as field in
+slow down indexing.</p><h3><a id="update"></a>Update</h3><p>When using <code class="literal">update</code> action <code class="literal">_retry_on_conflict</code> can be used as field in
 the action itself (not in the extra payload line), to specify how many
 times an update should be retried in the case of a version conflict.</p><p>The <code class="literal">update</code> action payload, supports the following options: <code class="literal">doc</code>
 (partial document), <code class="literal">upsert</code>, <code class="literal">doc_as_upsert</code>, <code class="literal">script</code>, <code class="literal">params</code> (for

@@ -4,7 +4,10 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Phrase Suggester</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [master]" /><link rel="up" href="search-suggesters.html" title="Suggesters" /><link rel="prev" href="search-suggesters-term.html" title="Term suggester" /><link rel="next" href="search-suggesters-completion.html" title="Completion Suggester" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
-      jQuery(function() {jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');});
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
     </script><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
@@ -24,7 +27,7 @@
            
           <a href="search-suggesters-completion.html">Completion Suggester
                »
-            </a></span></div><div class="section" id="search-suggesters-phrase"><div class="titlepage"><div><div><h2 class="title">Phrase Suggester</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="search-suggesters-term.html">Term suggester</a></span></dt><dt><span class="section"><a href="search-suggesters-phrase.html">Phrase Suggester</a></span></dt><dt><span class="section"><a href="search-suggesters-completion.html">Completion Suggester</a></span></dt></dl></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>In order to understand the format of suggestions, please
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="search-suggesters-phrase"></a>Phrase Suggester</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="search-suggesters-term.html">Term suggester</a></span></dt><dt><span class="section"><a href="search-suggesters-phrase.html">Phrase Suggester</a></span></dt><dt><span class="section"><a href="search-suggesters-completion.html">Completion Suggester</a></span></dt></dl></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>In order to understand the format of suggestions, please
 read the <a class="xref" href="search-suggesters.html" title="Suggesters"><em>Suggesters</em></a> page first.</p></td></tr></table></div><p>The <code class="literal">term</code> suggester provides a very convenient API to access word
 alternatives on token basis within a certain string distance. The API
 allows accessing each token in the stream individually while
@@ -34,7 +37,7 @@ suggestions are required in order to present to the end-user. The
 to select entire corrected phrases instead of individual tokens weighted
 based on <code class="literal">ngram-langugage</code> models. In practice it this suggester will be
 able to make better decision about which tokens to pick based on
-co-occurence and frequencies.</p><div class="section" id="_api_example"><div class="titlepage"><div><div><h3 class="title">API Example</h3></div></div></div><p>The <code class="literal">phrase</code> request is defined along side the query part in the json
+co-occurence and frequencies.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_api_example"></a>API Example</h3></div></div></div><p>The <code class="literal">phrase</code> request is defined along side the query part in the json
 request:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/_search' -d {
   "suggest" : {
     "text" : "Xor the Got-Jewel",
@@ -92,7 +95,7 @@ can contain misspellings (See parameter descriptions below).</p><pre class="prog
       } ]
     } ]
   }
-}</pre></div><div class="section" id="_basic_phrase_suggest_api_parameters"><div class="titlepage"><div><div><h3 class="title">Basic Phrase suggest API parameters</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_basic_phrase_suggest_api_parameters"></a>Basic Phrase suggest API parameters</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">field</code>
 </p>
@@ -212,7 +215,7 @@ can contain misspellings (See parameter descriptions below).</p><pre class="prog
     in a row are changed the entire phrase of changed tokens
     is wrapped rather than each token.
 </p>
-</td></tr></tbody></table></div></div><div class="section" id="_smoothing_models"><div class="titlepage"><div><div><h3 class="title">Smoothing Models</h3></div></div></div><p>The <code class="literal">phrase</code> suggester supports multiple smoothing models to balance
+</td></tr></tbody></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_smoothing_models"></a>Smoothing Models</h3></div></div></div><p>The <code class="literal">phrase</code> suggester supports multiple smoothing models to balance
 weight between infrequent grams (grams (shingles) are not existing in
 the index) and frequent grams (appear at least once in the index).</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
@@ -247,14 +250,14 @@ the index) and frequent grams (appear at least once in the index).</p><div class
     All parameters (<code class="literal">trigram_lambda</code>, <code class="literal">bigram_lambda</code>, <code class="literal">unigram_lambda</code>)
     must be supplied.
 </p>
-</td></tr></tbody></table></div></div><div class="section" id="_candidate_generators"><div class="titlepage"><div><div><h3 class="title">Candidate Generators</h3></div></div></div><p>The <code class="literal">phrase</code> suggester uses candidate generators to produce a list of
+</td></tr></tbody></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_candidate_generators"></a>Candidate Generators</h3></div></div></div><p>The <code class="literal">phrase</code> suggester uses candidate generators to produce a list of
 possible terms per term in the given text. A single candidate generator
 is similar to a <code class="literal">term</code> suggester called for each individual term in the
 text. The output of the generators is subsequently scored in combination
 with the candidates from the other terms to for suggestion candidates.</p><p>Currently only one type of candidate generator is supported, the
 <code class="literal">direct_generator</code>. The Phrase suggest API accepts a list of generators
 under the key <code class="literal">direct_generator</code> each of the generators in the list are
-called per term in the original text.</p></div><div class="section" id="_direct_generators"><div class="titlepage"><div><div><h3 class="title">Direct Generators</h3></div></div></div><p>The direct generators support the following parameters:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+called per term in the original text.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_direct_generators"></a>Direct Generators</h3></div></div></div><p>The direct generators support the following parameters:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">field</code>
 </p>

@@ -4,7 +4,10 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Geo Shape Type</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="mapping-types.html" title="Types" /><link rel="prev" href="mapping-geo-point-type.html" title="Geo Point Type" /><link rel="next" href="mapping-attachment-type.html" title="Attachment Type" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
-      jQuery(function() {jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');});
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
     </script><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
@@ -24,7 +27,7 @@
            
           <a href="mapping-attachment-type.html">Attachment Type
                »
-            </a></span></div><div class="section" id="mapping-geo-shape-type"><div class="titlepage"><div><div><h2 class="title">Geo Shape Type</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt><span class="section"><a href="mapping-multi-field-type.html">Multi Field Type</a></span></dt><dt><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>The <code class="literal">geo_shape</code> mapping type facilitates the indexing of and searching
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-geo-shape-type"></a>Geo Shape Type</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt><span class="section"><a href="mapping-multi-field-type.html">Multi Field Type</a></span></dt><dt><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>The <code class="literal">geo_shape</code> mapping type facilitates the indexing of and searching
 with arbitrary geo shapes such as rectangles and polygons. It should be
 used when either the data being indexed or the queries being executed
 contain shapes other than just points.</p><p>You can query documents using this type using
@@ -36,7 +39,7 @@ optional dependencies. Consequently you must add Spatial4J v0.3 and JTS
 v1.12 to your classpath in order to use this type.</p><p>Note, the implementation of geo_shape was modified in an API breaking
 way in 0.90. Implementations prior to this version had significant
 issues and users are recommended to update to the latest version of
-Elasticsearch if they wish to use the geo_shape functionality.</p><h4 id="_mapping_options_2">Mapping Options</h4><p>The geo_shape mapping maps geo_json geometry objects to the geo_shape
+Elasticsearch if they wish to use the geo_shape functionality.</p><h4><a id="_mapping_options_2"></a>Mapping Options</h4><p>The geo_shape mapping maps geo_json geometry objects to the geo_shape
 type. To enable it, users must explicitly map fields to the geo_shape
 type.</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Option </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">tree</code></p></td><td align="left" valign="top"><p>Name of the PrefixTree implementation to be used: <code class="literal">geohash</code> for
 GeohashPrefixTree and <code class="literal">quadtree</code> for QuadPrefixTree. Defaults to
@@ -55,7 +58,7 @@ may use the <code class="literal">precision</code> parameter instead. However, E
 uses the tree_levels parameter internally and this is what is returned
 via the mapping API even if you use the precision parameter.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">distance_error_pct</code></p></td><td align="left" valign="top"><p>Used as a hint to the PrefixTree about how
 precise it should be. Defaults to 0.025 (2.5%) with 0.5 as the maximum
-supported value.</p></td></tr></tbody></table></div><h4 id="_prefix_trees">Prefix trees</h4><p>To efficiently represent shapes in the index, Shapes are converted into
+supported value.</p></td></tr></tbody></table></div><h4><a id="_prefix_trees"></a>Prefix trees</h4><p>To efficiently represent shapes in the index, Shapes are converted into
 a series of hashes representing grid squares using implementations of a
 PrefixTree. The tree notion comes from the fact that the PrefixTree uses
 multiple grid layers, each with an increasing level of precision to
@@ -75,13 +78,13 @@ Similar to geohash, quad trees interleave the bits of the latitude and
 longitude the resulting hash is a bit set. A tree level in a quad tree
 represents 2 bits in this bit set, one for each coordinate. The maximum
 amount of levels for the quad trees in elastic search is 50.
-</li></ul></div><h5 id="_accuracy">Accuracy</h5><p>Geo_shape does not provide 100% accuracy and depending on how it is
+</li></ul></div><h5><a id="_accuracy"></a>Accuracy</h5><p>Geo_shape does not provide 100% accuracy and depending on how it is
 configured it may return some false positives or false negatives for
 certain queries. To mitigate this, it is important to select an
 appropriate value for the tree_levels parameter and to adjust
 expectations accordingly. For example, a point may be near the border of
 a particular grid cell. And may not match a query that only matches the
-cell right next to it even though the shape is very close to the point.</p><h5 id="_example">Example</h5><pre class="programlisting prettyprint lang-js">{
+cell right next to it even though the shape is very close to the point.</p><h5><a id="_example"></a>Example</h5><pre class="programlisting prettyprint lang-js">{
     "properties": {
         "location": {
             "type": "geo_shape",
@@ -91,7 +94,7 @@ cell right next to it even though the shape is very close to the point.</p><h5 i
     }
 }</pre><p>This mapping maps the location field to the geo_shape type using the
 quad_tree implementation and a precision of 1m. Elasticsearch translates
-this into a tree_levels setting of 26.</p><h5 id="_performance_considerations">Performance considerations</h5><p>Elasticsearch uses the paths in the prefix tree as terms in the index
+this into a tree_levels setting of 26.</p><h5><a id="_performance_considerations"></a>Performance considerations</h5><p>Elasticsearch uses the paths in the prefix tree as terms in the index
 and in queries. The higher the levels is (and thus the precision), the
 more terms are generated. Both calculating the terms, keeping them in
 memory, and storing them has a price of course. Especially with higher
@@ -102,7 +105,7 @@ Which setting is right depends on the use case. Generally one trades off
 accuracy against index size and query performance.</p><p>The defaults in elastic search for both implementations are a compromise
 between index size and a reasonable level of precision of 50m at the
 equator. This allows for indexing tens of millions of shapes without
-overly bloating the resulting index too much relative to the input size.</p><h4 id="_input_structure_2">Input Structure</h4><p>The <a class="ulink" href="http://www.geojson.org" target="_top">GeoJSON</a> format is used to represent Shapes
+overly bloating the resulting index too much relative to the input size.</p><h4><a id="_input_structure_2"></a>Input Structure</h4><p>The <a class="ulink" href="http://www.geojson.org" target="_top">GeoJSON</a> format is used to represent Shapes
 as input as follows:</p><pre class="programlisting prettyprint lang-js">{
     "location" : {
         "type" : "point",
@@ -111,13 +114,13 @@ as input as follows:</p><pre class="programlisting prettyprint lang-js">{
 }</pre><p>Note, both the <code class="literal">type</code> and <code class="literal">coordinates</code> fields are required.</p><p>The supported <code class="literal">types</code> are <code class="literal">point</code>, <code class="literal">linestring</code>, <code class="literal">polygon</code>, <code class="literal">multipoint</code>
 and <code class="literal">multipolygon</code>.</p><p>Note, in geojson the correct order is longitude, latitude coordinate
 arrays. This differs from some APIs such as e.g. Google Maps that
-generally use latitude, longitude.</p><h5 id="_envelope">Envelope</h5><p>Elasticsearch supports an <code class="literal">envelope</code> type which consists of coordinates
+generally use latitude, longitude.</p><h5><a id="_envelope"></a>Envelope</h5><p>Elasticsearch supports an <code class="literal">envelope</code> type which consists of coordinates
 for upper left and lower right points of the shape:</p><pre class="programlisting prettyprint lang-js">{
     "location" : {
         "type" : "envelope",
         "coordinates" : [[-45.0, 45.0], [45.0, -45.0]]
     }
-}</pre><h5 id="_ulink_url_http_www_geojson_org_geojson_spec_html_id4_polygon_ulink"><a class="ulink" href="http://www.geojson.org/geojson-spec.html#id4" target="_top">Polygon</a></h5><p>A polygon is defined by a list of a list of points. The first and last
+}</pre><h5><a id="_ulink_url_http_www_geojson_org_geojson_spec_html_id4_polygon_ulink"></a><a class="ulink" href="http://www.geojson.org/geojson-spec.html#id4" target="_top">Polygon</a></h5><p>A polygon is defined by a list of a list of points. The first and last
 points in each list must be the same (the polygon must be closed).</p><pre class="programlisting prettyprint lang-js">{
     "location" : {
         "type" : "polygon",
@@ -134,7 +137,7 @@ arrays represent the interior shapes ("holes"):</p><pre class="programlisting pr
             [ [100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2] ]
         ]
     }
-}</pre><h5 id="_ulink_url_http_www_geojson_org_geojson_spec_html_id7_multipolygon_ulink"><a class="ulink" href="http://www.geojson.org/geojson-spec.html#id7" target="_top">MultiPolygon</a></h5><p>A list of geojson polygons.</p><pre class="programlisting prettyprint lang-js">{
+}</pre><h5><a id="_ulink_url_http_www_geojson_org_geojson_spec_html_id7_multipolygon_ulink"></a><a class="ulink" href="http://www.geojson.org/geojson-spec.html#id7" target="_top">MultiPolygon</a></h5><p>A list of geojson polygons.</p><pre class="programlisting prettyprint lang-js">{
     "location" : {
         "type" : "multipolygon",
         "coordinates" : [
@@ -143,7 +146,7 @@ arrays represent the interior shapes ("holes"):</p><pre class="programlisting pr
             [[100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2]]]
         ]
     }
-}</pre><h4 id="_sorting_and_retrieving_index_shapes">Sorting and Retrieving index Shapes</h4><p>Due to the complex input structure and index representation of shapes,
+}</pre><h4><a id="_sorting_and_retrieving_index_shapes"></a>Sorting and Retrieving index Shapes</h4><p>Due to the complex input structure and index representation of shapes,
 it is not currently possible to sort shapes or retrieve their fields
 directly. The geo_shape value is only retrievable through the <code class="literal">_source</code>
 field.</p></div><div class="navfooter"><span class="prev"><a href="mapping-geo-point-type.html">
