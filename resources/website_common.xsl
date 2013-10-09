@@ -2,7 +2,7 @@
                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- css -->
-  <xsl:param name="generate.id.attributes"  select="1"/>
+  <xsl:param name="generate.consistent.ids" select="1"/>
   <xsl:param name="css.decoration"          select="0"/>
   <xsl:param name="html.stylesheet"></xsl:param>
 

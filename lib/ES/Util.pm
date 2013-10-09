@@ -103,7 +103,6 @@ sub to_html5 {
         $contents =~ s/\s+xml:lang="[^"]*"//g;
         $contents =~ s/^<\?xml[^>]+>\n//;
         $contents =~ s/^<!DOCTYPE[^>]+>\n<html>/$HTML_Header/;
-        $contents =~ s/(class="\w+") id="idp\d+"/$1/g;
         $file->spew( iomode => '>:utf8', $contents );
     }
 }
