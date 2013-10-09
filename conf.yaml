@@ -73,3 +73,7 @@ contents:
             branches:   [master]
             current:    master
 
+extra_links:
+    -
+        repo:           elasticsearch
+        file:           config/elasticsearch.yml

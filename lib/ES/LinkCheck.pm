@@ -6,9 +6,9 @@ use v5.10;
 use ES::Util qw(run);
 
 our $Link_Re = qr{
-    href="http://www.elasticsearch.org/guide/
-    ([^"\#]+)           # path
-    (?:\#([^"]+))?      # fragment
+    http://(?:www.)?elasticsearch.org/guide/
+    ([^"\#>\s]+)           # path
+    (?:\#([^">\s]+))?      # fragment
 }x;
 
 #===================================
@@ -38,6 +38,18 @@ sub check {
                 if $item->basename =~ /\.html$/;
         }
     );
+    return !keys %{ $self->bad };
+
+}
+
+#===================================
+sub check_file {
+#===================================
+    my $self = shift;
+    my $file = shift;
+    my $dir  = $self->root;
+
+    $self->_check_links( $dir, $file );
     return !keys %{ $self->bad };
 
 }
