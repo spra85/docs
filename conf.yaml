@@ -32,12 +32,14 @@ contents:
         repo:       elasticsearch
         index:      docs/reference/index.asciidoc
         chunk:      1
+        abbr:       elasticsearch
 
     -
         title:      Elasticsearch for Apache Hadoop
         prefix:     en/elasticsearch/hadoop
         repo:       elasticsearch-hadoop
         index:      docs/src/reference/asciidoc/index.adoc
+        abbr:       hadoop
 
     -
         title:      Clients & Integrations
@@ -47,31 +49,37 @@ contents:
             prefix:     en/elasticsearch/client/java-api
             repo:       elasticsearch
             index:      docs/java-api/index.asciidoc
+            abbr:       java
 
           -
             title:      Groovy API
             prefix:     en/elasticsearch/client/groovy-api
             repo:       elasticsearch
             index:      docs/groovy-api/index.asciidoc
+            abbr:       groovy
 
           -
             title:      PHP API
             prefix:     en/elasticsearch/client/php-api
             repo:       elasticsearch-php
             index:      docs/index.asciidoc
+            abbr:       php
 
           -
             title:      Rivers
             prefix:     en/elasticsearch/rivers
             index:      docs/river/index.asciidoc
             repo:       elasticsearch
+            abbr:       rivers
+
           -
-            title:      Community supported clients
+            title:      Community contributions
             prefix:     en/elasticsearch/client/community
             index:      docs/community/index.asciidoc
             repo:       elasticsearch
             branches:   [master]
             current:    master
+            abbr:       community
 
 extra_links:
     -

@@ -49,7 +49,7 @@ sub index_docs {
     my @docs;
     for my $book ( books( @{ $Conf->{contents} } ) ) {
         say "Indexing book: $book->{title}";
-        my @docs = load_docs( $dir, $book->{prefix} );
+        my @docs = load_docs( $dir, $book->{prefix}, $book->{abbr} );
         my $result = $e->bulk_index(
             index => $index,
             type  => 'doc',
@@ -78,7 +78,7 @@ sub index_docs {
 #===================================
 sub load_docs {
 #===================================
-    my ( $dir, $prefix ) = @_;
+    my ( $dir, $prefix, $abbr ) = @_;
     my $length_dir = length($dir);
     my $book_dir = $dir->subdir( $prefix, 'current' );
 
@@ -97,7 +97,7 @@ sub load_docs {
                 _id  => $url . $page->[0],
                 data => {
                     book  => $prefix,
-                    title => $page->[1],
+                    title => $page->[1] . ' » ' . $abbr,
                     text  => $page->[2],
                     url   => $url . $page->[0],
                     path  => "/$prefix/$name",
