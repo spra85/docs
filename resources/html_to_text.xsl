@@ -1,6 +1,6 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  
-  <xsl:output method="text"/> 
+
+  <xsl:output method="text"/>
 
   <xsl:template match="/">
     <xsl:apply-templates mode="not-guide" />
@@ -39,6 +39,11 @@
       </xsl:copy>
     </xsl:variable>
     <xsl:text>============================&#10;</xsl:text>
+    <xsl:for-each select="descendant::a[@id]">
+      <xsl:text>#</xsl:text>
+      <xsl:value-of select="attribute::id" />
+      <xsl:text> </xsl:text>
+    </xsl:for-each>
     <xsl:value-of select="normalize-space($content)" />
     <xsl:text>&#10;============================&#10;</xsl:text>
   </xsl:template>
