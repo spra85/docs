@@ -117,7 +117,7 @@
               <xsl:apply-templates select="." mode="title.markup"/>
             </a>
           </span>
-          <xsl:text> &gt; </xsl:text>
+          <xsl:text> » </xsl:text>
         </xsl:for-each>
         <!-- And display the current node, but not as a link -->
         <span class="breadcrumb-node">
