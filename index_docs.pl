@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use v5.10;
+use utf8;
 
 use FindBin;
 use lib "$FindBin::RealBin/lib";
@@ -88,21 +89,22 @@ sub load_docs {
         my $name = $file->basename;
         next if $name eq 'index.html' or $name !~ s/\.html$//;
 
-        my ( $title, $text ) = load_file($file);
-        next unless $title;
-
         my $url = $URL_Base . substr( $file, $length_dir );
-        push @docs,
-            {
-            _id  => $url,
-            data => {
-                book  => $prefix,
-                title => $title,
-                text  => $text,
-                url   => $url,
-                path  => "/$prefix/$name",
-            }
-            };
+
+        for my $page ( load_file($file) ) {
+            push @docs,
+                {
+                _id  => $url . $page->[0],
+                data => {
+                    book  => $prefix,
+                    title => $page->[1],
+                    text  => $page->[2],
+                    url   => $url . $page->[0],
+                    path  => "/$prefix/$name",
+                }
+                };
+        }
+
     }
     return @docs;
 }
@@ -116,8 +118,34 @@ sub load_file {
         or die "Couldn't parse text in $file: $@";
 
     $text = decode_utf8($text);
-    $text =~ s/\A\s*^(=+\n)([^\n]+)\n\1//m;
-    return ( $2, $text );
+    my ( undef, @parts ) = split /\s*^====+\s*/m, $text;
+
+    my ( @sections, $page_title, $page );
+
+    while (@parts) {
+        my ( $id, $title ) = _parse_title( shift @parts );
+        my $body = shift @parts;
+        if ($page_title) {
+            $title .= ' » ' . $page_title;
+            $page  .= "\n\n$body";
+        }
+        else {
+            $page_title = $title;
+            $page       = $body;
+        }
+        next unless $id;
+        push @sections, [ $id, $title, $body ];
+    }
+    $sections[0][0] = '';
+    return @sections;
+}
+
+#===================================
+sub _parse_title {
+#===================================
+    my $text = shift;
+    $text =~ /(?:(^#\S+)?\s+)?(.+)/ or return ( undef, $text );
+    return ( $1, $2 );
 }
 
 #===================================
