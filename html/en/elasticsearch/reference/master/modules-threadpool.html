@@ -37,6 +37,7 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 <p>
     For index/delete operations, defaults to <code class="literal">fixed</code>,
     size <code class="literal"># of available processors</code>.
+    queue_size <code class="literal">200</code>.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -46,6 +47,7 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 <p>
     For count/search operations, defaults to <code class="literal">fixed</code>,
     size <code class="literal">3x # of available processors</code>.
+    queue_size <code class="literal">1000</code>.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -55,6 +57,7 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 <p>
     For suggest operations, defaults to <code class="literal">fixed</code>,
     size <code class="literal"># of available processors</code>.
+    queue_size <code class="literal">1000</code>.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -64,6 +67,7 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 <p>
     For get operations, defaults to <code class="literal">fixed</code>
     size <code class="literal"># of available processors</code>.
+    queue_size <code class="literal">1000</code>.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -73,6 +77,17 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 <p>
     For bulk operations, defaults to <code class="literal">fixed</code>
     size <code class="literal"># of available processors</code>.
+    queue_size <code class="literal">50</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">percolate</code>
+</p>
+</td><td valign="top">
+<p>
+    For percolate operations, defaults to <code class="literal">fixed</code>
+    size <code class="literal"># of available processors</code>.
+    queue_size <code class="literal">1000</code>.
 </p>
 </td></tr><tr><td valign="top">
 <p>

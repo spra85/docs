@@ -35,8 +35,9 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 </p>
 </td><td valign="top">
 <p>
-    For index/delete operations, defaults to <code class="literal">fixed</code> type since
-    <code class="literal">0.90.0</code>, size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
+    For index/delete operations, defaults to <code class="literal">fixed</code>,
+    size <code class="literal"># of available processors</code>.
+    queue_size <code class="literal">200</code>.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -44,9 +45,9 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 </p>
 </td><td valign="top">
 <p>
-    For count/search operations, defaults to <code class="literal">fixed</code> type since
-    <code class="literal">0.90.0</code>, size <code class="literal">3x # of available processors</code>. (previously type
-    <code class="literal">cached</code>)
+    For count/search operations, defaults to <code class="literal">fixed</code>,
+    size <code class="literal">3x # of available processors</code>.
+    queue_size <code class="literal">1000</code>.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -56,6 +57,7 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 <p>
     For suggest operations, defaults to <code class="literal">fixed</code>,
     size <code class="literal"># of available processors</code>.
+    queue_size <code class="literal">1000</code>.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -63,8 +65,9 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 </p>
 </td><td valign="top">
 <p>
-    For get operations, defaults to <code class="literal">fixed</code> type since <code class="literal">0.90.0</code>,
-    size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
+    For get operations, defaults to <code class="literal">fixed</code>
+    size <code class="literal"># of available processors</code>.
+    queue_size <code class="literal">1000</code>.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -72,8 +75,19 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 </p>
 </td><td valign="top">
 <p>
-    For bulk operations, defaults to <code class="literal">fixed</code> type since <code class="literal">0.90.0</code>,
-    size <code class="literal"># of available processors</code>. (previously type <code class="literal">cached</code>)
+    For bulk operations, defaults to <code class="literal">fixed</code>
+    size <code class="literal"># of available processors</code>.
+    queue_size <code class="literal">50</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">percolate</code>
+</p>
+</td><td valign="top">
+<p>
+    For percolate operations, defaults to <code class="literal">fixed</code>
+    size <code class="literal"># of available processors</code>.
+    queue_size <code class="literal">1000</code>.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -81,8 +95,8 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 </p>
 </td><td valign="top">
 <p>
-    For segment warm-up operations, defaults to <code class="literal">scaling</code> since
-    <code class="literal">0.90.0</code> with a <code class="literal">5m</code> keep-alive. (previously type <code class="literal">cached</code>)
+    For segment warm-up operations, defaults to <code class="literal">scaling</code>
+    with a <code class="literal">5m</code> keep-alive.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -90,8 +104,8 @@ pools, but the important ones include:</p><div class="horizontal"><table cellpad
 </p>
 </td><td valign="top">
 <p>
-    For refresh operations, defaults to <code class="literal">scaling</code> since
-    <code class="literal">0.90.0</code> with a <code class="literal">5m</code> keep-alive. (previously type <code class="literal">cached</code>)
+    For refresh operations, defaults to <code class="literal">scaling</code>
+    with a <code class="literal">5m</code> keep-alive.
 </p>
 </td></tr></tbody></table></div><p>Changing a specific thread pool can be done by setting its type and
 specific type parameters, for example, changing the <code class="literal">index</code> thread pool
