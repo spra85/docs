@@ -27,12 +27,8 @@
            
           <a href="search-search.html">Search
                »
-            </a></span></div><div class="part"><div class="titlepage"><div><div><h1 class="title"><a id="search"></a>Search APIs</h1></div></div></div><div class="partintro"><div></div><h2><a id="search-multi-index"></a>Multiple Indices</h2><p>All search APIs support execution across multiple indices, using simple
-<code class="literal">test1,test2,test3</code> notation (or <code class="literal">_all</code> for all indices). It also
-support wildcards, for example: <code class="literal">test*</code>, and the ability to "add" (<code class="literal">+</code>)
-and "remove" (<code class="literal">-</code>), for example: <code class="literal">+test*,-test3</code>.</p><p>All multi indices API support the <code class="literal">ignore_indices</code> option. Setting it to
-<code class="literal">missing</code> will cause indices that do not exists to be ignored from the
-execution. By default, when its not set, the request will fail.</p><h2><a id="search-routing"></a>Routing</h2><p>When executing a search, it will be broadcasted to all the index/indices
+            </a></span></div><div class="part"><div class="titlepage"><div><div><h1 class="title"><a id="search"></a>Search APIs</h1></div></div></div><div class="partintro"><div></div><p>Most search APIs are <a class="link" href="search-search.html#search-multi-index-type" title="Multi-Index, Multi-Type">multi-index, multi-type</a>, with the
+exception of the <a class="xref" href="search-explain.html" title="Explain API"><em>Explain API</em></a> and <a class="xref" href="search-percolate.html" title="Percolate API"><em>Percolate API</em></a> endpoints.</p><h2><a id="search-routing"></a>Routing</h2><p>When executing a search, it will be broadcasted to all the index/indices
 shards (round robin between replicas). Which shards will be searched on
 can be controlled by providing the <code class="literal">routing</code> parameter. For example,
 when indexing tweets, the routing value can be the user name:</p><pre class="programlisting prettyprint lang-js">$ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '{
