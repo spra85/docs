@@ -59,10 +59,7 @@ configuring ElasticSearch different
 configuring the ElasticSearch logging.</p><p>The configuration format is <a class="ulink" href="http://www.yaml.org/" target="_top">YAML</a>. Here is an
 example of changing the address all network based modules will use to
 bind and publish to:</p><pre class="programlisting prettyprint lang-js">network :
-    host : 10.0.0.4</pre><p><span class="strong"><strong>elasticsearch</strong></span> configuration files can be found under <code class="literal">ES_HOME/config</code>
-folder. The folder comes with two files, the <code class="literal">elasticsearch.yml</code> for
-configuring ElasticSearch different <a class="link" href="modules.html" title="Modules">modules</a>, and <code class="literal">logging.yml</code>
-for configuring the ElasticSearch logging.</p><h4><a id="paths"></a>Paths</h4><p>In production use, you will almost certainly want to change paths for
+    host : 10.0.0.4</pre><h4><a id="paths"></a>Paths</h4><p>In production use, you will almost certainly want to change paths for
 data and log files:</p><pre class="programlisting prettyprint lang-js">path:
   logs: /var/log/elasticsearch
   data: /var/data/elasticsearch</pre><h4><a id="cluster-name"></a>Cluster name</h4><p>Also, don’t forget to give your production cluster a name, which is used
