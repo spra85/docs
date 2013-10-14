@@ -356,7 +356,7 @@ return 1.</p></div><div class="section"><div class="titlepage"><div><div><h3 cla
 }</pre><p>and the <a class="xref" href="query-dsl-custom-filters-score-query.html" title="Custom Filters Score Query">Custom Filters Score Query</a></p><pre class="programlisting prettyprint lang-js">"custom_filters_score": {
     "filters": [
         {
-            "boost": "3",
+            "boost_factor": "3",
             "filter": {...}
         },
         {
@@ -373,7 +373,7 @@ return 1.</p></div><div class="section"><div class="titlepage"><div><div><h3 cla
 }</pre><p>becomes:</p><pre class="programlisting prettyprint lang-js">"function_score": {
     "functions": [
         {
-            "boost": "3",
+            "boost_factor": "3",
             "filter": {...}
         },
         {
