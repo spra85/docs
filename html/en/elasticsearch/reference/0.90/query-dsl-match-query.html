@@ -79,7 +79,12 @@ the query terms are above the given <code class="literal">cutoff_frequency</code
 automatically transformed into a pure conjunction (<code class="literal">and</code>) query to
 ensure fast execution.</p><p>The <code class="literal">cutoff_frequency</code> can either be relative to the number of documents
 in the index if in the range <code class="literal">[0..1)</code> or absolute if greater or equal to
-<code class="literal">1.0</code>.</p><p>Here is an example showing a query composed of stopwords exclusivly:</p><pre class="programlisting prettyprint lang-js">{
+<code class="literal">1.0</code>.</p><p>Note: If the <code class="literal">cutoff_frequency</code> is used and the operator is <code class="literal">and</code>
+<span class="emphasis"><em>stacked tokens</em></span> (tokens that are on the same position like <code class="literal">synonym</code> filter emits)
+are not handled gracefully as they are in a pure <code class="literal">and</code> query. For instance the query
+<code class="literal">fast fox</code> is analyzed into 3 terms <code class="literal">[fast, quick, fox]</code> where <code class="literal">quick</code> is a synonym
+for <code class="literal">fast</code> on the same token positions the query might require <code class="literal">fast</code> and <code class="literal">quick</code> to
+match if the operator is <code class="literal">and</code>.</p><p>Here is an example showing a query composed of stopwords exclusivly:</p><pre class="programlisting prettyprint lang-js">{
     "match" : {
         "message" : {
             "query" : "to be or not to be",
