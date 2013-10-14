@@ -41,7 +41,7 @@ by the query.</p><p><code class="literal">function_score</code> can be used with
     "(query|filter)": {},
     "boost": "boost for the whole query",
     "FUNCTION": {},
-    "boost_mode":"(mult|replace|...)"
+    "boost_mode":"(multiply|replace|...)"
 }</pre><p>Furthermore, several functions can be combined. In this case one can
 optionally choose to apply the function only if a document matches a
 given filter:</p><pre class="programlisting prettyprint lang-js">"function_score": {
@@ -57,8 +57,8 @@ given filter:</p><pre class="programlisting prettyprint lang-js">"function_score
         }
     ],
     "max_boost": number,
-    "score_mode": "(mult|max|...)",
-    "boost_mode": "(mult|replace|...)"
+    "score_mode": "(multiply|max|...)",
+    "boost_mode": "(multiply|replace|...)"
 }</pre><p>If no filter is given with a function this is equivalent to specifying
 <code class="literal">"match_all": {}</code></p><p>First, each document is scored by the defined functons. The parameter
 <code class="literal">score_mode</code> specifies how the computed scores are combined:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
@@ -68,6 +68,14 @@ given filter:</p><pre class="programlisting prettyprint lang-js">"function_score
 </td><td valign="top">
 <p>
 scores are multiplied (default)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">mult</code>
+</p>
+</td><td valign="top">
+<p>
+scores are multiplied (default), deprecated [0.90.5, Renamed to <code class="literal">multiply</code>]
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -171,11 +179,17 @@ decay function is specified as</p><pre class="programlisting prettyprint lang-js
     "FIELD_NAME": {
           "origin": "11, 12",
           "scale": "2km",
-          "offset": "1km",
-          "decay": 0.5
+          "offset": "0km",
+          "decay": 0.33
     }
-}</pre><p>where <code class="literal">DECAY_FUNCTION</code> can be "linear", "exp" and "gauss" (see below).
-The <code class="literal">offset</code> and <code class="literal">decay</code> parameters are optional.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+}</pre><p>where <code class="literal">DECAY_FUNCTION</code> can be "linear", "exp" and "gauss" (see below). The specified field must be a numeric field. In the above example, the field is a <a class="xref" href="mapping-geo-point-type.html" title="Geo Point Type">Geo Point Type</a> and origin can be provided in geo format. <code class="literal">scale</code> and <code class="literal">offset</code> must be given with a unit in this case. If your field is a date field, you can set <code class="literal">scale</code> and <code class="literal">offset</code> as days, weeks, and so on. Example:</p><pre class="programlisting prettyprint lang-js">    "DECAY_FUNCTION": {
+        "FIELD_NAME": {
+              "origin": "2013-09-17",
+              "scale": "10d",
+              "offset": "5d",
+              "decay" : 0.5
+        }
+    }</pre><p>The format of the origin depends on the <a class="xref" href="mapping-date-format.html" title="Date Format"><em>Date Format</em></a> defined in your mapping. If you do not define the origin, the current time is used.</p><p>The <code class="literal">offset</code> and <code class="literal">decay</code> parameters are optional.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">offset</code>
 </span></dt><dd>
     If an <code class="literal">offset</code> is defined, the decay function will only compute a the
@@ -187,20 +201,15 @@ The <code class="literal">offset</code> and <code class="literal">decay</code> p
 The <code class="literal">decay</code> parameter defines how documents are scored at the distance
 given at <code class="literal">scale</code>. If no <code class="literal">decay</code> is defined, documents at the distance
 <code class="literal">scale</code> will be scored 0.5.
-</dd></dl></div><p>For example, your documents might represents hotels and contain a geo
+</dd></dl></div><p>In the first example, your documents might represents hotels and contain a geo
 location field. You want to compute a decay function depending on how
 far the hotel is from a given location. You might not immediately see
 what scale to choose for the gauss function, but you can say something
 like: "At a distance of 2km from the desired location, the score should
-be reduced by one third."</p><p>You can provide this parameter like this:</p><pre class="programlisting prettyprint lang-js">    "DECAY_FUNCTION": {
-        "location": {
-              "origin": "11, 12",
-              "scale": "2km",
-              "decay" : 0.33
-        }
-    }</pre><p>The parameter "scale" will then be adjusted automatically to assure that
-the score function computes a score of 0.33 for hotels that are 2km away
-from the desired location.</p><p>The <code class="literal">DECAY_FUNCTION</code> determines the shape of the decay:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+be reduced by one third."
+The parameter "scale" will then be adjusted automatically to assure that
+the score function computes a score of 0.5 for hotels that are 2km away
+from the desired location.</p><p>In the second example, documents with a field value between 2013-09-12 and 2013-09-22 would get a weight of 1.0 and documents which are 15 days from that date a weight of 0.5.</p><p>The <code class="literal">DECAY_FUNCTION</code> determines the shape of the decay:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">gauss</code>
 </p>
@@ -323,7 +332,7 @@ return 1.</p></div><div class="section"><div class="titlepage"><div><div><h3 cla
 }</pre><p>and the <a class="xref" href="query-dsl-custom-filters-score-query.html" title="Custom Filters Score Query">Custom Filters Score Query</a></p><pre class="programlisting prettyprint lang-js">"custom_filters_score": {
     "filters": [
         {
-            "boost": "3",
+            "boost_factor": "3",
             "filter": {...}
         },
         {
@@ -340,7 +349,7 @@ return 1.</p></div><div class="section"><div class="titlepage"><div><div><h3 cla
 }</pre><p>becomes:</p><pre class="programlisting prettyprint lang-js">"function_score": {
     "functions": [
         {
-            "boost": "3",
+            "boost_factor": "3",
             "filter": {...}
         },
         {
