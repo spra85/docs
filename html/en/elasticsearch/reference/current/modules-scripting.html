@@ -48,7 +48,21 @@ script). This helps reduce the amount of data passed between the client
 and the nodes.</p><p>The name of the script is derived from the hierarchy of directories it
 exists under, and the file name without the lang extension. For example,
 a script placed under <code class="literal">config/scripts/group1/group2/test.py</code> will be
-named <code class="literal">group1_group2_test</code>.</p><h3><a id="_native_java_scripts"></a>Native (Java) Scripts</h3><p>Even though <code class="literal">mvel</code> is pretty fast, allow to register native Java based
+named <code class="literal">group1_group2_test</code>.</p><h3><a id="_disabling_dynamic_scripts"></a>Disabling dynamic scripts</h3><p>We recommend running Elasticsearch behind an application or proxy,
+which protects Elasticsearch from the outside world. If users are
+allowed to run dynamic scripts (even in a search request), then they
+have the same access to your box as the user that Elasticsearch is
+running as.</p><p>First, you should not run Elasticsearch as the <code class="literal">root</code> user, as this
+would allow a script to access or do <span class="strong"><strong>anything</strong></span> on your server, without
+limitations. Second, you should not expose Elasticsearch directly to
+users, but instead have a proxy application inbetween.  If you <span class="strong"><strong>do</strong></span>
+intend to expose Elasticsearch directly to your users, then you have
+to decide whether you trust them enough to run scripts on your box or
+not. If not, then even if you have a proxy which only allows <code class="literal">GET</code>
+requests, you should disable dynamic scripting by adding the following
+setting to the <code class="literal">config/elasticsearch.yml</code> file on every node:</p><pre class="programlisting prettyprint lang-yaml">script.disable_dynamic: true</pre><p>This will still allow execution of named scripts provided in the config, or
+<span class="emphasis"><em>native</em></span> Java scripts registered through plugins, however it will prevent
+users from running arbitrary scripts via the API.</p><h3><a id="_native_java_scripts"></a>Native (Java) Scripts</h3><p>Even though <code class="literal">mvel</code> is pretty fast, allow to register native Java based
 scripts for faster execution.</p><p>In order to allow for scripts, the <code class="literal">NativeScriptFactory</code> needs to be
 implemented that constructs the script that will be executed. There are
 two main types, one that extends <code class="literal">AbstractExecutableScript</code> and one that
