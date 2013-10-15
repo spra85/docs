@@ -39,237 +39,125 @@ number of replicas. Here is a curl example:</p><pre class="programlisting pretty
         "number_of_replicas" : 4
     } }
 '</pre><p>Below is the list of settings that can be changed using the update
-settings API:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
+settings API:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">index.number_of_replicas</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     The number of replicas each shard has.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.auto_expand_replicas</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Set to an actual value (like <code class="literal">0-all</code>) or <code class="literal">false</code> to disable it.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.blocks.read_only</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Set to <code class="literal">true</code> to have the index read only, <code class="literal">false</code> to allow writes
     and metadata changes.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.blocks.read</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Set to <code class="literal">true</code> to disable read operations againstthe index.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.blocks.write</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Set to <code class="literal">true</code> to disable write operations against the index.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.blocks.metadata</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Set to <code class="literal">true</code> to disable metadata operations against the index.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.refresh_interval</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     The async refresh interval of a shard.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.term_index_interval</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     The Lucene index term interval. Only applies to newly created docs.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.term_index_divisor</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     The Lucene reader term index divisor.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.index_concurrency</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Defaults to <code class="literal">8</code>.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.codec</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Codec. Default to <code class="literal">default</code>.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.fail_on_merge_failure</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Default to <code class="literal">true</code>.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.translog.flush_threshold_ops</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     When to flush based on operations.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.translog.flush_threshold_size</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     When to flush based on translog (bytes) size.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.translog.flush_threshold_period</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     When to flush based on a period of not flushing.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.translog.disable_flush</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Disables flushing. Note, should be set for a short
     interval and then enabled.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.cache.filter.max_size</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     The maximum size of filter cache (per segment in shard).
     Set to <code class="literal">-1</code> to disable.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.cache.filter.expire</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     The expire after access time for filter cache.
     Set to <code class="literal">-1</code> to disable.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.gateway.snapshot_interval</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     The gateway snapshot interval (only applies to shared gateways).
     Defaults to 10s.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <a class="link" href="index-modules-merge.html" title="Merge">merge policy</a>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     All the settings for the merge policy currently configured.
     A different merge policy can’t be set.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.routing.allocation.include.*</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     A node matching any rule will be allowed to host shards from the index.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.routing.allocation.exclude.*</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     A node matching any rule will NOT be allowed to host shards from the index.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.routing.allocation.require.*</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Only nodes matching all rules will be allowed to host shards from the index.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.routing.allocation.disable_allocation</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Disable allocation. Defaults to <code class="literal">false</code>.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.routing.allocation.disable_new_allocation</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Disable new allocation. Defaults to <code class="literal">false</code>.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.routing.allocation.disable_replica_allocation</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Disable replica allocation. Defaults to <code class="literal">false</code>.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.routing.allocation.total_shards_per_node</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Controls the total number of shards allowed to be allocated on a single node. Defaults to unbounded (<code class="literal">-1</code>).
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.recovery.initial_shards</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd><p class="simpara">
     When using local gateway a particular shard is recovered only if there can be allocated quorum shards in the cluster. It can be set to:
-</p>
-<div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <code class="literal">quorum</code> (default)
 </li><li class="listitem">
 <code class="literal">quorum-1</code> (or <code class="literal">half</code>)
@@ -279,59 +167,39 @@ settings API:</p><div class="horizontal"><table cellpadding="4px" border="0"><co
 full-1`.
 </li><li class="listitem">
 Number values are also supported, e.g. <code class="literal">1</code>.
-</li></ul></div>
-</td></tr><tr><td valign="top">
-<p>
+</li></ul></div></dd><dt><span class="term">
 <code class="literal">index.gc_deletes</code>
-</p>
-<p>
+, </span><span class="term">
 <code class="literal">index.ttl.disable_purge</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Disables temporarily the purge of expired docs.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <a class="link" href="index-modules-store.html" title="Store">store level throttling</a>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     All the settings for the store level throttling policy currently configured.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.translog.fs.type</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     Either <code class="literal">simple</code> or <code class="literal">buffered</code> (default).
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.compound_format</code>
-</p>
-</td><td valign="top">
-<p>
-    See <a class="xref" href="index-modules.html" title="Index Modules">Index Modules</a>
-</p>
-</td></tr><tr><td valign="top">
-<p>
-|<a class="xref" href="index-modules-slowlog.html" title="Index Slow Log"><em>Index Slow Log</em></a>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
+    See <a class="link" href="index-modules.html#index-compound-format"><code class="literal">index.compound_format</code></a> in
+    <a class="xref" href="index-modules.html#index-modules-settings" title="Index Settings">the section called “Index Settings”</a>.
+</dd><dt><span class="term">
+<code class="literal">index.compound_on_flush</code>
+</span></dt><dd>
+    See <a class="link" href="index-modules.html#index-compound-on-flush">`index.compound_on_flush</a> in
+    <a class="xref" href="index-modules.html#index-modules-settings" title="Index Settings">the section called “Index Settings”</a>.
+</dd><dt><span class="term">
+<a class="xref" href="index-modules-slowlog.html" title="Index Slow Log"><em>Index Slow Log</em></a>
+</span></dt><dd>
     All the settings for slow log.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</dd><dt><span class="term">
 <code class="literal">index.warmer.enabled</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
     See <a class="xref" href="indices-warmers.html" title="Warmers"><em>Warmers</em></a>. Defaults to <code class="literal">true</code>.
-</p>
-</td></tr></tbody></table></div><h3><a id="bulk"></a>Bulk Indexing Usage</h3><p>For example, the update settings API can be used to dynamically change
+</dd></dl></div><h3><a id="bulk"></a>Bulk Indexing Usage</h3><p>For example, the update settings API can be used to dynamically change
 the index from being more performant for bulk indexing, and then move it
 to more real time indexing state. Before the bulk indexing is started,
 use:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test/_settings -d '{
