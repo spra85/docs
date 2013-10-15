@@ -32,6 +32,7 @@ sub build_chunked {
     my $build   = $dest->parent;
     my $version = $opts{version} || 'test build';
     my $multi   = $opts{multi} || 0;
+    my $lenient = $opts{lenient} || '';
     my $output  = run(
         'a2x', '-v', '--icons',
         '-d'              => 'book',
@@ -44,12 +45,16 @@ sub build_chunked {
         '--xsltproc-opts' =>
             "--stringparam local.book.multi_version '$multi'",
         '--destination-dir=' . $build,
+        ( $lenient ? '-L' : () ),
         $index
     );
 
     my @warn = grep {/(WARNING|ERROR)/} split "\n", $output;
-    die join "\n", @warn
-        if @warn;
+    if (@warn) {
+        $lenient
+            ? warn join "\n", @warn
+            : die join "\n", \@warn;
+    }
 
     my ($chunk_dir) = grep { -d and /\.chunked$/ } $build->children
         or die "Couldn't find chunk dir in <$build>";
@@ -68,7 +73,8 @@ sub build_single {
     my ( $index, $dest, %opts ) = @_;
 
     my $toc = $opts{toc} ? 'book toc' : '';
-    my $type = $opts{type} || 'book';
+    my $type    = $opts{type}    || 'book';
+    my $lenient = $opts{lenient} || '';
 
     fcopy( 'resources/styles.css', $index->parent )
         or die "Couldn't copy <styles.css> to <" . $index->parent . ">: $!";
@@ -83,12 +89,17 @@ sub build_single {
         '--xsltproc-opts',
         "--stringparam generate.toc '$toc'",
         '--destination-dir=' . $dest,
+        ( $lenient ? '-L' : () ),
         $index
     );
 
     my @warn = grep {/(WARNING|ERROR)/} split "\n", $output;
-    die join "\n", @warn
-        if @warn;
+    if (@warn) {
+        $lenient
+            ? warn join "\n", @warn
+            : die join "\n", \@warn;
+    }
+
     to_html5($dest);
 }
 

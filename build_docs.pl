@@ -25,8 +25,8 @@ our $Conf = LoadFile('conf.yaml');
 GetOptions(
     $Opts,    #
     'all', 'push',    #
-    'single', 'doc=s', 'out=s', 'toc', 'open', 'chunk=i',
-    'verbose'
+    'single',  'doc=s', 'out=s', 'toc', 'open', 'chunk=i',
+    'lenient', 'verbose'
 );
 
 $Opts->{doc}       ? build_local( $Opts->{doc} )
@@ -216,6 +216,7 @@ sub usage {
           --out dest/dir/   Defaults to ./html_docs.
           --chunk 1         Also chunk sections into separate files
           --open            Open the docs in a browser once built.
+          --lenient         Ignore linking errors
           --verbose
 
         WARNING: Anything in the `out` dir will be deleted!
