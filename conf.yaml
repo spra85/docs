@@ -66,6 +66,15 @@ contents:
             abbr:       php
 
           -
+            title:      Perl API
+            prefix:     en/elasticsearch/client/perl-api
+            repo:       elasticsearch
+            index:      docs/perl/index.asciidoc
+            branches:   [master]
+            current:    master
+            abbr:       perl
+
+          -
             title:      Rivers
             prefix:     en/elasticsearch/rivers
             index:      docs/river/index.asciidoc
