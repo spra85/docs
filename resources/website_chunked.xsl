@@ -29,6 +29,7 @@
   <xsl:template name="division.toc">
     <xsl:param name="toc-context" select="."/>
     <xsl:param name="toc.title.p" select="true()"/>
+    <xsl:param name="local.check.multi" select="true()" />
 
     <xsl:call-template name="make.toc">
       <xsl:with-param name="toc-context" select="$toc-context"/>
@@ -36,12 +37,14 @@
       <xsl:with-param name="nodes" select="part|reference                                          |preface|chapter|appendix                                          |article                                          |topic                                          |bibliography|glossary|index                                          |refentry                                          |bridgehead[$bridgehead.in.toc != 0]"/>
 
     </xsl:call-template>
-    <xsl:if test="local-name(.)='book'">
-      <xsl:if test="$local.book.multi_version &gt; 0">
-        <p>
-           These docs are for branch: <xsl:value-of select="$local.book.version" />.
-           <a href="../index.html">Other versions</a>.
-        </p>
+    <xsl:if test="$local.check.multi">
+      <xsl:if test="local-name(.)='book'">
+        <xsl:if test="$local.book.multi_version &gt; 0">
+          <p>
+             These docs are for branch: <xsl:value-of select="$local.book.version" />.
+             <a href="../index.html">Other versions</a>.
+          </p>
+        </xsl:if>
       </xsl:if>
     </xsl:if>
   </xsl:template>
@@ -64,6 +67,7 @@
         <xsl:for-each select="parent::book | parent::part">
           <xsl:call-template name="division.toc">
             <xsl:with-param name="toc-context" select="." />
+            <xsl:with-param name="local.check.multi" select="false()" />
           </xsl:call-template>
         </xsl:for-each>
       </xsl:when>
