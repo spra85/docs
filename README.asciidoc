@@ -117,7 +117,25 @@ build_docs.pl --doc path/to/index.asciidoc --single --toc
 NOTE: The multi-page output always contains tables-of-content
 where appropriate.
 
-=== Correcting errors
+=== Chunking in the right place
+
+Asciidoc combines all of the source files into one big file, which it converts
+to a single XML file for DocBook to process.  _Chunking_ is the process of
+breaking that XML file up into multiple HTML pages.
+
+By default, each _part_ (`= Part Title`) and _chapter_ (`== Chapter Title`) is
+``chunked'' into a separate HTML file. However, for bigger books, such as the
+Elasticsearch reference  docs, this results in enormous pages.  These bigger
+books are also chunked at the first _section_ level (`=== Section One Title`).
+This behaviour is specified in the `conf.yaml` file, but can also be specified
+on the command line when building the docs locally:
+
+[source,shell]
+----------------------------
+build_docs.pl --doc path/to/index.asciidoc --chunk 1
+----------------------------
+
+== Correcting errors
 
 Asciidoc is converted to DocBook, which is then converted to HTML.
 DocBook is strict, which means that you have to follow the rules
@@ -131,6 +149,39 @@ The most common errors are:
 * incorrect order of elements, eg `= Title` followed by
   a `=== Level 3` header
 * Linking to an non-existent ID
+
+Errors may be thrown either by Asciidoc or by DocBook.  Asciidoc errors refer
+to the actual `.asciidoc` page where the error occurred,  but DocBook errors
+only refer to a line in the generated XML file, and look something like this:
+
+    path/to/index.xml:1518: element xref: validity error : XXXXX
+
+The easiest way to debug these is to open the XML file (`index.xml` in the
+example above) and navigate to the specified line number (`1518` in the
+example above). This marks the *end* of the section containing the error.
+
+== Building part of a book
+
+Building a big book is time consuming.  Unfortunately, in order to test that
+all links exist, the entire book needs to be built in one go.  However, while
+you're writing docs it is useful to be able to build just a single `.asciidoc`
+page.
+
+You can do this by telling `build_docs.pl` to ignore errors with the `--lenient`
+parameter:
+
+[source,shell]
+----------------------------
+build_docs.pl --doc path/to/some/page.asciidoc --lenient --single --open
+----------------------------
+
+If the page you are building contains links to content in other pages, the
+above command will output warnings like:
+
+    ERROR: xref linking to relevance-intro has no generated link text.
+
+NOTE: You should still build the whole book without the `--lenient` parameter
+before commiting, to be sure that you haven't broken any links.
 
 [[website]]
 == For the website
