@@ -108,7 +108,6 @@ String _id = response.id();
 long _version = response.version();</pre><p>If you use percolation while indexing, <code class="literal">IndexResponse</code> object will give
 you percolator that have matched:</p><pre class="programlisting prettyprint lang-java">IndexResponse response = client.prepareIndex("twitter", "tweet", "1")
         .setSource(json)
-        .setPercolate("*")
         .execute()
         .actionGet();
 

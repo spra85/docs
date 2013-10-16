@@ -160,21 +160,7 @@ as shown in the following examples:</p><pre class="programlisting prettyprint la
     "user": "kimchy",
     "message": "Trying out elasticsearch, so far so good?"
 }'</pre><p>More information can be found on the
-<a class="link" href="mapping-ttl-field.html" title="_ttl">_ttl mapping page</a>.</p><h3><a id="percolate"></a>Percolate</h3><p><a class="link" href="search-percolate.html" title="Percolator">Percolation</a> can be performed
-at index time by passing the <code class="literal">percolate</code> parameter. Setting it to <code class="literal">*</code>
-will cause all percolation queries registered against the index to be
-checked against the provided document, for example:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test/type1/1?percolate=* -d '{
-    "field1" : "value1"
-}'</pre><p>To filter out which percolator queries will be executed, pass the query
-string syntax to the <code class="literal">percolate</code> parameter:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test/type1/1?percolate=color:green -d '{
-    "field1" : "value1",
-    "field2" : "value2"
-}'</pre><p><span class="strong"><strong>NOTE:</strong></span> In a distributed cluster, percolation during the index operation
-is performed on the primary shard, as soon as the index operation
-completes. The operation executes on the primary while the replicas are
-updating, concurrently. Percolation during the index operation somewhat
-cuts down on parsing overhead, as the parse tree for the document is
-simply re-used for percolation.</p><h3><a id="index-distributed"></a>Distributed</h3><p>The index operation is directed to the primary shard based on its route
+<a class="link" href="mapping-ttl-field.html" title="_ttl">_ttl mapping page</a>.</p><h3><a id="index-distributed"></a>Distributed</h3><p>The index operation is directed to the primary shard based on its route
 (see the Routing section above) and performed on the actual node
 containing this shard. After the primary shard completes the operation,
 if needed, the update is distributed to applicable replicas.</p><h3><a id="index-consistency"></a>Write Consistency</h3><p>To prevent writes from taking place on the "wrong" side of a network

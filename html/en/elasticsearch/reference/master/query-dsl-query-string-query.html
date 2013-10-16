@@ -95,9 +95,7 @@ introduced fields included). For example:</p><pre class="programlisting prettypr
     }
 }</pre><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="query-string-syntax"></a>Query string syntax</h3></div></div></div><p>The query string “mini-language” is used by the
 <a class="xref" href="query-dsl-query-string-query.html" title="Query String Query">Query String Query</a> and <a class="xref" href="query-dsl-field-query.html" title="Field Query">Field Query</a>, by the
-<code class="literal">q</code> query string parameter in the <a class="link" href="search-search.html" title="Search"><code class="literal">search</code> API</a> and
-by the <code class="literal">percolate</code> parameter  in the <a class="link" href="docs-index_.html" title="Index API"><code class="literal">index</code></a> and
-<a class="link" href="docs-bulk.html" title="Bulk API"><code class="literal">bulk</code></a> APIs.</p><p>The query string is parsed into a series of <span class="emphasis"><em>terms</em></span> and <span class="emphasis"><em>operators</em></span>. A
+<code class="literal">q</code> query string parameter in the <a class="link" href="search-search.html" title="Search"><code class="literal">search</code> API</a>.</p><p>The query string is parsed into a series of <span class="emphasis"><em>terms</em></span> and <span class="emphasis"><em>operators</em></span>. A
 term can be a single word — <code class="literal">quick</code> or <code class="literal">brown</code> — or a phrase, surrounded by
 double quotes — <code class="literal">"quick brown"</code> — which searches for all the words in the
 phrase, in the same order.</p><p>Operators allow you to customize the search — the available options are
