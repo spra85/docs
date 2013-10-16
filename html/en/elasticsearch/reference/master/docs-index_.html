@@ -160,7 +160,7 @@ as shown in the following examples:</p><pre class="programlisting prettyprint la
     "user": "kimchy",
     "message": "Trying out elasticsearch, so far so good?"
 }'</pre><p>More information can be found on the
-<a class="link" href="mapping-ttl-field.html" title="_ttl">_ttl mapping page</a>.</p><h3><a id="percolate"></a>Percolate</h3><p><a class="link" href="search-percolate.html" title="Percolate API">Percolation</a> can be performed
+<a class="link" href="mapping-ttl-field.html" title="_ttl">_ttl mapping page</a>.</p><h3><a id="percolate"></a>Percolate</h3><p><a class="link" href="search-percolate.html" title="Percolator">Percolation</a> can be performed
 at index time by passing the <code class="literal">percolate</code> parameter. Setting it to <code class="literal">*</code>
 will cause all percolation queries registered against the index to be
 checked against the provided document, for example:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test/type1/1?percolate=* -d '{
