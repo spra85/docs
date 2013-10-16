@@ -53,7 +53,7 @@ sub build_chunked {
     if (@warn) {
         $lenient
             ? warn join "\n", @warn
-            : die join "\n", \@warn;
+            : die join "\n", @warn;
     }
 
     my ($chunk_dir) = grep { -d and /\.chunked$/ } $build->children
@@ -97,7 +97,7 @@ sub build_single {
     if (@warn) {
         $lenient
             ? warn join "\n", @warn
-            : die join "\n", \@warn;
+            : die join "\n", @warn;
     }
 
     to_html5($dest);
