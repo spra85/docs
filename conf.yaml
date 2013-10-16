@@ -75,6 +75,15 @@ contents:
             abbr:       perl
 
           -
+            title:      Python API
+            prefix:     en/elasticsearch/client/python-api
+            repo:       elasticsearch
+            index:      docs/python/index.asciidoc
+            branches:   [master]
+            current:    master
+            abbr:       python
+
+          -
             title:      Rivers
             prefix:     en/elasticsearch/rivers
             index:      docs/river/index.asciidoc
