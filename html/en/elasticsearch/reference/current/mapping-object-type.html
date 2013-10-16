@@ -109,7 +109,8 @@ fields default to their default attributes, for example, they are not
 stored and they are always indexed.</p><p>Date fields are special since they are represented as a <code class="literal">string</code>. Date
 fields are detected if they can be parsed as a date when they are first
 introduced into the system. The set of date formats that are tested
-against can be configured using the <code class="literal">date_formats</code> and explained later.</p><p>Note, once a field has been added, <span class="strong"><strong>its type can not change</strong></span>. For
+against can be configured using the <code class="literal">dynamic_date_formats</code> on the root object,
+which is explained later.</p><p>Note, once a field has been added, <span class="strong"><strong>its type can not change</strong></span>. For
 example, if we added age and its value is a number, then it can’t be
 treated as a string.</p><p>The <code class="literal">dynamic</code> parameter can also be set to <code class="literal">strict</code>, meaning that not
 only new fields will not be introduced into the mapping, parsing
