@@ -39,7 +39,7 @@ in your class:</p><pre class="programlisting prettyprint lang-java">import org.e
 with Java API.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_prepare_facet_request"></a>Prepare facet request</h4></div></div></div><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint lang-java">FacetBuilders.termsFacet("f")
     .field("brand")
     .size(10);</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_use_facet_response"></a>Use facet response</h4></div></div></div><p>Import Facet definition classes:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.search.facet.terms.*;</pre><pre class="programlisting prettyprint lang-java">// sr is here your SearchResponse object
-TermsFacet f = (TermsFacet) sr.facets().facetsAsMap().get("f");
+TermsFacet f = (TermsFacet) sr.getFacets().facetsAsMap().get("f");
 
 f.getTotalCount();      // Total terms doc count
 f.getOtherCount();      // Not shown terms doc count
@@ -56,7 +56,7 @@ with Java API.</p><div class="section"><div class="titlepage"><div><div><h4 clas
     .addUnboundedFrom(3)    // from -infinity to 3 (excluded)
     .addRange(3, 6)         // from 3 to 6 (excluded)
     .addUnboundedTo(6);     // from 6 to +infinity</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_use_facet_response_2"></a>Use facet response</h4></div></div></div><p>Import Facet definition classes:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.search.facet.range.*;</pre><pre class="programlisting prettyprint lang-java">// sr is here your SearchResponse object
-RangeFacet f = (RangeFacet) sr.facets().facetsAsMap().get("f");
+RangeFacet f = (RangeFacet) sr.getFacets().facetsAsMap().get("f");
 
 // For each entry
 for (RangeFacet.Entry entry : f) {
@@ -72,7 +72,7 @@ for (RangeFacet.Entry entry : f) {
 Facet</a> with Java API.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_prepare_facet_request_3"></a>Prepare facet request</h4></div></div></div><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint lang-java">HistogramFacetBuilder facet = FacetBuilders.histogramFacet("f")
     .field("price")
     .interval(1);</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_use_facet_response_3"></a>Use facet response</h4></div></div></div><p>Import Facet definition classes:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.search.facet.histogram.*;</pre><pre class="programlisting prettyprint lang-java">// sr is here your SearchResponse object
-HistogramFacet f = (HistogramFacet) sr.facets().facetsAsMap().get("f");
+HistogramFacet f = (HistogramFacet) sr.getFacets().facetsAsMap().get("f");
 
 // For each entry
 for (HistogramFacet.Entry entry : f) {
@@ -84,7 +84,7 @@ Histogram Facet</a> with Java API.</p><div class="section"><div class="titlepage
     .field("date")      // Your date field
     .interval("year");  // You can also use "quarter", "month", "week", "day",
                         // "hour" and "minute" or notation like "1.5h" or "2w"</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_use_facet_response_4"></a>Use facet response</h4></div></div></div><p>Import Facet definition classes:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.search.facet.datehistogram.*;</pre><pre class="programlisting prettyprint lang-java">// sr is here your SearchResponse object
-DateHistogramFacet f = (DateHistogramFacet) sr.facets().facetsAsMap().get("f");
+DateHistogramFacet f = (DateHistogramFacet) sr.getFacets().facetsAsMap().get("f");
 
 // For each entry
 for (DateHistogramFacet.Entry entry : f) {
@@ -96,20 +96,20 @@ with Java API.</p><p>If you are looking on how to apply a filter to a facet, hav
 <a class="ulink" href="#facet-filter" target="_top">facet filter</a> using Java API.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_prepare_facet_request_5"></a>Prepare facet request</h4></div></div></div><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint lang-java">FacetBuilders.filterFacet("f",
     FilterBuilders.termFilter("brand", "heineken"));    // Your Filter here</pre><p>See <a class="link" href="query-dsl-filters.html" title="Query DSL - Filters">Filters</a> to
 learn how to build filters using Java.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_use_facet_response_5"></a>Use facet response</h4></div></div></div><p>Import Facet definition classes:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.search.facet.filter.*;</pre><pre class="programlisting prettyprint lang-java">// sr is here your SearchResponse object
-FilterFacet f = (FilterFacet) sr.facets().facetsAsMap().get("f");
+FilterFacet f = (FilterFacet) sr.getFacets().facetsAsMap().get("f");
 
 f.getCount();   // Number of docs that matched</pre></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="query"></a>Query Facet</h3></div></div></div><p>Here is how you can use
 <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-facets-query-facet.html" target="_top">Query Facet</a>
 with Java API.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_prepare_facet_request_6"></a>Prepare facet request</h4></div></div></div><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint lang-java">FacetBuilders.queryFacet("f",
     QueryBuilders.matchQuery("brand", "heineken"));</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_use_facet_response_6"></a>Use facet response</h4></div></div></div><p>Import Facet definition classes:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.search.facet.query.*;</pre><pre class="programlisting prettyprint lang-java">// sr is here your SearchResponse object
-QueryFacet f = (QueryFacet) sr.facets().facetsAsMap().get("f");
+QueryFacet f = (QueryFacet) sr.getFacets().facetsAsMap().get("f");
 
 f.getCount();   // Number of docs that matched</pre><p>See <a class="link" href="query-dsl-queries.html" title="Query DSL - Queries">Queries</a> to
 learn how to build queries using Java.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="statistical"></a>Statistical</h3></div></div></div><p>Here is how you can use
 <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-facets-statistical-facet.html" target="_top">Statistical
 Facet</a> with Java API.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_prepare_facet_request_7"></a>Prepare facet request</h4></div></div></div><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint lang-java">FacetBuilders.statisticalFacet("f")
    .field("price");</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_use_facet_response_7"></a>Use facet response</h4></div></div></div><p>Import Facet definition classes:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.search.facet.statistical.*;</pre><pre class="programlisting prettyprint lang-java">// sr is here your SearchResponse object
-StatisticalFacet f = (StatisticalFacet) sr.facets().facetsAsMap().get("f");
+StatisticalFacet f = (StatisticalFacet) sr.getFacets().facetsAsMap().get("f");
 
 f.getCount();           // Doc count
 f.getMin();             // Min value
@@ -123,7 +123,7 @@ f.getVariance();        // Variance</pre></div></div><div class="section"><div c
 Stats Facet</a> with Java API.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_prepare_facet_request_8"></a>Prepare facet request</h4></div></div></div><p>Here is an example on how to create the facet request:</p><pre class="programlisting prettyprint lang-java">FacetBuilders.termsStatsFacet("f")
     .keyField("brand")
     .valueField("price");</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_use_facet_response_8"></a>Use facet response</h4></div></div></div><p>Import Facet definition classes:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.search.facet.termsstats.*;</pre><pre class="programlisting prettyprint lang-java">// sr is here your SearchResponse object
-TermsStatsFacet f = (TermsStatsFacet) sr.facets().facetsAsMap().get("f");
+TermsStatsFacet f = (TermsStatsFacet) sr.getFacets().facetsAsMap().get("f");
 f.getTotalCount();      // Total terms doc count
 f.getOtherCount();      // Not shown terms doc count
 f.getMissingCount();    // Without term doc count
@@ -146,7 +146,7 @@ Distance Facet</a> with Java API.</p><div class="section"><div class="titlepage"
     .addRange(20, 100)                  // 20 to 100 km (excluded)
     .addUnboundedTo(100)                // from 100 km to infinity (and beyond ;-) )
     .unit(DistanceUnit.KILOMETERS);     // All distances are in kilometers. Can be MILES</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_use_facet_response_9"></a>Use facet response</h4></div></div></div><p>Import Facet definition classes:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.search.facet.geodistance.*;</pre><pre class="programlisting prettyprint lang-java">// sr is here your SearchResponse object
-GeoDistanceFacet f = (GeoDistanceFacet) sr.facets().facetsAsMap().get("f");
+GeoDistanceFacet f = (GeoDistanceFacet) sr.getFacets().facetsAsMap().get("f");
 
 // For each entry
 for (GeoDistanceFacet.Entry entry : f) {
