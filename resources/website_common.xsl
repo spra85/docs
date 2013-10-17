@@ -72,6 +72,12 @@
     <xsl:call-template name="generate.html.title"/>
   </xsl:template>
 
+  <!-- Make callouts non-selectable -->
+  <xsl:template name="callout-bug">
+    <xsl:param name="conum" select="1"/>
+    <span><img src="{$callout.graphics.path}{$conum}{$callout.graphics.extension}" alt="" /></span>
+  </xsl:template>
+
   <!-- added and deprecated markup -->
   <xsl:template match="phrase[@revisionflag='added']">
     <span class="added">
