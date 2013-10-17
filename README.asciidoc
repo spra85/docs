@@ -1,6 +1,16 @@
 = Docs HOWTO
 :ref:  http://www.elasticsearch.org/guide/elasticsearch/reference/current
 
+== Conditions of use
+
+This documentation build process is provided to the public purely for the
+purpose of testing documentation changes before submitting pull requests to
+the appropriate Elasticsearch repository.
+
+The documents produced by this build process may be published only on
+http://www.elasticsearch.org. They may not be published in any other form or
+on any other website without explicit permission.
+
 [[setup]]
 == Getting started
 
