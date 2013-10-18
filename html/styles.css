@@ -386,12 +386,14 @@ text-transform:lowercase;
     margin-bottom: 10px;
 }
 
+.guide .coming,
 .guide .deprecated,
 .guide .added {
     position: relative;
     font-size: 16px;
 }
 
+.guide .coming .version,
 .guide .deprecated .version,
 .guide .added .version {
     font-family:Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace!important;
@@ -403,6 +405,7 @@ text-transform:lowercase;
     text-decoration: line-through;
 }
 
+.guide .coming .detail,
 .guide .deprecated .detail,
 .guide .added .detail {
     min-width: 250px;
@@ -417,12 +420,14 @@ text-transform:lowercase;
     line-height: 1.2em;
 }
 
+.guide .coming:hover ,
 .guide .deprecated:hover ,
 .guide .added:hover {
     color: black;
     transition: all 0.3s ease;
 }
 
+.guide .coming:hover .detail,
 .guide .deprecated:hover .detail,
 .guide .added:hover .detail {
     z-index: 10000;
@@ -432,6 +437,7 @@ text-transform:lowercase;
     transition: color 0.5s ease;
 }
 
+.guide .coming .added,
 .guide .toc .added,
 .guide .toc .deprecated {
     display: none;
