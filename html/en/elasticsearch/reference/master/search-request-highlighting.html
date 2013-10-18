@@ -106,7 +106,20 @@ order by score:</p><pre class="programlisting prettyprint lang-js">{
             "content" : {"fragment_size" : 150, "number_of_fragments" : 3}
         }
     }
-}</pre><p>It is also possible to highlight against a query other than the search
+}</pre><p>If the <code class="literal">number_of_fragments</code> value is set to 0 then no fragments are
+produced, instead the whole content of the field is returned, and of
+course it is highlighted. This can be very handy if short texts (like
+document title or address) need to be highlighted but no fragmentation
+is required. Note that <code class="literal">fragment_size</code> is ignored in this case.</p><pre class="programlisting prettyprint lang-js">{
+    "query" : {...},
+    "highlight" : {
+        "fields" : {
+            "_all" : {},
+            "bio.title" : {"number_of_fragments" : 0}
+        }
+    }
+}</pre><p>When using <code class="literal">fast-vector-highlighter</code> one can use <code class="literal">fragment_offset</code>
+parameter to control the margin to start highlighting from.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_highlight_query"></a>Highlight query</h3></div></div></div><p>It is also possible to highlight against a query other than the search
 query by setting <code class="literal">highlight_query</code>.  This is especially useful if you
 use a rescore query because those are not taken into account by
 highlighting by default.  Elasticsearch does not validate that
@@ -169,20 +182,7 @@ query and the rescore query in <code class="literal">highlight_query</code>.</p>
     }
 }</pre><p>Note the score of text fragment in this case is calculated by Lucene
 highlighting framework. For implementation details you can check
-<code class="literal">ScoreOrderFragmentsBuilder.java</code> class.</p><p>If the <code class="literal">number_of_fragments</code> value is set to 0 then no fragments are
-produced, instead the whole content of the field is returned, and of
-course it is highlighted. This can be very handy if short texts (like
-document title or address) need to be highlighted but no fragmentation
-is required. Note that <code class="literal">fragment_size</code> is ignored in this case.</p><pre class="programlisting prettyprint lang-js">{
-    "query" : {...},
-    "highlight" : {
-        "fields" : {
-            "_all" : {},
-            "bio.title" : {"number_of_fragments" : 0}
-        }
-    }
-}</pre><p>When using <code class="literal">fast-vector-highlighter</code> one can use <code class="literal">fragment_offset</code>
-parameter to control the margin to start highlighting from.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="highlighting-settings"></a>Global Settings</h3></div></div></div><p>Highlighting settings can be set on a global level and then overridden
+<code class="literal">ScoreOrderFragmentsBuilder.java</code> class.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="highlighting-settings"></a>Global Settings</h3></div></div></div><p>Highlighting settings can be set on a global level and then overridden
 at the field level.</p><pre class="programlisting prettyprint lang-js">{
     "query" : {...},
     "highlight" : {
