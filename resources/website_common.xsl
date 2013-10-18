@@ -88,6 +88,15 @@
     </span>
   </xsl:template>
 
+  <xsl:template match="phrase[@revisionflag='changed']">
+    <span class="coming">
+      [<span class="version"><xsl:value-of select="attribute::revision" /></span>]
+      <span class="detail">
+        <xsl:apply-templates />
+      </span>
+    </span>
+  </xsl:template>
+
   <xsl:template match="phrase[@revisionflag='deleted']">
     <span class="deprecated">
       [<span class="version"><xsl:value-of select="attribute::revision" /></span>]
