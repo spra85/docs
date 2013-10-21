@@ -57,8 +57,8 @@ for the <code class="literal">tags</code> field. We will name the facet simply: 
       "tags" : { "terms" : {"field" : "tags"} }
     }
   }
-'</pre><p>This request will return articles <code class="literal">Two</code> and <code class="literal">Three (because
-they match our query), as well as the `tags</code> facet:</p><pre class="programlisting prettyprint lang-js">"facets" : {
+'</pre><p>This request will return articles <code class="literal">Two</code> and <code class="literal">Three</code> (because
+they match our query), as well as the <code class="literal">tags</code> facet:</p><pre class="programlisting prettyprint lang-js">"facets" : {
   "tags" : {
     "_type" : "terms",
     "missing" : 0,
