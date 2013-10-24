@@ -106,7 +106,7 @@ order by score:</p><pre class="programlisting prettyprint lang-js">{
             "content" : {"fragment_size" : 150, "number_of_fragments" : 3}
         }
     }
-}</pre><p>If the <code class="literal">number_of_fragments</code> value is set to 0 then no fragments are
+}</pre><p>If the <code class="literal">number_of_fragments</code> value is set to <code class="literal">0</code> then no fragments are
 produced, instead the whole content of the field is returned, and of
 course it is highlighted. This can be very handy if short texts (like
 document title or address) need to be highlighted but no fragmentation
@@ -119,7 +119,22 @@ is required. Note that <code class="literal">fragment_size</code> is ignored in 
         }
     }
 }</pre><p>When using <code class="literal">fast-vector-highlighter</code> one can use <code class="literal">fragment_offset</code>
-parameter to control the margin to start highlighting from.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_highlight_query"></a>Highlight query</h3></div></div></div><p>It is also possible to highlight against a query other than the search
+parameter to control the margin to start highlighting from.</p><p>In the case where there is no matching fragment to highlight, the default is
+to not return anything. Instead, we can return a snippet of text from the
+beginning of the field by setting <code class="literal">no_match_size</code> (default <code class="literal">0</code>) to the length
+of the text that you want returned. The actual length may be shorter than
+specified as it tries to break on a word boundary.</p><pre class="programlisting prettyprint lang-js">{
+    "query" : {...},
+    "highlight" : {
+        "fields" : {
+            "content" : {
+                "fragment_size" : 150,
+                "number_of_fragments" : 3,
+                "no_match_size": 150
+            }
+        }
+    }
+}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_highlight_query"></a>Highlight query</h3></div></div></div><p>It is also possible to highlight against a query other than the search
 query by setting <code class="literal">highlight_query</code>.  This is especially useful if you
 use a rescore query because those are not taken into account by
 highlighting by default.  Elasticsearch does not validate that
