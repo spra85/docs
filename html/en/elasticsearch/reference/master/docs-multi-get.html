@@ -84,7 +84,22 @@ For example:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:
             "fields" : ["field3", "field4"]
         }
     ]
-}'</pre></div><div class="navfooter"><span class="prev"><a href="docs-update.html">
+}'</pre><h3><a id="mget-routing"></a>Routing</h3><p>You can specify also specify routing value as a parameter:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/_mget?routing=key1' -d '{
+    "docs" : [
+        {
+            "_index" : "test",
+            "_type" : "type",
+            "_id" : "1",
+            "_routing" : "key2"
+        },
+        {
+            "_index" : "test",
+            "_type" : "type",
+            "_id" : "2"
+        }
+    ]
+}'</pre><p>In this example, document <code class="literal">test/type/2</code> will be fetch from shard corresponding to routing key <code class="literal">key1</code> but
+document <code class="literal">test/type/1</code> will be fetch from shard corresponding to routing key <code class="literal">key2</code>.</p></div><div class="navfooter"><span class="prev"><a href="docs-update.html">
               « 
               Update API</a>
            
