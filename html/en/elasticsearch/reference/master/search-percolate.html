@@ -27,7 +27,7 @@
            
           <a href="search-more-like-this.html">More Like This API
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="search-percolate"></a>Percolator</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="search-search.html">Search</a></span></dt><dt><span class="chapter"><a href="search-uri-request.html">URI Search</a></span></dt><dt><span class="chapter"><a href="search-request-body.html">Request Body Search</a></span></dt><dt><span class="chapter"><a href="search-facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="search-suggesters.html">Suggesters</a></span></dt><dt><span class="chapter"><a href="search-multi-search.html">Multi Search API</a></span></dt><dt><span class="chapter"><a href="search-count.html">Count API</a></span></dt><dt><span class="chapter"><a href="search-validate.html">Validate API</a></span></dt><dt><span class="chapter"><a href="search-explain.html">Explain API</a></span></dt><dt><span class="chapter"><a href="search-percolate.html">Percolator</a></span></dt><dt><span class="chapter"><a href="search-more-like-this.html">More Like This API</a></span></dt><dt><span class="chapter"><a href="search-termvectors.html">Term Vectors</a></span></dt></dl></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Coming in 1.0.0.Beta1.</p></td></tr></table></div><p>Tradionally you design documents based on your data and store them into an index and then define queries via the search api
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="search-percolate"></a>Percolator</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="search-search.html">Search</a></span></dt><dt><span class="chapter"><a href="search-uri-request.html">URI Search</a></span></dt><dt><span class="chapter"><a href="search-request-body.html">Request Body Search</a></span></dt><dt><span class="chapter"><a href="search-facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="search-suggesters.html">Suggesters</a></span></dt><dt><span class="chapter"><a href="search-multi-search.html">Multi Search API</a></span></dt><dt><span class="chapter"><a href="search-count.html">Count API</a></span></dt><dt><span class="chapter"><a href="search-validate.html">Validate API</a></span></dt><dt><span class="chapter"><a href="search-explain.html">Explain API</a></span></dt><dt><span class="chapter"><a href="search-percolate.html">Percolator</a></span></dt><dt><span class="chapter"><a href="search-more-like-this.html">More Like This API</a></span></dt><dt><span class="chapter"><a href="search-termvectors.html">Term Vectors</a></span></dt></dl></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Coming in 1.0.0.Beta1.</p></td></tr></table></div><p>Traditionally you design documents based on your data and store them into an index and then define queries via the search api
 in order to retrieve these documents. The percolator works in the opposite direction, first you store queries into an
 index and then via the percolate api you define documents in order to retrieve these queries.</p><p>The reason that queries can be stored comes from the fact that in Elasticsearch both documents and queries are defined in
 JSON. This allows you to embed queries into documents via the index api. Elasticsearch can extract the query from a
@@ -57,7 +57,7 @@ in the percolate api.</p><h3><a id="_sample_usage"></a>Sample usage</h3><p>Addin
              "_id" : "1"
         }
     ]
-}</pre><p>The percolate api returns matches that refer to percolate queries that have matched with the document defined in the percolate api.</p><h3><a id="_indexing_percolator_queries"></a>Indexing percolator queries</h3><p>Percolate queries are stored as documents in a specific format and in an aribitrary index under a reserved type with the
+}</pre><p>The percolate api returns matches that refer to percolate queries that have matched with the document defined in the percolate api.</p><h3><a id="_indexing_percolator_queries"></a>Indexing percolator queries</h3><p>Percolate queries are stored as documents in a specific format and in an arbitrary index under a reserved type with the
 name <code class="literal">_percolator</code>. The query itself is placed as is in a json objects under the top level field <code class="literal">query</code>.</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
                 "match" : {
@@ -112,9 +112,9 @@ the following delete requests needs to be executed:</p><pre class="programlistin
         }
 }'</pre><div class="itemizedlist"><p class="title"><strong>Additional supported query string options</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <code class="literal">routing</code> - In the case the percolate queries are partitioned by a custom routing value, that routing option make sure
-that the percolate request only gets executed on the shard where the routing value is partioned to. This means that
+that the percolate request only gets executed on the shard where the routing value is partitioned to. This means that
 the percolate request only gets executed on one shard instead of all shards. Multiple values can be specified as a
-comma seperated string, in that case the request can be be executed on more than one shard.
+comma separated string, in that case the request can be be executed on more than one shard.
 </li><li class="listitem">
 <code class="literal">preference</code> - Controls which shard replicas are preferred to execute the request on. Works the same as in the search api.
 </li><li class="listitem">
@@ -206,21 +206,21 @@ here are several percolate actions, because there are multiple types of percolat
 <code class="literal">count</code> - Action for defining a count percolate request.
 </li></ul></div><p>Depending on the percolate action different parameters can be specified. For example the percolate and percolate existing
 document actions support different parameters.</p><div class="itemizedlist"><p class="title"><strong>The following endpoints are supported</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
-POST /[index]/[type]/_mpercolate
+GET|POST /[index]/[type]/_mpercolate
 </li><li class="listitem">
-POST /[index]/_mpercolate
+GET}POST /[index]/_mpercolate
 </li><li class="listitem">
-POST /_mpercolate
+GET|POST /_mpercolate
 </li></ul></div><p>The <code class="literal">index</code> and <code class="literal">type</code> defined in the url path are the default index and type.</p><h4><a id="_example_2"></a>Example</h4><p>Request:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'localhost:9200/twitter/tweet/_mpercolate' --data-binary @requests.txt; echo</pre><p>The index twitter is the default index and the type tweet is the default type and will be used in the case a header
 doesn’t specify an index or type.</p><p>requests.txt:</p><pre class="programlisting prettyprint lang-js">{"percolate" : {"index" : twitter", "type" : "tweet"}}
 {"doc" : {"message" : "some text"}}
-{"percolate" : "index" : twitter", "type" : "tweet", "id" : "1"}
+{"percolate" : {"index" : twitter", "type" : "tweet", "id" : "1"}}
 {}
-{"percolate" : "index" : users", "type" : "user", "id" : "3", "percolate_index" : "users_2012" }
+{"percolate" : {"index" : users", "type" : "user", "id" : "3", "percolate_index" : "users_2012" }}
 {"size" : 10}
 {"count" : {"index" : twitter", "type" : "tweet"}}
 {"doc" : {"message" : "some other text"}}
-{"count" : "index" : twitter", "type" : "tweet", "id" : "1"}
+{"count" : {"index" : twitter", "type" : "tweet", "id" : "1"}}
 {}</pre><p>For a percolate existing document item (headers with the <code class="literal">id</code> field), the response can be an empty json object.
 All the required options are set in the header.</p><p>Response:</p><pre class="programlisting prettyprint lang-js">{
     "items" : [
