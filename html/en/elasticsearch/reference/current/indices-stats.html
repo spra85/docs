@@ -71,9 +71,10 @@ Get statistics, including missing stats.
 </p>
 </td><td valign="top">
 <p>
-Search statistics, including custom grouping using the
-                                <code class="literal">groups</code> parameter (search operations can be associated with one or more
-                                groups).
+Search statistics. You can include statistics for custom groups by adding
+                an extra <code class="literal">groups</code> parameter (search operations can be associated with one or more
+                groups). The <code class="literal">groups</code> parameter accepts a comma separated list of group names.
+                Use <code class="literal">_all</code> to return statistics for all groups.
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -160,7 +161,9 @@ curl 'localhost:9200/_stats?merge=true&amp;refresh=true'
 # Get back stats just for flush
 curl 'localhost:9200/_stats?clear=true&amp;flush=true'
 # Get back stats for type1 and type2 documents for the my_index index
-curl 'localhost:9200/my_index/_stats?clear=true&amp;indexing=true&amp;types=type1,type2</pre><p>The stats returned are aggregated on the index level, with
+curl 'localhost:9200/my_index/_stats?clear=true&amp;indexing=true&amp;types=type1,type2
+# Get back just search stats for group1 and group2
+curl 'localhost:9200/_stats?clear=true&amp;search=true&amp;groups=group1,group2</pre><p>The stats returned are aggregated on the index level, with
 <code class="literal">primaries</code> and <code class="literal">total</code> aggregations. In order to get back shard level
 stats, set the <code class="literal">level</code> parameter to <code class="literal">shards</code>.</p><p>Note, as shards move around the cluster, their stats will be cleared as
 they are created on other nodes. On the other hand, even though a shard
@@ -173,7 +176,9 @@ curl localhost:9200/my_index/_stats/merge
 # Indexing stats for my_index
 curl localhost:9200/my_index/_stats/indexing
 # Indexing stats for my_index for my_type1 and my_type2
-curl localhost:9200/my_index/_stats/indexing/my_type1,my_type2</pre></div><div class="navfooter"><span class="prev"><a href="indices-status.html">
+curl localhost:9200/my_index/_stats/indexing/my_type1,my_type2
+# Search stats for group1 and group2
+curl 'localhost:9200/_stats/search/group1,group2</pre></div><div class="navfooter"><span class="prev"><a href="indices-status.html">
               « 
               Status</a>
            
