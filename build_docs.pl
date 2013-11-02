@@ -50,7 +50,7 @@ sub build_local {
         $dir->mkpath;
         build_single( $index, $dir, %$Opts );
         $html = $index->basename;
-        $html =~ s/\.[^.]+/.html/;
+        $html =~ s/\.[^.]+$/.html/;
     }
     else {
         build_chunked( $index, $dir, %$Opts );
