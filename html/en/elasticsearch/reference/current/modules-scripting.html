@@ -62,7 +62,12 @@ not. If not, then even if you have a proxy which only allows <code class="litera
 requests, you should disable dynamic scripting by adding the following
 setting to the <code class="literal">config/elasticsearch.yml</code> file on every node:</p><pre class="programlisting prettyprint lang-yaml">script.disable_dynamic: true</pre><p>This will still allow execution of named scripts provided in the config, or
 <span class="emphasis"><em>native</em></span> Java scripts registered through plugins, however it will prevent
-users from running arbitrary scripts via the API.</p><h3><a id="_native_java_scripts"></a>Native (Java) Scripts</h3><p>Even though <code class="literal">mvel</code> is pretty fast, allow to register native Java based
+users from running arbitrary scripts via the API.</p><h3><a id="_automatic_script_reloading"></a>Automatic Script Reloading</h3><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Added in 0.90.6.</p></td></tr></table></div><p>The <code class="literal">config/scripts</code> directory is scanned periodically for changes.
+New and changed scripts are reloaded and deleted script are removed
+from preloaded scripts cache. The reload frequency can be specified
+using <code class="literal">watcher.interval</code> setting, which defaults to <code class="literal">60s</code>.
+To disable script reloading completely set <code class="literal">script.auto_reload_enabled</code>
+to <code class="literal">false</code>.</p><h3><a id="_native_java_scripts"></a>Native (Java) Scripts</h3><p>Even though <code class="literal">mvel</code> is pretty fast, allow to register native Java based
 scripts for faster execution.</p><p>In order to allow for scripts, the <code class="literal">NativeScriptFactory</code> needs to be
 implemented that constructs the script that will be executed. There are
 two main types, one that extends <code class="literal">AbstractExecutableScript</code> and one that
