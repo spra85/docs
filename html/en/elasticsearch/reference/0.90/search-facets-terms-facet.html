@@ -41,7 +41,7 @@ example:</p><pre class="programlisting prettyprint lang-js">{
         }
     }
 }</pre><p>It is preferred to have the terms facet executed on a non analyzed
-field, or a field without a large number of terms it breaks to.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_accuracy_control"></a>Accuracy Control</h3></div></div></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Coming in 0.90.6.</p></td></tr></table></div><p>The <code class="literal">size</code> parameter defines how many top terms should be returned out
+field, or a field without a large number of terms it breaks to.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_accuracy_control"></a>Accuracy Control</h3></div></div></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Added in 0.90.6.</p></td></tr></table></div><p>The <code class="literal">size</code> parameter defines how many top terms should be returned out
 of the overall terms list. By default, the node coordinating the
 search process will ask each shard to provide its own top <code class="literal">size</code> terms
 and once all shards respond, it will reduces the results to the final list
