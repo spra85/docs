@@ -84,6 +84,15 @@ contents:
             abbr:       python
 
           -
+            title:      Ruby API
+            prefix:     en/elasticsearch/client/ruby-api
+            repo:       elasticsearch
+            index:      docs/ruby/index.asciidoc
+            branches:   [master]
+            current:    master
+            abbr:       ruby
+
+          -
             title:      Rivers
             prefix:     en/elasticsearch/rivers
             index:      docs/river/index.asciidoc
