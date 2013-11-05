@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Clients</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Community Supported Clients" /><link rel="up" href="index.html" title="Community Supported Clients" /><link rel="prev" href="index.html" title="Community Supported Clients" /><link rel="next" href="front-ends.html" title="Front Ends" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>elasticsearch-ruby</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="elasticsearch-ruby" /><link rel="next" href="_overview.html" title="Overview" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -19,125 +19,17 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-51762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51762"><a href="/webinars/">Webinars</a></li><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Documentation</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li><li id="menu-item-4842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4842"><a href="/tutorials/">Tutorials</a></li></ul></li><li id="menu-item-728" class="guide_menu_item menu-item menu-item-type-post_type menu-item-object-page menu-item-728"><a href="/guide/">Guide</a></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">.COM</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Community Supported Clients</a></span> » <span class="breadcrumb-node">Clients</span></div><div class="navheader"><span class="prev">
+      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-51762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51762"><a href="/webinars/">Webinars</a></li><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Documentation</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li><li id="menu-item-4842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4842"><a href="/tutorials/">Tutorials</a></li></ul></li><li id="menu-item-728" class="guide_menu_item menu-item menu-item-type-post_type menu-item-object-page menu-item-728"><a href="/guide/">Guide</a></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">.COM</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="navheader"><span class="prev">
            
         </span><span class="next">
            
-          <a href="front-ends.html">Front Ends
+          <a href="_overview.html">Overview
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="clients"></a>Clients</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="clients.html">Clients</a></span></dt><dt><span class="chapter"><a href="front-ends.html">Front Ends</a></span></dt><dt><span class="chapter"><a href="integrations.html">Integrations</a></span></dt><dt><span class="chapter"><a href="misc.html">Misc</a></span></dt><dt><span class="chapter"><a href="health.html">Health and Performance Monitoring</a></span></dt><dt><span class="chapter"><a href="github.html">GitHub</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-perl"></a>Perl</h2></div></div></div><p>See the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/client/perl-api/current/index.html" target="_top">official Elasticsearch Perl client</a>.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-python"></a>Python</h2></div></div></div><p>See the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/client/python-api/current/index.html" target="_top">official Elasticsearch Python client</a>.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="http://github.com/rhec/pyelasticsearch" target="_top">pyelasticsearch</a>:
-  Python client.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/eriky/ESClient" target="_top">ESClient</a>:
-  A lightweight and easy to use Python client for ElasticSearch.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/humangeo/rawes" target="_top">rawes</a>:
-  Python low level client.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/mozilla/elasticutils/" target="_top">elasticutils</a>:
-  A friendly chainable ElasticSearch interface for Python.
-</li><li class="listitem">
-<a class="ulink" href="http://intridea.github.io/surfiki-refine-elasticsearch/" target="_top">Surfiki Refine</a>:
-  Python Map-Reduce engine targeting Elasticsearch indices.
-</li><li class="listitem">
-<a class="ulink" href="http://github.com/aparo/pyes" target="_top">pyes</a>:
-  Python client.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-ruby"></a>Ruby</h2></div></div></div><p>See the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/client/ruby-api/current/index.html" target="_top">official Elasticsearch Ruby client</a>.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="http://github.com/karmi/tire" target="_top">Tire</a>:
-  Ruby API &amp; DSL, with ActiveRecord/ActiveModel integration.
-</li><li class="listitem">
-<a class="ulink" href="http://github.com/grantr/rubberband" target="_top">rubberband</a>:
-  Ruby client.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/PoseBiz/stretcher" target="_top">stretcher</a>:
-  Ruby client.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/wireframe/elastic_searchable/" target="_top">elastic_searchable</a>:
-  Ruby client + Rails integration.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-php"></a>PHP</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="http://github.com/ruflin/Elastica" target="_top">Elastica</a>:
-  PHP client.
-</li><li class="listitem">
-<a class="ulink" href="http://github.com/nervetattoo/elasticsearch" target="_top">elasticsearch</a> PHP client.
-</li><li class="listitem">
-<a class="ulink" href="http://github.com/polyfractal/Sherlock" target="_top">Sherlock</a>:
-  PHP client, one-to-one mapping with query DSL, fluid interface.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-java"></a>Java</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="https://github.com/searchbox-io/Jest" target="_top">Jest</a>:
-  Java Rest client.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-javascript"></a>Javascript</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="https://github.com/fullscale/elastic.js" target="_top">Elastic.js</a>:
-  A JavaScript implementation of the ElasticSearch Query DSL and Core API.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/phillro/node-elasticsearch-client" target="_top">node-elasticsearch-client</a>:
-  A NodeJS client for elastic search.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/ramv/node-elastical" target="_top">node-elastical</a>:
-  Node.js client for the ElasticSearch REST API
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/printercu/elastics" target="_top">elastics</a>: Simple tiny client that just works
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-dotnet"></a>.Net</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="https://github.com/Yegoroff/PlainElastic.Net" target="_top">PlainElastic.Net</a>:
-  .NET client.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/Mpdreamz/NEST" target="_top">NEST</a>:
-  .NET client.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/medcl/ElasticSearch.Net" target="_top">ElasticSearch.NET</a>:
-  .NET client.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-scala"></a>Scala</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="https://github.com/sksamuel/elastic4s" target="_top">elastic4s</a>:
-  Scala DSL.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/scalastuff/esclient" target="_top">esclient</a>:
-  Thin Scala client.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/bsadeh/scalastic" target="_top">scalastic</a>:
-  Scala client.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-clojure"></a>Clojure</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="http://github.com/clojurewerkz/elastisch" target="_top">Elastisch</a>:
-  Clojure client.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-go"></a>Go</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="https://github.com/mattbaird/elastigo" target="_top">elastigo</a>:
-  Go client.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/belogik/goes" target="_top">goes</a>:
-  Go lib.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-erlang"></a>Erlang</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="http://github.com/tsloughter/erlastic_search" target="_top">erlastic_search</a>:
-  Erlang client using HTTP.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/dieswaytoofast/erlasticsearch" target="_top">erlasticsearch</a>:
-  Erlang client using Thrift.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/datahogs/tirexs" target="_top">Tirexs</a>:
-  An <a class="ulink" href="https://github.com/elixir-lang/elixir" target="_top">Elixir</a> based API/DSL, inspired by
-  <a class="ulink" href="http://github.com/karmi/tire" target="_top">Tire</a>. Ready to use in pure Erlang
-  environment.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-eventmachine"></a>EventMachine</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="http://github.com/vangberg/em-elasticsearch" target="_top">em-elasticsearch</a>:
-  elasticsearch library for eventmachine.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-command-line"></a>Command Line</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="https://github.com/elasticsearch/es2unix" target="_top">es2unix</a>:
-  Elasticsearch API consumable by the Linux command line.
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/javanna/elasticshell" target="_top">elasticshell</a>:
-  command line shell for elasticsearch.
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-ocaml"></a>OCaml</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="https://github.com/tovbinm/ocaml-elasticsearch" target="_top">ocaml-elasticsearch</a>:
-  OCaml client for Elasticsearch
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-smalltalk"></a>Smalltalk</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="http://ss3.gemstone.com/ss/Elasticsearch.html" target="_top">Elasticsearch</a> -
-  Smalltalk client for Elasticsearch
-</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="community-cold-fusion"></a>Cold Fusion</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="https://github.com/jasonfill/ColdFusion-ElasticSearch-Client" target="_top">ColdFusion-ElasticSearch-Client</a>
-  Cold Fusion client for Elasticsearch
-</li></ul></div></div></div><div class="navfooter"><span class="prev">
+            </a></span></div><div class="book" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="id-1"></a>elasticsearch-ruby</h1></div></div><hr /></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_copyright_and_license.html">Copyright and License</a></span></dt></dl></div></div><div class="navfooter"><span class="prev">
            
         </span><span class="next">
            
-          <a href="front-ends.html">Front Ends
+          <a href="_overview.html">Overview
                »
             </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>
               Want to
