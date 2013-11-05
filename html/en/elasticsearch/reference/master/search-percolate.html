@@ -33,7 +33,7 @@ index and then via the percolate api you define documents in order to retrieve t
 JSON. This allows you to embed queries into documents via the index api. Elasticsearch can extract the query from a
 document and make it available to the percolate api. Since documents are also defines as json, you can define a document
 in a request to the percolate api.</p><p>The percolator and most of its features work in realtime, so once a percolate query is indexed it can immediately be used
-in the percolate api.</p><h3><a id="_sample_usage"></a>Sample usage</h3><p>Adding a query to the percolator:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'localhost:9200/my-index/_percolator/1' -d '{
+in the percolate api.</p><h3><a id="_sample_usage"></a>Sample usage</h3><p>Adding a query to the percolator:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'localhost:9200/my-index/.percolator/1' -d '{
     "query" : {
         "match" : {
             "message" : "bonsai tree"
@@ -58,7 +58,7 @@ in the percolate api.</p><h3><a id="_sample_usage"></a>Sample usage</h3><p>Addin
         }
     ]
 }</pre><p>The percolate api returns matches that refer to percolate queries that have matched with the document defined in the percolate api.</p><h3><a id="_indexing_percolator_queries"></a>Indexing percolator queries</h3><p>Percolate queries are stored as documents in a specific format and in an arbitrary index under a reserved type with the
-name <code class="literal">_percolator</code>. The query itself is placed as is in a json objects under the top level field <code class="literal">query</code>.</p><pre class="programlisting prettyprint lang-js">{
+name <code class="literal">.percolator</code>. The query itself is placed as is in a json objects under the top level field <code class="literal">query</code>.</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
                 "match" : {
                         "field" : "value"
@@ -74,7 +74,7 @@ percolate documents by specific queries.</p><pre class="programlisting prettypri
         "priority" : "high"
 }</pre><p>On top of this also a mapping type can be associated with the this query. This allows to control how certain queries
 like range queries, shape filters and other query &amp; filters that rely on mapping settings get constructed. This is
-important since the percolate queries are indexed into the <code class="literal">_percolator</code> type, and the queries / filters that rely on
+important since the percolate queries are indexed into the <code class="literal">.percolator</code> type, and the queries / filters that rely on
 mapping settings would yield unexpected behaviour. Note by default field names do get resolved in a smart manner,
 but in certain cases with multiple types this can lead to unexpected behaviour, so being explicit about it will help.</p><pre class="programlisting prettyprint lang-js">{
         "query" : {
@@ -88,9 +88,9 @@ but in certain cases with multiple types this can lead to unexpected behaviour, 
         "type" : "tweet",
         "priority" : "high"
 }</pre><p>In the above example the range query gets really parsed into a Lucene numeric range query, based on the settings for
-the field <code class="literal">created_at</code> in the type <code class="literal">tweet</code>.</p><p>Just as with any other type, the <code class="literal">_percolator</code> type has a mapping, which you can configure via the mappings apis.
-The default percolate mapping doesn’t index the query field and only stores it.</p><p>Because <code class="literal">_percolate</code> is a type it also has a mapping. By default the following mapping is active:</p><pre class="programlisting prettyprint lang-js">{
-        "_percolator" : {
+the field <code class="literal">created_at</code> in the type <code class="literal">tweet</code>.</p><p>Just as with any other type, the <code class="literal">.percolator</code> type has a mapping, which you can configure via the mappings apis.
+The default percolate mapping doesn’t index the query field and only stores it.</p><p>Because <code class="literal">.percolate</code> is a type it also has a mapping. By default the following mapping is active:</p><pre class="programlisting prettyprint lang-js">{
+        ".percolator" : {
                 "properties" : {
                         "query" : {
                                 "type" : "object",
@@ -99,8 +99,8 @@ The default percolate mapping doesn’t index the query field and only stores it
                 }
         }
 }</pre><p>If needed this mapping can be modified wit the update mapping api.</p><p>In order to un-register a percolate query the delete api can be used. So if the previous added query needs to be deleted
-the following delete requests needs to be executed:</p><pre class="programlisting prettyprint lang-js">curl -XDELETE localhost:9200/my-index/_percolator/1</pre><h3><a id="_percolate_api"></a>Percolate api</h3><p>The percolate api executes in a distributed manner, meaning it executes on all shards an index points to.</p><div class="itemizedlist"><p class="title"><strong>Required options</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
-<code class="literal">index</code> - The index that contains the <code class="literal">_percolator</code> type. This can also be an alias.
+the following delete requests needs to be executed:</p><pre class="programlisting prettyprint lang-js">curl -XDELETE localhost:9200/my-index/.percolator/1</pre><h3><a id="_percolate_api"></a>Percolate api</h3><p>The percolate api executes in a distributed manner, meaning it executes on all shards an index points to.</p><div class="itemizedlist"><p class="title"><strong>Required options</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">index</code> - The index that contains the <code class="literal">.percolator</code> type. This can also be an alias.
 </li><li class="listitem">
 <code class="literal">type</code> - The type of the document to be percolated. The mapping of that type is used to parse document.
 </li><li class="listitem">
@@ -267,9 +267,9 @@ All the required options are set in the header.</p><p>Response:</p><pre class="p
         }
     ]
 }</pre><p>Each item represents a percolate response, the order of the items maps to the order in where the percolate requests
-were specified. In case a percolate request failed, the item response is substituted with an error message.</p><h3><a id="_how_it_works_under_the_hood"></a>How it works under the hood</h3><p>When indexing a document that contains a query in an index and the <code class="literal">_percolator</code> type the query part of the documents gets
+were specified. In case a percolate request failed, the item response is substituted with an error message.</p><h3><a id="_how_it_works_under_the_hood"></a>How it works under the hood</h3><p>When indexing a document that contains a query in an index and the <code class="literal">.percolator</code> type the query part of the documents gets
 parsed into a Lucene query and is kept in memory until that percolator document is removed or the index containing the
-<code class="literal">_percolator</code> type get removed. So all the active percolator queries are kept in memory.</p><p>At percolate time the document specified in the request gets parsed into a Lucene document and is stored in a in-memory
+<code class="literal">.percolator</code> type get removed. So all the active percolator queries are kept in memory.</p><p>At percolate time the document specified in the request gets parsed into a Lucene document and is stored in a in-memory
 Lucene index. This in-memory index can just hold this one document and it is optimized for that. Then all the queries
 that are registered to the index that the percolate request is targeted for are going to be executed on this single document
 in-memory index. This happens on each shard the percolate request need to execute.</p><p>By using <code class="literal">routing</code>, <code class="literal">filter</code> or <code class="literal">query</code> features the amount of queries that need to be executed can be reduced and thus
