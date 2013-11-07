@@ -34,7 +34,7 @@ by a search hit. Defaults to load the internal <code class="literal">_source</co
         "term" : { "user" : "kimchy" }
     }
 }</pre><p>The fields will automatically load stored fields (<code class="literal">store</code> mapping set to
-<code class="literal">yes</code>), or, if not stored, will load the <code class="literal">_source</code> and extract it from
+<code class="literal">true</code>), or, if not stored, will load the <code class="literal">_source</code> and extract it from
 it (allowing to return nested document object).</p><p><code class="literal">*</code> can be used to load all stored fields from the document.</p><p>An empty array will cause only the <code class="literal">_id</code> and <code class="literal">_type</code> for each hit to be
 returned, for example:</p><pre class="programlisting prettyprint lang-js">{
     "fields" : [],

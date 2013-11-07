@@ -32,7 +32,7 @@ specific type.</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT '
 {
     "tweet" : {
         "properties" : {
-            "message" : {"type" : "string", "store" : "yes"}
+            "message" : {"type" : "string", "store" : true }
         }
     }
 }
@@ -52,7 +52,7 @@ call, or even on <code class="literal">_all</code> the indices.</p><pre class="p
 {
     "tweet" : {
         "properties" : {
-            "message" : {"type" : "string", "store" : "yes"}
+            "message" : {"type" : "string", "store" : true }
         }
     }
 }

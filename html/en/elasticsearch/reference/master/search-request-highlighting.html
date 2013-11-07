@@ -41,7 +41,7 @@ body:</p><pre class="programlisting prettyprint lang-js">{
 search hit (there will be another element in each search hit, called
 <code class="literal">highlight</code>, which includes the highlighted fields and the highlighted
 fragments).</p><p>In order to perform highlighting, the actual content of the field is
-required. If the field in question is stored (has <code class="literal">store</code> set to <code class="literal">yes</code>
+required. If the field in question is stored (has <code class="literal">store</code> set to <code class="literal">true</code>
 in the mapping) it will be used, otherwise, the actual <code class="literal">_source</code> will
 be loaded and the relevant field will be extracted from it.</p><p>The field name supports wildcard notation. For example, using <code class="literal">comment_*</code>
 will cause all fields that match the expression to be highlighted.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_postings_highlighter"></a>Postings highlighter</h3></div></div></div><p>If <code class="literal">index_options</code> is set to <code class="literal">offsets</code> in the mapping the postings highlighter

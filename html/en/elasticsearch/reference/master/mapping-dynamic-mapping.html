@@ -50,7 +50,7 @@ disables dynamic field creation for a <code class="literal">tweet</code>:</p><pr
     "tweet" : {
         "dynamic": "strict",
         "properties" : {
-            "message" : {"type" : "string", "store" : "yes"}
+            "message" : {"type" : "string", "store" : true }
         }
     }
 }

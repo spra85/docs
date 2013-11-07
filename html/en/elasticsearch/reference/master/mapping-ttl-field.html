@@ -34,7 +34,7 @@ should be defined:</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {
         "_ttl" : { "enabled" : true }
     }
-}</pre><h4><a id="_store_index_3"></a>store / index</h4><p>By default the <code class="literal">_ttl</code> field has <code class="literal">store</code> set to <code class="literal">yes</code> and <code class="literal">index</code> set to
+}</pre><h4><a id="_store_index_3"></a>store / index</h4><p>By default the <code class="literal">_ttl</code> field has <code class="literal">store</code> set to <code class="literal">true</code> and <code class="literal">index</code> set to
 <code class="literal">not_analyzed</code>. Note that <code class="literal">index</code> property has to be set to
 <code class="literal">not_analyzed</code> in order for the purge process to work.</p><h4><a id="_default"></a>default</h4><p>You can provide a per index/type default <code class="literal">_ttl</code> value as follows:</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {
