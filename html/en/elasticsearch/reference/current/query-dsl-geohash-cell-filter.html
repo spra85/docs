@@ -27,35 +27,33 @@
            
           <a href="query-dsl-has-child-filter.html">Has Child Filter
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="query-dsl-geohash-cell-filter"></a>Geohash Cell Filter</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="query-dsl-and-filter.html">And Filter</a></span></dt><dt><span class="section"><a href="query-dsl-bool-filter.html">Bool Filter</a></span></dt><dt><span class="section"><a href="query-dsl-exists-filter.html">Exists Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geo-bounding-box-filter.html">Geo Bounding Box Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geo-distance-filter.html">Geo Distance Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geo-distance-range-filter.html">Geo Distance Range Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geo-polygon-filter.html">Geo Polygon Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geo-shape-filter.html">GeoShape Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geohash-cell-filter.html">Geohash Cell Filter</a></span></dt><dt><span class="section"><a href="query-dsl-has-child-filter.html">Has Child Filter</a></span></dt><dt><span class="section"><a href="query-dsl-has-parent-filter.html">Has Parent Filter</a></span></dt><dt><span class="section"><a href="query-dsl-ids-filter.html">Ids Filter</a></span></dt><dt><span class="section"><a href="query-dsl-limit-filter.html">Limit Filter</a></span></dt><dt><span class="section"><a href="query-dsl-match-all-filter.html">Match All Filter</a></span></dt><dt><span class="section"><a href="query-dsl-missing-filter.html">Missing Filter</a></span></dt><dt><span class="section"><a href="query-dsl-nested-filter.html">Nested Filter</a></span></dt><dt><span class="section"><a href="query-dsl-not-filter.html">Not Filter</a></span></dt><dt><span class="section"><a href="query-dsl-numeric-range-filter.html">Numeric Range Filter</a></span></dt><dt><span class="section"><a href="query-dsl-or-filter.html">Or Filter</a></span></dt><dt><span class="section"><a href="query-dsl-prefix-filter.html">Prefix Filter</a></span></dt><dt><span class="section"><a href="query-dsl-query-filter.html">Query Filter</a></span></dt><dt><span class="section"><a href="query-dsl-range-filter.html">Range Filter</a></span></dt><dt><span class="section"><a href="query-dsl-regexp-filter.html">Regexp Filter</a></span></dt><dt><span class="section"><a href="query-dsl-script-filter.html">Script Filter</a></span></dt><dt><span class="section"><a href="query-dsl-term-filter.html">Term Filter</a></span></dt><dt><span class="section"><a href="query-dsl-terms-filter.html">Terms Filter</a></span></dt><dt><span class="section"><a href="query-dsl-type-filter.html">Type Filter</a></span></dt></dl></div><p>A geohash is a hierarchical datastructure which allows a division of a
-spatial geometry. Each geohash defines a cell on the earths surface and
-the longer the geohash the smaller cell. Also the size of a cell can be
-seen as precision. The geohash filter provides an access to this
-datastructure by defining a cell and match only points that lie within
-this cell.</p><p>To get this filter work all prefixes of a geohash need to be indexed. In
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="query-dsl-geohash-cell-filter"></a>Geohash Cell Filter</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="query-dsl-and-filter.html">And Filter</a></span></dt><dt><span class="section"><a href="query-dsl-bool-filter.html">Bool Filter</a></span></dt><dt><span class="section"><a href="query-dsl-exists-filter.html">Exists Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geo-bounding-box-filter.html">Geo Bounding Box Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geo-distance-filter.html">Geo Distance Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geo-distance-range-filter.html">Geo Distance Range Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geo-polygon-filter.html">Geo Polygon Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geo-shape-filter.html">GeoShape Filter</a></span></dt><dt><span class="section"><a href="query-dsl-geohash-cell-filter.html">Geohash Cell Filter</a></span></dt><dt><span class="section"><a href="query-dsl-has-child-filter.html">Has Child Filter</a></span></dt><dt><span class="section"><a href="query-dsl-has-parent-filter.html">Has Parent Filter</a></span></dt><dt><span class="section"><a href="query-dsl-ids-filter.html">Ids Filter</a></span></dt><dt><span class="section"><a href="query-dsl-limit-filter.html">Limit Filter</a></span></dt><dt><span class="section"><a href="query-dsl-match-all-filter.html">Match All Filter</a></span></dt><dt><span class="section"><a href="query-dsl-missing-filter.html">Missing Filter</a></span></dt><dt><span class="section"><a href="query-dsl-nested-filter.html">Nested Filter</a></span></dt><dt><span class="section"><a href="query-dsl-not-filter.html">Not Filter</a></span></dt><dt><span class="section"><a href="query-dsl-numeric-range-filter.html">Numeric Range Filter</a></span></dt><dt><span class="section"><a href="query-dsl-or-filter.html">Or Filter</a></span></dt><dt><span class="section"><a href="query-dsl-prefix-filter.html">Prefix Filter</a></span></dt><dt><span class="section"><a href="query-dsl-query-filter.html">Query Filter</a></span></dt><dt><span class="section"><a href="query-dsl-range-filter.html">Range Filter</a></span></dt><dt><span class="section"><a href="query-dsl-regexp-filter.html">Regexp Filter</a></span></dt><dt><span class="section"><a href="query-dsl-script-filter.html">Script Filter</a></span></dt><dt><span class="section"><a href="query-dsl-term-filter.html">Term Filter</a></span></dt><dt><span class="section"><a href="query-dsl-terms-filter.html">Terms Filter</a></span></dt><dt><span class="section"><a href="query-dsl-type-filter.html">Type Filter</a></span></dt></dl></div><p>The <code class="literal">geohash_cell</code> filter provides access to a hierarchy of geohashes.
+By defining a geohash cell, only <a class="link" href="mapping-geo-point-type.html" title="Geo Point Type">geopoints</a>
+within this cell will match this filter.</p><p>To get this filter work all prefixes of a geohash need to be indexed. In
 example a geohash <code class="literal">u30</code> needs to be decomposed into three terms: <code class="literal">u30</code>,
 <code class="literal">u3</code> and <code class="literal">u</code>. This decomposition must be enabled in the mapping of the
-<code class="literal">geo_point</code> field that’s going to be filtered by setting the
-<code class="literal">geohash_prefix</code> option:</p><pre class="programlisting prettyprint lang-js">{
+<a class="link" href="mapping-geo-point-type.html" title="Geo Point Type">geopoint</a> field that’s going to be filtered by
+setting the <code class="literal">geohash_prefix</code> option:</p><pre class="programlisting prettyprint lang-js">{
     "mappings" : {
         "location": {
             "properties": {
                 "pin": {
                     "type": "geo_point",
                     "geohash": true,
-                    "geohash_prefix": true
+                    "geohash_prefix": true,
+                    "geohash_precision": 10
                 }
             }
         }
     }
-}</pre><p>The geohash cell can defined by all formats of <code class="literal">geo_points</code>. If such a
-cell is defined by a latitude and longitude pair the size of the cell
-needs to be setup. This can be done by the <code class="literal">precision</code> parameter of the
-filter. This parameter can be set to an integer value which sets the
-length of the geohash prefix. Instead of setting a geohash length
-directly it is also possible to define the precision as distance, in
-example <code class="literal">"precision": "50m"</code>. The <code class="literal">neighbor</code> option of the filter offers
-the possibility to filter cells next to the given cell.</p><pre class="programlisting prettyprint lang-js">{
+}</pre><p>The geohash cell can defined by all formats of <code class="literal">geo_points</code>. If such a cell is
+defined by a latitude and longitude pair the size of the cell needs to be
+setup. This can be done by the <code class="literal">precision</code> parameter of the filter. This
+parameter can be set to an integer value which sets the length of the geohash
+prefix. Instead of setting a geohash length directly it is also possible to
+define the precision as distance, in example <code class="literal">"precision": "50m"</code>. (See
+<a class="xref" href="common-options.html#distance-units" title="Distance Units">the section called “Distance Units”</a>.)</p><p>The <code class="literal">neighbor</code> option of the filter offers the possibility to filter cells
+next to the given cell.</p><pre class="programlisting prettyprint lang-js">{
     "filtered" : {
         "query" : {
             "match_all" : {}

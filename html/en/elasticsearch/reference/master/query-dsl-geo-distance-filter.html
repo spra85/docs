@@ -104,15 +104,38 @@ conform with <a class="ulink" href="http://geojson.org/" target="_top">GeoJSON</
             }
         }
     }
-}</pre><h4><a id="_options_3"></a>Options</h4><p>The following are options allowed on the filter:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Option </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">distance</code></p></td><td align="left" valign="top"><p>The distance to include hits in the filter. The distance
-can be a numeric value, and then the <code class="literal">unit</code> (either <code class="literal">mi</code>, <code class="literal">miles</code>, <code class="literal">in</code>, <code class="literal">inch</code>, <code class="literal">yd</code>, <code class="literal">yards</code>, <code class="literal">km</code>, <code class="literal">kilometers</code>,
-<code class="literal">mm</code>, <code class="literal">millimeters</code>, <code class="literal">cm</code>, <code class="literal">centimeters</code>, <code class="literal">m</code> or <code class="literal">meters</code> can be set) controlling the unit.
-Or a single string with the unit as well.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">distance_type</code></p></td><td align="left" valign="top"><p>How to compute the distance. Can either be <code class="literal">arc</code>
-(better precision) or <code class="literal">plane</code> (faster). Defaults to <code class="literal">arc</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">optimize_bbox</code></p></td><td align="left" valign="top"><p>Will an optimization of using first a bounding box
-check will be used. Defaults to <code class="literal">memory</code> which will do in memory checks.
-Can also have values of <code class="literal">indexed</code> to use indexed value check (make sure
-the <code class="literal">geo_point</code> type index lat lon in this case), or <code class="literal">none</code> which
-disables bounding box optimization.</p></td></tr></tbody></table></div><h4><a id="_geo_point_type_2"></a>geo_point Type</h4><p>The filter <span class="strong"><strong>requires</strong></span> the <code class="literal">geo_point</code> type to be set on the relevant
+}</pre><h4><a id="_options_3"></a>Options</h4><p>The following are options allowed on the filter:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">distance</code>
+</p>
+</td><td valign="top">
+<p>
+    The radius of the circle centred on the specified location. Points which
+    fall into this circle are considered to be matches. The <code class="literal">distance</code> can be
+    specified in various units. See <a class="xref" href="common-options.html#distance-units" title="Distance Units">the section called “Distance Units”</a>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">distance_type</code>
+</p>
+</td><td valign="top">
+<p>
+    How to compute the distance. Can either be <code class="literal">arc</code> (better precision) or
+    <code class="literal">plane</code> (faster). Defaults to <code class="literal">arc</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">optimize_bbox</code>
+</p>
+</td><td valign="top">
+<p>
+    Whether to use the optimization of first running a bounding box check
+    before the distance check. Defaults to <code class="literal">memory</code> which will do in memory
+    checks. Can also have values of <code class="literal">indexed</code> to use indexed value check (make
+    sure the <code class="literal">geo_point</code> type index lat lon in this case), or <code class="literal">none</code> which
+    disables bounding box optimization.
+</p>
+</td></tr></tbody></table></div><h4><a id="_geo_point_type_2"></a>geo_point Type</h4><p>The filter <span class="strong"><strong>requires</strong></span> the <code class="literal">geo_point</code> type to be set on the relevant
 field.</p><h4><a id="_multi_location_per_document_2"></a>Multi Location Per Document</h4><p>The <code class="literal">geo_distance</code> filter can work with multiple locations / points per
 document. Once a single location / point matches the filter, the
 document will be included in the filter.</p><h4><a id="_caching_5"></a>Caching</h4><p>The result of the filter is not cached by default. The <code class="literal">_cache</code> can be

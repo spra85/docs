@@ -44,7 +44,67 @@ convention of using underscore casing.</p><h3><a id="_boolean_values"></a>Boolea
 providing boolean "false" as the values: <code class="literal">false</code>, <code class="literal">0</code>, <code class="literal">no</code> and <code class="literal">off</code>.
 All other values are considered "true". Note, this is not related to
 fields within a document indexed treated as boolean fields.</p><h3><a id="_number_values"></a>Number Values</h3><p>All REST APIs support providing numbered parameters as <code class="literal">string</code> on top
-of supporting the native JSON number types.</p><h3><a id="_result_casing"></a>Result Casing</h3><p>All REST APIs accept the <code class="literal">case</code> parameter. When set to <code class="literal">camelCase</code>, all
+of supporting the native JSON number types.</p><h3><a id="distance-units"></a>Distance Units</h3><p>Wherever distances need to be specified, such as the <code class="literal">distance</code> parameter in
+the <a class="xref" href="query-dsl-geo-distance-filter.html" title="Geo Distance Filter">Geo Distance Filter</a>) or the <code class="literal">precision</code> parameter in the
+<a class="xref" href="query-dsl-geohash-cell-filter.html" title="Geohash Cell Filter">Geohash Cell Filter</a>, the default unit if none is specified is
+the meter. Distances can be specified in other units, such as <code class="literal">"1km"</code> or
+<code class="literal">"2mi"</code> (2 miles).</p><p>The full list of units is listed below:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+Mile
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">mi</code> or <code class="literal">miles</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+Yard
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">yd</code> or <code class="literal">yards</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+Inch
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">in</code> or <code class="literal">inch</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+Kilometer
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">km</code> or <code class="literal">kilometers</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+Meter
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">m</code> or <code class="literal">meters</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+Centimeter
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">cm</code> or <code class="literal">centimeters</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+Millimeter
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">mm</code> or <code class="literal">millimeters</code>
+</p>
+</td></tr></tbody></table></div><h3><a id="_result_casing"></a>Result Casing</h3><p>All REST APIs accept the <code class="literal">case</code> parameter. When set to <code class="literal">camelCase</code>, all
 field names in the result will be returned in camel casing, otherwise,
 underscore casing will be used. Note, this does not apply to the source
 document indexed.</p><h3><a id="_jsonp"></a>JSONP</h3><p>All REST APIs accept a <code class="literal">callback</code> parameter resulting in a
