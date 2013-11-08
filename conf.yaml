@@ -13,9 +13,9 @@ repos:
 
     elasticsearch-hadoop:
         url:        https://github.com/elasticsearch/elasticsearch-hadoop.git
-        current:    master
+        current:    1.3.0.M1
         branches:
-            - master
+            - 1.3.0.M1
 
     elasticsearch-php:
         url:        https://github.com/elasticsearch/elasticsearch-php
