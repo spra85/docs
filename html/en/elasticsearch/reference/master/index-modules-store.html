@@ -60,8 +60,8 @@ participate in the global throttling happening. Both settings can be set
 using the index update settings API dynamically.</p><p>The following sections lists all the different storage types supported.</p><h3><a id="file-system"></a>File System</h3><p>File system based storage is the default storage used. There are
 different implementations or storage types. The best one for the
 operating environment will be automatically chosen: <code class="literal">mmapfs</code> on
-Solaris/Windows 64bit, <code class="literal">simplefs</code> on Windows 32bit, and <code class="literal">niofs</code> for the
-rest.</p><p>The following are the different file system based storage types:</p><h4><a id="_simple_fs"></a>Simple FS</h4><p>The <code class="literal">simplefs</code> type is a straightforward implementation of file system
+Solaris/Linux/Windows 64bit, <code class="literal">simplefs</code> on Windows 32bit, and
+<code class="literal">niofs</code> for the rest.</p><p>The following are the different file system based storage types:</p><h4><a id="_simple_fs"></a>Simple FS</h4><p>The <code class="literal">simplefs</code> type is a straightforward implementation of file system
 storage (maps to Lucene <code class="literal">SimpleFsDirectory</code>) using a random access file.
 This implementation has poor concurrent performance (multiple threads
 will bottleneck). It is usually better to use the <code class="literal">niofs</code> when you need
