@@ -164,9 +164,6 @@ sub push_changes {
     if ( run qw(git status -s -- ), $build_dir ) {
         say "Commiting changes";
         run qw(git commit -m), 'Updated docs';
-
-        say "Rebasing changes";
-        run qw(git pull --rebase );
     }
 
     my $remote_sha = eval {
