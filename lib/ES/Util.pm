@@ -49,6 +49,8 @@ sub build_chunked {
         $index
     );
 
+    $index->parent->file('styles.css')->remove;
+
     my @warn = grep {/(WARNING|ERROR)/} split "\n", $output;
     if (@warn) {
         $lenient
@@ -92,6 +94,8 @@ sub build_single {
         ( $lenient ? '-L' : () ),
         $index
     );
+
+    $index->parent->file('styles.css')->remove;
 
     my @warn = grep {/(WARNING|ERROR)/} split "\n", $output;
     if (@warn) {
