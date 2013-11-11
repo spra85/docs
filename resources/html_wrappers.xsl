@@ -107,7 +107,7 @@
                 <a href="/blog/">Blog</a>
               </li>
               <li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12">
-                <a target="_blank" href="http://elasticsearch.com">.COM</a>
+                <a target="_blank" href="http://elasticsearch.com">Company</a>
               </li>
             </ul>
           </nav>
@@ -582,7 +582,7 @@ function gformInitSpinner_3(){jQuery('#gform_3').submit(function(){if(jQuery('#g
           <nav role="navigation">
             <ul id="footer_nav" class="menu">
               <li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36">
-                <a target="_blank" href="http://elasticsearch.com">.COM</a>
+                <a target="_blank" href="http://elasticsearch.com">Company</a>
               </li>
               <li id="menu-item-727" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-727">
                 <a href="/guide/">Guide</a>
