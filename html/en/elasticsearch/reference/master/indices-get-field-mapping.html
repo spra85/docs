@@ -89,7 +89,7 @@ if index names or field names are used as those can be ambiguous.</p><p>For exam
              }
          }
      }
- }</pre><p>To select the <code class="literal">id</code> of the <code class="literal">author</code> field, you can use it’s full name <code class="literal">author.id</code>. Using <code class="literal">text</code> will return
+ }</pre><p>To select the <code class="literal">id</code> of the <code class="literal">author</code> field, you can use its full name <code class="literal">author.id</code>. Using <code class="literal">text</code> will return
 the mapping of <code class="literal">abstract</code> as it is one of the fields which map to the Lucene field <code class="literal">text</code>. <code class="literal">name</code> will return
 the field <code class="literal">author.name</code>:</p><pre class="programlisting prettyprint lang-js">curl -XGET "http://localhost:9200/publications/article/_mapping/field/author.id,text,name"</pre><p>returns:</p><pre class="programlisting prettyprint lang-js">{
    "publications": {
