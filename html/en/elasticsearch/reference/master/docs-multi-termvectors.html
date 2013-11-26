@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Term Vectors</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [master]" /><link rel="up" href="search.html" title="Search APIs" /><link rel="prev" href="search-more-like-this.html" title="More Like This API" /><link rel="next" href="docs-multi-termvectors.html" title="Multi termvectors API" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Multi termvectors API</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [master]" /><link rel="up" href="search.html" title="Search APIs" /><link rel="prev" href="search-termvectors.html" title="Term Vectors" /><link rel="next" href="indices.html" title="Indices APIs" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -19,163 +19,80 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-51762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51762"><a href="/webinars/">Webinars</a></li><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Documentation</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li><li id="menu-item-4842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4842"><a href="/tutorials/">Tutorials</a></li></ul></li><li id="menu-item-728" class="guide_menu_item menu-item menu-item-type-post_type menu-item-object-page menu-item-728"><a href="/guide/">Guide</a></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference<xsl-text> [</xsl-text>master<xsl-text>] </xsl-text></a></span> » <span class="breadcrumb-link"><a href="search.html">Search APIs</a></span> » <span class="breadcrumb-node">Term Vectors</span></div><div class="navheader"><span class="prev"><a href="search-more-like-this.html">
+      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-51762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51762"><a href="/webinars/">Webinars</a></li><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Documentation</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li><li id="menu-item-4842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4842"><a href="/tutorials/">Tutorials</a></li></ul></li><li id="menu-item-728" class="guide_menu_item menu-item menu-item-type-post_type menu-item-object-page menu-item-728"><a href="/guide/">Guide</a></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference<xsl-text> [</xsl-text>master<xsl-text>] </xsl-text></a></span> » <span class="breadcrumb-link"><a href="search.html">Search APIs</a></span> » <span class="breadcrumb-node">Multi termvectors API</span></div><div class="navheader"><span class="prev"><a href="search-termvectors.html">
               « 
-              More Like This API</a>
+              Term Vectors</a>
            
         </span><span class="next">
            
-          <a href="docs-multi-termvectors.html">Multi termvectors API
+          <a href="indices.html">Indices APIs
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="search-termvectors"></a>Term Vectors</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="search-search.html">Search</a></span></dt><dt><span class="chapter"><a href="search-uri-request.html">URI Search</a></span></dt><dt><span class="chapter"><a href="search-request-body.html">Request Body Search</a></span></dt><dt><span class="chapter"><a href="search-facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="search-aggregations.html">Aggregations</a></span></dt><dt><span class="chapter"><a href="search-suggesters.html">Suggesters</a></span></dt><dt><span class="chapter"><a href="search-multi-search.html">Multi Search API</a></span></dt><dt><span class="chapter"><a href="search-count.html">Count API</a></span></dt><dt><span class="chapter"><a href="search-validate.html">Validate API</a></span></dt><dt><span class="chapter"><a href="search-explain.html">Explain API</a></span></dt><dt><span class="chapter"><a href="search-percolate.html">Percolator</a></span></dt><dt><span class="chapter"><a href="search-more-like-this.html">More Like This API</a></span></dt><dt><span class="chapter"><a href="search-termvectors.html">Term Vectors</a></span></dt><dt><span class="chapter"><a href="docs-multi-termvectors.html">Multi termvectors API</a></span></dt></dl></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Added in 1.00.Beta.</p></td></tr></table></div><p>Returns information and statistics on terms in the fields of a
-particular document as stored in the index.</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/1/_termvector?pretty=true'</pre><p>Optionally, you can specify the fields for which the information is
-retrieved either with a parameter in the url</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/1/_termvector?fields=text,...'</pre><p>or adding by adding the requested fields in the request body (see
-example below).</p><h3><a id="_return_values"></a>Return values</h3><p>Three types of values can be requested: <span class="emphasis"><em>term information</em></span>, <span class="emphasis"><em>term statistics</em></span>
-and <span class="emphasis"><em>field statistics</em></span>. By default, all term information and field
-statistics are returned for all fields but no term statistics.</p><h4><a id="_term_information"></a>Term information</h4><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-term frequency in the field (always returned)
-</li><li class="listitem">
-term positions (<code class="literal">positions</code> : true)
-</li><li class="listitem">
-start and end offsets (<code class="literal">offsets</code> : true)
-</li><li class="listitem">
-term payloads (<code class="literal">payloads</code> : true), as base64 encoded bytes
-</li></ul></div><p>If the requested information wasn’t stored in the index, it will be
-omitted without further warning. See <a class="link" href="mapping-types.html" title="Types">type mapping</a>
-for how to configure your index to store term vectors.</p><h4><a id="_term_statistics"></a>Term statistics</h4><p>Setting <code class="literal">term_statistics</code> to <code class="literal">true</code> (default is <code class="literal">false</code>) will
-return</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-total term frequency (how often a term occurs in all documents)
-</li><li class="listitem">
-document frequency (the number of documents containing the current
-   term)
-</li></ul></div><p>By default these values are not returned since term statistics can
-have a serious performance impact.</p><h4><a id="_field_statistics"></a>Field statistics</h4><p>Setting <code class="literal">field_statistics</code> to <code class="literal">false</code> (default is <code class="literal">true</code>) will
-omit :</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-document count (how many documents contain this field)
-</li><li class="listitem">
-sum of document frequencies (the sum of document frequencies for all
-   terms in this field)
-</li><li class="listitem">
-sum of total term frequencies (the sum of total term frequencies of
-   each term in this field)
-</li></ul></div><h3><a id="_behaviour"></a>Behaviour</h3><p>The term and field statistics are not accurate. Deleted documents
-are not taken into account. The information is only retrieved for the
-shard the requested document resides in. The term and field statistics
-are therefore only useful as relative measures whereas the absolute
-numbers have no meaning in this context.</p><h3><a id="_example_3"></a>Example</h3><p>First, we create an index that stores term vectors, payloads etc. :</p><pre class="programlisting prettyprint lang-js">curl -s -XPUT 'http://localhost:9200/twitter/' -d '{
-  "mappings": {
-    "tweet": {
-      "properties": {
-        "text": {
-          "type": "string",
-          "term_vector": "with_positions_offsets_payloads",
-          "store" : true,
-          "index_analyzer" : "fulltext_analyzer"
-         },
-         "fullname": {
-          "type": "string",
-          "term_vector": "with_positions_offsets_payloads",
-          "index_analyzer" : "fulltext_analyzer"
-        }
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="docs-multi-termvectors"></a>Multi termvectors API</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="search-search.html">Search</a></span></dt><dt><span class="chapter"><a href="search-uri-request.html">URI Search</a></span></dt><dt><span class="chapter"><a href="search-request-body.html">Request Body Search</a></span></dt><dt><span class="chapter"><a href="search-facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="search-aggregations.html">Aggregations</a></span></dt><dt><span class="chapter"><a href="search-suggesters.html">Suggesters</a></span></dt><dt><span class="chapter"><a href="search-multi-search.html">Multi Search API</a></span></dt><dt><span class="chapter"><a href="search-count.html">Count API</a></span></dt><dt><span class="chapter"><a href="search-validate.html">Validate API</a></span></dt><dt><span class="chapter"><a href="search-explain.html">Explain API</a></span></dt><dt><span class="chapter"><a href="search-percolate.html">Percolator</a></span></dt><dt><span class="chapter"><a href="search-more-like-this.html">More Like This API</a></span></dt><dt><span class="chapter"><a href="search-termvectors.html">Term Vectors</a></span></dt><dt><span class="chapter"><a href="docs-multi-termvectors.html">Multi termvectors API</a></span></dt></dl></div><p>Multi termvectors API allows to get multiple termvectors based on an index, type and id. The response includes a <code class="literal">docs</code>
+array with all the fetched termvectors, each element having the structure
+provided by the <a class="link" href="search-termvectors.html" title="Term Vectors">termvectors</a>
+API. Here is an example:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/_mtermvectors' -d '{
+{
+   "docs": [
+      {
+         "_index": "testidx",
+         "_type": "test",
+         "_id": "2",
+         "term_statistics": true
+      },
+      {
+         "_index": "testidx",
+         "_type": "test",
+         "_id": "1",
+         "fields": [
+            "text"
+         ]
       }
-    }
-  },
-  "settings" : {
-    "index" : {
-      "number_of_shards" : 1,
-      "number_of_replicas" : 0
-    },
-    "analysis": {
-      "analyzer": {
-        "fulltext_analyzer": {
-          "type": "custom",
-          "tokenizer": "whitespace",
-          "filter": [
-            "lowercase",
-            "type_as_payload"
-          ]
-        }
+   ]
+}'</pre><p>See the <a class="link" href="search-termvectors.html" title="Term Vectors">termvectors</a> API for a description of possible parameters.</p><p>The <code class="literal">_mtermvectors</code> endpoint can also be used against an index (in which case it
+is not required in the body):</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/testidx/_mtermvectors' -d '{
+   "docs": [
+      {
+         "_type": "test",
+         "_id": "2",
+         "fields": [
+            "text"
+         ],
+         "term_statistics": true
+      },
+      {
+         "_type": "test",
+         "_id": "1"
       }
+   ]
+}'</pre><p>And type:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/testidx/test/_mtermvectors' -d '{
+   "docs": [
+      {
+         "_id": "2",
+         "fields": [
+            "text"
+         ],
+         "term_statistics": true
+      },
+      {
+         "_id": "1"
+      }
+   ]
+}'</pre><p>If all requested documents are on same index and have same type and also the parameters are the same, the request can be simplified:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/testidx/test/_mtermvectors' -d '{
+    "ids" : ["1", "2"],
+    "parameters": {
+        "fields": [
+                "text"
+        ],
+        "term_statistics": true,
+        …
     }
-  }
-}'</pre><p>Second, we add some documents:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'http://localhost:9200/twitter/tweet/1?pretty=true' -d '{
-  "fullname" : "John Doe",
-  "text" : "twitter test test test "
-}'
-
-curl -XPUT 'http://localhost:9200/twitter/tweet/2?pretty=true' -d '{
-  "fullname" : "Jane Doe",
-  "text" : "Another twitter test ..."
-}'</pre><p>The following request returns all information and statistics for field
-<code class="literal">text</code> in document <code class="literal">1</code> (John Doe):</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/1/_termvector?pretty=true' -d '{
-  "fields" : ["text"],
-  "offsets" : true,
-  "payloads" : true,
-  "positions" : true,
-  "term_statistics" : true,
-  "field_statistics" : true
-}'</pre><p>Response:</p><pre class="programlisting prettyprint lang-js">{
-    "_id": "1",
-    "_index": "twitter",
-    "_type": "tweet",
-    "_version": 1,
-    "exists": true,
-    "term_vectors": {
-        "text": {
-            "field_statistics": {
-                "doc_count": 2,
-                "sum_doc_freq": 6,
-                "sum_ttf": 8
-            },
-            "terms": {
-                "test": {
-                    "doc_freq": 2,
-                    "term_freq": 3,
-                    "tokens": [
-                        {
-                            "end_offset": 12,
-                            "payload": "d29yZA==",
-                            "position": 1,
-                            "start_offset": 8
-                        },
-                        {
-                            "end_offset": 17,
-                            "payload": "d29yZA==",
-                            "position": 2,
-                            "start_offset": 13
-                        },
-                        {
-                            "end_offset": 22,
-                            "payload": "d29yZA==",
-                            "position": 3,
-                            "start_offset": 18
-                        }
-                    ],
-                    "ttf": 4
-                },
-                "twitter": {
-                    "doc_freq": 2,
-                    "term_freq": 1,
-                    "tokens": [
-                        {
-                            "end_offset": 7,
-                            "payload": "d29yZA==",
-                            "position": 0,
-                            "start_offset": 0
-                        }
-                    ],
-                    "ttf": 2
-                }
-            }
-        }
-    }
-}</pre></div><div class="navfooter"><span class="prev"><a href="search-more-like-this.html">
+}'</pre><p>Parameters can aslo be set by passing them as uri parameters (see <a class="link" href="search-termvectors.html" title="Term Vectors">termvectors</a>). uri parameters are the default parameters and are overwritten by any parameter setting defined in the body.</p></div><div class="navfooter"><span class="prev"><a href="search-termvectors.html">
               « 
-              More Like This API</a>
+              Term Vectors</a>
            
         </span><span class="next">
            
-          <a href="docs-multi-termvectors.html">Multi termvectors API
+          <a href="indices.html">Indices APIs
                »
             </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>
               Want to
