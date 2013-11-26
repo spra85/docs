@@ -68,7 +68,35 @@ is not required in the body):</p><pre class="programlisting prettyprint lang-js"
 }'</pre><p>In which case, the <code class="literal">ids</code> element can directly be used to simplify the
 request:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/test/type/_mget' -d '{
     "ids" : ["1", "2"]
-}'</pre><h3><a id="mget-fields"></a>Fields</h3><p>Specific fields can be specified to be retrieved per document to get.
+}'</pre><h3><a id="mget-source-filtering"></a>Source filtering</h3><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Added in 1.0.0.Beta1.</p></td></tr></table></div><p>By default, the <code class="literal">_source</code> field will be returned for every document (if stored).
+Similar to the <a class="link" href="docs-get.html#get-source-filtering" title="Source filtering">get</a> API, you can retrieve only parts of
+the <code class="literal">_source</code> (or not at all) by using the <code class="literal">_source</code> parameter. You can also use
+the url parameters <code class="literal">_source</code>,<code class="literal">_source_include</code> &amp; <code class="literal">_source_exclude</code> to specify defaults,
+which will be used when there are no per-document instructions.</p><p>For example:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/_mget' -d '{
+    "docs" : [
+        {
+            "_index" : "test",
+            "_type" : "type",
+            "_id" : "1",
+            "_source" : false
+        },
+        {
+            "_index" : "test",
+            "_type" : "type",
+            "_id" : "2",
+            "_source" : ["field3", "field4"]
+        },
+        {
+            "_index" : "test",
+            "_type" : "type",
+            "_id" : "3",
+            "_source" : {
+                "include": ["user"],
+                "_exclude": ["user.location"]
+            }
+        }
+    ]
+}'</pre><h3><a id="mget-fields"></a>Fields</h3><p>Specific stored fields can be specified to be retrieved per document to get, similar to the <a class="link" href="docs-get.html#get-fields" title="Fields">fields</a> parameter of the Get API.
 For example:</p><pre class="programlisting prettyprint lang-js">curl 'localhost:9200/_mget' -d '{
     "docs" : [
         {
