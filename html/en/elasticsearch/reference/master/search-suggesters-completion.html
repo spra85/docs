@@ -206,6 +206,16 @@ The following parameters are supported:</p><div class="horizontal"><table cellpa
     Minimum length of the input, which is not
     checked for fuzzy alternatives, defaults to <code class="literal">1</code>
 </p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">unicode_aware</code>
+</p>
+</td><td valign="top">
+<p>
+    Sets all are measurements (like edit distance,
+    transpositions and lengths) in unicode code points
+    (actual letters) instead of bytes.
+</p>
 </td></tr></tbody></table></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>If you want to stick with the default values, but
       still use fuzzy, you can either use <code class="literal">fuzzy: {}</code>
       or <code class="literal">fuzzy: true</code>.</p></td></tr></table></div></div></div><div class="navfooter"><span class="prev"><a href="search-suggesters-phrase.html">
