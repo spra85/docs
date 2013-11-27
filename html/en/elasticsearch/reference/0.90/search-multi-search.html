@@ -67,7 +67,7 @@ default unless explicitly defined otherwise in the header. For example:</p><pre 
 $ curl -XGET localhost:9200/test/_msearch --data-binary @requests; echo</pre><p>The above will execute the search against the <code class="literal">test</code> index for all the
 requests that don’t define an index, and the last one will be executed
 against the <code class="literal">test2</code> index.</p><p>The <code class="literal">search_type</code> can be set in a similar manner to globally apply to
-all search requests.</p></div><div class="navfooter"><span class="prev"><a href="search-suggesters-completion.html">
+all search requests.</p><h3><a id="msearch-security"></a>Security</h3><p>See <a class="xref" href="url-access-control.html" title="URL-based access control"><em>URL-based access control</em></a></p></div><div class="navfooter"><span class="prev"><a href="search-suggesters-completion.html">
               « 
               Completion Suggester</a>
            
