@@ -114,16 +114,16 @@ bucket_key = value - rem</pre><p>The following snippet "buckets" the products ba
             "histogram" : {
                 "field" : "price",
                 "interval" : 50,
-                "order" : { "price_stats.min" : "asc" } <a id="CO6-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+                "order" : { "price_stats.min" : "asc" } <a id="CO7-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
             },
             "aggs" : {
-                "price_stats" : { "stats" : {} } <a id="CO6-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+                "price_stats" : { "stats" : {} } <a id="CO7-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
             }
         }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO6-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO7-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">{ "price_stats.min" : asc" }</code> will sort the buckets based on <code class="literal">min</code> value of their their <code class="literal">price_stats</code> sub-aggregation.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO6-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO7-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 There is no need to configure the <code class="literal">price</code> field for the <code class="literal">price_stats</code> aggregation as it will inherit it by default from its parent histogram aggregation.
 </p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_response_format"></a>Response Format</h3></div></div></div><p>By default, the buckets are retuned as an ordered array. It is also possilbe to request the response as a hash instead keyed by the buckets keys:</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {

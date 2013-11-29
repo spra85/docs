@@ -123,7 +123,49 @@ their <code class="literal">doc_count</code> descending. It is also possible to 
             }
         }
     }
-}</pre></div></div><div class="navfooter"><span class="prev"><a href="search-aggregations-bucket-nested-aggregation.html">
+}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_filtering_values"></a>Filtering Values</h3></div></div></div><p>It is possible to filter the values for which buckets will be created. This can be done using the <code class="literal">include</code> and
+<code class="literal">exclude</code> parameters which are based on regular expressions.</p><pre class="programlisting prettyprint lang-js">{
+    "aggs" : {
+        "tags" : {
+            "terms" : {
+                "field" : "tags",
+                "include" : ".*sport.*",
+                "exclude" : "water_.*"
+            }
+        }
+    }
+}</pre><p>In the above example, buckets will be created for all the tags that has the word <code class="literal">sport</code> in them, except those starting
+with <code class="literal">water_</code> (so the tag <code class="literal">water_sports</code> will no be aggregated). The <code class="literal">include</code> regular expression will determine what
+values are "allowed" to be aggregated, while the <code class="literal">exclude</code> determines the values that should not be aggregated. When
+both are defined, the <code class="literal">exclude</code> has precedence, meaning, the <code class="literal">include</code> is evaluated first and only then the <code class="literal">exclude</code>.</p><p>The regular expression are based on the Java™ <a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html" target="_top">Pattern</a>,
+and as such, they it is also possible to pass in flags that will determine how the compiled regular expression will work:</p><pre class="programlisting prettyprint lang-js">{
+    "aggs" : {
+        "tags" : {
+             "terms" : {
+                 "field" : "tags",
+                 "include" : {
+                     "pattern" : ".*sport.*",
+                     "flags" : "CANON_EQ|CASE_INSENSITIVE" <a id="CO5-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+                 },
+                 "exclude" : {
+                     "pattern" : "water_.*",
+                     "flags" : "CANON_EQ|CASE_INSENSITIVE"
+                 }
+             }
+         }
+    }
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO5-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+the flags are concatenated using the <code class="literal">|</code> character as a separator
+</p></td></tr></table></div><p>The possible flags that can be used are:
+<a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CANON_EQ" target="_top"><code class="literal">CANON_EQ</code></a>,
+<a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CASE_INSENSITIVE" target="_top"><code class="literal">CASE_INSENSITIVE</code></a>,
+<a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#COMMENTS" target="_top"><code class="literal">COMMENTS</code></a>,
+<a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#DOTALL" target="_top"><code class="literal">DOTALL</code></a>,
+<a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#LITERAL" target="_top"><code class="literal">LITERAL</code></a>,
+<a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#MULTILINE" target="_top"><code class="literal">MULTILINE</code></a>,
+<a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#UNICODE_CASE" target="_top"><code class="literal">UNICODE_CASE</code></a>,
+<a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#UNICODE_CHARACTER_CLASS" target="_top"><code class="literal">UNICODE_CHARACTER_CLASS</code></a> and
+<a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#UNIX_LINES" target="_top"><code class="literal">UNIX_LINES</code></a></p></div></div><div class="navfooter"><span class="prev"><a href="search-aggregations-bucket-nested-aggregation.html">
               « 
               Nested</a>
            

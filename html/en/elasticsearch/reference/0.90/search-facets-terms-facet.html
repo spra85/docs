@@ -50,15 +50,15 @@ of unique terms is greater than <code class="literal">size</code>, the returned 
 and not accurate (it could be that the term counts are slightly off and it
 could even be that a term that should have been in the top <code class="literal">size</code> entries
 was not returned).</p><p>The higher the requested <code class="literal">size</code> is, the more accurate the results will be,
-but also, the more expensive it will be to compute the final results (both
+but also, the more expensive it will be to compute them (both
 due to bigger priority queues that are managed on a shard level and due to
 bigger data transfers between the nodes and the client). In an attempt to
-minimize the extra work that comes with bigger requested <code class="literal">size</code> we a
-<code class="literal">shard_size</code> parameter was introduced. The once defined, it will determine
-how many terms the coordinating node is requesting from each shard. Once
-all the shards responded, the coordinating node will then reduce them
+minimize the extra work that comes with bigger requested <code class="literal">size</code> the
+<code class="literal">shard_size</code> parameter was introduced. When defined, it will determine
+how many terms the coordinating node is will request from each shard. Once
+all the shards responded, the coordinating node will reduce them
 to a final result which will be based on the <code class="literal">size</code> parameter - this way,
-once can increase the accuracy of the returned terms and avoid the overhead
+one can increase the accuracy of the returned terms while avoiding the overhead
 of streaming a big list of terms back to the client.</p><p>Note that <code class="literal">shard_size</code> cannot be smaller than <code class="literal">size</code>… if that’s the case
 elasticsearch will override it and reset it to be equal to <code class="literal">size</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_ordering"></a>Ordering</h3></div></div></div><p>Allow to control the ordering of the terms facets, to be ordered by
 <code class="literal">count</code>, <code class="literal">term</code>, <code class="literal">reverse_count</code> or <code class="literal">reverse_term</code>. The default is
