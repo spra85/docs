@@ -31,7 +31,7 @@
 to find relationships in the data is tedious.  Human eyes, especially
 when looking at an ssh terminal, need compact and aligned text.  The
 cat API aims to meet this need.</p><h2><a id="common-parameters"></a>Common parameters</h2><h3><a id="verbose"></a>Verbose</h3><p>Each of the commands accepts a query string parameter <code class="literal">v</code> to turn on
-verbose output.</p><pre class="programlisting prettyprint lang-shell">% curl 'localhost:9200/_cat/master?v=true'
+verbose output.</p><pre class="programlisting prettyprint lang-shell">% curl 'localhost:9200/_cat/master?v'
 id                     ip        node
 EGtKWZlWQYWDmX29fUnp3Q 127.0.0.1 Grey, Sara</pre><h3><a id="numeric-formats"></a>Numeric formats</h3><p>Many commands provide a few types of numeric output, either a byte
 value or a time value.  By default, these types are human-formatted,
