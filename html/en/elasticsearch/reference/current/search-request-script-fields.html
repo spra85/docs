@@ -55,13 +55,13 @@ type). Here is an example:</p><pre class="programlisting prettyprint lang-js">  
                 "script" : "_source.obj1.obj2"
             }
         }
-    }</pre><p>Note the <code class="literal">_source</code> keyword here to navigate the json like model.</p><p>Its important to understand the difference between
+    }</pre><p>Note the <code class="literal">_source</code> keyword here to navigate the json-like model.</p><p>It’s important to understand the difference between
 <code class="literal">doc['my_field'].value</code> and <code class="literal">_source.my_field</code>. The first, using the doc
 keyword, will cause the terms for that field to be loaded to memory
 (cached), which will result in faster execution, but more memory
 consumption. Also, the <code class="literal">doc[...]</code> notation only allows for simple valued
-fields (can’t return a json object from it) and make sense only on non
-analyzed or single term based fields.</p><p>The <code class="literal">_source</code> on the other hand causes the source to be loaded, parsed,
+fields (can’t return a json object from it) and make sense only on
+non-analyzed or single term based fields.</p><p>The <code class="literal">_source</code> on the other hand causes the source to be loaded, parsed,
 and then only the relevant part of the json is returned.</p></div><div class="navfooter"><span class="prev"><a href="search-request-fields.html">
               « 
               Fields</a>
