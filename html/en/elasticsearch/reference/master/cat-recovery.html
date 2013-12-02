@@ -35,7 +35,7 @@ indices, three shards each.  Afterward we’ll have twelve total shards,
 but before those replica shards are <code class="literal">STARTED</code>, we’ll take a snapshot
 of the recovery:</p><pre class="programlisting prettyprint lang-shell">% curl -XPUT 192.168.56.30:9200/_settings -d'{"number_of_replicas":1}'
 {"ok":true,"acknowledged":true}
-% curl '192.168.56.30:9200/_cat/recovery?v=true'
+% curl '192.168.56.30:9200/_cat/recovery?v'
 index shard   target recovered     % ip            node
 wiki1 2     68083830   7865837 11.6% 192.168.56.20 Adam II
 wiki2 1      2542400    444175 17.5% 192.168.56.20 Adam II

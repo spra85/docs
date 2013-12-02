@@ -31,7 +31,7 @@
 from <code class="literal">/_cluster/health</code>. It has one option <code class="literal">ts</code> to disable the
 timestamping.</p><pre class="programlisting prettyprint lang-shell">% curl 192.168.56.10:9200/_cat/health
 1384308967 18:16:07 foo green 3 3 3 3 0 0 0
-% curl '192.168.56.10:9200/_cat/health?v=1&amp;ts=0'
+% curl '192.168.56.10:9200/_cat/health?v&amp;ts=0'
 cluster status nodeTotal nodeData shards pri relo init unassign
 foo     green          3        3      3   3    0    0        0</pre><p>A common use of this command is to verify the health is consistent
 across nodes:</p><pre class="programlisting prettyprint lang-shell">% pssh -i -h list.of.cluster.hosts curl -s localhost:9200/_cat/health
