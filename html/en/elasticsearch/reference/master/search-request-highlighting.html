@@ -76,6 +76,9 @@ Can be customized with <code class="literal">boundary_chars</code>, <code class=
 </li><li class="listitem">
 Requires setting <code class="literal">term_vector</code> to <code class="literal">with_positions_offsets</code> which
   increases the size of the index
+</li><li class="listitem">
+Can combine matches from multiple fields into one result.  See
+  <code class="literal">matched_fields</code>
 </li></ul></div><p>Here is an example of setting the <code class="literal">content</code> field to allow for
 highlighting using the fast vector highlighter on it (this will cause
 the index to be bigger):</p><pre class="programlisting prettyprint lang-js">{
@@ -89,7 +92,7 @@ The following is an example that forces the use of the plain highlighter:</p><pr
     "query" : {...},
     "highlight" : {
         "fields" : {
-            "content" : { "type" : "plain"}
+            "content" : {"type" : "plain"}
         }
     }
 }</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="tags"></a>Highlighting Tags</h3></div></div></div><p>By default, the highlighting will wrap highlighted text in <code class="literal">&lt;em&gt;</code> and
@@ -266,7 +269,85 @@ matches specifically on them.</p></div><div class="section"><div class="titlepag
 <code class="literal">boundary_chars</code> can be configured to define what constitutes a boundary
 for highlighting. It’s a single string with each boundary character
 defined in it. It defaults to <code class="literal">.,!? \t\n</code>.</p><p>The <code class="literal">boundary_max_scan</code> allows to control how far to look for boundary
-characters, and defaults to <code class="literal">20</code>.</p></div></div><div class="navfooter"><span class="prev"><a href="search-request-filter.html">
+characters, and defaults to <code class="literal">20</code>.</p><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Added in 0.90.8.</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="matched-fields"></a>Matched Fields</h3></div></div></div><p>The Fast Vector Highlighter can combine matches on multiple fields to
+highlight a single field using <code class="literal">matched_fields</code>.  This is most
+intuitive for multifields that analyze the same string in different
+ways.  All <code class="literal">matched_fields</code> must have <code class="literal">term_vector</code> set to
+<code class="literal">with_positions_offsets</code> but only the field to which the matches are
+combined is loaded so only that field would benefit from having
+<code class="literal">store</code> set to <code class="literal">yes</code>.</p><p>In the following examples <code class="literal">content</code> is analyzed by the <code class="literal">english</code>
+analyzer and <code class="literal">content.plain</code> is analyzed by the <code class="literal">standard</code> analyzer.</p><pre class="programlisting prettyprint lang-js">{
+    "query": {
+        "query_string": {
+            "query": "content.plain:running scissors",
+            "fields": ["content"]
+        }
+    },
+    "highlight": {
+        "order": "score",
+        "fields": {
+            "content": {
+                "matched_fields": ["content", "content.plain"],
+                "type" : "fvh"
+            }
+        }
+    }
+}</pre><p>The above matches both "run with scissors" and "running with scissors"
+and would highlight "running" and "scissors" but not "run". If both
+phrases appear in a large document then "running with scissors" is
+sorted above "run with scissors" in the fragments list because there
+are more matches in that fragment.</p><pre class="programlisting prettyprint lang-js">{
+    "query": {
+        "query_string": {
+            "query": "running scissors",
+            "fields": ["content", "content.plain^10"]
+        }
+    },
+    "highlight": {
+        "order": "score",
+        "fields": {
+            "content": {
+                "matched_fields": ["content", "content.plain"],
+                "type" : "fvh"
+            }
+        }
+    }
+}</pre><p>The above highlights "run" as well as "running" and "scissors" but
+still sorts "running with scissors" above "run with scissors" because
+the plain match ("running") is boosted.</p><pre class="programlisting prettyprint lang-js">{
+    "query": {
+        "query_string": {
+            "query": "running scissors",
+            "fields": ["content", "content.plain^10"]
+        }
+    },
+    "highlight": {
+        "order": "score",
+        "fields": {
+            "content": {
+                "matched_fields": ["content.plain"],
+                "type" : "fvh"
+            }
+        }
+    }
+}</pre><p>The above query wouldn’t highlight "run" or "scissor" but shows that
+it is just fine not to list the field to which the matches are combined
+(<code class="literal">content</code>) in the matched fields.</p><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Technically it is also fine to add fields to <code class="literal">matched_fields</code> that
+don’t share the same underlying string as the field to which the matches
+are combined.  The results might not make much sense and if one of the
+matches is off the end of the text then the whole the query will fail.</p></td></tr></table></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>There is a small amount of overhead involved with setting
+<code class="literal">matched_fields</code> to a non-empty array so always prefer</p><pre class="programlisting prettyprint lang-js">    "highlight": {
+        "fields": {
+            "content": {}
+        }
+    }</pre><p>to</p><pre class="programlisting prettyprint lang-js">    "highlight": {
+        "fields": {
+            "content": {
+                "matched_fields": ["content"],
+                "type" : "fvh"
+            }
+        }
+    }</pre></td></tr></table></div></div></div><div class="navfooter"><span class="prev"><a href="search-request-filter.html">
               « 
               Filter</a>
            
