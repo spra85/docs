@@ -55,7 +55,7 @@ $myTypeMapping = array(
 $indexParams['body']['mappings']['my_type'] = $myTypeMapping;
 
 // Create the index
-$client-&gt;indices()-&gt;create($indexParams);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_delete_an_index_2"></a>Delete an index</h2></div></div></div><p>Deleting an index is very simple:</p><pre class="programlisting prettyprint lang-php">$deleteParams['index'] = $indexParams['my_index'];
+$client-&gt;indices()-&gt;create($indexParams);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_delete_an_index_2"></a>Delete an index</h2></div></div></div><p>Deleting an index is very simple:</p><pre class="programlisting prettyprint lang-php">$deleteParams['index'] = 'my_index';
 $client-&gt;indices()-&gt;delete($deleteParams);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_put_settings_api"></a>Put Settings API</h2></div></div></div><p>The Put Settings API allows you to modify any index setting that is dynamic:</p><pre class="programlisting prettyprint lang-php">$params['index'] = 'my_index';
 $params['body']['index']['number_of_replicas'] = 0;
 $params['body']['index']['refresh_interval'] = -1;
