@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use v5.10;
 use Data::Dumper qw(Dumper);
-use ES::Util qw(run build_chunked);
+use ES::Util qw(run build_chunked build_single);
 use Path::Class();
 use ES::Repo();
 use File::Copy::Recursive qw(fcopy rcopy);
@@ -46,6 +46,7 @@ sub new {
         repo     => $repo,
         prefix   => $prefix,
         chunk    => $chunk,
+        single   => $args{single},
         index    => Path::Class::file($index),
         branches => $branches,
         current  => $current
@@ -83,13 +84,25 @@ sub build {
         if ($changed) {
             say "   - Building";
             $repo->checkout( $src_path, $branch );
-            build_chunked(
-                $repo->dir->file($index),
-                $branch_dir,
-                chunk   => $chunk,
-                version => $branch,
-                multi   => $multi,
-            );
+            if ( $self->single ) {
+                $branch_dir->rmtree;
+                $branch_dir->mkpath;
+                build_single(
+                    $repo->dir->file($index),
+                    $branch_dir,
+                    version => $branch,
+                    multi   => $multi,
+                );
+            }
+            else {
+                build_chunked(
+                    $repo->dir->file($index),
+                    $branch_dir,
+                    chunk   => $chunk,
+                    version => $branch,
+                    multi   => $multi,
+                );
+            }
             $repo->mark_done( $src_path, $branch );
         }
         else {
@@ -152,6 +165,7 @@ sub dir      { shift->{dir} }
 sub repo     { shift->{repo} }
 sub prefix   { shift->{prefix} }
 sub chunk    { shift->{chunk} }
+sub single   { shift->{single} }
 sub index    { shift->{index} }
 sub branches { shift->{branches} }
 sub current  { shift->{current} }
