@@ -73,6 +73,7 @@ contents:
             branches:   [master]
             current:    master
             abbr:       perl
+            single:     1
 
           -
             title:      Python API
@@ -82,6 +83,7 @@ contents:
             branches:   [master]
             current:    master
             abbr:       python
+            single:     1
 
           -
             title:      Ruby API
@@ -91,6 +93,7 @@ contents:
             branches:   [master]
             current:    master
             abbr:       ruby
+            single:     1
 
           -
             title:      Rivers
@@ -98,6 +101,7 @@ contents:
             index:      docs/river/index.asciidoc
             repo:       elasticsearch
             abbr:       rivers
+            single:     1
 
           -
             title:      Community contributions
