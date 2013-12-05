@@ -112,7 +112,9 @@ curl -X PUT localhost:9200/music/song/_mapping -d '{
 </span></dt><dd>
     The string to return, if a suggestion matches. This is very
     useful to normalize outputs (i.e. have them always in the format
-    <code class="literal">artist - songname</code>. This is optional.
+    <code class="literal">artist - songname</code>). The result is de-duplicated if several documents
+    have the same output, i.e. only one is returned as part of the
+    suggest result. This is optional.
 </dd><dt><span class="term">
 <code class="literal">payload</code>
 </span></dt><dd>
@@ -125,12 +127,15 @@ curl -X PUT localhost:9200/music/song/_mapping -d '{
 </span></dt><dd>
     A positive integer, which defines a weight and allows you to
     rank your suggestions. This field is optional.
-</dd></dl></div><p>[NOTE] Even though you are losing most of the features of the
+</dd></dl></div><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>Even though you are losing most of the features of the
 completion suggest, you can opt in for the shortest form, which even
 allows you to use inside of multi_field. But keep in mind, that you will
-not be able to use several inputs, an output, payloads or weights.</p><pre class="programlisting prettyprint lang-js">{
+not be able to use several inputs, an output, payloads or weights.</p></td></tr></table></div><pre class="programlisting prettyprint lang-js">{
   "suggest" : "Nirvana"
-}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="querying"></a>Querying</h3></div></div></div><p>Suggesting works as usual, except that you have to specify the suggest
+}</pre><div class="note" style="margin-left: 0; margin-right: 10%;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/icons/note.png" /></td><th align="left"></th></tr><tr><td align="left" valign="top"><p>The suggest data structure might not reflect deletes on
+documents immediately. You may need to do an <a class="xref" href="indices-optimize.html" title="Optimize"><em>Optimize</em></a> for that.
+You can call optimize with the <code class="literal">only_expunge_deletes=true</code> to only cater for deletes
+or alternatively call a <a class="xref" href="index-modules-merge.html" title="Merge"><em>Merge</em></a> operation.</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="querying"></a>Querying</h3></div></div></div><p>Suggesting works as usual, except that you have to specify the suggest
 type as <code class="literal">completion</code>.</p><pre class="programlisting prettyprint lang-js">curl -X POST 'localhost:9200/music/_suggest?pretty' -d '{
     "song-suggest" : {
         "text" : "n",
