@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Elasticsearch.pm</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch.pm" /><link rel="next" href="_overview.html" title="Overview" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Elasticsearch.pm</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="website" /><meta property="og:title" content="Reference Guide | Elasticsearch" /><meta property="og:url" content="http://www.elasticsearch.org/guide/" /><meta property="og:site_name" content="" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -19,19 +14,74 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-51762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51762"><a href="/webinars/">Webinars</a></li><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Documentation</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li><li id="menu-item-4842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4842"><a href="/tutorials/">Tutorials</a></li></ul></li><li id="menu-item-728" class="guide_menu_item menu-item menu-item-type-post_type menu-item-object-page menu-item-728"><a href="/guide/">Guide</a></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="navheader"><span class="prev">
-           
-        </span><span class="next">
-           
-          <a href="_overview.html">Overview
-               »
-            </a></span></div><div class="book" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="id-1"></a>Elasticsearch.pm</h1></div></div><hr /></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_synopsis.html">Synopsis</a></span></dt><dt><span class="chapter"><a href="_reporting_issues.html">Reporting issues</a></span></dt><dt><span class="chapter"><a href="_contributing.html">Contributing</a></span></dt><dt><span class="chapter"><a href="_copyright_and_license.html">Copyright and License</a></span></dt></dl></div></div><div class="navfooter"><span class="prev">
-           
-        </span><span class="next">
-           
-          <a href="_overview.html">Overview
-               »
-            </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>
+      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-51762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51762"><a href="/webinars/">Webinars</a></li><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Documentation</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li><li id="menu-item-4842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4842"><a href="/tutorials/">Tutorials</a></li></ul></li><li id="menu-item-728" class="guide_menu_item menu-item menu-item-type-post_type menu-item-object-page menu-item-728"><a href="/guide/">Guide</a></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="book" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="id-1"></a>Elasticsearch.pm</h1></div></div><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_overview"></a>Overview</h1></div></div></div><p>Elasticsearch.pm is the official Perl API for Elasticsearch. The full
+documentation is available on <a class="ulink" href="https://metacpan.org/module/Elasticsearch" target="_top">https://metacpan.org/module/Elasticsearch</a>.</p><p>It can be installed with:</p><pre class="programlisting prettyprint lang-sh">cpanm Elasticsearch</pre><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_features"></a>Features</h2></div></div></div><p>This client provides:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Full support for all Elasticsearch APIs
+</li><li class="listitem">
+HTTP backend (currently synchronous only - Any::Event support will be added later)
+</li><li class="listitem">
+Robust networking support which handles load balancing, failure detection and failover
+</li><li class="listitem">
+Good defaults
+</li><li class="listitem">
+Helper utilities for more complex operations, such as bulk indexing, scrolled searches and reindexing.
+</li><li class="listitem">
+Logging support via Log::Any
+</li><li class="listitem">
+Compatibility with the official clients for Python, Ruby, PHP and Javascript
+</li><li class="listitem">
+Easy extensibility
+</li></ul></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_synopsis"></a>Synopsis</h1></div></div></div><pre class="programlisting prettyprint lang-perl">use Elasticsearch;
+
+# Connect to localhost:9200:
+my $e = Elasticsearch-&gt;new();
+
+# Round-robin between two nodes:
+my $e = Elasticsearch-&gt;new(
+    nodes =&gt; [
+        'search1:9200',
+        'search2:9200'
+    ]
+);
+
+# Connect to cluster at search1:9200, sniff all nodes and round-robin between them:
+my $e = Elasticsearch-&gt;new(
+    nodes    =&gt; 'search1:9200',
+    cxn_pool =&gt; 'Sniff'
+);
+
+# Index a document:
+$e-&gt;index(
+    index   =&gt; 'my_app',
+    type    =&gt; 'blog_post',
+    id      =&gt; 1,
+    body    =&gt; {
+        title   =&gt; 'Elasticsearch clients',
+        content =&gt; 'Interesting content...',
+        date    =&gt; '2013-09-24'
+    }
+);
+
+# Get the document:
+my $doc = $e-&gt;get(
+    index   =&gt; 'my_app',
+    type    =&gt; 'blog_post',
+    id      =&gt; 1
+);
+
+# Search:
+my $results = $e-&gt;search(
+    index =&gt; 'my_app',
+    body  =&gt; {
+        query =&gt; {
+            match =&gt; { title =&gt; 'elasticsearch' }
+        }
+    }
+);</pre></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_reporting_issues"></a>Reporting issues</h1></div></div></div><p>The GitHub repository is <a class="ulink" href="http://github.com/elasticsearch/elasticsearch-perl" target="_top">http://github.com/elasticsearch/elasticsearch-perl</a>
+and any issues can be reported on the issues list at
+<a class="ulink" href="http://github.com/elasticsearch/elasticsearch-perl/issues" target="_top">http://github.com/elasticsearch/elasticsearch-perl/issues</a>.</p></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_contributing"></a>Contributing</h1></div></div></div><p>Open source contributions are welcome. Please read our
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-perl/blob/master/CONTRIBUTING.asciidoc" target="_top">guide to contributing</a>.</p></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_copyright_and_license"></a>Copyright and License</h1></div></div></div><p>This software is Copyright (c) 2013 by Elasticsearch BV.</p><p>This is free software, licensed under:
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-perl/blob/master/LICENSE.txt" target="_top">The Apache License Version 2.0</a>.</p></div></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>
               Want to
               <span class="oomph">learn</span>
               from the creators and advance your data-driven
