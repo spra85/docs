@@ -146,7 +146,8 @@ documentation how to define facets.
 </li><li class="listitem">
 <code class="literal">highlight</code> - Allows highlight definitions to be included. The document being percolated is being highlight for each
 matching query. This allows you to see how each match is highlighting the document being percolated. See highlight
-documentation on how to define highlights.
+documentation on how to define highlights. The <code class="literal">size</code> option is required for highlighting, the performance of highlighting
+ in the percolate api depends of how many matches are being highlighted.
 </li></ul></div><h3><a id="_dedicated_percolator_index"></a>Dedicated percolator index</h3><p>Percolate queries can be added to any index. Instead of adding percolate queries to the index the data resides in,
 these queries can also be added to an dedicated index. The advantage of this is that this dedicated percolator index
 can have its own index settings (For example the number of primary and replicas shards). If you choose to have a dedicated
