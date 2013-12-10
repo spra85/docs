@@ -6,20 +6,29 @@
   <xsl:template name="user.head.content">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
+
     <script>var eucookie = true;</script>
     <link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Reference Guide | Elasticsearch" />
-    <meta property="og:url" content="http://www.elasticsearch.org/guide/" />
-    <meta property="og:site_name" content="" />
-    <link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" />
-    <link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249" type="text/css" media="all" />
-    <script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3" />
-    <script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1" />
-    <script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1" />
-    <script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871" />
+    <link rel="canonical" href="/guide/" />
+    <meta property='og:locale' content='en_US'/>
+    <meta property='og:type' content='article'/>
+    <meta property='og:title' content='Resources | Elasticsearch'/>
+    <meta property='og:url' content='/guide'/>
+    <meta property='og:site_name' content=''/>
+
+    <link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" />
+    <link rel='stylesheet' id='prettify-gc-syntax-highlighter-css'  href='http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='appStyles-css'  href='http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315' type='text/css' media='all' />
+    <script type='text/javascript' src='http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3'></script>
+    <script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1'></script>
+    <script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1'></script>
+    <script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369'></script>
+    <script type='text/javascript' src='http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2'></script>
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" />
+    <link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&#038;csblog=1&#038;cscache=6&#038;csrev=34" />
+    <script src="//fast.wistia.com/static/iframe-api-v1.js"></script>
+
     <script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
@@ -39,6 +48,7 @@
     <xsl:apply-templates select="." mode="class.attribute">
       <xsl:with-param name="class" select="'single single-guide'" />
     </xsl:apply-templates>
+    <img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" />
     <script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-12395217-2']);
@@ -59,55 +69,29 @@
             <ul id="top-nav" class="menu">
               <li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7">
                 <a href="/overview/">Overview</a>
+
                 <ul class="sub-menu">
-                  <li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760">
-                    <a href="/overview/">Elasticsearch</a>
-                  </li>
-                  <li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758">
-                    <a href="/overview/kibana/">Kibana</a>
-                  </li>
-                  <li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756">
-                    <a href="/overview/kibana/installation/">Kibana Installation</a>
-                  </li>
-                  <li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757">
-                    <a href="/overview/kibana/support/">Kibana Support</a>
-                  </li>
-                  <li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759">
-                    <a href="/overview/logstash/">Logstash</a>
-                  </li>
+                    <li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li>
+                    <li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li>
+                    <li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li>
+                    <li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li>
+                    <li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li>
+                    <li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li>
                 </ul>
-              </li>
-              <li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55">
-                <a href="/resources/">Resources</a>
+                </li>
+                <li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a>
                 <ul class="sub-menu">
-                  <li id="menu-item-51762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51762">
-                    <a href="/webinars/">Webinars</a>
-                  </li>
-                  <li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841">
-                    <a href="/guide/">Documentation</a>
-                  </li>
-                  <li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843">
-                    <a href="/videos/">Videos</a>
-                  </li>
-                  <li id="menu-item-4842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4842">
-                    <a href="/tutorials/">Tutorials</a>
-                  </li>
+                    <li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li>
+                    <li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li>
                 </ul>
-              </li>
-              <li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657">
-                <a href="/community/">Community</a>
-              </li>
-              <li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802">
-                <a href="/case-studies/">Case Studies</a>
-              </li>
-              <li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-45">
-                <a href="/blog/">Blog</a>
-              </li>
-              <li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12">
-                <a target="_blank" href="http://elasticsearch.com">The Company</a>
-              </li>
+                </li>
+                <li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li>
+                <li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li>
+                <li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li>
+                <li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li>
             </ul>
-          </nav>
+        </nav>
+
           <h1 id="header-logo">
             <a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a>
           </h1>
@@ -118,7 +102,10 @@
           </div>
           <a class="btn btn-primary" href="/download/">Download</a>
           <hr />
-        </div>
+          <ul id="sub_nav">   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li>
+             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li>
+          </ul>
+          </div>
       </div>
     </header>
     <div class="global_wrapper">
@@ -156,81 +143,8 @@
           <div class="block">
             <img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" />
             <h3>Training</h3>
-            <p>
-              Want to
-              <span class="oomph">learn</span>
-              from the creators and advance your data-driven
-              <span class="oomph">superpowers?</span>
-            </p>
-            <a target="_blank" href="http://elasticsearch.com/services/training/" class="btn-expose drawer_toggle">More</a>
-            <span class="arrow" />
-            <div class="block_content">
-              <h1 style="text-align: center;">We have training all over the world</h1>
-              <p style="text-align: center;">
-                <a class="btn btn-secondary" href="http://elasticsearch.com/services/training/" target="_blank">Visit Training Page</a>
-              </p>
-              <div class="training_list">
-                <table>
-                  <tr>
-                    <td class="title">London, United Kingdom</td>
-                    <td class="date">September 9-10, 2013</td>
-                    <td class="action">
-                      <a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="title">New York, United States</td>
-                    <td class="date">September 9-10, 2013</td>
-                    <td class="action">
-                      <span class="sold_out">Sold Out</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="title">Paris, France</td>
-                    <td class="date">September 16-17, 2013</td>
-                    <td class="action">
-                      <a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="title">San Francisco, United States</td>
-                    <td class="date">September 23-24, 2013</td>
-                    <td class="action">
-                      <a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="title">Cologne, Germany</td>
-                    <td class="date">October 17-18, 2013</td>
-                    <td class="action">
-                      <a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="title">Washington DC, United States</td>
-                    <td class="date">October 21-22, 2013</td>
-                    <td class="action">
-                      <a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="title">San Francisco, United States</td>
-                    <td class="date">October 24-25, 2013</td>
-                    <td class="action">
-                      <a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="title">Zurich, Switzerland</td>
-                    <td class="date">October 29-10, 2013</td>
-                    <td class="action">
-                      <a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <a target="_blank" class="more_events" href="http://elasticsearch.com/services/training/">See more upcoming events!</a>
-            </div>
+               <p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p>
+               <a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a>
           </div>
           <div class="block">
             <img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" />
@@ -239,20 +153,17 @@
               Need help with
               <span class="oomph">architectural advice</span>
             </p>
-            <p>
-              or
-              <span class="oomph">design validation</span>
-              ?
-            </p>
-            <a target="_blank" href="http://elasticsearch.com/support/subscription/" class="btn-expose drawer_toggle">More</a>
-            <span class="arrow" />
+            <p> or <span class="oomph">design validation</span>?</p>
+            <a target="_blank" href="http://elasticsearch.com/support/" class="btn-expose drawer_toggle">More</a>
+
+             <span class="arrow" />
             <div class="block_content">
               <h1 style="text-align: center;">Get development help from our core team!</h1>
               <p>Want more information about our Development Support? Let us know how to get a hold of you and we’ll be in touch soon.</p>
-              <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_1">
-                <a id="gf_1" name="gf_1" class="gform_anchor" />
-                <form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="/guide/#gf_1">
-                  <div class="gform_body">
+               <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_1' >
+                    <a id='gf_1' name='gf_1' class='gform_anchor' ></a>
+                    <form method='post' enctype='multipart/form-data' target='gform_ajax_frame_1' id='gform_1'  action='/resources/#gf_1'>
+                    <div class="gform_body">
                     <ul id="gform_fields_1" class="gform_fields top_label description_below">
                       <li id="field_1_1" class="gfield    icon name           gfield_contains_required">
                         <label class="gfield_label" for="input_1_1">
@@ -373,13 +284,9 @@ function gformInitSpinner_1(){jQuery('#gform_1').submit(function(){if(jQuery('#g
             <img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/prod_icon.png" alt="" />
             <h3>Production Support</h3>
             <p>Have Elasticsearch live in production</p>
-            <p>
-              and looking for
-              <span class="oomph">SLA-based support</span>
-              ?
-            </p>
-            <a target="_blank" href="http://elasticsearch.com/support/subscription/" class="btn-expose drawer_toggle">More</a>
-            <span class="arrow" />
+            <p>and looking for <span class="oomph">SLA-based support</span>?</p>
+            <a target="_blank" href="http://elasticsearch.com/support/" class="btn-expose drawer_toggle">More</a>
+             <span class="arrow" />
             <div class="block_content">
               <h1 style="text-align: center;">In production? We’ve got your back, 24/7</h1>
               <p>We’d love to talk to you about our Production Support. Let us know how to get a hold of you and we’ll be in touch soon.</p>
@@ -403,10 +310,10 @@ function gformInitSpinner_1(){jQuery('#gform_1').submit(function(){if(jQuery('#g
                   <p>Expert-level solutions</p>
                 </li>
               </ul>
-              <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_2">
-                <a id="gf_2" name="gf_2" class="gform_anchor" />
-                <form method="post" enctype="multipart/form-data" target="gform_ajax_frame_2" id="gform_2" action="/guide/#gf_2">
-                  <div class="gform_body">
+              <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_2' >
+                <a id='gf_2' name='gf_2' class='gform_anchor' ></a>
+                <form method='post' enctype='multipart/form-data' target='gform_ajax_frame_2' id='gform_2'  action='/resources/#gf_2'>
+                 <div class="gform_body">
                     <ul id="gform_fields_2" class="gform_fields top_label description_below">
                       <li id="field_2_1" class="gfield    icon name           gfield_contains_required">
                         <label class="gfield_label" for="input_2_1">
@@ -528,10 +435,11 @@ function gformInitSpinner_2(){jQuery('#gform_2').submit(function(){if(jQuery('#g
       </div>
       <div id="mobile_learn_more">
         <div class="container">
-          <div class="gf_browser_chrome gform_wrapper more_info_wrapper" id="gform_wrapper_3">
-            <a id="gf_3" name="gf_3" class="gform_anchor" />
-            <form method="post" enctype="multipart/form-data" target="gform_ajax_frame_3" id="gform_3" class="more_info" action="/guide/#gf_3">
-              <div class="gform_body">
+           <div class='gf_browser_gecko gform_wrapper more_info_wrapper' id='gform_wrapper_3' >
+                <a id='gf_3' name='gf_3' class='gform_anchor' ></a>
+                <form method='post' enctype='multipart/form-data' target='gform_ajax_frame_3' id='gform_3' class='more_info' action='/resources/#gf_3'>
+
+                <div class="gform_body">
                 <ul id="gform_fields_3" class="gform_fields top_label description_below">
                   <li id="field_3_2" class="gfield               gfield_contains_required">
                     <label class="gfield_label" for="input_3_2">
@@ -577,10 +485,9 @@ function gformInitSpinner_3(){jQuery('#gform_3').submit(function(){if(jQuery('#g
       <div id="footer_container" class="full_wrapper">
         <div class="container">
           <nav role="navigation">
-            <ul id="footer_nav" class="menu">
-              <li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36">
-                <a target="_blank" href="http://elasticsearch.com">The Company</a>
-              </li>
+           <ul id="footer_nav" class="menu">
+                <li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li>
+                <li id="menu-item-74989" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-74989"><a href="/resources/">Resources</a></li>
               <li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106">
                 <a href="/terms-of-use/">Terms</a>
               </li>
@@ -605,10 +512,10 @@ function gformInitSpinner_3(){jQuery('#gform_3').submit(function(){if(jQuery('#g
           </div>
           <div id="footer_form">
             <label class="form_label">Sign up for updates!</label>
-            <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4">
-              <a id="gf_4" name="gf_4" class="gform_anchor" />
-              <form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/guide/#gf_4">
-                <div class="gform_body">
+               <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_4' >
+                    <a id='gf_4' name='gf_4' class='gform_anchor' ></a>
+                    <form method='post' enctype='multipart/form-data' target='gform_ajax_frame_4' id='gform_4'  action='/resources/#gf_4'>
+                  <div class="gform_body">
                   <ul id="gform_fields_4" class="gform_fields top_label description_below">
                     <li id="field_4_6" class="gfield               gfield_contains_required">
                       <label class="gfield_label" for="input_4_6">
@@ -652,7 +559,8 @@ function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#g
           </div>
           <div class="legal">
             <p>© All Rights Reserved - Elasticsearch</p>
-            <p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p>
+             <p>Elasticsearch is a trademark of Elasticsearch BV, registered in the U.S. and in other countries | <a href="/trademarks/">Trademarks</a></p>
+             <p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p>
           </div>
         </div>
       </div>
@@ -674,34 +582,7 @@ function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#g
     <script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script>
     <script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2" />
     <script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2" />
-    <script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201337" />
-    <script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/main.min.js?ver=1377890109" />
-    <script type="text/javascript">
-      <xsl:text disable-output-escaping="yes">//&lt;![CDATA[<![CDATA[
-if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
-    document.write(unescape("%3Cscript src='" + document.location.protocol +
-    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
-}
-]]>//]]&gt;</xsl:text>
-    </script>
-    <script>
-      <xsl:text disable-output-escaping="yes">//&lt;![CDATA[<![CDATA[
-if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
-    Munchkin.init('813-MAM-392');
-
-  // crazyegg
-    setTimeout(function(){var a=document.createElement("script");
-  var b=document.getElementsByTagName("script")[0];
-  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
-  a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
-}
-]]>//]]&gt;</xsl:text>
-    </script>
-    <script type="text/javascript">
-      <xsl:text disable-output-escaping="yes">//&lt;![CDATA[<![CDATA[
-if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new Date().getTime()]);var e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"js-agent.newrelic.com/nr-100.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","beacon-5.newrelic.com","166183470f","1738914","b1ZSNkdQWUFYAUJbDlYccQFBWFhcFgNEUQlRRVVPUkReVlw=",0,835,new Date().getTime(),"","","","",""]);
-]]>//]]&gt;</xsl:text>
-    </script>
-  </xsl:template>
+    <script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/main.min.js?ver=1386267463'></script>
+   </xsl:template>
 
 </xsl:stylesheet>

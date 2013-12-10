@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -9,28 +8,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
     <title>Reference Guide | Elasticsearch</title>
     <script>var eucookie = true;</script>
+
     <link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico">
 
-    <link rel="canonical" href="http://www.elasticsearch.org/guide/" />
-    <link rel="next" href="http://www.elasticsearch.org/guide/page/2/" />
-    <meta property='og:locale' content='en_US'/>
-    <meta property='og:type' content='website'/>
-    <meta property='og:title' content='Reference Guide | Elasticsearch'/>
-    <meta property='og:url' content='http://www.elasticsearch.org/guide/'/>
-    <meta property='og:site_name' content=''/>
 
-    <link rel='stylesheet' id='prettify-gc-syntax-highlighter-css'  href='http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='appStyles-css' href='http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1377893249' type='text/css' media='all' />
-    <script type='text/javascript' src='http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3'></script>
-    <script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1'></script>
-    <script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1'></script>
-    <script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1377889871'></script>
-	<link rel='stylesheet' href='http://staging.elasticsearch.org/content/themes/elasticsearch-org/style.css' type='text/css' media='all' />
+<link rel="canonical" href="/guide/" />
+<meta property='og:locale' content='en_US'/>
+<meta property='og:type' content='article'/>
+<meta property='og:title' content='Resources | Elasticsearch'/>
+<meta property='og:url' content='/guide'/>
+<meta property='og:site_name' content=''/>
+
+<link rel="alternate" type="application/rss+xml" title=" &raquo; Elasticsearch Resources Comments Feed" href="/resources/feed/" />
+<link rel='stylesheet' id='prettify-gc-syntax-highlighter-css'  href='http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2' type='text/css' media='all' />
+<link rel='stylesheet' id='appStyles-css'  href='http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3'></script>
+<script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1'></script>
+<script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1'></script>
+<script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369'></script>
+<script type='text/javascript' src='http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" />
+        <link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&#038;csblog=1&#038;cscache=6&#038;csrev=34" />
+            <link rel='stylesheet' href='http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css' type='text/css' media='all' />
+        <script src="//fast.wistia.com/static/iframe-api-v1.js"></script>
 </head>
-<body data-cookie="us" class="archive post-type-archive post-type-archive-guide">
+<body data-cookie="us" class="single single-guide">
+<img src="http://ad.retargeter.com/seg?add=1235131&t=2" width="1" height="1" style="position:absolute; visibility:hidden;" />
+
    <script type="text/javascript">
     if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
         var _gaq = _gaq || [];
@@ -43,7 +50,7 @@
         })();
     }
 </script>
-	<!--[if lt IE 8]>
+    <!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
     <header>
@@ -51,28 +58,26 @@
             <div id="header-inner">
                 <nav role="navigation" id="main-nav-container">
                     <ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a>
-                    <ul class="sub-menu">
-                    	<li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li>
-                    	<li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li>
-                    	<li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li>
-                    	<li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li>
-                    	<li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li>
-                    </ul>
-                    </li>
-                    <li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a>
-                    <ul class="sub-menu">
-                    	<li id="menu-item-51762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51762"><a href="/webinars/">Webinars</a></li>
-                    	<li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Documentation</a></li>
-                    	<li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li>
-                    	<li id="menu-item-4842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4842"><a href="/tutorials/">Tutorials</a></li>
-                    </ul>
-                    </li>
-                    <li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li>
-                    <li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li>
-                    <li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-45"><a href="/blog/">Blog</a></li>
-                    <li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">The Company</a></li>
-                    </ul>
-                </nav>
+<ul class="sub-menu">
+    <li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li>
+    <li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li>
+    <li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li>
+    <li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li>
+    <li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li>
+    <li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li>
+</ul>
+</li>
+<li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a>
+<ul class="sub-menu">
+    <li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li>
+    <li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li>
+</ul>
+</li>
+<li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li>
+<li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li>
+<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li>
+<li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li>
+</ul>                </nav>
                 <h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1>
                 <div class="slide-trigger navigation" id="nav-trigger">
                     <span class="bar"></span>
@@ -81,10 +86,13 @@
                 </div>
                 <a class="btn btn-primary" href="/download/">Download</a>
                 <hr />
-            </div>
+                <ul id="sub_nav">   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li>
+    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li>
+</ul>            </div>
         </div>
     </header>
     <div class="global_wrapper">
+
 <div id="index" class="page_content">
 	<div class="container">
 		<section id="search_container" class="active">
@@ -112,26 +120,20 @@
                             <div class="block">
                     <img class="creeper" src="/content/uploads/2013/03/training_icon.png" alt="" />
                     <h3>Training</h3>
-                     <p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p>                    <a target="_blank" href="http://elasticsearch.com/services/training/" class="btn-expose drawer_toggle">More</a>
-                    <span class="arrow"></span>
-                    <div class="block_content">
-                        <h1 style="text-align: center;">We have training all over the world</h1>
-<p style="text-align: center;"><a class="btn btn-secondary" href="http://elasticsearch.com/services/training/" target="_blank">Visit Training Page</a></p>
-<div class='training_list'><table><tr><td class="title">London, United Kingdom</td><td class="date">September 9-10, 2013</td><td class="action"><a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a></td></tr><tr><td class="title">New York, United States</td><td class="date">September 9-10, 2013</td><td class="action"><span class="sold_out">Sold Out</span></td></tr><tr><td class="title">Paris, France</td><td class="date">September 16-17, 2013</td><td class="action"><a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a></td></tr><tr><td class="title">San Francisco, United States</td><td class="date">September 23-24, 2013</td><td class="action"><a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a></td></tr><tr><td class="title">Cologne, Germany</td><td class="date">October 17-18, 2013</td><td class="action"><a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a></td></tr><tr><td class="title">Washington DC, United States</td><td class="date">October 21-22, 2013</td><td class="action"><a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a></td></tr><tr><td class="title">San Francisco, United States</td><td class="date">October 24-25, 2013</td><td class="action"><a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a></td></tr><tr><td class="title">Zurich, Switzerland</td><td class="date">October 29-10, 2013</td><td class="action"><a class="btn-small btn-primary" target="_blank" href="http://elasticsearch.com/services/training/">Register</a></td></tr></table></div><a target="_blank" class="more_events" href="http://elasticsearch.com/services/training/">See more upcoming events!</a>
-
-                    </div>
+                     <p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p>
+                     <a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a>
                 </div>
                             <div class="block">
                     <img class="creeper" src="/content/uploads/2013/03/dev_icon.png" alt="" />
                     <h3>Dev Support</h3>
                     <p>Need help with <span class="oomph">architectural advice</span></p>
-<p> or <span class="oomph">design validation</span>?</p>                    <a target="_blank" href="http://elasticsearch.com/support/subscription/" class="btn-expose drawer_toggle">More</a>
+<p> or <span class="oomph">design validation</span>?</p>                    <a target="_blank" href="http://elasticsearch.com/support/" class="btn-expose drawer_toggle">More</a>
                     <span class="arrow"></span>
                     <div class="block_content">
                         <h1 style="text-align: center;">Get development help from our core team!</h1>
 <p>Want more information about our Development Support? Let us know how to get a hold of you and we&#8217;ll be in touch soon.</p>
 
-                <div class='gf_browser_chrome gform_wrapper' id='gform_wrapper_1' ><a id='gf_1' name='gf_1' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_1' id='gform_1'  action='/guide/#gf_1'>
+                <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_1' ><a id='gf_1' name='gf_1' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_1' id='gform_1'  action='/resources/#gf_1'>
                         <div class='gform_body'>
                             <ul id='gform_fields_1' class='gform_fields top_label description_below'><li id='field_1_1' class='gfield    icon name           gfield_contains_required' ><label class='gfield_label' for='input_1_1'>First Name<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_1' id='input_1_1' type='text' value='' class='medium'  tabindex='1'   /></div></li><li id='field_1_7' class='gfield    icon name           gfield_contains_required' ><label class='gfield_label' for='input_1_7'>Last Name<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_7' id='input_1_7' type='text' value='' class='medium'  tabindex='2'   /></div></li><li id='field_1_2' class='gfield    icon company' ><label class='gfield_label' for='input_1_2'>Company</label><div class='ginput_container'><input name='input_2' id='input_1_2' type='text' value='' class='medium'  tabindex='3'   /></div></li><li id='field_1_3' class='gfield    icon email           gfield_contains_required' ><label class='gfield_label' for='input_1_3'>Email<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_3' id='input_1_3' type='email' value='' class='medium'  tabindex='4'   /></div></li><li id='field_1_4' class='gfield    icon job' ><label class='gfield_label' for='input_1_4'>Job Title</label><div class='ginput_container'><input name='input_4' id='input_1_4' type='text' value='' class='medium'  tabindex='5'   /></div></li><li id='field_1_5' class='gfield    icon phone' ><label class='gfield_label' for='input_1_5'>Phone</label><div class='ginput_container'><input name='input_5' id='input_1_5' type='text' value='' class='medium'  tabindex='6'   /></div></li><li id='field_1_6' class='gfield    full' ><label class='gfield_label'>I&#039;m inquiring about...</label><div class='ginput_container'><ul class='gfield_checkbox' id='input_1_6'><li class='gchoice_6_1'><input name='input_6.1' type='checkbox'  value='Interest_Dev_Support__c' checked='checked' id='choice_6_1' tabindex='7'  /><label for='choice_6_1'>Dev support</label></li><li class='gchoice_6_2'><input name='input_6.2' type='checkbox'  value='Interest_Training__c'  id='choice_6_2' tabindex='8'  /><label for='choice_6_2'>Training</label></li><li class='gchoice_6_3'><input name='input_6.3' type='checkbox'  value='Interest_Product_Support__c'  id='choice_6_3' tabindex='9'  /><label for='choice_6_3'>Production support</label></li><li class='gchoice_6_4'><input name='input_6.4' type='checkbox'  value='Interest_Newsletter_Updates__c' checked='checked' id='choice_6_4' tabindex='10'  /><label for='choice_6_4'>Newsletter Updates</label></li></ul></div></li><li id='field_1_10' class='gfield    icon comments full' ><label class='gfield_label' for='input_1_10'>Comments</label><div class='ginput_container'><textarea name='input_10' id='input_1_10' class='textarea medium' tabindex='11'   rows='10' cols='50'></textarea></div></li><li id='field_1_8' class='gfield     gform_hidden' ><input name='input_8' id='input_1_8' type='hidden' class='gform_hidden' value='813-MAM-392' /></li><li id='field_1_9' class='gfield     gform_hidden' ><input name='input_9' id='input_1_9' type='hidden' class='gform_hidden' value='WEB.org' /></li><li id='field_1_11' class='gfield     gform_hidden' ><input name='input_11' id='input_1_11' type='hidden' class='gform_hidden' value='WEB.org - Home - Dev Support' /></li><li id='field_1_12' class='gfield     gform_hidden' ><input name='input_12' id='input_1_12' type='hidden' class='gform_hidden' value='-1' /></li><li id='field_1_13' class='gfield     gform_hidden' ><input name='input_13' id='input_1_13' type='hidden' class='gform_hidden' value='55' /></li><li id='field_1_14' class='gfield     gform_hidden' ><input name='input_14' id='input_1_14' type='hidden' class='gform_hidden' value='1005' /></li>
                             </ul></div>
@@ -156,7 +158,7 @@
                     <img class="creeper" src="/content/uploads/2013/03/prod_icon.png" alt="" />
                     <h3>Production Support</h3>
                     <p>Have Elasticsearch live in production</p>
-<p>and looking for <span class="oomph">SLA-based support</span>?</p>                    <a target="_blank" href="http://elasticsearch.com/support/subscription/" class="btn-expose drawer_toggle">More</a>
+<p>and looking for <span class="oomph">SLA-based support</span>?</p>                    <a target="_blank" href="http://elasticsearch.com/support/" class="btn-expose drawer_toggle">More</a>
                     <span class="arrow"></span>
                     <div class="block_content">
                         <h1 style="text-align: center;">In production? We’ve got your back, 24/7</h1>
@@ -173,7 +175,7 @@
 <p>Expert-level solutions</li>
 </ul>
 
-                <div class='gf_browser_chrome gform_wrapper' id='gform_wrapper_2' ><a id='gf_2' name='gf_2' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_2' id='gform_2'  action='/guide/#gf_2'>
+                <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_2' ><a id='gf_2' name='gf_2' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_2' id='gform_2'  action='/resources/#gf_2'>
                         <div class='gform_body'>
                             <ul id='gform_fields_2' class='gform_fields top_label description_below'><li id='field_2_1' class='gfield    icon name           gfield_contains_required' ><label class='gfield_label' for='input_2_1'>First Name<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_1' id='input_2_1' type='text' value='' class='medium'  tabindex='1'   /></div></li><li id='field_2_7' class='gfield    icon name           gfield_contains_required' ><label class='gfield_label' for='input_2_7'>Last Name<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_7' id='input_2_7' type='text' value='' class='medium'  tabindex='2'   /></div></li><li id='field_2_2' class='gfield    icon company' ><label class='gfield_label' for='input_2_2'>Company</label><div class='ginput_container'><input name='input_2' id='input_2_2' type='text' value='' class='medium'  tabindex='3'   /></div></li><li id='field_2_3' class='gfield    icon email           gfield_contains_required' ><label class='gfield_label' for='input_2_3'>Email<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_3' id='input_2_3' type='email' value='' class='medium'  tabindex='4'   /></div></li><li id='field_2_4' class='gfield    icon job' ><label class='gfield_label' for='input_2_4'>Job Title</label><div class='ginput_container'><input name='input_4' id='input_2_4' type='text' value='' class='medium'  tabindex='5'   /></div></li><li id='field_2_5' class='gfield    icon phone' ><label class='gfield_label' for='input_2_5'>Phone</label><div class='ginput_container'><input name='input_5' id='input_2_5' type='text' value='' class='medium'  tabindex='6'   /></div></li><li id='field_2_6' class='gfield    full' ><label class='gfield_label'>I&#039;m inquiring about...</label><div class='ginput_container'><ul class='gfield_checkbox' id='input_2_6'><li class='gchoice_6_1'><input name='input_6.1' type='checkbox'  value='Interest_Dev_Support__c'  id='choice_6_1' tabindex='7'  /><label for='choice_6_1'>Dev support</label></li><li class='gchoice_6_2'><input name='input_6.2' type='checkbox'  value='Interest_Training__c'  id='choice_6_2' tabindex='8'  /><label for='choice_6_2'>Training</label></li><li class='gchoice_6_3'><input name='input_6.3' type='checkbox'  value='Interest_Product_Support__c' checked='checked' id='choice_6_3' tabindex='9'  /><label for='choice_6_3'>Production support</label></li><li class='gchoice_6_4'><input name='input_6.4' type='checkbox'  value='Interest_Newsletter_Updates__c' checked='checked' id='choice_6_4' tabindex='10'  /><label for='choice_6_4'>Newsletter Updates</label></li></ul></div></li><li id='field_2_10' class='gfield    icon comments full' ><label class='gfield_label' for='input_2_10'>Comments</label><div class='ginput_container'><textarea name='input_10' id='input_2_10' class='textarea medium' tabindex='11'   rows='10' cols='50'></textarea></div></li><li id='field_2_8' class='gfield     gform_hidden' ><input name='input_8' id='input_2_8' type='hidden' class='gform_hidden' value='813-MAM-392' /></li><li id='field_2_9' class='gfield     gform_hidden' ><input name='input_9' id='input_2_9' type='hidden' class='gform_hidden' value='WEB.org' /></li><li id='field_2_11' class='gfield     gform_hidden' ><input name='input_11' id='input_2_11' type='hidden' class='gform_hidden' value='WEB.org - Home - Production Support' /></li>
                             </ul></div>
@@ -208,7 +210,7 @@
                 <div id="mobile_learn_more">
             <div class="container">
 
-                <div class='gf_browser_chrome gform_wrapper more_info_wrapper' id='gform_wrapper_3' ><a id='gf_3' name='gf_3' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_3' id='gform_3' class='more_info' action='/guide/#gf_3'>
+                <div class='gf_browser_gecko gform_wrapper more_info_wrapper' id='gform_wrapper_3' ><a id='gf_3' name='gf_3' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_3' id='gform_3' class='more_info' action='/resources/#gf_3'>
                         <div class='gform_body'>
                             <ul id='gform_fields_3' class='gform_fields top_label description_below'><li id='field_3_2' class='gfield               gfield_contains_required' ><label class='gfield_label' for='input_3_2'>Need more info? We&#039;ll email some more your way!<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_2' id='input_3_2' type='email' value='' class='medium'  tabindex='1'   /></div></li><li id='field_3_3' class='gfield     gform_hidden' ><input name='input_3' id='input_3_3' type='hidden' class='gform_hidden' value='813-MAM-392' /></li><li id='field_3_4' class='gfield     gform_hidden' ><input name='input_4' id='input_3_4' type='hidden' class='gform_hidden' value='WEB.org' /></li><li id='field_3_5' class='gfield     gform_hidden' ><input name='input_5' id='input_3_5' type='hidden' class='gform_hidden' value='WEB.org - Home - Mobile' /></li>
                             </ul></div>
@@ -231,11 +233,12 @@
                 <div id="footer_container" class="full_wrapper">
             <div class="container">
                 <nav role="navigation">
-                    <ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">The Company</a></li>
+                    <ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li>
+<li id="menu-item-74989" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-74989"><a href="/resources/">Resources</a></li>
 <li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li>
 <li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li>
 <li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li>
-<li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-39"><a href="/blog/">Blog</a></li>
+<li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li>
 </ul>                </nav>
                 <div id="social">
                     <a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a>
@@ -244,7 +247,7 @@
                                     <div id="footer_form">
                         <label class="form_label">Sign up for updates!</label>
 
-                <div class='gf_browser_chrome gform_wrapper' id='gform_wrapper_4' ><a id='gf_4' name='gf_4' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_4' id='gform_4'  action='/guide/#gf_4'>
+                <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_4' ><a id='gf_4' name='gf_4' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_4' id='gform_4'  action='/resources/#gf_4'>
                         <div class='gform_body'>
                             <ul id='gform_fields_4' class='gform_fields top_label description_below'><li id='field_4_6' class='gfield               gfield_contains_required' ><label class='gfield_label' for='input_4_6'>enter you email<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_6' id='input_4_6' type='email' value='' class='medium'  tabindex='50'   /></div></li><li id='field_4_2' class='gfield     gform_hidden' ><input name='input_2' id='input_4_2' type='hidden' class='gform_hidden' value='813-MAM-392' /></li><li id='field_4_3' class='gfield     gform_hidden' ><input name='input_3' id='input_4_3' type='hidden' class='gform_hidden' value='WEB.org' /></li><li id='field_4_4' class='gfield     gform_hidden' ><input name='input_4' id='input_4_4' type='hidden' class='gform_hidden' value='WEB.org - Footer - Updates' /></li>
                             </ul></div>
@@ -265,6 +268,7 @@
                     </div>
                                 <div class="legal">
                     <p>&copy;  All Rights Reserved - Elasticsearch </p>
+                    <p>Elasticsearch is a trademark of Elasticsearch BV, registered in the U.S. and in other countries | <a href="/trademarks/">Trademarks</a></p>
                     <p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p>
                 </div>
             </div>
@@ -282,25 +286,6 @@
     </section>
 <script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type='text/javascript' src='http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2'></script>
 <script type='text/javascript' src='http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2'></script>
-<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201337'></script>
-<script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/main.min.js?ver=1377890109'></script>
-<script type="text/javascript">
-if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
-    document.write(unescape("%3Cscript src='" + document.location.protocol +
-    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
-}
-</script>
-<script>
-if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
-    Munchkin.init('813-MAM-392');
-
-	// crazyegg
-    setTimeout(function(){var a=document.createElement("script");
-	var b=document.getElementsByTagName("script")[0];
-	a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
-	a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
-}
-</script>
-<script type="text/javascript">if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new Date().getTime()]);var e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"js-agent.newrelic.com/nr-100.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","beacon-5.newrelic.com","166183470f","1738914","b1ZSNkdQWUFYAUJbDlYccQFBWFhcFgNEUQlRRVVPUkReVlw=",0,835,new Date().getTime(),"","","","",""]);</script>
+<script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/main.min.js?ver=1386267463'></script>
 </body>
 </html>
