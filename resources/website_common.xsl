@@ -106,5 +106,41 @@
     </span>
   </xsl:template>
 
+    <xsl:template name="graphical.admonition">
+      <xsl:variable name="admon.type">
+        <xsl:choose>
+          <xsl:when test="local-name(.)='note'">Note</xsl:when>
+          <xsl:when test="local-name(.)='warning'">Warning</xsl:when>
+          <xsl:when test="local-name(.)='caution'">Caution</xsl:when>
+          <xsl:when test="local-name(.)='tip'">Tip</xsl:when>
+          <xsl:when test="local-name(.)='important'">Important</xsl:when>
+          <xsl:otherwise>Note</xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+
+      <xsl:variable name="alt">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key" select="$admon.type"/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <div class="{local-name(.)} admon">
+        <xsl:call-template name="id.attribute"/>
+
+        <div class="icon">
+            <img alt="{$alt}">
+                <xsl:attribute name="src">
+                  <xsl:call-template name="admon.graphic"/>
+                </xsl:attribute>
+            </img>
+        </div>
+        <div class="admon_content">
+          <xsl:call-template name="anchor"/>
+          <xsl:apply-templates/>
+        </div>
+      </div>
+    </xsl:template>
+
+
 </xsl:stylesheet>
 

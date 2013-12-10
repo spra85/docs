@@ -33,13 +33,13 @@ sub build_chunked {
     my $version = $opts{version} || 'test build';
     my $multi   = $opts{multi} || 0;
     my $lenient = $opts{lenient} || '';
-    my $output  = run(
+
+    my $output = run(
         'a2x', '-v', '--icons',
         '-d'              => 'book',
         '-f'              => 'chunked',
         '--xsl-file'      => 'resources/website_chunked.xsl',
         '--asciidoc-opts' => '-fresources/es-asciidoc.conf',
-        '-a'              => 'icons=resources/asciidoc-8.6.8/images/icons/',
         '--xsltproc-opts' => "--stringparam chunk.section.depth $chunk",
         '--xsltproc-opts' => "--stringparam local.book.version '$version'",
         '--xsltproc-opts' =>
@@ -87,7 +87,6 @@ sub build_single {
         '--xsl-file'      => 'resources/website.xsl',
         '-d'              => $type,
         '--asciidoc-opts' => '-fresources/es-asciidoc.conf',
-        '-a'              => 'icons=resources/asciidoc-8.6.8/images/icons/',
         '--xsltproc-opts',
         "--stringparam generate.toc '$toc'",
         '--destination-dir=' . $dest,
