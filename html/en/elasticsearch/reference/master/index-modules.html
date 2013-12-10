@@ -53,25 +53,6 @@ otherwise it is written in non-compound format.  <span class="added">
     in compound format or non-compound format? Defaults to <code class="literal">true</code>.
     This is a dynamic setting.
 </dd><dt><span class="term">
-<code class="literal">index.term_index_interval</code>
-</span></dt><dd>
-        Set the interval between indexed terms.
-        Large values cause less memory to be used by a reader / searcher, but
-        slow random-access to terms. Small values cause more memory to be used
-        by a reader / searcher, and speed random-access to terms. Defaults to
-        <code class="literal">128</code>.
-</dd><dt><span class="term">
-<code class="literal">index.term_index_divisor</code>
-</span></dt><dd>
-        Subsamples which indexed terms are loaded
-        into RAM. This has the same effect as <code class="literal">index.term_index_interval</code> except
-        that setting must be done at indexing time while this setting can be set
-        per reader / searcher. When set to N, then one in every
-        N*termIndexInterval terms in the index is loaded into memory. By setting
-        this to a value &gt; 1 you can reduce memory usage, at the expense of
-        higher latency when loading a TermInfo. The default value is 1. Set this
-        to -1 to skip loading the terms index entirely.
-</dd><dt><span class="term">
 <code class="literal">index.refresh_interval</code>
 </span></dt><dd>
         A time setting controlling how often the
