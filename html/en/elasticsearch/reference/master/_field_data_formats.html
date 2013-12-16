@@ -27,19 +27,30 @@
            
           <a href="index-modules-codec.html">Codec module
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_field_data_formats"></a>Field data formats</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="index-modules-codec.html">Codec module</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>Depending on the field type, there might be several field data types
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_field_data_formats"></a>Field data formats</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="index-modules-codec.html">Codec module</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>The field data format controls how field data should be stored.</p><p>Depending on the field type, there might be several field data types
 available. In particular, string and numeric types support the <code class="literal">doc_values</code>
 format which allows for computing the field data data-structures at indexing
 time and storing them on disk. Although it will make the index larger and may
 be slightly slower, this implementation will be more near-realtime-friendly
-and will require much less memory from the JVM than other implementations.</p><pre class="programlisting prettyprint lang-js">{
+and will require much less memory from the JVM than other implementations.</p><p>Here is an example of how to configure the <code class="literal">tag</code> field to use the <code class="literal">fst</code> field
+data format.</p><pre class="programlisting prettyprint lang-js">{
     tag: {
         type:      "string",
         fielddata: {
             format: "fst"
         }
     }
-}</pre><h4><a id="_string_field_data_types"></a>String field data types</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+}</pre><p>It is possible to change the field data format (and the field data settings
+in general) on a live index by using the update mapping API. When doing so,
+field data which had already been loaded for existing segments will remain
+alive while new segments will use the new field data configuration. Thanks to
+the background merging process, all segments will eventually use the new
+field data format.</p><h4><a id="_disallowing_field_data_loading"></a>Disallowing field data loading</h4><p>Field data can take a lot of RAM so it makes sense to disable field data
+loading on the fields that don’t need field data, for example those that are
+used for full-text search only. In order to disable field data loading, just
+change the field data type to <code class="literal">disabled</code>. Request that will try to load field
+data on any field which is configured with this format will then return an
+error.</p><p>The <code class="literal">disabled</code> format is supported by all field types.</p><h4><a id="_string_field_data_types"></a>String field data types</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">paged_bytes</code> (default)
 </span></dt><dd>
     Stores unique terms sequentially in a large buffer and maps documents to
