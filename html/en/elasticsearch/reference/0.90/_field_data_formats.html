@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Codec module</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="index-modules.html" title="Index Modules" /><link rel="prev" href="_field_data_formats.html" title="Field data formats" /><link rel="next" href="index-modules-similarity.html" title="Similarity module" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="canonical" href="/guide/" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Field data formats</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="index-modules-fielddata.html" title="Field data" /><link rel="prev" href="index-modules-fielddata.html" title="Field data" /><link rel="next" href="index-modules-codec.html" title="Codec module" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="canonical" href="/guide/" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -19,137 +19,133 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference<xsl-text> [</xsl-text>0.90<xsl-text>] </xsl-text></a></span> » <span class="breadcrumb-link"><a href="index-modules.html">Index Modules</a></span> » <span class="breadcrumb-node">Codec module</span></div><div class="navheader"><span class="prev"><a href="_field_data_formats.html">
+      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference<xsl-text> [</xsl-text>0.90<xsl-text>] </xsl-text></a></span> » <span class="breadcrumb-link"><a href="index-modules.html">Index Modules</a></span> » <span class="breadcrumb-link"><a href="index-modules-fielddata.html">Field data</a></span> » <span class="breadcrumb-node">Field data formats</span></div><div class="navheader"><span class="prev"><a href="index-modules-fielddata.html">
               « 
-              Field data formats</a>
+              Field data</a>
            
         </span><span class="next">
            
-          <a href="index-modules-similarity.html">Similarity module
+          <a href="index-modules-codec.html">Codec module
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="index-modules-codec"></a>Codec module</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="index-modules-codec.html">Codec module</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>Codecs define how documents are written to disk and read from disk. The
-postings format is the part of the codec that responsible for reading
-and writing the term dictionary, postings lists and positions, payloads
-and offsets stored in the postings list.</p><p>Configuring custom postings formats is an expert feature and most likely
-using the builtin postings formats will suite your needs as is described
-in the <a class="link" href="mapping-core-types.html" title="Core Types">mapping section</a>.</p><div class="sidebar"><div class="titlepage"></div><p>Only the default codec and postings format are supported: other formats may
-break backward compatibility between minor versions of Elasticsearch,
-requiring data to be reindexed.</p></div><p>Codecs are available in Elasticsearch from version <code class="literal">0.90.0.beta1</code>.</p><h3><a id="custom-postings"></a>Configuring a custom postings format</h3><p>Custom postings format can be defined in the index settings in the
-<code class="literal">codec</code> part. The <code class="literal">codec</code> part can be configured when creating an index
-or updating index settings. An example on how to define your custom
-postings format:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'http://localhost:9200/twitter/' -d '{
-    "settings" : {
-        "index" : {
-            "codec" : {
-          "postings_format" : {
-             "my_format" : {
-                "type" : "pulsing",
-                "freq_cut_off" : "5"
-             }
-          }
-       }
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_field_data_formats"></a>Field data formats</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="index-modules-codec.html">Codec module</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>The field data format controls how field data should be stored.</p><p>Depending on the field type, there might be several field data types
+available.</p><p>Here is an example of how to configure the <code class="literal">tag</code> field to use the <code class="literal">fst</code> field
+data format.</p><pre class="programlisting prettyprint lang-js">{
+    tag: {
+        type:      "string",
+        fielddata: {
+            format: "fst"
         }
     }
-}'</pre><p>Then we defining your mapping your can use the <code class="literal">my_format</code> name in the
-<code class="literal">postings_format</code> option as the example below illustrates:</p><pre class="programlisting prettyprint lang-js">{
-  "person" : {
-     "properties" : {
-         "second_person_id" : {"type" : "string", "postings_format" : "my_format"}
-     }
-  }
-}</pre><h3><a id="_available_postings_formats"></a>Available postings formats</h3><h4><a id="direct-postings"></a>Direct postings format</h4><p>Wraps the default postings format for on-disk storage, but then at read
-time loads and stores all terms &amp; postings directly in RAM. This
-postings format makes no effort to compress the terms and posting list
-and therefore is memory intensive, but because of this it gives a
-substantial increase in search performance. Because this holds all term
-bytes as a single byte[], you cannot have more than 2.1GB worth of terms
-in a single segment.</p><p>This postings format offers the following parameters:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
-<code class="literal">min_skip_count</code>
+}</pre><p>It is possible to change the field data format (and the field data settings
+in general) on a live index by using the update mapping API. When doing so,
+field data which had already been loaded for existing segments will remain
+alive while new segments will use the new field data configuration. Thanks to
+the background merging process, all segments will eventually use the new
+field data format.</p><h4><a id="_disallowing_field_data_loading"></a>Disallowing field data loading</h4><p>Field data can take a lot of RAM so it makes sense to disable field data
+loading on the fields that don’t need field data, for example those that are
+used for full-text search only. In order to disable field data loading, just
+change the field data type to <code class="literal">disabled</code>. Request that will try to load field
+data on any field which is configured with this format will then return an
+error.</p><p>The <code class="literal">disabled</code> format is supported by all field types.</p><h4><a id="_string_field_data_types"></a>String field data types</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">paged_bytes</code> (default)
 </span></dt><dd>
-    The minimum number terms with a shared prefix to
-    allow a skip pointer to be written. The default is <span class="strong"><strong>8</strong></span>.
+    Stores unique terms sequentially in a large buffer and maps documents to
+    the indices of the terms they contain in this large buffer.
 </dd><dt><span class="term">
-<code class="literal">low_freq_cutoff</code>
+<code class="literal">fst</code>
 </span></dt><dd>
-    Terms with a lower document frequency use a
-    single array object representation for postings and positions. The
-    default is <span class="strong"><strong>32</strong></span>.
-</dd></dl></div><p>Type name: <code class="literal">direct</code></p><h4><a id="memory-postings"></a>Memory postings format</h4><p>A postings format that stores terms &amp; postings (docs, positions,
-payloads) in RAM, using an FST. This postings format does write to disk,
-but loads everything into memory. The memory postings format has the
-following options:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
-<code class="literal">pack_fst</code>
+    Stores terms in a FST. Slower to build than <code class="literal">paged_bytes</code> but can help lower
+    memory usage if many terms share common prefixes and/or suffixes.
+</dd></dl></div><h4><a id="_numeric_field_data_types"></a>Numeric field data types</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">array</code> (default)
 </span></dt><dd>
-    A boolean option that defines if the in memory structure
-    should be packed once its build. Packed will reduce the size for the
-    data-structure in memory but requires more memory during building.
-    Default is <span class="strong"><strong>false</strong></span>.
-</dd><dt><span class="term">
-<code class="literal">acceptable_overhead_ratio</code>
+    Stores field values in memory using arrays.
+</dd></dl></div><h4><a id="_geo_point_field_data_types"></a>Geo point field data types</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">array</code> (default)
 </span></dt><dd>
-    The compression ratio specified as a
-    float, that is used to compress internal structures. Example ratios <code class="literal">0</code>
-    (Compact, no memory overhead at all, but the returned implementation may
-    be slow), <code class="literal">0.5</code> (Fast, at most 50% memory overhead, always select a
-    reasonably fast implementation), <code class="literal">7</code> (Fastest, at most 700% memory
-    overhead, no compression). Default is <code class="literal">0.2</code>.
-</dd></dl></div><p>Type name: <code class="literal">memory</code></p><h4><a id="bloom-postings"></a>Bloom filter posting format</h4><p>The bloom filter postings format wraps a delegate postings format and on
-top of this creates a bloom filter that is written to disk. During
-opening this bloom filter is loaded into memory and used to offer
-"fast-fail" reads. This postings format is useful for low doc-frequency
-fields such as primary keys. The bloom filter postings format has the
-following options:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
-<code class="literal">delegate</code>
-</span></dt><dd>
-    The name of the configured postings format that the
-    bloom filter postings format will wrap.
-</dd><dt><span class="term">
-<code class="literal">fpp</code>
-</span></dt><dd>
-    The desired false positive probability specified as a
-    floating point number between 0 and 1.0. The <code class="literal">fpp</code> can be configured for
-    multiple expected insertions. Example expression: <span class="strong"><strong>10k=0.01,1m=0.03</strong></span>. If
-    number docs per index segment is larger than <span class="strong"><strong>1m</strong></span> then use <span class="strong"><strong>0.03</strong></span> as fpp
-    and if number of docs per segment is larger than <span class="strong"><strong>10k</strong></span> use <span class="strong"><strong>0.01</strong></span> as
-    fpp. The last fallback value is always <span class="strong"><strong>0.03</strong></span>. This example expression
-    is also the default.
-</dd></dl></div><p>Type name: <code class="literal">bloom</code></p><h4><a id="pulsing-postings"></a>Pulsing postings format</h4><p>The pulsing implementation in-lines the posting lists for very low
-frequent terms in the term dictionary. This is useful to improve lookup
-performance for low-frequent terms. This postings format offers the
-following parameters:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
-<code class="literal">min_block_size</code>
-</span></dt><dd>
-    The minimum block size the default Lucene term
-    dictionary uses to encode on-disk blocks. Defaults to <span class="strong"><strong>25</strong></span>.
-</dd><dt><span class="term">
-<code class="literal">max_block_size</code>
-</span></dt><dd>
-    The maximum block size the default Lucene term
-    dictionary uses to encode on-disk blocks. Defaults to <span class="strong"><strong>48</strong></span>.
-</dd><dt><span class="term">
-<code class="literal">freq_cut_off</code>
-</span></dt><dd>
-    The document frequency cut off where pulsing
-    in-lines posting lists into the term dictionary. Terms with a document
-    frequency less or equal to the cutoff will be in-lined. The default is
-    <span class="strong"><strong>1</strong></span>.
-</dd></dl></div><p>Type name: <code class="literal">pulsing</code></p><h4><a id="default-postings"></a>Default postings format</h4><p>The default postings format has the following options:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
-<code class="literal">min_block_size</code>
-</span></dt><dd>
-    The minimum block size the default Lucene term
-    dictionary uses to encode on-disk blocks. Defaults to <span class="strong"><strong>25</strong></span>.
-</dd><dt><span class="term">
-<code class="literal">max_block_size</code>
-</span></dt><dd>
-    The maximum block size the default Lucene term
-    dictionary uses to encode on-disk blocks. Defaults to <span class="strong"><strong>48</strong></span>.
-</dd></dl></div><p>Type name: <code class="literal">default</code></p></div><div class="navfooter"><span class="prev"><a href="_field_data_formats.html">
+    Stores latitudes and longitudes in arrays.
+</dd></dl></div><h3><a id="_fielddata_loading"></a>Fielddata loading</h3><p>By default, field data is loaded lazily, on the first time that a query that
+requires field data is fired. However, this can make the first requests that
+follow a merge operation quite slow since fielddata loading is a heavy
+operation.</p><p>It is possible to force field data to be loaded and cached eagerly through the
+<code class="literal">loading</code> setting of fielddata:</p><pre class="programlisting prettyprint lang-js">{
+    category: {
+        type:      "string",
+        fielddata: {
+            loading: "eager"
+        }
+    }
+}</pre><h3><a id="field-data-filtering"></a>Filtering fielddata</h3><p>It is possible to control which field values are loaded into memory,
+which is particularly useful for string fields. When specifying the
+<a class="link" href="mapping-core-types.html" title="Core Types">mapping</a> for a field, you
+can also specify a fielddata filter.</p><p>Fielddata filters can be changed using the
+<a class="link" href="indices-put-mapping.html" title="Put Mapping">PUT mapping</a>
+API. After changing the filters, use the
+<a class="link" href="indices-clearcache.html" title="Clear Cache">Clear Cache</a> API
+to reload the fielddata using the new filters.</p><h4><a id="_filtering_by_frequency"></a>Filtering by frequency:</h4><p>The frequency filter allows you to only load terms whose frequency falls
+between a <code class="literal">min</code> and <code class="literal">max</code> value, which can be expressed an absolute
+number or as a percentage (eg <code class="literal">0.01</code> is <code class="literal">1%</code>). Frequency is calculated
+<span class="strong"><strong>per segment</strong></span>. Percentages are based on the number of docs which have a
+value for the field, as opposed to all docs in the segment.</p><p>Small segments can be excluded completely by specifying the minimum
+number of docs that the segment should contain with <code class="literal">min_segment_size</code>:</p><pre class="programlisting prettyprint lang-js">{
+    tag: {
+        type:      "string",
+        fielddata: {
+            filter: {
+                frequency: {
+                    min:              0.001,
+                    max:              0.1,
+                    min_segment_size: 500
+                }
+            }
+        }
+    }
+}</pre><h4><a id="_filtering_by_regex"></a>Filtering by regex</h4><p>Terms can also be filtered by regular expression - only values which
+match the regular expression are loaded. Note: the regular expression is
+applied to each term in the field, not to the whole field value. For
+instance, to only load hashtags from a tweet, we can use a regular
+expression which matches terms beginning with <code class="literal">#</code>:</p><pre class="programlisting prettyprint lang-js">{
+    tweet: {
+        type:      "string",
+        analyzer:  "whitespace"
+        fielddata: {
+            filter: {
+                regex: {
+                    pattern: "^#.*"
+                }
+            }
+        }
+    }
+}</pre><h4><a id="_combining_filters"></a>Combining filters</h4><p>The <code class="literal">frequency</code> and <code class="literal">regex</code> filters can be combined:</p><pre class="programlisting prettyprint lang-js">{
+    tweet: {
+        type:      "string",
+        analyzer:  "whitespace"
+        fielddata: {
+            filter: {
+                regex: {
+                    pattern:          "^#.*",
+                },
+                frequency: {
+                    min:              0.001,
+                    max:              0.1,
+                    min_segment_size: 500
+                }
+            }
+        }
+    }
+}</pre><h3><a id="_settings_before_v0_90"></a>Settings before v0.90</h3><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Setting </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">index.cache.field.type</code></p></td><td align="left" valign="top"><p>The default type for the field data cache is
+<code class="literal">resident</code> (because of the cost of rebuilding it). Other types include
+<code class="literal">soft</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index.cache.field.max_size</code></p></td><td align="left" valign="top"><p>The max size (count, not byte size) of
+the cache (per search segment in a shard). Defaults to not set (<code class="literal">-1</code>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index.cache.field.expire</code></p></td><td align="left" valign="top"><p>A time based setting that expires filters
+after a certain time of inactivity. Defaults to <code class="literal">-1</code>. For example, can
+be set to <code class="literal">5m</code> for a 5 minute expiry.</p></td></tr></tbody></table></div><h3><a id="field-data-monitoring"></a>Monitoring field data</h3><p>You can monitor memory usage for field data using
+<a class="link" href="cluster-nodes-stats.html" title="Nodes Stats">Nodes Stats API</a></p></div><div class="navfooter"><span class="prev"><a href="index-modules-fielddata.html">
               « 
-              Field data formats</a>
+              Field data</a>
            
         </span><span class="next">
            
-          <a href="index-modules-similarity.html">Similarity module
+          <a href="index-modules-codec.html">Codec module
                »
             </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
               Need help with
