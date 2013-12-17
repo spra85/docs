@@ -52,6 +52,14 @@ contents:
             abbr:       java
 
           -
+            title:      JavaScript API
+            prefix:     en/elasticsearch/client/javascript-api
+            repo:       elasticsearch
+            index:      docs/javascript/index.asciidoc
+            abbr:       js
+            single:     1
+
+          -
             title:      Groovy API
             prefix:     en/elasticsearch/client/groovy-api
             repo:       elasticsearch
