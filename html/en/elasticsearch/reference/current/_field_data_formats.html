@@ -59,8 +59,8 @@ field data format.</p><h4><a id="_string_field_data_types"></a>String field data
 <code class="literal">array</code> (default)
 </span></dt><dd>
     Stores latitudes and longitudes in arrays.
-</dd></dl></div><h3><a id="_fielddata_loading"></a>Fielddata loading</h3><p>By default, field data is loaded lazily, on the first time that a query that
-requires field data is fired. However, this can make the first requests that
+</dd></dl></div><h3><a id="_fielddata_loading"></a>Fielddata loading</h3><p>By default, field data is loaded lazily, ie. the first time that a query that
+requires them is executed. However, this can make the first requests that
 follow a merge operation quite slow since fielddata loading is a heavy
 operation.</p><p>It is possible to force field data to be loaded and cached eagerly through the
 <code class="literal">loading</code> setting of fielddata:</p><pre class="programlisting prettyprint lang-js">{
@@ -73,9 +73,9 @@ operation.</p><p>It is possible to force field data to be loaded and cached eage
 }</pre><h4><a id="_disabling_field_data_loading"></a>Disabling field data loading</h4><p>Field data can take a lot of RAM so it makes sense to disable field data
 loading on the fields that don’t need field data, for example those that are
 used for full-text search only. In order to disable field data loading, just
-change the field data format to <code class="literal">disabled</code>. Request that will try to load field
-data on any field which is configured with this format will then return an
-error.</p><pre class="programlisting prettyprint lang-js">{
+change the field data format to <code class="literal">disabled</code>. When disabled, all requests that
+will try to load field data, e.g. when they include facets and/or sorting,
+will return an error.</p><pre class="programlisting prettyprint lang-js">{
     text: {
         type:      "string",
         fielddata: {
