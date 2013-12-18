@@ -89,7 +89,26 @@ longitude (default is <code class="literal">false</code>) <span class="strong"><
 normalization has been disabled.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">validate_lat</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to reject geo points with an invalid
 latitude</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">validate_lon</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to reject geo points with an invalid
 longitude</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">normalize</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to normalize latitude and longitude (default
-is <code class="literal">true</code>)</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">normalize_lat</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to normalize latitude</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">normalize_lon</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to normalize longitude</p></td></tr></tbody></table></div><h4><a id="_usage_in_scripts"></a>Usage in Scripts</h4><p>When using <code class="literal">doc[geo_field_name]</code> (in the above mapping,
+is <code class="literal">true</code>)</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">normalize_lat</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to normalize latitude</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">normalize_lon</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to normalize longitude</p></td></tr></tbody></table></div><h4><a id="_field_data"></a>Field data</h4><p>By default, geo points use the <code class="literal">array</code> format which loads geo points into two
+parallel double arrays, making sure there is no precision loss. However, this
+can require a non-negligible amount of memory (16 bytes per document) which is
+why Elasticsearch also provides a field data implementation with lossy
+compression called <code class="literal">compressed</code>:</p><pre class="programlisting prettyprint lang-js">{
+    "pin" : {
+        "properties" : {
+            "location" : {
+                "type" : "geo_point",
+                "fielddata" : {
+                    "format" : "compressed",
+                    "precision" : "1cm"
+                }
+            }
+        }
+    }
+}</pre><p>This field data format comes with a <code class="literal">precision</code> option which allows to
+configure how much precision can be traded for memory. The default value is
+<code class="literal">1cm</code>. The following table presents values of the memory savings given various
+precisions:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /></colgroup><tbody><tr><td align="left" valign="top"><p>Precision</p></td><td align="left" valign="top"><p>Bytes per point</p></td><td align="left" valign="top"><p>Size reduction</p></td></tr><tr><td align="left" valign="top"><p>1km</p></td><td align="left" valign="top"><p>4</p></td><td align="left" valign="top"><p>75%</p></td></tr><tr><td align="left" valign="top"><p>3m</p></td><td align="left" valign="top"><p>6</p></td><td align="left" valign="top"><p>62.5%</p></td></tr><tr><td align="left" valign="top"><p>1cm</p></td><td align="left" valign="top"><p>8</p></td><td align="left" valign="top"><p>50%</p></td></tr><tr><td align="left" valign="top"><p>1mm</p></td><td align="left" valign="top"><p>10</p></td><td align="left" valign="top"><p>37.5%</p></td></tr></tbody></table></div><p>Precision can be changed on a live index by using the update mapping API.</p><h4><a id="_usage_in_scripts"></a>Usage in Scripts</h4><p>When using <code class="literal">doc[geo_field_name]</code> (in the above mapping,
 <code class="literal">doc['location']</code>), the <code class="literal">doc[...].value</code> returns a <code class="literal">GeoPoint</code>, which
 then allows access to <code class="literal">lat</code> and <code class="literal">lon</code> (for example,
 <code class="literal">doc[...].value.lat</code>). For performance, it is better to access the <code class="literal">lat</code>

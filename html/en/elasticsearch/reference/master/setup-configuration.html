@@ -80,7 +80,7 @@ add:</p><h4><a id="styles"></a>Configuration styles</h4><pre class="programlisti
     }
 }</pre><p>It also means that its easy to provide the settings externally either
 using the <code class="literal">ES_JAVA_OPTS</code> or as parameters to the <code class="literal">elasticsearch</code>
-command, for example:</p><pre class="programlisting prettyprint lang-sh">$ elasticsearch -f -Des.network.host=10.0.0.4</pre><p>Another option is to set <code class="literal">es.default.</code> prefix instead of <code class="literal">es.</code> prefix,
+command, for example:</p><pre class="programlisting prettyprint lang-sh">$ elasticsearch -Des.network.host=10.0.0.4</pre><p>Another option is to set <code class="literal">es.default.</code> prefix instead of <code class="literal">es.</code> prefix,
 which means the default setting will be used only if not explicitly set
 in the configuration file.</p><p>Another option is to use the <code class="literal">${...}</code> notation within the configuration
 file which will resolve to an environment setting, for example:</p><pre class="programlisting prettyprint lang-js">{
@@ -88,7 +88,7 @@ file which will resolve to an environment setting, for example:</p><pre class="p
         "host" : "${ES_NET_HOST}"
     }
 }</pre><p>The location of the configuration file can be set externally using a
-system property:</p><pre class="programlisting prettyprint lang-sh">$ elasticsearch -f -Des.config=/path/to/config/file</pre><h3><a id="configuration-index-settings"></a>Index Settings</h3><p>Indices created within the cluster can provide their own settings. For
+system property:</p><pre class="programlisting prettyprint lang-sh">$ elasticsearch -Des.config=/path/to/config/file</pre><h3><a id="configuration-index-settings"></a>Index Settings</h3><p>Indices created within the cluster can provide their own settings. For
 example, the following creates an index with memory based storage
 instead of the default file system based one (the format can be either
 YAML or JSON):</p><pre class="programlisting prettyprint lang-sh">$ curl -XPUT http://localhost:9200/kimchy/ -d \
@@ -103,7 +103,7 @@ within the <code class="literal">elasticsearch.yml</code> file, the following ca
 started with the mentioned configuration will store the index in memory
 <span class="strong"><strong>unless the index explicitly sets it</strong></span>. In other words, any index level
 settings override what is set in the node configuration. Of course, the
-above can also be set as a "collapsed" setting, for example:</p><pre class="programlisting prettyprint lang-sh">$ elasticsearch -f -Des.index.store.type=memory</pre><p>All of the index level configuration can be found within each
+above can also be set as a "collapsed" setting, for example:</p><pre class="programlisting prettyprint lang-sh">$ elasticsearch -Des.index.store.type=memory</pre><p>All of the index level configuration can be found within each
 <a class="link" href="index-modules.html" title="Index Modules">index module</a>.</p><h3><a id="logging"></a>Logging</h3><p>ElasticSearch uses an internal logging abstraction and comes, out of the
 box, with <a class="ulink" href="http://logging.apache.org/log4j/" target="_top">log4j</a>. It tries to simplify
 log4j configuration by using <a class="ulink" href="http://www.yaml.org/" target="_top">YAML</a> to configure it,
