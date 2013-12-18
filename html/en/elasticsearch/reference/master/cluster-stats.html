@@ -32,6 +32,7 @@ The API returns basic index metrics (shard numbers, store size, memory usage) an
 information about the current nodes that form the cluster (number, roles, os, jvm
 versions, memory usage, cpu and installed plugins).</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/_cluster/stats?human'</pre><p>Will return, for example:</p><pre class="programlisting prettyprint lang-js">{
    "cluster_name": "elasticsearch",
+   "status": "green",
    "indices": {
       "count": 3,
       "shards": {
