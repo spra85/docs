@@ -45,12 +45,7 @@ in general) on a live index by using the update mapping API. When doing so,
 field data which had already been loaded for existing segments will remain
 alive while new segments will use the new field data configuration. Thanks to
 the background merging process, all segments will eventually use the new
-field data format.</p><h4><a id="_disallowing_field_data_loading"></a>Disallowing field data loading</h4><p>Field data can take a lot of RAM so it makes sense to disable field data
-loading on the fields that don’t need field data, for example those that are
-used for full-text search only. In order to disable field data loading, just
-change the field data type to <code class="literal">disabled</code>. Request that will try to load field
-data on any field which is configured with this format will then return an
-error.</p><p>The <code class="literal">disabled</code> format is supported by all field types.</p><h4><a id="_string_field_data_types"></a>String field data types</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+field data format.</p><h4><a id="_string_field_data_types"></a>String field data types</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">paged_bytes</code> (default)
 </span></dt><dd>
     Stores unique terms sequentially in a large buffer and maps documents to
@@ -90,7 +85,19 @@ operation.</p><p>It is possible to force field data to be loaded and cached eage
             loading: "eager"
         }
     }
-}</pre><h3><a id="field-data-filtering"></a>Filtering fielddata</h3><p>It is possible to control which field values are loaded into memory,
+}</pre><h4><a id="_disabling_field_data_loading"></a>Disabling field data loading</h4><p>Field data can take a lot of RAM so it makes sense to disable field data
+loading on the fields that don’t need field data, for example those that are
+used for full-text search only. In order to disable field data loading, just
+change the field data format to <code class="literal">disabled</code>. Request that will try to load field
+data on any field which is configured with this format will then return an
+error.</p><pre class="programlisting prettyprint lang-js">{
+    text: {
+        type:      "string",
+        fielddata: {
+            format: "disabled"
+        }
+    }
+}</pre><p>The <code class="literal">disabled</code> format is supported by all field types.</p><h3><a id="field-data-filtering"></a>Filtering fielddata</h3><p>It is possible to control which field values are loaded into memory,
 which is particularly useful for string fields. When specifying the
 <a class="link" href="mapping-core-types.html" title="Core Types">mapping</a> for a field, you
 can also specify a fielddata filter.</p><p>Fielddata filters can be changed using the
