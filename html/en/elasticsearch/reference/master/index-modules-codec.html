@@ -117,7 +117,14 @@ following options:</p><div class="variablelist"><dl class="variablelist"><dt><sp
     and if number of docs per segment is larger than <span class="strong"><strong>10k</strong></span> use <span class="strong"><strong>0.01</strong></span> as
     fpp. The last fallback value is always <span class="strong"><strong>0.03</strong></span>. This example expression
     is also the default.
-</dd></dl></div><p>Type name: <code class="literal">bloom</code></p><h4><a id="pulsing-postings"></a>Pulsing postings format</h4><p>The pulsing implementation in-lines the posting lists for very low
+</dd></dl></div><p>Type name: <code class="literal">bloom</code></p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><a id="codec-bloom-load"></a><p>It can sometime make sense to disable bloom filters. For instance, if you are
+logging into an index per day, and you have thousands of indices, the bloom
+filters can take up a sizable amount of memory. For most queries you are only
+interested in recent indices, so you don’t mind CRUD operations on older
+indices taking slightly longer.</p><p>In these cases you can disable loading of the bloom filter on  a per-index
+basis by updating the index settings:</p><pre class="programlisting prettyprint lang-js">PUT /old_index/_settings?index.codec.bloom.load=false</pre><p>This setting, which defaults to <code class="literal">true</code>, can be updated on a live index. Note,
+however, that changing the value will cause the index to be reopened, which
+will invalidate any existing caches.</p></div></div><h4><a id="pulsing-postings"></a>Pulsing postings format</h4><p>The pulsing implementation in-lines the posting lists for very low
 frequent terms in the term dictionary. This is useful to improve lookup
 performance for low-frequent terms. This postings format offers the
 following parameters:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
