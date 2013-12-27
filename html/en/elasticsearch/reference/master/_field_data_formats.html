@@ -74,6 +74,10 @@ field data format.</p><h4><a id="_string_field_data_types"></a>String field data
 <code class="literal">array</code> (default)
 </span></dt><dd>
     Stores latitudes and longitudes in arrays.
+</dd><dt><span class="term">
+<code class="literal">doc_values</code>
+</span></dt><dd>
+    Computes and stores field data data-structures on disk at indexing time.
 </dd></dl></div><h3><a id="_fielddata_loading"></a>Fielddata loading</h3><p>By default, field data is loaded lazily, ie. the first time that a query that
 requires them is executed. However, this can make the first requests that
 follow a merge operation quite slow since fielddata loading is a heavy
