@@ -30,9 +30,16 @@
             </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="multi-index"></a>Multiple Indices</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="multi-index.html">Multiple Indices</a></span></dt><dt><span class="chapter"><a href="common-options.html">Common options</a></span></dt><dt><span class="chapter"><a href="url-access-control.html">URL-based access control</a></span></dt></dl></div><p>Most APIs that refer to an <code class="literal">index</code> parameter support execution across multiple indices,
 using simple <code class="literal">test1,test2,test3</code> notation (or <code class="literal">_all</code> for all indices). It also
 support wildcards, for example: <code class="literal">test*</code>, and the ability to "add" (<code class="literal">+</code>)
-and "remove" (<code class="literal">-</code>), for example: <code class="literal">+test*,-test3</code>.</p><p>All multi indices API support the <code class="literal">ignore_indices</code> option. Setting it to
-<code class="literal">missing</code> will cause indices that do not exists to be ignored from the
-execution. By default, when it’s not set, the request will fail.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Single index APIs such as the <a class="xref" href="docs.html" title="Document APIs">Document APIs</a> and the
+and "remove" (<code class="literal">-</code>), for example: <code class="literal">+test*,-test3</code>.</p><p>All multi indices API support the following url query string parameters:
+* <code class="literal">ignore_unavailable</code> - Controls whether to ignore if any specified indices are unavailable, this includes indices
+   that don’t exist or closed indices. Either <code class="literal">true</code> or <code class="literal">false</code> can be specified.
+* <code class="literal">allow_no_indices</code> - Controls whether to fail if a wildcard indices expressions results into no concrete indices.
+   Either <code class="literal">true</code> or <code class="literal">false</code> can be specified. For example if the wildcard expression <code class="literal">foo*</code> is specified and no indices
+   are available that start with <code class="literal">foo</code> then depending on this setting the request will fail. This setting is also applicable
+   when <code class="literal">_all</code>, <code class="literal">*</code> or no index has been specified.
+* <code class="literal">expand_wildcards</code> - Controls to what kind of concrete indices wildcard indices expression expand to. If <code class="literal">open</code> is
+  specified then the wildcard expression if expanded to only open indices and if <code class="literal">closed</code> is specified then the wildcard
+  expression if expanded only to closed indices. Also both values (<code class="literal">open,closed</code>) can be specified to expand to all indices.</p><p>The defaults settings for the above parameters dependent on the api being used.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Single index APIs such as the <a class="xref" href="docs.html" title="Document APIs">Document APIs</a> and the
 <a class="link" href="indices-aliases.html" title="Index Aliases">single-index <code class="literal">alias</code> APIs</a> do not support multiple indices.</p></div></div></div><div class="navfooter"><span class="prev"><a href="api-conventions.html">
               « 
               API Conventions</a>

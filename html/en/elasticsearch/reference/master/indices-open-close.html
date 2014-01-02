@@ -36,7 +36,7 @@ example:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localho
 
 curl -XPOST 'localhost:9200/my_index/_open'</pre><p>It is possible to open and close multiple indices. An error will be thrown
 if the request explicitly refers to a missing index. This behaviour can be
-disabled using the <code class="literal">ignore_indices=missing</code> parameter.</p><p>All indices can be opened or closed at once using <code class="literal">_all</code> as the index name
+disabled using the <code class="literal">ignore_unavailable=true</code> parameter.</p><p>All indices can be opened or closed at once using <code class="literal">_all</code> as the index name
 or specifying patterns that identify them all (e.g. <code class="literal">*</code>).
 Closing all indices can be disabled by setting the <code class="literal">action.disable_close_all_indices</code>
 flag in the config file to <code class="literal">true</code>.</p></div><div class="navfooter"><span class="prev"><a href="indices-exists.html">
