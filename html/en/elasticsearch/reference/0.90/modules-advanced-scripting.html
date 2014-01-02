@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Thrift</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="modules.html" title="Modules" /><link rel="prev" href="modules-threadpool.html" title="Thread Pool" /><link rel="next" href="modules-transport.html" title="Transport" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="canonical" href="/guide/" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Text scoring in scripts</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="modules.html" title="Modules" /><link rel="prev" href="modules-scripting.html" title="Scripting" /><link rel="next" href="modules-threadpool.html" title="Thread Pool" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="canonical" href="/guide/" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -19,29 +19,179 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference<xsl-text> [</xsl-text>0.90<xsl-text>] </xsl-text></a></span> » <span class="breadcrumb-link"><a href="modules.html">Modules</a></span> » <span class="breadcrumb-node">Thrift</span></div><div class="navheader"><span class="prev"><a href="modules-threadpool.html">
+      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference<xsl-text> [</xsl-text>0.90<xsl-text>] </xsl-text></a></span> » <span class="breadcrumb-link"><a href="modules.html">Modules</a></span> » <span class="breadcrumb-node">Text scoring in scripts</span></div><div class="navheader"><span class="prev"><a href="modules-scripting.html">
               « 
-              Thread Pool</a>
+              Scripting</a>
            
         </span><span class="next">
            
-          <a href="modules-transport.html">Transport
+          <a href="modules-threadpool.html">Thread Pool
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-thrift"></a>Thrift</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="modules-jmx.html">JMX</a></span></dt><dt><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt><span class="chapter"><a href="modules-advanced-scripting.html">Text scoring in scripts</a></span></dt><dt><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt></dl></div><p>The thrift transport module allows to expose the REST interface of
-elasticsearch using thrift. Thrift should provide better performance
-over http. Since thrift provides both the wire protocol and the
-transport, it should make using it simpler (thought its lacking on
-docs…).</p><p>Using thrift requires installing the <code class="literal">transport-thrift</code> plugin, located
-<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-transport-thrift" target="_top">here</a>.</p><p>The thrift
-<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-transport-thrift/blob/master/elasticsearch.thrift" target="_top">schema</a>
-can be used to generate thrift clients.</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Setting </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">thrift.port</code></p></td><td align="left" valign="top"><p>The port to bind to. Defaults to 9500-9600</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">thrift.frame</code></p></td><td align="left" valign="top"><p>Defaults to <code class="literal">-1</code>, which means no framing. Set to a
-higher value to specify the frame size (like <code class="literal">15mb</code>).</p></td></tr></tbody></table></div></div><div class="navfooter"><span class="prev"><a href="modules-threadpool.html">
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-advanced-scripting"></a>Text scoring in scripts</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="modules-jmx.html">JMX</a></span></dt><dt><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt><span class="chapter"><a href="modules-advanced-scripting.html">Text scoring in scripts</a></span></dt><dt><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt></dl></div><p>Text features, such as term or document frequency for a specific term can be accessed in scripts (see <a class="link" href="modules-scripting.html" title="Scripting">scripting documentation</a> ) with the <code class="literal">_shard</code> variable. This can be useful if, for example, you want to implement your own scoring model using for example a script inside a <a class="link" href="query-dsl-function-score-query.html" title="Function Score Query">function score query</a>.
+Statistics over the document collection are computed <span class="strong"><strong>per shard</strong></span>, not per
+index.</p><h3><a id="_nomenclature"></a>Nomenclature:</h3><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">df</code>
+</p>
+</td><td valign="top">
+<p>
+    document frequency. The number of documents a term appears in. Computed
+    per field.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">tf</code>
+</p>
+</td><td valign="top">
+<p>
+    term frequency. The number times a term appears in a field in one specific
+    document.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">ttf</code>
+</p>
+</td><td valign="top">
+<p>
+    total term frequency. The number of times this term appears in all
+    documents, that is, the sum of <code class="literal">tf</code> over all documents.  Computed per
+    field.
+</p>
+</td></tr></tbody></table></div><p><code class="literal">df</code> and <code class="literal">ttf</code> are computed per shard and therefore these numbers can vary
+depending on the shard the current document resides in.</p><h3><a id="_shard_statistics"></a>Shard statistics:</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">_shard.numDocs()</code>
+</span></dt><dd>
+    Number of documents in shard.
+</dd><dt><span class="term">
+<code class="literal">_shard.maxDoc()</code>
+</span></dt><dd>
+    Maximal document number in shard.
+</dd><dt><span class="term">
+<code class="literal">_shard.numDeletedDocs()</code>
+</span></dt><dd>
+    Number of deleted documents in shard.
+</dd></dl></div><h3><a id="_field_statistics"></a>Field statistics:</h3><p>Field statistics can be accessed with a subscript operator like this:
+<code class="literal">_shard['FIELD']</code>.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">_shard['FIELD'].docCount()</code>
+</span></dt><dd>
+    Number of documents containing the field <code class="literal">FIELD</code>. Does not take deleted documents into account.
+</dd><dt><span class="term">
+<code class="literal">_shard['FIELD'].sumttf()</code>
+</span></dt><dd>
+    Sum of <code class="literal">ttf</code> over all terms that appear in field <code class="literal">FIELD</code> in all documents.
+</dd><dt><span class="term">
+<code class="literal">_shard['FIELD'].sumdf()</code>
+</span></dt><dd>
+    The sum of <code class="literal">df</code> s over all terms that appear in field <code class="literal">FIELD</code> in all
+    documents.
+</dd></dl></div><p>Field statistics are computed per shard and therfore these numbers can vary
+depending on the shard the current document resides in.
+The number of terms in a field cannot be accessed using the <code class="literal">_shard</code> variable. See <a class="link" href="mapping-core-types.html" title="Core Types">word count mapping type</a> on how to do that.</p><h3><a id="_term_statistics"></a>Term statistics:</h3><p>Term statistics for a field can be accessed with a subscript operator like
+this: <code class="literal">_shard['FIELD']['TERM']</code>. This will never return null, even if term or field does not exist.
+If you do not need the term frequency, call <code class="literal">_shard['FIELD'].get('TERM', 0)</code>
+to avoid uneccesary initialization of the frequencies. The flag will have only
+affect is your set the <code class="literal">index_options</code> to <code class="literal">docs</code> (see <a class="link" href="mapping-core-types.html" title="Core Types">mapping documentation</a>).</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">_shard['FIELD']['TERM'].df()</code>
+</span></dt><dd>
+    <code class="literal">df</code> of term <code class="literal">TERM</code> in field <code class="literal">FIELD</code>. Will be returned, even if the term
+    is not present in the current document.
+</dd><dt><span class="term">
+<code class="literal">_shard['FIELD']['TERM'].ttf()</code>
+</span></dt><dd>
+    The sum of term frequencys of term <code class="literal">TERM</code> in field <code class="literal">FIELD</code> over all
+    documents. Will be returned, even if the term is not present in the
+    current document.
+</dd><dt><span class="term">
+<code class="literal">_shard['FIELD']['TERM'].tf()</code>
+</span></dt><dd>
+    <code class="literal">tf</code> of term <code class="literal">TERM</code> in field <code class="literal">FIELD</code>. Will be 0 if the term is not present
+    in the current document.
+</dd></dl></div><h3><a id="_term_positions_offsets_and_payloads"></a>Term positions, offsets and payloads:</h3><p>If you need information on the positions of terms in a field, call
+<code class="literal">_shard['FIELD'].get('TERM', flag)</code> where flag can be</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">_POSITIONS</code>
+</p>
+</td><td valign="top">
+<p>
+if you need the positions of the term
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">_OFFSETS</code>
+</p>
+</td><td valign="top">
+<p>
+if you need the offests of the term
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">_PAYLOADS</code>
+</p>
+</td><td valign="top">
+<p>
+if you need the payloads of the term
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">_CACHE</code>
+</p>
+</td><td valign="top">
+<p>
+if you need to iterate over all positions several times
+</p>
+</td></tr></tbody></table></div><p>The iterator uses the underlying lucene classes to iterate over positions. For efficiency reasons, you can only iterate over positions once. If you need to iterate over the positions several times, set the <code class="literal">_CACHE</code> flag.</p><p>You can combine the operators with a <code class="literal">|</code> if you need more than one info. For
+example, the following will return an object holding the positions and payloads,
+as well as all statistics:</p><pre class="literallayout">`_shard['FIELD'].get('TERM', _POSITIONS | _PAYLOADS)`</pre><p>Positions can be accessed with an iterator that returns an object
+(<code class="literal">POS_OBJECT</code>) holding position, offsets and payload for each term position.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">POS_OBJECT.position</code>
+</span></dt><dd>
+    The position of the term.
+</dd><dt><span class="term">
+<code class="literal">POS_OBJECT.startOffset</code>
+</span></dt><dd>
+    The start offset of the term.
+</dd><dt><span class="term">
+<code class="literal">POS_OBJECT.endOffset</code>
+</span></dt><dd>
+    The end offset of the term.
+</dd><dt><span class="term">
+<code class="literal">POS_OBJECT.payload</code>
+</span></dt><dd>
+    The payload of the term.
+</dd><dt><span class="term">
+<code class="literal">POS_OBJECT.payloadAsInt(missingValue)</code>
+</span></dt><dd>
+    The payload of the term converted to integer. If the current position has
+    no payload, the <code class="literal">missingValue</code> will be returned. Call this only if you
+    know that your payloads are integers.
+</dd><dt><span class="term">
+<code class="literal">POS_OBJECT.payloadAsFloat(missingValue)</code>
+</span></dt><dd>
+    The payload of the term converted to float. If the current position has no
+    payload, the <code class="literal">missingValue</code> will be returned. Call this only if you know
+    that your payloads are floats.
+</dd><dt><span class="term">
+<code class="literal">POS_OBJECT.payloadAsString()</code>
+</span></dt><dd>
+    The payload of the term converted to string. If the current position has
+    no payload, <code class="literal">null</code> will be returned. Call this only if you know that your
+    payloads are strings.
+</dd></dl></div><p>Example: sums up all payloads for the term <code class="literal">foo</code>.</p><pre class="programlisting prettyprint lang-mvel">termInfo = _shard['my_field'].get('foo',_PAYLOADS);
+score = 0;
+for (pos : termInfo) {
+    score = score + pos.payloadAsInt(0);
+}
+return score;</pre><h3><a id="_term_vectors"></a>Term vectors:</h3><p>The <code class="literal">_shard</code> variable can only be used to gather statistics for single terms. If you want to use information on all terms in a field, you must store the term vectors (set <code class="literal">term_vector</code> in the mapping as described in the <a class="link" href="mapping-core-types.html" title="Core Types">mapping documentation</a>). To access them, call
+<code class="literal">_shard.getTermVectors()</code> to get a
+<a class="ulink" href="https://lucene.apache.org/core/4_0_0/core/org/apache/lucene/index/Fields.html" target="_top">Fields</a>
+instance. This object can then be used as described in <a class="ulink" href="https://lucene.apache.org/core/4_0_0/core/org/apache/lucene/index/Fields.html" target="_top">lucene doc</a> to iterate over fields and then for each field iterate over each term in the field.
+The method will return null if the term vectors were not stored.</p></div><div class="navfooter"><span class="prev"><a href="modules-scripting.html">
               « 
-              Thread Pool</a>
+              Scripting</a>
            
         </span><span class="next">
            
-          <a href="modules-transport.html">Transport
+          <a href="modules-threadpool.html">Thread Pool
                »
             </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
               Need help with
