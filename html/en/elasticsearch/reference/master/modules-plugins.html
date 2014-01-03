@@ -62,7 +62,16 @@ On the opposite, if you want <code class="literal">plugin</code> script to be si
 </li><li class="listitem">
 <code class="literal">70</code>: other errors
 </li></ul></div><pre class="programlisting prettyprint lang-shell">bin/plugin --install mobz/elasticsearch-head --verbose
-plugin --remove head --silent</pre><h3><a id="known-plugins"></a>Known Plugins</h3><h4><a id="analysis-plugins"></a>Analysis Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+plugin --remove head --silent</pre><h4><a id="_timeout_settings"></a>Timeout settings</h4><p>By default, the <code class="literal">plugin</code> script will wait indefinitely when downloading before failing.
+The timeout parameter can be used to explicitly specify how long it waits. Here is some examples of setting it to
+different values:</p><pre class="programlisting prettyprint lang-shell"># Wait for 30 seconds before failing
+bin/plugin --install mobz/elasticsearch-head --timeout 30s
+
+# Wait for 1 minute before failing
+bin/plugin --install mobz/elasticsearch-head --timeout 1m
+
+# Wait forever (default)
+bin/plugin --install mobz/elasticsearch-head --timeout 0</pre><h3><a id="known-plugins"></a>Known Plugins</h3><h4><a id="analysis-plugins"></a>Analysis Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-icu" target="_top">ICU Analysis plugin</a>
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-kuromoji" target="_top">Japanese (Kuromoji) Analysis plugin</a>.
