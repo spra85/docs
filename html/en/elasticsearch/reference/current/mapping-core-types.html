@@ -57,6 +57,13 @@ more characters. An example mapping can be:</p><pre class="programlisting pretty
                 "store" : "yes",
                 "index" : "analyzed",
                 "null_value" : "na"
+            },
+            "user" : {
+                "type" : "string",
+                "index" : "not_analyzed",
+                "norms" : {
+                    "enabled" : false
+                }
             }
         }
     }
@@ -64,7 +71,10 @@ more characters. An example mapping can be:</p><pre class="programlisting pretty
 <code class="literal">tweet</code> type. The field is stored in the index (so it can later be
 retrieved using selective loading when searching), and it gets analyzed
 (broken down into searchable terms). If the message has a <code class="literal">null</code> value,
-then the value that will be stored is <code class="literal">na</code>.</p><p>The following table lists all the attributes that can be used with the
+then the value that will be stored is <code class="literal">na</code>. There is also a <code class="literal">string</code> <code class="literal">user</code>
+which is indexed as-is (not broken down into tokens) and has norms
+disabled (so that matching this field is a binary decision, no match is
+better than another one).</p><p>The following table lists all the attributes that can be used with the
 <code class="literal">string</code> type:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Attribute </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">index_name</code></p></td><td align="left" valign="top"><p>The name of the field that will be stored in the index.
 Defaults to the property/field name.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">store</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">yes</code> to store actual field in the index, <code class="literal">no</code> to not
 store it. Defaults to <code class="literal">no</code> (note, the JSON document itself is stored,
@@ -77,9 +87,11 @@ searchable at all (as an individual field; it may still be included in
 <code class="literal">analyzed</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">term_vector</code></p></td><td align="left" valign="top"><p>Possible values are <code class="literal">no</code>, <code class="literal">yes</code>, <code class="literal">with_offsets</code>,
 <code class="literal">with_positions</code>, <code class="literal">with_positions_offsets</code>. Defaults to <code class="literal">no</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">boost</code></p></td><td align="left" valign="top"><p>The boost value. Defaults to <code class="literal">1.0</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">null_value</code></p></td><td align="left" valign="top"><p>When there is a (JSON) null value for the field, use the
 <code class="literal">null_value</code> as the field value. Defaults to not adding the field at
-all.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">omit_norms</code></p></td><td align="left" valign="top"><p>Boolean value if norms should be omitted or not. Defaults
-to <code class="literal">false</code> for <code class="literal">analyzed</code> fields, and to <code class="literal">true</code> for <code class="literal">not_analyzed</code>
-fields.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">omit_term_freq_and_positions</code></p></td><td align="left" valign="top"><p>Boolean value if term freq and
+all.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">norms.enabled</code></p></td><td align="left" valign="top"><p>Boolean value if norms should be enabled or not. Defaults
+to <code class="literal">true</code> for <code class="literal">analyzed</code> fields, and to <code class="literal">false</code> for <code class="literal">not_analyzed</code> fields.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">norms.loading</code></p></td><td align="left" valign="top"><p>Describes how norms should be loaded, possible values are
+<code class="literal">eager</code> and <code class="literal">lazy</code> (default). It is possible to change the default value to
+eager for all fields by configuring the index setting <code class="literal">index.norms.loading</code>
+to <code class="literal">eager</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">omit_term_freq_and_positions</code></p></td><td align="left" valign="top"><p>Boolean value if term freq and
 positions should be omitted. Defaults to <code class="literal">false</code>. Deprecated since 0.20,
 see <code class="literal">index_options</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index_options</code></p></td><td align="left" valign="top"><p>Available since 0.20. Allows to set the indexing
 options, possible values are <code class="literal">docs</code> (only doc numbers are indexed),
