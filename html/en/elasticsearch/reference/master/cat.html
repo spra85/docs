@@ -30,17 +30,17 @@
             </a></span></div><div class="part"><div class="titlepage"><div><div><h1 class="title"><a id="cat"></a>cat APIs</h1></div></div></div><div class="partintro"><div></div><h2><a id="intro"></a>Introduction</h2><p>JSON is great… for computers.  Even if it’s pretty-printed, trying
 to find relationships in the data is tedious.  Human eyes, especially
 when looking at an ssh terminal, need compact and aligned text.  The
-cat API aims to meet this need.</p><p>All the cat commands accept a query string parameter <code class="literal">h</code> to see all
-the headers and info they provide, and the <code class="literal">/_cat?h</code> command lists all
+cat API aims to meet this need.</p><p>All the cat commands accept a query string parameter <code class="literal">help</code> to see all
+the headers and info they provide, and the <code class="literal">/_cat?help</code> command lists all
 the available commands.</p><h2><a id="common-parameters"></a>Common parameters</h2><h3><a id="verbose"></a>Verbose</h3><p>Each of the commands accepts a query string parameter <code class="literal">v</code> to turn on
 verbose output.</p><pre class="programlisting prettyprint lang-shell">% curl 'localhost:9200/_cat/master?v'
 id                     ip        node
-EGtKWZlWQYWDmX29fUnp3Q 127.0.0.1 Grey, Sara</pre><h3><a id="help"></a>Help</h3><p>Each of the commands accepts a query string parameter <code class="literal">h</code> which will
-output its available columns.</p><pre class="programlisting prettyprint lang-shell">% curl 'localhost:9200/_cat/master?h'
+EGtKWZlWQYWDmX29fUnp3Q 127.0.0.1 Grey, Sara</pre><h3><a id="help"></a>Help</h3><p>Each of the commands accepts a query string parameter <code class="literal">help</code> which will
+output its available columns.</p><pre class="programlisting prettyprint lang-shell">% curl 'localhost:9200/_cat/master?help'
 id   | node id
 ip   | node transport ip address
-node | node name</pre><h3><a id="headers"></a>Headers</h3><p>Each of the commands accepts a query string parameter <code class="literal">h</code> which will
-output its available columns.</p><pre class="programlisting prettyprint lang-shell">% curl 'n1:9200/_cat/nodes?headers=ip,port,heapPercent,name'
+node | node name</pre><h3><a id="headers"></a>Headers</h3><p>Each of the commands accepts a query string parameter <code class="literal">h</code> which forces
+only those columns to appear.</p><pre class="programlisting prettyprint lang-shell">% curl 'n1:9200/_cat/nodes?h=ip,port,heapPercent,name'
 192.168.56.40 9300 40.3 Captain Universe
 192.168.56.20 9300 15.3 Kaluu
 192.168.56.50 9300 17.0 Yellowjacket
