@@ -130,11 +130,11 @@ filter will be included in the percolate execution. The filter option works in n
 occurred for the filter to included the latest percolate queries.
 </li><li class="listitem">
 <code class="literal">query</code> - Same as the <code class="literal">filter</code> option, but also the score is computed. The computed scores can then be used by the
-<code class="literal">score</code> and <code class="literal">sort</code> option.
+<code class="literal">track_scores</code> and <code class="literal">sort</code> option.
 </li><li class="listitem">
 <code class="literal">size</code> - Defines to maximum number of matches (percolate queries) to be returned. Defaults to unlimited.
 </li><li class="listitem">
-<code class="literal">score</code> - Whether the <code class="literal">_score</code> is included for each match. The is based on the query and represents how the query matched
+<code class="literal">track_scores</code> - Whether the <code class="literal">_score</code> is included for each match. The is based on the query and represents how the query matched
 to the percolate query’s metadata and <span class="strong"><strong>not</strong></span> how the document being percolated matched to the query. The <code class="literal">query</code> option
 is required for this option. Defaults to <code class="literal">false</code>.
 </li><li class="listitem">
