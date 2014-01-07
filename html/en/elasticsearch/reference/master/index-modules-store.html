@@ -33,7 +33,7 @@ of limiting the index size to the amount of available physical memory.</p><p>Whe
 in memory storage is required to maintain index consistency. This is
 required since the local gateway constructs its state from the local
 index state of each node.</p><p>Another important aspect of memory based storage is the fact that
-ElasticSearch supports storing the index in memory <span class="strong"><strong>outside of the JVM
+Elasticsearch supports storing the index in memory <span class="strong"><strong>outside of the JVM
 heap space</strong></span> using the "Memory" (see below) storage type. It translates
 to the fact that there is no need for extra large JVM heaps (with their
 own consequences) for storing the index in memory.</p><h3><a id="store-throttling"></a>Store Level Throttling</h3><p>The way Lucene, the IR library elasticsearch uses under the covers,

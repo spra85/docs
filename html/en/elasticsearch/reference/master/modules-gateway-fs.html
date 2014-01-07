@@ -37,7 +37,7 @@ example config to enable it:</p><pre class="programlisting prettyprint lang-js">
     type: fs</pre><h4><a id="_location"></a>location</h4><p>The location where the gateway stores the cluster state can be set using
 the <code class="literal">gateway.fs.location</code> setting. By default, it will be stored under
 the <code class="literal">work</code> directory. Note, the <code class="literal">work</code> directory is considered a
-temporal directory with ElasticSearch (meaning it is safe to <code class="literal">rm -rf</code>
+temporal directory with Elasticsearch (meaning it is safe to <code class="literal">rm -rf</code>
 it), the default location of the persistent gateway in work intentional,
 <span class="strong"><strong>it should be changed</strong></span>.</p><p>When explicitly specifying the <code class="literal">gateway.fs.location</code>, each node will
 append its <code class="literal">cluster.name</code> to the provided location. It means that the
