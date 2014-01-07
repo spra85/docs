@@ -6,7 +6,7 @@ use v5.10;
 
 use FindBin;
 use lib "$FindBin::RealBin/lib";
-use ES::Util qw(run $Opts build_chunked build_single sha_for);
+use ES::Util qw(run $Opts build_chunked build_single sha_for timestamp);
 use Getopt::Long;
 use YAML qw(LoadFile);
 use Path::Class qw(dir file);
@@ -105,6 +105,8 @@ sub build_all {
         die $links->report;
     }
 
+    build_sitemap($build_dir);
+
     push_changes($build_dir)
         if $Opts->{push};
 }
@@ -128,6 +130,50 @@ sub build_entries {
         $toc->add_entry( $book->build );
     }
     return $toc;
+}
+
+#===================================
+sub build_sitemap {
+#===================================
+    my ($dir) = @_;
+    my $sitemap = $dir->file('sitemap.xml');
+
+    say "Building sitemap: $sitemap";
+    my $date = timestamp();
+
+    open my $fh, '>', $sitemap or die "Couldn't create $sitemap: $!";
+    say $fh <<SITEMAP_START;
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="http://www.elasticsearch.org/main-sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+SITEMAP_START
+
+    $dir->recurse(
+        callback => sub {
+            my $item = shift;
+
+            if ( $item->is_dir ) {
+                return $item->PRUNE
+                    if $item->basename eq 'images';
+                return;
+            }
+            return unless $item->basename =~ /\.html$/;
+            my $priority = $item->parent->basename eq 'current' ? 0.8 : 0.5;
+            my $url = 'http://www.elasticsearch.org/guide/'
+                . $item->relative($dir);
+            say $fh <<ENTRY;
+<url>
+    <loc>$url</loc>
+    <lastmod>$date</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>$priority</priority>
+</url>
+ENTRY
+        }
+    );
+
+    say $fh "</urlset>";
+    close $fh or die "Couldn't close $sitemap: $!"
+
 }
 
 #===================================

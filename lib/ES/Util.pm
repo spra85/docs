@@ -9,7 +9,7 @@ use Capture::Tiny qw(capture_merged tee_merged);
 
 require Exporter;
 our @ISA       = qw(Exporter);
-our @EXPORT_OK = qw(run $Opts build_chunked build_single sha_for);
+our @EXPORT_OK = qw(run $Opts build_chunked build_single sha_for timestamp);
 our $Opts      = {};
 
 our $HTML_Header = <<'HTML';
@@ -78,7 +78,7 @@ sub build_single {
     my $type    = $opts{type}    || 'book';
     my $lenient = $opts{lenient} || '';
     my $version = $opts{version} || 'test build';
-    my $multi   = $opts{multi} || 0;
+    my $multi   = $opts{multi}   || 0;
 
     fcopy( 'resources/styles.css', $index->parent )
         or die "Couldn't copy <styles.css> to <" . $index->parent . ">: $!";
@@ -152,6 +152,16 @@ sub sha_for {
     my $sha = eval { run 'git', 'rev-parse', $rev } || '';
     chomp $sha;
     return $sha;
+}
+
+#===================================
+sub timestamp {
+#===================================
+    my ( $sec, $min, $hour, $mday, $mon, $year ) = gmtime();
+    $year += 1900;
+    $mon++;
+    sprintf "%04d-%02d-%02dT%02d:%02d:%02d+00:00", $year, $mon, $mday, $hour,
+        $min, $sec;
 }
 
 1
