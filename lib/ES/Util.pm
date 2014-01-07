@@ -77,6 +77,8 @@ sub build_single {
     my $toc = $opts{toc} ? 'book toc' : '';
     my $type    = $opts{type}    || 'book';
     my $lenient = $opts{lenient} || '';
+    my $version = $opts{version} || 'test build';
+    my $multi   = $opts{multi} || 0;
 
     fcopy( 'resources/styles.css', $index->parent )
         or die "Couldn't copy <styles.css> to <" . $index->parent . ">: $!";
@@ -89,6 +91,9 @@ sub build_single {
         '--asciidoc-opts' => '-fresources/es-asciidoc.conf',
         '--xsltproc-opts',
         "--stringparam generate.toc '$toc'",
+        '--xsltproc-opts' => "--stringparam local.book.version '$version'",
+        '--xsltproc-opts' =>
+            "--stringparam local.book.multi_version '$multi'",
         '--destination-dir=' . $dest,
         ( $lenient ? '-L' : () ),
         $index

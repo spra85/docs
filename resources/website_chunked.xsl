@@ -7,8 +7,6 @@
   <xsl:import href="website_common.xsl"/>
 
   <!-- chunking options -->
-  <xsl:param name="local.book.version">test build</xsl:param>
-  <xsl:param name="local.book.multi_version" select="0"/>
   <xsl:param name="use.id.as.filename"       select="1"/>
   <xsl:param name="chunk.quietly"            select="1"/>
   <xsl:param name="chunker.output.encoding"  select="'UTF-8'"/>
@@ -26,6 +24,7 @@
   </xsl:param>
 
   <!-- Include link to other versions on the homepage ToC -->
+
   <xsl:template name="division.toc">
     <xsl:param name="toc-context" select="."/>
     <xsl:param name="toc.title.p" select="true()"/>

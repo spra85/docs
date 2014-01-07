@@ -1,6 +1,10 @@
 <xsl:stylesheet version="1.0"
                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+  <!-- book versions -->
+  <xsl:param name="local.book.version">test build</xsl:param>
+  <xsl:param name="local.book.multi_version" select="0"/>
+
   <!-- css -->
   <xsl:param name="generate.consistent.ids" select="1"/>
   <xsl:param name="css.decoration"          select="0"/>
@@ -17,6 +21,15 @@
 
   <xsl:param name="generate.toc"></xsl:param>
 
+
+    <xsl:template name="user.header.content">
+        <xsl:if test="$local.book.multi_version &gt; 0">
+          <p>
+             These docs are for branch: <xsl:value-of select="$local.book.version" />.
+             <a href="../index.html">Other versions</a>.
+          </p>
+        </xsl:if>
+    </xsl:template>
 
   <!-- remove part/chapter/section titles -->
   <xsl:param name="local.l10n.xml" select="document('')"/>
