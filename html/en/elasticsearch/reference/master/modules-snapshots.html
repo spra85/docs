@@ -48,7 +48,7 @@ will use location <code class="literal">/mount/backups/my_backup</code> to store
     }
   }
 }</pre><p>If a repository name is not specified, or <code class="literal">_all</code> is used as repository name Elasticsearch will return information about
-all repositories currently registered in the cluster:</p><pre class="programlisting prettyprint lang-js">$ curl -XGET 'http://localhost:9200/_snapshot'</pre><p>or</p><pre class="programlisting prettyprint lang-js">$ curl -XGET 'http://localhost:9200/_snapshot/all'</pre><h5><a id="_shared_file_system_repository"></a>Shared File System Repository</h5><p>The shared file system repository (<code class="literal">"type": "fs"</code>) is using shared file system to store snapshot. The path
+all repositories currently registered in the cluster:</p><pre class="programlisting prettyprint lang-js">$ curl -XGET 'http://localhost:9200/_snapshot'</pre><p>or</p><pre class="programlisting prettyprint lang-js">$ curl -XGET 'http://localhost:9200/_snapshot/_all'</pre><h5><a id="_shared_file_system_repository"></a>Shared File System Repository</h5><p>The shared file system repository (<code class="literal">"type": "fs"</code>) is using shared file system to store snapshot. The path
 specified in the <code class="literal">location</code> parameter should point to the same location in the shared filesystem and be accessible
 on all data and master nodes. The following settings are supported:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
