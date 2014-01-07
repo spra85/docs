@@ -21,6 +21,16 @@
 
   <xsl:param name="generate.toc"></xsl:param>
 
+ <!--  head title element with version -->
+    <xsl:template name="user.head.title">
+      <xsl:param name="node" select="."/>
+      <xsl:param name="title"/>
+
+      <title>
+        <xsl:copy-of select="$title"/>
+        <xsl:if test="$local.book.multi_version &gt; 0"> [<xsl:value-of select="$local.book.version" />]</xsl:if>
+      </title>
+    </xsl:template>
 
     <xsl:template name="user.header.content">
         <xsl:if test="$local.book.multi_version &gt; 0">
