@@ -12,5 +12,6 @@ bin
 *.iws
 *.log
 *.xml
+!html/sitemap.xml
 metastore_db
 html_docs/
