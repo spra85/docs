@@ -157,7 +157,7 @@ SITEMAP_START
                 return;
             }
             return unless $item->basename =~ /\.html$/;
-            my $priority = $item->parent->basename eq 'current' ? 0.8 : 0.5;
+            return $item->PRUNE unless $item->parent->basename eq 'current';
             my $url = 'http://www.elasticsearch.org/guide/'
                 . $item->relative($dir);
             say $fh <<ENTRY;
@@ -165,7 +165,7 @@ SITEMAP_START
     <loc>$url</loc>
     <lastmod>$date</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>$priority</priority>
+    <priority>0.8</priority>
 </url>
 ENTRY
         }
