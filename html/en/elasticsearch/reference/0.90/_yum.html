@@ -22,10 +22,7 @@
            
           <a href="api-conventions.html">API Conventions
                »
-            </a></span></div><p>
-             These docs are for branch: 0.90.
-             <a href="../index.html">Other versions</a>.
-          </p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_yum"></a>YUM</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_apt.html">APT</a></span></dt><dt><span class="section"><a href="_yum.html">YUM</a></span></dt></dl></div><p>Download and install the Public Signing Key</p><pre class="programlisting prettyprint lang-sh">rpm --import http://packages.elasticsearch.org/GPG-KEY-elasticsearch</pre><p>Add the following in your /etc/yum.repos.d/ directory</p><pre class="programlisting prettyprint lang-sh">[elasticsearch-0.90]
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_yum"></a>YUM</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_apt.html">APT</a></span></dt><dt><span class="section"><a href="_yum.html">YUM</a></span></dt></dl></div><p>Download and install the Public Signing Key</p><pre class="programlisting prettyprint lang-sh">rpm --import http://packages.elasticsearch.org/GPG-KEY-elasticsearch</pre><p>Add the following in your /etc/yum.repos.d/ directory</p><pre class="programlisting prettyprint lang-sh">[elasticsearch-0.90]
 name=Elasticsearch repository for 0.90.x packages
 baseurl=http://packages.elasticsearch.org/elasticsearch/0.90/centos
 gpgcheck=1

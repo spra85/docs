@@ -22,10 +22,7 @@
            
           <a href="search-search.html">Search
                »
-            </a></span></div><p>
-             These docs are for branch: 0.90.
-             <a href="../index.html">Other versions</a>.
-          </p><div class="part"><div class="titlepage"><div><div><h1 class="title"><a id="search"></a>Search APIs</h1></div></div></div><div class="partintro"><div></div><p>Most search APIs are <a class="link" href="search-search.html#search-multi-index-type" title="Multi-Index, Multi-Type">multi-index, multi-type</a>, with the
+            </a></span></div><div class="part"><div class="titlepage"><div><div><h1 class="title"><a id="search"></a>Search APIs</h1></div></div></div><div class="partintro"><div></div><p>Most search APIs are <a class="link" href="search-search.html#search-multi-index-type" title="Multi-Index, Multi-Type">multi-index, multi-type</a>, with the
 exception of the <a class="xref" href="search-explain.html" title="Explain API"><em>Explain API</em></a> and <a class="xref" href="search-percolate.html" title="Percolate API"><em>Percolate API</em></a> endpoints.</p><h2><a id="search-routing"></a>Routing</h2><p>When executing a search, it will be broadcasted to all the index/indices
 shards (round robin between replicas). Which shards will be searched on
 can be controlled by providing the <code class="literal">routing</code> parameter. For example,
