@@ -57,13 +57,27 @@ handling nodes being added or removed.</p><p>The following settings may be used:
 </span></dt><dd>
      How many concurrent recoveries are allowed to happen on a node.
      Defaults to <code class="literal">2</code>.
-</dd><dt><span class="term">
+</dd></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 1.0.0.RC1.</p></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">cluster.routing.allocation.enable</code>
+</span></dt><dd><p class="simpara">
+    Controls shard allocation for all indices, by allowing specific
+    kinds of shard to be allocated. Can be set to:
+</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">all</code> (default) - Allows shard allocation for all kinds of shards.
+</li><li class="listitem">
+<code class="literal">primaries</code> - Allows shard allocation only for primary shards.
+</li><li class="listitem">
+<code class="literal">new_primaries</code> - Allows shard allocation only for primary shards for new indices.
+</li><li class="listitem">
+<code class="literal">none</code> - No shard allocations of any kind are allowed for all indices.
+</li></ul></div></dd><dt><span class="term">
 <code class="literal">cluster.routing.allocation.disable_new_allocation</code>
 </span></dt><dd>
        Allows to disable new primary allocations. Note, this will prevent
        allocations for newly created indices. This setting really make
        sense when dynamically updating it using the cluster update
-       settings API.
+       settings API. This setting has been deprecated in favour
+       for <code class="literal">cluster.routing.allocation.enable</code>.
 </dd><dt><span class="term">
 <code class="literal">cluster.routing.allocation.disable_allocation</code>
 </span></dt><dd>
@@ -72,12 +86,14 @@ handling nodes being added or removed.</p><p>The following settings may be used:
         above). Note, a replica will still be promoted to primary if
         one does not exist. This setting really make sense when
         dynamically updating it using the cluster update settings API.
+        This setting has been deprecated in favour for <code class="literal">cluster.routing.allocation.enable</code>.
 </dd><dt><span class="term">
 <code class="literal">cluster.routing.allocation.disable_replica_allocation</code>
 </span></dt><dd>
       Allows to disable only replica allocation. Similar to the previous
       setting, mainly make sense when using it dynamically using the
-      cluster update settings API.
+      cluster update settings API. This setting has been deprecated in
+      favour for <code class="literal">cluster.routing.allocation.enable</code>.
 </dd><dt><span class="term">
 <code class="literal">indices.recovery.concurrent_streams</code>
 </span></dt><dd>

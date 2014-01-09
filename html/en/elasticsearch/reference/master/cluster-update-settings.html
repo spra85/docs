@@ -80,7 +80,8 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
        Allow to control how many concurrent rebalancing of shards are
        allowed cluster wide, and default it to <code class="literal">2</code> (integer). <code class="literal">-1</code> for
        unlimited. See also <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
-</dd></dl></div><h5><a id="_disable_allocation"></a>Disable allocation</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><h5><a id="_disable_allocation"></a>Disable allocation</h5><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 1.0.0.RC1.</p></div></div><p>All the disable allocation settings have been deprecated in favour for
+<code class="literal">cluster.routing.allocation.enable</code> setting.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.disable_allocation</code>
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
@@ -90,6 +91,10 @@ last example will be:</p><pre class="programlisting prettyprint lang-js">{
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
 </dd><dt><span class="term">
 <code class="literal">cluster.routing.allocation.disable_new_allocation</code>
+</span></dt><dd>
+     See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
+</dd></dl></div><h5><a id="_enable_allocation"></a>Enable allocation</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">cluster.routing.allocation.enable</code>
 </span></dt><dd>
      See <a class="xref" href="modules-cluster.html" title="Cluster"><em>Cluster</em></a>.
 </dd></dl></div><h5><a id="_throttling_allocation"></a>Throttling allocation</h5><div class="variablelist"><dl class="variablelist"><dt><span class="term">
