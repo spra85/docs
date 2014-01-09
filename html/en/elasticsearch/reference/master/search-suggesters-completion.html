@@ -174,18 +174,19 @@ you can actually have a typo in your search and still get results back.</p><pre 
         "completion" : {
             "field" : "suggest",
             "fuzzy" : {
-                "edit_distance" : 2
+                "fuzziness" : 2
             }
         }
     }
 }'</pre><p>The fuzzy query can take specific fuzzy parameters.
 The following parameters are supported:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
-<code class="literal">edit_distance</code>
+<code class="literal">fuzziness</code>
 </p>
 </td><td valign="top">
 <p>
-    Maximum edit distance, defaults to <code class="literal">1</code>
+    The fuzziness factor, defaults to <code class="literal">AUTO</code>.
+    See  <a class="xref" href="common-options.html#fuzziness" title="Fuzziness">the section called “Fuzziness”</a> for allowed settings.
 </p>
 </td></tr><tr><td valign="top">
 <p>
