@@ -91,7 +91,7 @@ sub _try_to_fetch {
         run qw(git remote set-url origin), $url;
     }
     say " - Fetching: " . $self->name;
-    run qw(git fetch);
+    run qw(git fetch --prune --tags);
     return 1;
 }
 
@@ -108,7 +108,15 @@ sub checkout {
 
     run qw( git reset --hard );
     run qw( git clean --force );
-    run qw( git checkout -B _build_docs ), "origin/$branch";
+    if ( sha_for("refs/remotes/origin/$branch") ) {
+        run qw( git checkout -B _build_docs ), "origin/$branch";
+    }
+    elsif ( sha_for("refs/tags/$branch") ) {
+        run qw( git checkout -B _build_docs ), $branch;
+    }
+    else {
+        die "Unknown branch name: $branch";
+    }
     return 1;
 }
 
@@ -122,7 +130,9 @@ sub has_changed {
 
     local $ENV{GIT_DIR} = $self->git_dir;
 
-    my $new = sha_for("refs/remotes/origin/$branch")
+    my $new
+        = sha_for("refs/remotes/origin/$branch")
+        or sha_for("refs/tags/$branch")
         or die "Remote branch <origin/$branch> doesn't exist "
         . "in repo "
         . $self->name;
@@ -146,7 +156,7 @@ sub mark_done {
     local $ENV{GIT_DIR}       = $self->git_dir;
     local $ENV{GIT_WORK_TREE} = $self->dir;
 
-    run qw( git checkout -B), $tracker, "refs/remotes/origin/$branch";
+    run qw( git checkout -B), $tracker, '_build_docs';
     run qw( git branch -D _build_docs);
 }
 
