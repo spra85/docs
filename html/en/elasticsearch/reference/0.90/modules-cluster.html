@@ -79,6 +79,12 @@ handling nodes being added or removed.</p><p>The following settings may be used:
       setting, mainly make sense when using it dynamically using the
       cluster update settings API.
 </dd><dt><span class="term">
+<code class="literal">cluster.routing.allocation.same_shard.host</code>
+</span></dt><dd>
+      Prevents that multiple instances of the same shard are allocated
+      on a single host. Defaults to <code class="literal">false</code>. This setting only applies
+      if multiple nodes are started on the same machine.
+</dd><dt><span class="term">
 <code class="literal">indices.recovery.concurrent_streams</code>
 </span></dt><dd>
        The number of streams to open (on a <span class="strong"><strong>node</strong></span> level) to recover a
