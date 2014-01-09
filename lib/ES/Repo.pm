@@ -91,7 +91,7 @@ sub _try_to_fetch {
         run qw(git remote set-url origin), $url;
     }
     say " - Fetching: " . $self->name;
-    run qw(git fetch --prune --tags);
+    run qw(git fetch);
     return 1;
 }
 
