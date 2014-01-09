@@ -52,6 +52,9 @@ border:none;
     margin-left: 80px;
 }
 
+.guide .admon_content h4 {
+    margin: 9px 0;
+}
 
 .guide .guide_content code,
 .guide .guide_content table code{
