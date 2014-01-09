@@ -141,8 +141,10 @@ occurred for the filter to included the latest percolate queries.
 to the percolate query’s metadata and <span class="strong"><strong>not</strong></span> how the document being percolated matched to the query. The <code class="literal">query</code> option
 is required for this option. Defaults to <code class="literal">false</code>.
 </li><li class="listitem">
-<code class="literal">sort</code> - Whether the matches should be sorted by the <code class="literal">_score</code>. Similar to the <code class="literal">score</code> option, but also sorts the
-matches. The <code class="literal">size</code> and <code class="literal">query</code> option are required for this option. Defaults to <code class="literal">false</code>.
+<code class="literal">sort</code> - Define a sort specification like in the search api. Currently only sorting <code class="literal">_score</code> reverse (default relevancy)
+is supported. Other sort fields will throw an exception. The <code class="literal">size</code> and <code class="literal">query</code> option are required for this setting. Like
+<code class="literal">track_score</code> the score is based on the query and represents how the query matched to the percolate query’s metadata
+and <span class="strong"><strong>not</strong></span> how the document being percolated matched to the query.
 </li><li class="listitem">
 <code class="literal">facets</code> - Allows facet definitions to be included. The facets are based on the matching percolator queries. See facet
 documentation how to define facets.

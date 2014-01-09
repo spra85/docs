@@ -44,7 +44,9 @@ that allows to include only settings matches the specified prefix.</p><pre class
 
 curl -XGET 'http://localhost:9200/_all/_settings?prefix=index.routing.allocation.'
 
-curl -XGET 'http://localhost:9200/2013-*/_settings?prefix=index.merge.'</pre><p>The first example returns all index settings the start with <code class="literal">index.</code> in the index <code class="literal">my-index</code>,
+curl -XGET 'http://localhost:9200/2013-*/_settings?prefix=index.merge.'
+
+curl -XGET 'http://localhost:9200/2013-*/index.merge./_settings'</pre><p>The first example returns all index settings the start with <code class="literal">index.</code> in the index <code class="literal">my-index</code>,
 the second example gets all index settings that start with <code class="literal">index.routing.allocation.</code> for
 all indices, lastly the third example returns all index settings that start with <code class="literal">index.merge.</code>
 in indices that start with <code class="literal">2013-</code>.</p></div><div class="navfooter"><span class="prev"><a href="indices-update-settings.html">
