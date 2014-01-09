@@ -35,17 +35,17 @@ example, getting the node stats for a node). Nodes can be identified in
 the APIs either using their internal node id, the node name, address,
 custom attributes, or just the <code class="literal">_local</code> node receiving the request. For
 example, here are some sample executions of nodes info:</p><pre class="programlisting prettyprint lang-js"># Local
-curl localhost:9200/_cluster/nodes/_local
+curl localhost:9200/_nodes/_local
 # Address
-curl localhost:9200/_cluster/nodes/10.0.0.3,10.0.0.4
-curl localhost:9200/_cluster/nodes/10.0.0.*
+curl localhost:9200/_nodes/10.0.0.3,10.0.0.4
+curl localhost:9200/_nodes/10.0.0.*
 # Names
-curl localhost:9200/_cluster/nodes/node_name_goes_here
-curl localhost:9200/_cluster/nodes/node_name_goes_*
+curl localhost:9200/_nodes/node_name_goes_here
+curl localhost:9200/_nodes/node_name_goes_*
 # Attributes (set something like node.rack: 2 in the config)
-curl localhost:9200/_cluster/nodes/rack:2
-curl localhost:9200/_cluster/nodes/ra*:2
-curl localhost:9200/_cluster/nodes/ra*:2*</pre><div class="toc"><dl><dt><span class="chapter"><a href="cluster-health.html">Cluster Health</a></span></dt><dt><span class="chapter"><a href="cluster-state.html">Cluster State</a></span></dt><dt><span class="chapter"><a href="cluster-stats.html">Cluster Stats</a></span></dt><dt><span class="chapter"><a href="cluster-pending.html">Pending cluster tasks</a></span></dt><dt><span class="chapter"><a href="cluster-reroute.html">Cluster Reroute</a></span></dt><dt><span class="chapter"><a href="cluster-update-settings.html">Cluster Update Settings</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-stats.html">Nodes Stats</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-info.html">Nodes Info</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-hot-threads.html">Nodes hot_threads</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-shutdown.html">Nodes Shutdown</a></span></dt></dl></div></div></div><div class="navfooter"><span class="prev"><a href="states.html">
+curl localhost:9200/_nodes/rack:2
+curl localhost:9200/_nodes/ra*:2
+curl localhost:9200/_nodes/ra*:2*</pre><div class="toc"><dl><dt><span class="chapter"><a href="cluster-health.html">Cluster Health</a></span></dt><dt><span class="chapter"><a href="cluster-state.html">Cluster State</a></span></dt><dt><span class="chapter"><a href="cluster-stats.html">Cluster Stats</a></span></dt><dt><span class="chapter"><a href="cluster-pending.html">Pending cluster tasks</a></span></dt><dt><span class="chapter"><a href="cluster-reroute.html">Cluster Reroute</a></span></dt><dt><span class="chapter"><a href="cluster-update-settings.html">Cluster Update Settings</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-stats.html">Nodes Stats</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-info.html">Nodes Info</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-hot-threads.html">Nodes hot_threads</a></span></dt><dt><span class="chapter"><a href="cluster-nodes-shutdown.html">Nodes Shutdown</a></span></dt></dl></div></div></div><div class="navfooter"><span class="prev"><a href="states.html">
               « 
               Shard states</a>
            
