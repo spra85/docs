@@ -24,6 +24,7 @@
   </xsl:param>
 
   <!-- Include link to other versions on the homepage ToC -->
+    <xsl:template name="user.header.content" />
 
   <xsl:template name="division.toc">
     <xsl:param name="toc-context" select="."/>
