@@ -120,6 +120,27 @@ conform with <a class="ulink" href="http://geojson.org/" target="_top">GeoJSON</
             }
         }
     }
+}</pre><h4><a id="_vertices"></a>Vertices</h4><p>The vertices of the bounding box can either be set by <code class="literal">top_left</code> and
+<code class="literal">bottom_right</code> or by <code class="literal">top_right</code> and <code class="literal">bottom_left</code> parameters. More
+over the names <code class="literal">topLeft</code>, <code class="literal">bottomRight</code>, <code class="literal">topRight</code> and <code class="literal">bottomLeft</code>
+are supported. Instead of setting the values pairwise, one can use
+the simple names <code class="literal">top</code>, <code class="literal">left</code>, <code class="literal">bottom</code> and <code class="literal">right</code> to set the
+values separately.</p><pre class="programlisting prettyprint lang-js">{
+    "filtered" : {
+        "query" : {
+            "match_all" : {}
+        },
+        "filter" : {
+            "geo_bounding_box" : {
+                "pin.location" : {
+                    "top" : -74.1,
+                    "left" : 40.73,
+                    "bottom" : -71.12,
+                    "right" : 40.01
+                }
+            }
+        }
+    }
 }</pre><h4><a id="_geo_point_type"></a>geo_point Type</h4><p>The filter <span class="strong"><strong>requires</strong></span> the <code class="literal">geo_point</code> type to be set on the relevant
 field.</p><h4><a id="_multi_location_per_document"></a>Multi Location Per Document</h4><p>The filter can work with multiple locations / points per document. Once
 a single location / point matches the filter, the document will be
