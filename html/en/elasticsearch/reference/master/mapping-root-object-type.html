@@ -27,7 +27,7 @@
            
           <a href="mapping-nested-type.html">Nested Type
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-root-object-type"></a>Root Object Type</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt><span class="section"><a href="mapping-multi-field-type.html">Multi Field Type</a></span></dt><dt><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>The root object mapping is an
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-root-object-type"></a>Root Object Type</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>The root object mapping is an
 <a class="link" href="mapping-object-type.html" title="Object Type">object type mapping</a> that
 maps the root object (the type itself). On top of all the different
 mappings that can be set using the
@@ -88,17 +88,17 @@ can be set to <code class="literal">true</code>. For example:</p><pre class="pro
 }</pre><h4><a id="_dynamic_templates"></a>dynamic_templates</h4><p>Dynamic templates allow to define mapping templates that will be applied
 when dynamic introduction of fields / objects happens.</p><p>For example, we might want to have all fields to be stored by default,
 or all <code class="literal">string</code> fields to be stored, or have <code class="literal">string</code> fields to always
-be indexed as <code class="literal">multi_field</code>, once analyzed and once not_analyzed. Here
-is a simple example:</p><pre class="programlisting prettyprint lang-js">{
+be indexed with multi fields syntax, once analyzed and once not_analyzed.
+Here is a simple example:</p><pre class="programlisting prettyprint lang-js">{
     "person" : {
         "dynamic_templates" : [
             {
                 "template_1" : {
                     "match" : "multi*",
                     "mapping" : {
-                        "type" : "multi_field",
+                        "type" : "{dynamic_type}",
+                        "index" : "analyzed",
                         "fields" : {
-                            "{name}" : {"type": "{dynamic_type}", "index" : "analyzed"},
                             "org" : {"type": "{dynamic_type}", "index" : "not_analyzed"}
                         }
                     }
@@ -116,7 +116,7 @@ is a simple example:</p><pre class="programlisting prettyprint lang-js">{
             }
         ]
     }
-}</pre><p>The above mapping will create a <code class="literal">multi_field</code> mapping for all field
+}</pre><p>The above mapping will create a field with multi fields for all field
 names starting with multi, and will map all <code class="literal">string</code> types to be
 <code class="literal">not_analyzed</code>.</p><p>Dynamic templates are named to allow for simple merge behavior. A new
 mapping, just with a new template can be "put" and that template will be

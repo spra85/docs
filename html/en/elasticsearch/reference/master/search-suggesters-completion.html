@@ -129,7 +129,7 @@ curl -X PUT localhost:9200/music/song/_mapping -d '{
     rank your suggestions. This field is optional.
 </dd></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Even though you are losing most of the features of the
 completion suggest, you can opt in for the shortest form, which even
-allows you to use inside of multi_field. But keep in mind, that you will
+allows you to use inside of multi fields. But keep in mind, that you will
 not be able to use several inputs, an output, payloads or weights.</p></div></div><pre class="programlisting prettyprint lang-js">{
   "suggest" : "Nirvana"
 }</pre><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The suggest data structure might not reflect deletes on

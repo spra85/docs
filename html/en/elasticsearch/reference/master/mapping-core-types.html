@@ -27,7 +27,7 @@
            
           <a href="mapping-array-type.html">Array Type
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-core-types"></a>Core Types</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt><span class="section"><a href="mapping-multi-field-type.html">Multi Field Type</a></span></dt><dt><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>Each JSON field can be mapped to a specific core type. JSON itself
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-core-types"></a>Core Types</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>Each JSON field can be mapped to a specific core type. JSON itself
 already provides us with some typing, with its support for <code class="literal">string</code>,
 <code class="literal">integer</code>/<code class="literal">long</code>, <code class="literal">float</code>/<code class="literal">double</code>, <code class="literal">boolean</code>, and <code class="literal">null</code>.</p><p>The following sample tweet JSON document will be used to explain the
 core types:</p><pre class="programlisting prettyprint lang-js">{
@@ -149,12 +149,9 @@ the number of tokens in the string rather than the string itself.  For
 example:</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {
         "properties" : {
-            "message" : {
-                "type" : "multi_field",
+            "name" : {
+                "type" : "string",
                 "fields" : {
-                    "name": {
-                        "type": "string"
-                    },
                     "word_count": {
                         "type" : "token_count",
                         "store" : "yes",
