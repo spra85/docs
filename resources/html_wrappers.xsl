@@ -114,7 +114,7 @@
           <section id="search_container" class="active">
             <form id="blog_search" role="search" action="/" method="get">
               <div class="blog_search_wrapper">
-                <input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" />
+                <input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" />
                 <input type="submit" class="search_submit" value=" " />
                 <ul id="results" />
               </div>
@@ -171,7 +171,7 @@
                           <span class="gfield_required">*</span>
                         </label>
                         <div class="ginput_container">
-                          <input name="input_1" id="input_1_1" type="text" value="" class="medium" tabindex="1" />
+                          <input name="input_1" id="input_1_1" type="text" value="" class="medium" tabindex="2" />
                         </div>
                       </li>
                       <li id="field_1_7" class="gfield    icon name           gfield_contains_required">
