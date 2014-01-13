@@ -93,7 +93,8 @@ supports <a class="link" href="search-search.html#search-multi-index-type" title
 <code class="literal">ignore_unavailable</code> option. Setting it to <code class="literal">true</code> will cause indices that do not exists to be ignored during snapshot
 creation. By default, when <code class="literal">ignore_unavailable</code> option is not set and an index is missing the snapshot request will fail.
 By setting <code class="literal">include_global_state</code> to false it’s possible to prevent the cluster global state to be stored as part of
-the snapshot.</p><p>The index snapshot process is incremental. In the process of making the index snapshot Elasticsearch analyses
+the snapshot. By default, entire snapshot will fail if one or more indices participating in the snapshot don’t have
+all primary shards available. This behaviour can be changed by setting <code class="literal">partial</code> to <code class="literal">true</code>.</p><p>The index snapshot process is incremental. In the process of making the index snapshot Elasticsearch analyses
 the list of the index files that are already stored in the repository and copies only files that were created or
 changed since the last snapshot. That allows multiple snapshots to be preserved in the repository in a compact form.
 Snapshotting process is executed in non-blocking fashion. All indexing and searching operation can continue to be
