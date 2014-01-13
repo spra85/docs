@@ -48,9 +48,18 @@ created (check out the <a class="link" href="indices-put-mapping.html" title="Pu
 API for manually creating a type mapping).</p><p>The mapping itself is very flexible and is schema-free. New fields and
 objects will automatically be added to the mapping definition of the
 type specified. Check out the <a class="link" href="mapping.html" title="Mapping">mapping</a>
-section for more information on mapping definitions.</p><p>Though explained on the <a class="link" href="mapping.html" title="Mapping">mapping</a> section,
-it’s important to note that the format of the JSON document can also
-include the type (very handy when using JSON mappers), for example:</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
+section for more information on mapping definitions.</p><p>Note that the format of the JSON document can also include the type (very handy
+when using JSON mappers) if the <code class="literal">index.mapping.allow_type_wrapper</code> setting is
+set to true, for example:</p><pre class="programlisting prettyprint lang-js">$ curl -XPOST 'http://localhost:9200/twitter' -d '{
+  "settings": {
+    "index": {
+      "mapping.allow_type_wrapper": true
+    }
+  }
+}'
+{"acknowledged":true}
+
+$ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
     "tweet" : {
         "user" : "kimchy",
         "post_date" : "2009-11-15T14:12:12",
