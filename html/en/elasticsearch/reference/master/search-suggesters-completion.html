@@ -86,14 +86,14 @@ curl -X PUT localhost:9200/music/song/_mapping -d '{
     <code class="literal">The Beatles</code>, no need to change a simple analyzer, if you are able to
     enrich your data.
 </dd><dt><span class="term">
-<code class="literal">max_input_len</code>
+<code class="literal">max_input_length</code>
 </span></dt><dd>
     Limits the length of a single input, defaults to <code class="literal">50</code> UTF-16 code points.
     This limit is only used at index time to reduce the total number of
     characters per input string in order to prevent massive inputs from
     bloating the underlying datastructure. The most usecases won’t be influenced
     by the default value since prefix completions hardly grow beyond prefixes longer
-    than a handful of characters.
+    than a handful of characters. (Old name "max_input_len" is deprecated)
 </dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="indexing"></a>Indexing</h3></div></div></div><pre class="programlisting prettyprint lang-js">curl -X PUT 'localhost:9200/music/song/1?refresh=true' -d '{
     "name" : "Nevermind",
     "suggest" : {
