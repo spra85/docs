@@ -94,16 +94,43 @@ that runs against all types:</p><pre class="programlisting prettyprint lang-js">
             }
         }
     }
-}'</pre><h3><a id="removing"></a>Delete Warmer</h3><p>Removing a warmer can be done against an index (or alias / indices)
-based on its name. The provided name can be a simple wildcard expression
-or omitted to remove all warmers. Some samples:</p><pre class="programlisting prettyprint lang-js"># delete warmer named warmer_1 on test index
-curl -XDELETE localhost:9200/test/_warmer/warmer_1
+}'</pre><p>All options:</p><pre class="programlisting prettyprint lang-js">PUT _warmer/{warmer_name}
 
-# delete all warmers that start with warm on test index
-curl -XDELETE localhost:9200/test/_warmer/warm*
+PUT /{index}/_warmer/{warmer_name}
 
-# delete all warmers for test index
-curl -XDELETE localhost:9200/test/_warmer/</pre><h3><a id="warmer-retrieving"></a>GETting Warmer</h3><p>Getting a warmer for specific index (or alias, or several indices) based
+PUT /{index}/{type}/_warmer/{warmer_name}</pre><p>where</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">{index}</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">* | _all | glob pattern | name1, name2, …</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">{type}</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">* | _all | glob pattern | name1, name2, …</code>
+</p>
+</td></tr></tbody></table></div><p>Instead of <code class="literal">_warmer</code> you can also use the plural <code class="literal">_warmers</code>.</p><h3><a id="removing"></a>Delete Warmers</h3><p>Warmers can be deleted using the following endpoint:</p><pre class="programlisting prettyprint lang-js">[DELETE] /{index}/_warmer/{name}</pre><p>where</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">{index}</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">* | _all | glob pattern | name1, name2, …</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">{name}</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">* | _all | glob pattern | name1, name2, …</code>
+</p>
+</td></tr></tbody></table></div><p>Instead of <code class="literal">_warmer</code> you can also use the plural <code class="literal">_warmers</code>.</p><h3><a id="warmer-retrieving"></a>GETting Warmer</h3><p>Getting a warmer for specific index (or alias, or several indices) based
 on its name. The provided name can be a simple wildcard expression or
 omitted to get all warmers. Some examples:</p><pre class="programlisting prettyprint lang-js"># get warmer named warmer_1 on test index
 curl -XGET localhost:9200/test/_warmer/warmer_1
