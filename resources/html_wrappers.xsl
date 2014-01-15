@@ -9,7 +9,6 @@
 
     <script>var eucookie = true;</script>
     <link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" />
-    <link rel="canonical" href="/guide/" />
     <meta property='og:locale' content='en_US'/>
     <meta property='og:type' content='article'/>
     <meta property='og:title' content='Resources | Elasticsearch'/>
