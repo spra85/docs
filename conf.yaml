@@ -22,6 +22,12 @@ repos:
         branches:
             - master
 
+    elasticsearch-js:
+        url:        https://github.com/elasticsearch/elasticsearch-js.git
+        current:    master
+        branches:
+            - master
+
 contents_title:     Guide
 
 contents:
@@ -53,10 +59,9 @@ contents:
           -
             title:      JavaScript API
             prefix:     en/elasticsearch/client/javascript-api
-            repo:       elasticsearch
-            index:      docs/javascript/index.asciidoc
+            repo:       elasticsearch-js
+            index:      docs/index.asciidoc
             abbr:       js
-            single:     1
 
           -
             title:      Groovy API
