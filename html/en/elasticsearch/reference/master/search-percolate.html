@@ -200,11 +200,11 @@ document.</p><div class="itemizedlist"><p class="title"><strong>Supported option
 <code class="literal">version_type</code> - Whether internal or external versioning is used. Defaults to internal versioning.
 </li></ul></div><p>Internally the percolate api will issue a get request for fetching the`_source` of the document to percolate.
 For this feature to work the <code class="literal">_source</code> for documents to be percolated need to be stored.</p><h4><a id="_example"></a>Example</h4><p>Index response:</p><pre class="programlisting prettyprint lang-js">{
-        "ok" : true,
         "_index" : "my-index",
         "_type" : "message",
         "_id" : "1",
-        "_version" : 1
+        "_version" : 1,
+        "created" : true
 }</pre><p>Percolating an existing document:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'localhost:9200/my-index1/message/1/_percolate'</pre><p>The response is the same as with the regular percolate api.</p><h3><a id="_multi_percolate_api"></a>Multi percolate api</h3><p>The multi percolate api allows to bundle multiple percolate requests into a single request, similar to what the multi
 search api does to search requests. The request body format is line based. Each percolate request item takes two lines,
 the first line is the header and the second line is the body.</p><p>The header can contain any parameter that normally would be set via the request path or query string parameters. T

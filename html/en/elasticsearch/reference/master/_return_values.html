@@ -43,10 +43,10 @@ Field values, in response to the <a class="link" href="search-request-fields.htm
   code.  The only exception to this rule is when <code class="literal">fields</code> is used to retrieve
   metadata like the <code class="literal">routing</code> value, which are always singular.  Metadata
   fields are always returned as scalars.
-</li><li class="listitem">
+</li><li class="listitem"><p class="simpara">
 Settings, like <code class="literal">index.analysis.analyzer.default</code> are now returned as proper
   nested JSON objects, which makes them easier to work with programatically:
-</li></ul></div><pre class="programlisting prettyprint lang-json">{
+</p><pre class="programlisting prettyprint lang-json">{
     "index": {
         "analysis": {
             "analyzer": {
@@ -54,9 +54,8 @@ Settings, like <code class="literal">index.analysis.analyzer.default</code> are 
             }
         }
     }
-}</pre><p>+
-You can choose to return them in flattened format by passing <code class="literal">?flat_settings</code>
-in the query string.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+}</pre><p class="simpara">You can choose to return them in flattened format by passing <code class="literal">?flat_settings</code>
+in the query string.</p></li><li class="listitem">
 The <a class="link" href="indices-analyze.html" title="Analyze"><code class="literal">analyze</code></a> API no longer supports the text response
   format, but does support JSON and YAML.
 </li></ul></div></div><div class="navfooter"><span class="prev"><a href="_parameters.html">

@@ -42,11 +42,11 @@ Elasticsearch on 64 bit Linux now uses <a class="link" href="index-modules-store
   number.  The RPM and Debian packages default this value to <code class="literal">262144</code>.
 </li><li class="listitem">
 The RPM and Debian packages no longer start Elasticsearch by default.
-</li><li class="listitem">
+</li><li class="listitem"><p class="simpara">
 The <code class="literal">cluster.routing.allocation</code> settings (<code class="literal">disable_allocation</code>,
   <code class="literal">disable_new_allocation</code> and <code class="literal">disable_replica_location</code>) have been
   <a class="link" href="modules-cluster.html" title="Cluster">replaced by the single setting</a>:
-</li></ul></div><pre class="programlisting prettyprint lang-yaml">cluster.routing.allocation.enable: all|primaries|new_primaries|none</pre></div><div class="navfooter"><span class="prev"><a href="breaking-changes.html">
+</p><pre class="programlisting prettyprint lang-yaml">cluster.routing.allocation.enable: all|primaries|new_primaries|none</pre></li></ul></div></div><div class="navfooter"><span class="prev"><a href="breaking-changes.html">
               « 
               Breaking changes in 1.0</a>
            
