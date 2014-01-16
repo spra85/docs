@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Groovy API</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Quick Start</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="elasticsearch.js" /><link rel="up" href="index.html" title="elasticsearch.js" /><link rel="prev" href="about.html" title="About" /><link rel="next" href="api-conventions.html" title="API Conventions" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -14,11 +14,127 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="book" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="id-1"></a>Groovy API</h1></div></div><hr /></div><div class="preface"><div class="titlepage"><div><div><h1 class="title"><a id="id-1.2"></a></h1></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="master/index.html" target="_top">Version: master</a>
+      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">elasticsearch.js</a></span> » <span class="breadcrumb-node">Quick Start</span></div><div class="navheader"><span class="prev"><a href="about.html">
+              « 
+              About</a>
+           
+        </span><span class="next">
+           
+          <a href="api-conventions.html">API Conventions
+               »
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="quick-start"></a>Quick Start</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="about.html">About</a></span></dt><dt><span class="chapter"><a href="quick-start.html">Quick Start</a></span></dt><dt><span class="chapter"><a href="api-conventions.html">API Conventions</a></span></dt><dt><span class="chapter"><a href="api-reference.html">API Method Reference</a></span></dt><dt><span class="chapter"><a href="api-reference-0-90.html">0.90 API Method Reference</a></span></dt><dt><span class="chapter"><a href="configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="extending_core_components.html">Extending Core Components</a></span></dt><dt><span class="chapter"><a href="logging.html">setup logging</a></span></dt><dt><span class="chapter"><a href="logging-customization.html">Using the default loggers</a></span></dt><dt><span class="chapter"><a href="contributing.html">Development/Contributing</a></span></dt><dt><span class="chapter"><a href="errors.html">Error Reference</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_creating_a_client"></a>Creating a client</h2></div></div></div><p>Start using Elasticsearch.js by creating an instance of the <code class="literal">elasticsearch.Client</code> class. The constructor accepts a config object/hash where you can define defaults values, or even entire classes, for the client to use. For a full list of config options check out the the <a class="link" href="configuration.html" title="Configuration">section deicated to configuration</a>.</p><pre class="programlisting prettyprint lang-js">var elasticsearch = require('elasticsearch');
+var client = new elasticsearch.Client({
+  host: 'localhost:9200',
+  log: 'trace'
+});</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_say_hello_to_elasticsearch"></a>Say hello to Elasticsearch</h2></div></div></div><p>Almost all of the methods on the client accept two arguments:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">params</code> - an optional object/hash of parameters <a class="link" href="api-conventions.html" title="API Conventions">More info here</a>.
 </li><li class="listitem">
-<a class="ulink" href="current/index.html" target="_top">Version: 0.90 (current)</a>
-</li></ul></div></div></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
+<code class="literal">callback</code> - an optional function that will be called with the final result of the method. When omitted, a <a class="ulink" href="https://github.com/cujojs/when/blob/master/docs/api.md#promise" target="_top">promise</a> is returned. api-conventions-cb[More info here].
+</li></ul></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_ping_the_cluster"></a>Ping the cluster</h3></div></div></div><p><strong>Send a HEAD request to "/?hello=elasticsearch" and allow up to 1 second for it to complete. </strong>
+</p><pre class="programlisting prettyprint lang-js">client.ping({
+  requestTimeout: 1000,
+  // undocumented params are appended to the query string
+  hello: "elasticsearch!"
+}, function (error) {
+  if (error) {
+    console.error('elasticsearch cluster is down!');
+  } else {
+    console.log('All is well');
+  }
+});</pre><p>
+</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_use_promises"></a>Use Promises</h3></div></div></div><p><strong>Skip the callback to get a promise back. </strong>
+</p><pre class="programlisting prettyprint lang-js">client.search({
+  q: 'pants'
+}).then(function (body) {
+  var hits = body.hits.hits;
+}, function (error) {
+  console.trace(error.message);
+});</pre><p>
+</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_allow_404_responses"></a>Allow 404 responses</h3></div></div></div><p><strong>Prevent 404 responses from being considered errors by telling the client to ignore them. </strong>
+</p><pre class="programlisting prettyprint lang-js">client.indices.delete({
+  index: 'test_index',
+  ignore: [404]
+}).then(function (body) {
+  // since we told the client to ignore 404 errors, the
+  // promise is resolved even if the index does not exist
+  console.log('index was deleted or never existed');
+}, function (error) {
+  // oh no!
+});</pre><p>
+</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_searching_for_documents"></a>Searching for documents</h2></div></div></div><p>A very common use-case for elasticsearch is to sort through through large collections of documents in order to find ones that are relavent to a query. In most cases you will use the client’s <code class="literal">search()</code> method to accomplish this.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_elasticsearch_query_dsl"></a>Elasticsearch Query DSL</h3></div></div></div><p>For many searches you will want to define a search document that tells elasticsearch exactly how to find the documents you are looking for. To do this you will use the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl.html" target="_top">elasticsearch query DSL</a>. If you are not familiary with Elasticsearch’s query DSL is it recommended that you research the topic at elasticsearch.org or watch/read one of these introductions:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://www.youtube.com/watch?v=52G5ZzE0XpY#t=1471" target="_top">Clinton Gormley "Getting down and dirty with Elasticsearch"</a>
+</li><li class="listitem">
+<a class="ulink" href="http://okfnlabs.org/blog/2013/07/01/elasticsearch-query-tutorial.html#query-dsl-overview" target="_top">Querying Elasticsearch - A Tutorial and Guide</a>
+</li><li class="listitem">
+<a class="ulink" href="http://exploringelasticsearch.com/book/searching-data/the-query-dsl-and-the-search-api.html" target="_top">The Query DSL and the Search API - Searching Data - Exploring Elasticsearch</a>
+</li></ul></div><p>Now for some examples using the Query DSL.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_simple_match_query"></a>Simple match query</h4></div></div></div><p><strong>Find tweets that have "elasticsearch" in their body field. </strong>
+</p><pre class="programlisting prettyprint lang-js">client.search({
+  index: 'twitter',
+  type: 'tweets',
+  body: {
+    query: {
+      match: {
+        body: 'elasticsearch'
+      }
+    }
+  }
+}).then(function (resp) {
+    var hits = resp.hits.hits;
+}, function (err) {
+    console.trace(err.message);
+});</pre><p>
+</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_more_complex_filtered_query"></a>More complex filtered query</h4></div></div></div><p>To power a search form on a public site, you might want to allow the user to specify some text but also limit the documents returned by a few criteria. This is a good use-case for a filtered query.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>In this example, <code class="literal">request</code> and <code class="literal">response</code> are <a class="ulink" href="http://expressjs.com/api.html#request" target="_top">Express</a> request and response objects.</p></div></div><pre class="programlisting prettyprint lang-js">var pageNum = request.param('page', 0);
+var perPage = request.param('per_page', 15);
+var userQuery = request.param('search_query');
+var userId = request.session.userId;
+
+client.search({
+  index: 'posts',
+  from: (pageNum - 1) * perPage,
+  size: perPage,
+  body: {
+    filtered: {
+      query: {
+        match: {
+          // match the query agains all of
+          // the fields in the posts index
+          _all: userQuery
+        }
+      },
+      filter: {
+        // only return documents that are
+        // public or owned by the current user
+        or: [
+          {
+            term: { privacy: "public" }
+          },
+          {
+            term: { owner: userId }
+          }
+        ]
+      }
+    }
+  }
+}, function (error, response) {
+  if (err) {
+    // handle error
+    return;
+  }
+
+  response.render('search_results', {
+    results: response.hits.hits,
+    page: pageNum,
+    pages: Math.ceil(response.hists.total / perPage)
+  })
+});</pre><p>You can find a lot more information about filters <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-filters.html" target="_top">here</a></p></div></div></div></div><div class="navfooter"><span class="prev"><a href="about.html">
+              « 
+              About</a>
+           
+        </span><span class="next">
+           
+          <a href="api-conventions.html">API Conventions
+               »
+            </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
               Need help with
               <span class="oomph">architectural advice</span></p><p> or <span class="oomph">design validation</span>?</p><a target="_blank" href="http://elasticsearch.com/support/" class="btn-expose drawer_toggle">More</a><span class="arrow"></span><div class="block_content"><h1 style="text-align: center;">Get development help from our core team!</h1><p>Want more information about our Development Support? Let us know how to get a hold of you and we’ll be in touch soon.</p><div class="gf_browser_gecko gform_wrapper" id="gform_wrapper_1"><a id="gf_1" name="gf_1" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="/resources/#gf_1"><div class="gform_body"><ul id="gform_fields_1" class="gform_fields top_label description_below"><li id="field_1_1" class="gfield    icon name           gfield_contains_required"><label class="gfield_label" for="input_1_1">
                           First Name
