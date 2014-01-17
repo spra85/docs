@@ -272,6 +272,10 @@ h1,h2,h3,h4,h5,.breadcrumbs span, .breadcrumbs a, .navheader a, .navfooter a{
 text-transform:lowercase;
 }
 
+h1 code,h2 code,h3 code,h4 code,h5 code,.breadcrumbs span code, .breadcrumbs a code, .navheader a code, .navfooter a code{
+text-transform:none;
+}
+
 .guide .guide_content h1,
 .chapter .titlepage h2 {
     font-size: 50px;
