@@ -105,8 +105,6 @@ sub build_all {
         die $links->report;
     }
 
-    build_sitemap($build_dir);
-
     push_changes($build_dir)
         if $Opts->{push};
 }
@@ -208,6 +206,8 @@ sub push_changes {
     run qw( git add -A), $build_dir;
 
     if ( run qw(git status -s -- ), $build_dir ) {
+        build_sitemap($build_dir);
+        run qw( git add -A), $build_dir;
         say "Commiting changes";
         run qw(git commit -m), 'Updated docs';
     }
