@@ -122,6 +122,8 @@ sub to_html5 {
         $contents =~ s/\s+xml:lang="[^"]*"//g;
         $contents =~ s/^<\?xml[^>]+>\n//;
         $contents =~ s/^<!DOCTYPE[^>]+>\n?<html>/$HTML_Header/;
+        $contents =~ s/\s+$//;
+        $contents .= "\n";
         $file->spew( iomode => '>:utf8', $contents );
     }
 }
