@@ -27,7 +27,7 @@
            
           <a href="extending_core_components.html">Extending
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="configuration"></a>Configuration</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="about.html">About</a></span></dt><dt><span class="chapter"><a href="quick-start.html">Quick Start</a></span></dt><dt><span class="chapter"><a href="api-conventions.html">API Conventions</a></span></dt><dt><span class="chapter"><a href="api-reference.html">API</a></span></dt><dt><span class="chapter"><a href="api-reference-0-90.html">0.90 API</a></span></dt><dt><span class="chapter"><a href="configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="extending_core_components.html">Extending</a></span></dt><dt><span class="chapter"><a href="logging.html">setup logging</a></span></dt><dt><span class="chapter"><a href="contributing.html">Contributing</a></span></dt><dt><span class="chapter"><a href="errors.html">Errors</a></span></dt><dt><span class="chapter"><a href="transport-reference.html">Transport</a></span></dt></dl></div><p>The <code class="literal">Client</code> constructor accepts a single object as it’s argument, and the following keys can be used to configure that client instance.</p><pre class="programlisting prettyprint lang-js">var elasticsearch = require('elasticsearch');
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="configuration"></a>Configuration</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="about.html">About</a></span></dt><dt><span class="chapter"><a href="quick-start.html">Quick Start</a></span></dt><dt><span class="chapter"><a href="api-conventions.html">API Conventions</a></span></dt><dt><span class="chapter"><a href="api-reference.html">1.0 API</a></span></dt><dt><span class="chapter"><a href="api-reference-0-90.html">0.90 API</a></span></dt><dt><span class="chapter"><a href="configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="extending_core_components.html">Extending</a></span></dt><dt><span class="chapter"><a href="logging.html">setup logging</a></span></dt><dt><span class="chapter"><a href="contributing.html">Contributing</a></span></dt><dt><span class="chapter"><a href="errors.html">Errors</a></span></dt><dt><span class="chapter"><a href="transport-reference.html">Transport</a></span></dt></dl></div><p>The <code class="literal">Client</code> constructor accepts a single object as it’s argument, and the following keys can be used to configure that client instance.</p><pre class="programlisting prettyprint lang-js">var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
   ...
 });</pre><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_config_options"></a>Config options</h2></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
@@ -63,130 +63,87 @@ Default in Node
 <p>
 <code class="literal">String</code> — Change the API that they client provides, specify the major version of the Elasticsearch nodes you will be connecting to.
 </p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</td></tr></tbody></table></div><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>This default will track the latest version of Elasticsearch, and is only intended to be used durring develoopment. It is highly recommended that you set this parameter in all code that is headed to production.</p></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 Default 
 </span></dt><dd>
-<code class="literal">"master"</code>
+<code class="literal">"0.90"</code>
 </dd><dt><span class="term">
 Options 
 </span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <code class="literal">"master"</code>
 </li><li class="listitem">
+<code class="literal">"1.0"</code>
+</li><li class="listitem"><p class="simpara">
 <code class="literal">"0.90"</code>
-</li></ul></div></dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">sniffOnStart</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
 <code class="literal">Boolean</code> — Should the client attempt to detect the rest of the cluster when it is first instantiated?
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div></li></ul></div></dd><dt><span class="term">
 Default
-</span></dt><dd>
+</span></dt><dd><p class="simpara">
 <code class="literal">false</code>
-</dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">sniffInterval</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
 <code class="literal">Number, false</code> — Every <code class="literal">n</code> milliseconds, perform a sniff operation and make sure our list of nodes is complete.
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div></dd><dt><span class="term">
 Default
-</span></dt><dd>
+</span></dt><dd><p class="simpara">
 <code class="literal">false</code>
-</dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">sniffOnConnectionFault</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
 <code class="literal">Boolean</code> — Should the client immediately sniff for a more current list of nodes when a connection dies?
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div></dd><dt><span class="term">
 Default
-</span></dt><dd>
+</span></dt><dd><p class="simpara">
 <code class="literal">false</code>
-</dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">maxRetries</code><a id="config-max-retries"></a>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
 <code class="literal">Integer</code> — How many times should the client try to connect to other nodes before returning a <a class="link" href="errors.html#connection-fault">ConnectionFault</a> error.
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div></dd><dt><span class="term">
 Default
-</span></dt><dd>
+</span></dt><dd><p class="simpara">
 <code class="literal">3</code>
-</dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">requestTimeout</code><a id="config-request-timeout"></a>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
 <code class="literal">Number</code> — Milliseconds before an HTTP request will be aborted and retried. This can also be set per request.
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div></dd><dt><span class="term">
 Default
-</span></dt><dd>
+</span></dt><dd><p class="simpara">
 <code class="literal">30000</code>
-</dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">deadTimeout</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
 <code class="literal">Number</code> — Milliseconds that a dead connection will wait before attempting to revive itself.
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div></dd><dt><span class="term">
 Default
-</span></dt><dd>
+</span></dt><dd><p class="simpara">
 <code class="literal">30000</code>
-</dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">maxSockets</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
 <code class="literal">Number</code> — Number of sockets each connection should keep to it’s corresponding node. This will also be the maximum number of concurrent requests that could be made to that node. These sockets are currently kept alive using <a class="ulink" href="https://github.com/TBEDP/agentkeepalive" target="_top">agentkeepalive</a>.
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div></dd><dt><span class="term">
 Default
-</span></dt><dd>
+</span></dt><dd><p class="simpara">
 <code class="literal">10</code>
-</dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">maxKeepAliveTime</code>
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">Number, false</code> — Milliseconds of inactivity before the socket is destroyed
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
-Default
 </span></dt><dd>
+<code class="literal">Number, false</code> — Milliseconds of inactivity before the socket is destroyed
+</dd></dl></div></dd><dt><span class="term">
+Default
+</span></dt><dd><p class="simpara">
 <code class="literal">60000</code>
-</dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">connectionClass</code><a id="config-connectionClass"></a>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
 <code class="literal">String, Constructor</code> — Defines the class that will be used to create connections to store in the connection pool. If you are looking to implement additional protocols you should probably start by writing a Connection class that extends the ConnectionAbstract.
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div></dd><dt><span class="term">
 Defaults
 </span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Node: <code class="literal">"http"</code>
@@ -194,19 +151,13 @@ Node: <code class="literal">"http"</code>
 Browser Build: <code class="literal">"xhr"</code>
 </li><li class="listitem">
 Angular Build: <code class="literal">"angular"</code>
-</li><li class="listitem">
+</li><li class="listitem"><p class="simpara">
 jQuery Build: <code class="literal">"jquery"</code>
-</li></ul></div></dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">selector</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd><p class="simpara">
 <code class="literal">String, Function</code> — This function will be used to select a connection from the ConnectionPool. It should received a single argument, the list of "active" connections, and return the connection to use. Use this selector to implement special logic for your client such as preferring nodes in a certain rack or data-center.
-</p>
-<p>To make this function asynchronous, accept a second argument which will be the callback to use. The callback should be called Node-style with a possible error like: <code class="literal">cb(err, selectedConnection)</code>.</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</p><p class="simpara">To make this function asynchronous, accept a second argument which will be the callback to use. The callback should be called Node-style with a possible error like: <code class="literal">cb(err, selectedConnection)</code>.</p></dd></dl></div></li></ul></div></dd><dt><span class="term">
 Default
 </span></dt><dd>
 <code class="literal">"roundRobin"</code>
@@ -214,36 +165,25 @@ Default
 Options
 </span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <code class="literal">"roundRobin"</code>
-</li><li class="listitem">
+</li><li class="listitem"><p class="simpara">
 <code class="literal">"random"</code>
-</li></ul></div></dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">defer</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
 <code class="literal">Function</code> — Override the way that the client creates promises. If you would rather use any other promise library this is how you’d do that. Elasticsearch.js expects that the defer object has a <code class="literal">promise</code> property (which will be returned to promise consumers), as well as <code class="literal">resolve</code> and <code class="literal">reject</code> methods.
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div></li></ul></div></dd><dt><span class="term">
 Default
 </span></dt><dd><pre class="programlisting prettyprint lang-js">function () {
   return when.defer();
-}</pre></dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
+}</pre><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">nodesToHostCallback</code>
-</p>
-</td><td valign="top">
-<p>
+</span></dt><dd>
 <code class="literal">Function</code> - This function will receive the list of nodes returned from the <code class="literal">_cluster/nodes</code> API during a sniff operation. The function should return an array of objects which match the <a class="link" href="configuration.html#config-hosts">specification for the <code class="literal">hosts</code> config</a>.
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div></dd><dt><span class="term">
 Default
 </span></dt><dd>
 see <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-js/blob/master/src/lib/nodes_to_host.js" target="_top">nodes_to_host.js</a>
-</dd></dl></div>
-</td></tr></tbody></table></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_examples"></a>Examples</h2></div></div></div><p>Connect to just a single seed node, and use sniffing to find the rest of the cluster.</p><pre class="programlisting prettyprint lang-js">var client = new elasticsearch.Client({
+</dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_examples"></a>Examples</h2></div></div></div><p>Connect to just a single seed node, and use sniffing to find the rest of the cluster.</p><pre class="programlisting prettyprint lang-js">var client = new elasticsearch.Client({
   host: 'localhost:9200',
   sniffOnStart: true,
   sniffInterval: 60000,
