@@ -578,7 +578,22 @@ function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#g
         </div>
       </div>
     </section>
-    <script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script>
+    <script type="text/javascript"><![CDATA[
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, currentPath) {
+        var $a = $('#js-api-method-index');
+        if (!$a.size()) return;
+        $('.toc a').filter(function () {
+            var path = this.getAttribute('href');
+            return currentPath.indexOf(path) === currentPath.length - path.length;
+          })
+          .first()
+          .closest('dt')
+          .append($a.closest('.itemizedlist').detach().addClass('js-api-method-index'));
+        $a.remove();
+        $('.guide_content').addClass('js-client-docs');
+      }(jQuery, window.location.pathname));
+    ]]></script>
     <script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2" />
     <script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2" />
     <script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/main.min.js?ver=1386267463'></script>
