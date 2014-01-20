@@ -29,7 +29,7 @@
            
           <a href="cat-indices.html">Indices
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="cat-health"></a>Health</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="cat-allocation.html">Allocation</a></span></dt><dt><span class="chapter"><a href="cat-count.html">Count</a></span></dt><dt><span class="chapter"><a href="cat-health.html">Health</a></span></dt><dt><span class="chapter"><a href="cat-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="cat-master.html">Master</a></span></dt><dt><span class="chapter"><a href="cat-nodes.html">Nodes</a></span></dt><dt><span class="chapter"><a href="cat-pending-tasks.html">Cluster Pending Tasks</a></span></dt><dt><span class="chapter"><a href="cat-recovery.html">Recovery</a></span></dt><dt><span class="chapter"><a href="cat-shards.html">Shards</a></span></dt></dl></div><p><code class="literal">health</code> is a terse, one-line representation of the same information
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="cat-health"></a>Health</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="cat-alias.html">Aliases</a></span></dt><dt><span class="chapter"><a href="cat-allocation.html">Allocation</a></span></dt><dt><span class="chapter"><a href="cat-count.html">Count</a></span></dt><dt><span class="chapter"><a href="cat-health.html">Health</a></span></dt><dt><span class="chapter"><a href="cat-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="cat-master.html">Master</a></span></dt><dt><span class="chapter"><a href="cat-nodes.html">Nodes</a></span></dt><dt><span class="chapter"><a href="cat-pending-tasks.html">Cluster Pending Tasks</a></span></dt><dt><span class="chapter"><a href="cat-recovery.html">Recovery</a></span></dt><dt><span class="chapter"><a href="cat-shards.html">Shards</a></span></dt></dl></div><p><code class="literal">health</code> is a terse, one-line representation of the same information
 from <code class="literal">/_cluster/health</code>. It has one option <code class="literal">ts</code> to disable the
 timestamping.</p><pre class="programlisting prettyprint lang-shell">% curl 192.168.56.10:9200/_cat/health
 1384308967 18:16:07 foo green 3 3 3 3 0 0 0
@@ -95,4 +95,19 @@ function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#g
           Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy
           <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
           Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy
-          <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/main.min.js?ver=1386267463"></script></body></html>
+          <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, currentPath) {
+        var $a = $('#js-api-method-index');
+        if (!$a.size()) return;
+        $('.toc a').filter(function () {
+            var path = this.getAttribute('href');
+            return currentPath.indexOf(path) === currentPath.length - path.length;
+          })
+          .first()
+          .closest('dt')
+          .append($a.closest('.itemizedlist').detach().addClass('js-api-method-index'));
+        $a.remove();
+        $('.guide_content').addClass('js-client-docs');
+      }(jQuery, window.location.pathname));
+    </script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/main.min.js?ver=1386267463"></script></body></html>
