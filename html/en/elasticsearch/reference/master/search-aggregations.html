@@ -68,7 +68,7 @@ of that bucket. This is where the real power of aggregations kicks in: <span cla
         [,"aggregations" : { [&lt;sub_aggregation&gt;]+ } ]?
     }
     [,"&lt;aggregation_name_2&gt;" : { ... } ]*
-}</pre><p>The <code class="literal">aggregations</code> object (a.k.a <code class="literal">aggs</code> for short) in the json holds the aggregations to be computed. Each aggregation
+}</pre><p>The <code class="literal">aggregations</code> object (the key <code class="literal">aggs</code> can also be used) in the json holds the aggregations to be computed. Each aggregation
 is associated with a logical name that the user defines (e.g. if the aggregation computes the average price, then it’ll
 make sense to name it <code class="literal">avg_price</code>). These logical names will also be used to uniquely identify the aggregations in the
 response. Each aggregation has a specific type (<code class="literal">&lt;aggregation_type&gt;</code> in the above snippet) and is typically the first
