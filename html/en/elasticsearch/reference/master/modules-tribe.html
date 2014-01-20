@@ -52,8 +52,8 @@ The merged view cannot handle indices with the same name in multiple
   clusters. It will pick one of them and discard the other.
 </li><li class="listitem">
 Master level read operations (eg <a class="xref" href="cluster-state.html" title="Cluster State"><em>Cluster State</em></a>, <a class="xref" href="cluster-health.html" title="Cluster Health"><em>Cluster Health</em></a>)
-  need to have the <code class="literal">local</code> flag set to <code class="literal">true</code> as the tribe node does not
-  have a single master node.
+  will automatically execute with a local flag set to true since there is
+  no master.
 </li><li class="listitem">
 Master level write operations (eg <a class="xref" href="indices-create-index.html" title="Create Index"><em>Create Index</em></a>) are not
   allowed. These should be performed on a single cluster.
