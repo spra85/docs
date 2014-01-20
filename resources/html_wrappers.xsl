@@ -580,19 +580,15 @@ function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#g
     </section>
     <script type="text/javascript"><![CDATA[
       if (window.aiModifyParent) aiModifyParent();
-      (function ($, currentPath) {
-        var $a = $('#js-api-method-index');
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
         if (!$a.size()) return;
-        $('.toc a').filter(function () {
-            var path = this.getAttribute('href');
-            return currentPath.indexOf(path) === currentPath.length - path.length;
-          })
-          .first()
-          .closest('dt')
-          .append($a.closest('.itemizedlist').detach().addClass('js-api-method-index'));
-        $a.remove();
         $('.guide_content').addClass('js-client-docs');
-      }(jQuery, window.location.pathname));
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
     ]]></script>
     <script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2" />
     <script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2" />
