@@ -55,7 +55,7 @@
 }</pre><p>By default, the <code class="literal">terms</code> aggregation will return the buckets for the top ten terms ordered by the <code class="literal">doc_count</code>. One can
 change this default behaviour by setting the <code class="literal">size</code> parameter.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_size_amp_shard_size"></a>Size &amp; Shard Size</h3></div></div></div><p>The <code class="literal">size</code> parameter can be set to define how many term buckets should be returned out of the overall terms list. By
 default, the node coordinating the search process will request each shard to provide its own top <code class="literal">size</code> term buckets
-and once all shards respond, it will reduces the results to the final list that will then be returned to the client.
+and once all shards respond, it will reduce the results to the final list that will then be returned to the client.
 This means that if the number of unique terms is greater than <code class="literal">size</code>, the returned list is slightly off and not accurate
 (it could be that the term counts are slightly off and it could even be that a term that should have been in the top
 size buckets was not returned).</p><p>The higher the requested <code class="literal">size</code> is, the more accurate the results will be, but also, the more expensive it will be to
