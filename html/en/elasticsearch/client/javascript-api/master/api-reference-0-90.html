@@ -27,7 +27,7 @@
            
           <a href="errors.html">Errors
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="api-reference-0-90"></a>0.90 API</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="about.html">About</a></span></dt><dt><span class="chapter"><a href="quick-start.html">Quick Start</a></span></dt><dt><span class="chapter"><a href="api-conventions.html">API Conventions</a></span></dt><dt><span class="chapter"><a href="configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="extending_core_components.html">Extending</a></span></dt><dt><span class="chapter"><a href="logging.html">setup logging</a></span></dt><dt><span class="chapter"><a href="contributing.html">Contributing</a></span></dt><dt><span class="chapter"><a href="api-reference.html">1.0 API</a></span></dt><dt><span class="chapter"><a href="api-reference-0-90.html">0.90 API</a></span></dt><dt><span class="chapter"><a href="errors.html">Errors</a></span></dt><dt><span class="chapter"><a href="transport-reference.html">Transport</a></span></dt></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>This is currently the default API, but with the upcoming release of Elasticsearch 1.0 that will change. We recommend setting the <code class="literal">apiVersion</code> config param when you instantiate your client to make sure that the API does not change when the default does.</p></div></div><div class="itemizedlist"><a id="js-api-method-index-090"></a><ul class="itemizedlist" type="disc"><li class="listitem">
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="api-reference-0-90"></a>0.90 API</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="about.html">About</a></span></dt><dt><span class="chapter"><a href="quick-start.html">Quick Start</a></span></dt><dt><span class="chapter"><a href="api-conventions.html">API Conventions</a></span></dt><dt><span class="chapter"><a href="configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="extending_core_components.html">Extending</a></span></dt><dt><span class="chapter"><a href="logging.html">setup logging</a></span></dt><dt><span class="chapter"><a href="contributing.html">Contributing</a></span></dt><dt><span class="chapter"><a href="api-reference.html">1.0 API</a></span></dt><dt><span class="chapter"><a href="api-reference-0-90.html">0.90 API</a></span></dt><dt><span class="chapter"><a href="errors.html">Errors</a></span></dt><dt><span class="chapter"><a href="transport-reference.html">Transport</a></span></dt></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>This is currently the default API, but with the upcoming release of Elasticsearch 1.0 that will change. We recommend setting the <code class="literal">apiVersion</code> config param when you instantiate your client to make sure that the API does not change when the default does.</p></div></div><div class="itemizedlist"><a id="js-api-method-index-0-90"></a><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="link" href="api-reference-0-90.html#api-bulk-0-90" title="bulk">bulk</a>
 </li><li class="listitem">
 <a class="link" href="api-reference-0-90.html#api-clearscroll-0-90" title="clearScroll">clearScroll</a>
@@ -173,7 +173,7 @@
 }, function (err, resp) {
   // ...
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_83"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_84"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">consistency</code>
 </p>
@@ -181,6 +181,15 @@
 <p>
 <code class="literal">String</code> — Explicit write consistency setting for the operation
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"one"</code>
+</li><li class="listitem">
+<code class="literal">"quorum"</code>
+</li><li class="listitem">
+<code class="literal">"all"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">refresh</code>
@@ -197,6 +206,13 @@
 <p>
 <code class="literal">String</code> — Explicitely set the replication type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"sync"</code>
+</li><li class="listitem">
+<code class="literal">"async"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">type</code>
@@ -221,7 +237,7 @@
 <p>
 <code class="literal">String</code> — Default index for items which don’t provide one
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-clearscroll-0-90"></a><code class="literal">clearScroll</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.clearScroll([params, [callback]])</pre><p>Clear the scroll request created by specifying the scroll parameter to search.</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/search-request-scroll.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_84"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-clearscroll-0-90"></a><code class="literal">clearScroll</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.clearScroll([params, [callback]])</pre><p>Clear the scroll request created by specifying the scroll parameter to search.</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/search-request-scroll.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_85"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">scrollId</code>
 </p>
@@ -255,7 +271,7 @@
 }, function (err, response) {
   // ...
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_85"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_86"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">[ignoreIndices=none]</code>
 </p>
@@ -263,6 +279,13 @@
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">minScore</code>
@@ -326,7 +349,7 @@
 }, function (error, response) {
   // ...
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_86"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_87"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">consistency</code>
 </p>
@@ -334,14 +357,15 @@
 <p>
 <code class="literal">String</code> — Explicit write consistency setting for the operation
 </p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">id</code>
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">String</code> — Document ID
-</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"one"</code>
+</li><li class="listitem">
+<code class="literal">"quorum"</code>
+</li><li class="listitem">
+<code class="literal">"all"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">parent</code>
@@ -374,6 +398,13 @@
 <p>
 <code class="literal">String</code> — Specific replication type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"sync"</code>
+</li><li class="listitem">
+<code class="literal">"async"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">routing</code>
@@ -422,6 +453,21 @@
 <p>
 <code class="literal">String</code> — Specific version type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"internal"</code>
+</li><li class="listitem">
+<code class="literal">"external"</code>
+</li></ul></div></dd></dl></div>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">id</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">String</code> — Document ID
+</p>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">index</code>
@@ -446,7 +492,7 @@
 }, function (error, response) {
   // ...
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_87"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_88"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">consistency</code>
 </p>
@@ -454,6 +500,15 @@
 <p>
 <code class="literal">String</code> — Specific write consistency setting for the operation
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"one"</code>
+</li><li class="listitem">
+<code class="literal">"quorum"</code>
+</li><li class="listitem">
+<code class="literal">"all"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">parent</code>
@@ -478,6 +533,13 @@
 <p>
 <code class="literal">String</code> — Specific replication type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"sync"</code>
+</li><li class="listitem">
+<code class="literal">"async"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">routing</code>
@@ -510,6 +572,13 @@
 <p>
 <code class="literal">String</code> — Specific version type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"internal"</code>
+</li><li class="listitem">
+<code class="literal">"external"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">id</code>
@@ -550,7 +619,7 @@
 }, function (error, response) {
   // ...
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_88"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_89"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">analyzer</code>
 </p>
@@ -566,6 +635,15 @@
 <p>
 <code class="literal">String</code> — Specific write consistency setting for the operation
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"one"</code>
+</li><li class="listitem">
+<code class="literal">"quorum"</code>
+</li><li class="listitem">
+<code class="literal">"all"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">[defaultOperator=OR]</code>
@@ -574,6 +652,13 @@
 <p>
 <code class="literal">String</code> — The default operator for query string query (AND or OR)
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"AND"</code>
+</li><li class="listitem">
+<code class="literal">"OR"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">df</code>
@@ -590,6 +675,13 @@
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">[replication=sync]</code>
@@ -598,6 +690,13 @@
 <p>
 <code class="literal">String</code> — Specific replication type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"sync"</code>
+</li><li class="listitem">
+<code class="literal">"async"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">q</code>
@@ -658,7 +757,7 @@
     // ...
   }
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_89"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_90"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">parent</code>
 </p>
@@ -747,7 +846,7 @@
 }, function (error, response) {
   // ...
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_90"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_91"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">analyzeWildcard</code>
 </p>
@@ -771,6 +870,13 @@
 <p>
 <code class="literal">String</code> — The default operator for query string query (AND or OR)
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"AND"</code>
+</li><li class="listitem">
+<code class="literal">"OR"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">df</code>
@@ -899,7 +1005,7 @@
 }, function (error, response) {
   // ...
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_91"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_92"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">fields</code>
 </p>
@@ -995,23 +1101,7 @@
 <p>
 <code class="literal">String</code> — The type of the document (use <code class="literal">_all</code> to fetch the first document matching the ID across all types)
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-getsource-0-90"></a><code class="literal">getSource</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.getSource([params, [callback]])</pre><p>Get the source of a document by it’s index, type and id.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/docs-get.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_92"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
-<code class="literal">exclude</code>
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">String, String[], Boolean</code> — A list of fields to exclude from the returned _source field
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">include</code>
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">String, String[], Boolean</code> — A list of fields to extract and return from the _source field
-</p>
-</td></tr><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-getsource-0-90"></a><code class="literal">getSource</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.getSource([params, [callback]])</pre><p>Get the source of a document by it’s index, type and id.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/docs-get.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_93"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">parent</code>
 </p>
@@ -1053,6 +1143,53 @@
 </p>
 </td></tr><tr><td valign="top">
 <p>
+<code class="literal">_source</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">String, String[], Boolean</code> — True or false to return the _source field or not, or a list of fields to return
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">_sourceExclude</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">String, String[], Boolean</code> — A list of fields to exclude from the returned _source field
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">_sourceInclude</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">String, String[], Boolean</code> — A list of fields to extract and return from the _source field
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">version</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">Number</code> — Explicit version number for concurrency control
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">versionType</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">String</code> — Specific version type
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"internal"</code>
+</li><li class="listitem">
+<code class="literal">"external"</code>
+</li></ul></div></dd></dl></div>
+</td></tr><tr><td valign="top">
+<p>
 <code class="literal">id</code>
 </p>
 </td><td valign="top">
@@ -1088,7 +1225,7 @@
 }, function (error response) {
 
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_93"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_94"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">consistency</code>
 </p>
@@ -1096,14 +1233,15 @@
 <p>
 <code class="literal">String</code> — Explicit write consistency setting for the operation
 </p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">[opType=index]</code>
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">String</code> — Explicit operation type
-</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"one"</code>
+</li><li class="listitem">
+<code class="literal">"quorum"</code>
+</li><li class="listitem">
+<code class="literal">"all"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">parent</code>
@@ -1136,6 +1274,13 @@
 <p>
 <code class="literal">String</code> — Specific replication type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"sync"</code>
+</li><li class="listitem">
+<code class="literal">"async"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">routing</code>
@@ -1184,6 +1329,13 @@
 <p>
 <code class="literal">String</code> — Specific version type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"internal"</code>
+</li><li class="listitem">
+<code class="literal">"external"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">id</code>
@@ -1230,7 +1382,7 @@
 }, function(error, response){
   // ...
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_94"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_95"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">fields</code>
 </p>
@@ -1311,7 +1463,7 @@
 }, function (errors, response) {
   // ...
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_95"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_96"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">boostTerms</code>
 </p>
@@ -1499,7 +1651,7 @@
     { query: { query_string: { query: '"Test 1"' } } }
   ]
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_96"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_97"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">searchType</code>
 </p>
@@ -1507,6 +1659,21 @@
 <p>
 <code class="literal">String</code> — Search operation type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"query_then_fetch"</code>
+</li><li class="listitem">
+<code class="literal">"query_and_fetch"</code>
+</li><li class="listitem">
+<code class="literal">"dfs_query_then_fetch"</code>
+</li><li class="listitem">
+<code class="literal">"dfs_query_and_fetch"</code>
+</li><li class="listitem">
+<code class="literal">"count"</code>
+</li><li class="listitem">
+<code class="literal">"scan"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">index</code>
@@ -1585,7 +1752,7 @@ client.percolate({
   //   matches: [ "alert-1", "alert-2" ]
   // }
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_97"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_98"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">preferLocal</code>
 </p>
@@ -1635,7 +1802,7 @@ client.search({
     console.log('every "test" title', allTitles);
   }
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_98"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_99"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">scroll</code>
 </p>
@@ -1678,7 +1845,7 @@ client.search({
 }, function (error, response) {
   // ...
 }):</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_99"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_100"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">analyzer</code>
 </p>
@@ -1702,6 +1869,13 @@ client.search({
 <p>
 <code class="literal">String</code> — The default operator for query string query (AND or OR)
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"AND"</code>
+</li><li class="listitem">
+<code class="literal">"OR"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">df</code>
@@ -1742,6 +1916,13 @@ client.search({
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">indicesBoost</code>
@@ -1806,6 +1987,21 @@ client.search({
 <p>
 <code class="literal">String</code> — Search operation type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"query_then_fetch"</code>
+</li><li class="listitem">
+<code class="literal">"query_and_fetch"</code>
+</li><li class="listitem">
+<code class="literal">"dfs_query_then_fetch"</code>
+</li><li class="listitem">
+<code class="literal">"dfs_query_and_fetch"</code>
+</li><li class="listitem">
+<code class="literal">"count"</code>
+</li><li class="listitem">
+<code class="literal">"scan"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">size</code>
@@ -1878,6 +2074,15 @@ client.search({
 <p>
 <code class="literal">String</code> — Specify suggest mode
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"missing"</code>
+</li><li class="listitem">
+<code class="literal">"popular"</code>
+</li><li class="listitem">
+<code class="literal">"always"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">suggestSize</code>
@@ -1957,7 +2162,7 @@ body: {
 //   ]
 // }
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_100"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_101"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">[ignoreIndices=none]</code>
 </p>
@@ -1965,6 +2170,13 @@ body: {
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">preference</code>
@@ -2055,7 +2267,7 @@ a <code class="literal">script</code> which will update the document content
 }, function (error, response) {
   // ...
 });</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_101"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_102"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">consistency</code>
 </p>
@@ -2063,6 +2275,15 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — Explicit write consistency setting for the operation
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"one"</code>
+</li><li class="listitem">
+<code class="literal">"quorum"</code>
+</li><li class="listitem">
+<code class="literal">"all"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">fields</code>
@@ -2111,6 +2332,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — Specific replication type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"sync"</code>
+</li><li class="listitem">
+<code class="literal">"async"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">retryOnConflict</code>
@@ -2175,6 +2403,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — Specific version type
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"internal"</code>
+</li><li class="listitem">
+<code class="literal">"external"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">id</code>
@@ -2199,7 +2434,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The type of the document
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-getsettings-0-90"></a><code class="literal">cluster.getSettings</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.getSettings([params, [callback]])</pre><p>Get cluster settings (previously set with <code class="literal">putSettings()</code>)</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-update-settings.html" target="_top">the elasticsearch docs</a> for more about this method.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-health-0-90"></a><code class="literal">cluster.health</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.health([params, [callback]])</pre><p>Get a very simple status on the health of the cluster.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-health.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_102"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-getsettings-0-90"></a><code class="literal">cluster.getSettings</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.getSettings([params, [callback]])</pre><p>Get cluster settings (previously set with <code class="literal">putSettings()</code>)</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-update-settings.html" target="_top">the elasticsearch docs</a> for more about this method.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-health-0-90"></a><code class="literal">cluster.health</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.health([params, [callback]])</pre><p>Get a very simple status on the health of the cluster.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-health.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_103"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">[level=cluster]</code>
 </p>
@@ -2207,6 +2442,15 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — Specify the level of detail for returned information
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"cluster"</code>
+</li><li class="listitem">
+<code class="literal">"indices"</code>
+</li><li class="listitem">
+<code class="literal">"shards"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">local</code>
@@ -2263,6 +2507,15 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — Wait until cluster is in a specific state
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"green"</code>
+</li><li class="listitem">
+<code class="literal">"yellow"</code>
+</li><li class="listitem">
+<code class="literal">"red"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">index</code>
@@ -2279,7 +2532,7 @@ a <code class="literal">script</code> which will update the document content
 }, function (error, response) {
   console.log(response);
 })</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_103"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_104"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">interval</code>
 </p>
@@ -2311,6 +2564,15 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The type to sample (default: cpu)
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"cpu"</code>
+</li><li class="listitem">
+<code class="literal">"wait"</code>
+</li><li class="listitem">
+<code class="literal">"block"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">nodeId</code>
@@ -2326,7 +2588,7 @@ a <code class="literal">script</code> which will update the document content
   }, function (error) {
     // scream!
   })</pre><p>
-</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_104"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_105"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">all</code>
 </p>
@@ -2430,7 +2692,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of node IDs or names to limit the returned information; use <code class="literal">_local</code> to return information from the node you’re connecting to, leave empty to get information from all nodes
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-nodeshutdown-0-90"></a><code class="literal">cluster.nodeShutdown</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.nodeShutdown([params, [callback]])</pre><p>Shutdown one or more (or all) nodes in the cluster.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-nodes-shutdown.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_105"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-nodeshutdown-0-90"></a><code class="literal">cluster.nodeShutdown</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.nodeShutdown([params, [callback]])</pre><p>Shutdown one or more (or all) nodes in the cluster.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-nodes-shutdown.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_106"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">delay</code>
 </p>
@@ -2454,7 +2716,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of node IDs or names to perform the operation on; use <code class="literal">_local</code> to perform the operation on the node you’re connected to, leave empty to perform the operation on all nodes
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-nodestats-0-90"></a><code class="literal">cluster.nodeStats</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.nodeStats([params, [callback]])</pre><p>Retrieve one or more (or all) of the cluster nodes statistics.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-nodes-stats.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_106"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-nodestats-0-90"></a><code class="literal">cluster.nodeStats</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.nodeStats([params, [callback]])</pre><p>Retrieve one or more (or all) of the cluster nodes statistics.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-nodes-stats.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_107"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">all</code>
 </p>
@@ -2558,6 +2820,29 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — Limit the information returned to a certain metric family
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"all"</code>
+</li><li class="listitem">
+<code class="literal">"fs"</code>
+</li><li class="listitem">
+<code class="literal">"http"</code>
+</li><li class="listitem">
+<code class="literal">"indices"</code>
+</li><li class="listitem">
+<code class="literal">"jvm"</code>
+</li><li class="listitem">
+<code class="literal">"network"</code>
+</li><li class="listitem">
+<code class="literal">"os"</code>
+</li><li class="listitem">
+<code class="literal">"process"</code>
+</li><li class="listitem">
+<code class="literal">"thread_pool"</code>
+</li><li class="listitem">
+<code class="literal">"transport"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">metric</code>
@@ -2566,6 +2851,35 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — Limit the information returned for <code class="literal">indices</code> family to a specific metric
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"completion"</code>
+</li><li class="listitem">
+<code class="literal">"docs"</code>
+</li><li class="listitem">
+<code class="literal">"fielddata"</code>
+</li><li class="listitem">
+<code class="literal">"filter_cache"</code>
+</li><li class="listitem">
+<code class="literal">"flush"</code>
+</li><li class="listitem">
+<code class="literal">"get"</code>
+</li><li class="listitem">
+<code class="literal">"id_cache"</code>
+</li><li class="listitem">
+<code class="literal">"indexing"</code>
+</li><li class="listitem">
+<code class="literal">"merges"</code>
+</li><li class="listitem">
+<code class="literal">"refresh"</code>
+</li><li class="listitem">
+<code class="literal">"search"</code>
+</li><li class="listitem">
+<code class="literal">"store"</code>
+</li><li class="listitem">
+<code class="literal">"warmer"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">nodeId</code>
@@ -2574,7 +2888,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of node IDs or names to limit the returned information; use <code class="literal">_local</code> to return information from the node you’re connecting to, leave empty to get information from all nodes
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-putsettings-0-90"></a><code class="literal">cluster.putSettings</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.putSettings([params, [callback]])</pre><p>Update cluster wide specific settings.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-update-settings.html" target="_top">the elasticsearch docs</a> for more about this method.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-reroute-0-90"></a><code class="literal">cluster.reroute</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.reroute([params, [callback]])</pre><p>Explicitly execute a cluster reroute allocation command including specific commands.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-reroute.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_107"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-putsettings-0-90"></a><code class="literal">cluster.putSettings</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.putSettings([params, [callback]])</pre><p>Update cluster wide specific settings.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-update-settings.html" target="_top">the elasticsearch docs</a> for more about this method.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-reroute-0-90"></a><code class="literal">cluster.reroute</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.reroute([params, [callback]])</pre><p>Explicitly execute a cluster reroute allocation command including specific commands.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-reroute.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_108"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">dryRun</code>
 </p>
@@ -2590,7 +2904,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">Boolean</code> — Don’t return cluster state metadata (default: false)
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-state-0-90"></a><code class="literal">cluster.state</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.state([params, [callback]])</pre><p>Get comprehensive details about the state of the whole cluster (indices settings, allocations, etc).</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-state.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_108"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-cluster-state-0-90"></a><code class="literal">cluster.state</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.cluster.state([params, [callback]])</pre><p>Get comprehensive details about the state of the whole cluster (indices settings, allocations, etc).</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/cluster-state.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_109"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">filterBlocks</code>
 </p>
@@ -2654,7 +2968,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">Date, Number</code> — Specify timeout for connection to master
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-analyze-0-90"></a><code class="literal">indices.analyze</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.analyze([params, [callback]])</pre><p>Perform the analysis process on a text and return the tokens breakdown of the text.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-analyze.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_109"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-analyze-0-90"></a><code class="literal">indices.analyze</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.analyze([params, [callback]])</pre><p>Perform the analysis process on a text and return the tokens breakdown of the text.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-analyze.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_110"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">analyzer</code>
 </p>
@@ -2718,7 +3032,14 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — Format of the output
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-clearcache-0-90"></a><code class="literal">indices.clearCache</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.clearCache([params, [callback]])</pre><p>Clear either all caches or specific cached associated with one ore more indices.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-clearcache.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_110"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"detailed"</code>
+</li><li class="listitem">
+<code class="literal">"text"</code>
+</li></ul></div></dd></dl></div>
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-clearcache-0-90"></a><code class="literal">indices.clearCache</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.clearCache([params, [callback]])</pre><p>Clear either all caches or specific cached associated with one ore more indices.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-clearcache.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_111"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">fieldData</code>
 </p>
@@ -2790,6 +3111,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">index</code>
@@ -2806,7 +3134,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">Boolean</code> — Clear the recycler cache
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-close-0-90"></a><code class="literal">indices.close</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.close([params, [callback]])</pre><p>Close an index to remove it’s overhead from the cluster. Closed index is blocked for read/write operations.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-open-close.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_111"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-close-0-90"></a><code class="literal">indices.close</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.close([params, [callback]])</pre><p>Close an index to remove it’s overhead from the cluster. Closed index is blocked for read/write operations.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-open-close.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_112"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">timeout</code>
 </p>
@@ -2830,7 +3158,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The name of the index
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-create-0-90"></a><code class="literal">indices.create</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.create([params, [callback]])</pre><p>Create an index in Elasticsearch.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-create-index.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_112"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-create-0-90"></a><code class="literal">indices.create</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.create([params, [callback]])</pre><p>Create an index in Elasticsearch.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-create-index.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_113"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">timeout</code>
 </p>
@@ -2854,7 +3182,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The name of the index
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-delete-0-90"></a><code class="literal">indices.delete</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.delete([params, [callback]])</pre><p>Delete an index in Elasticsearch</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-delete-index.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_113"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-delete-0-90"></a><code class="literal">indices.delete</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.delete([params, [callback]])</pre><p>Delete an index in Elasticsearch</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-delete-index.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_114"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">timeout</code>
 </p>
@@ -2878,7 +3206,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of indices to delete; use <code class="literal">_all</code> or empty string to delete all indices
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-deletealias-0-90"></a><code class="literal">indices.deleteAlias</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.deleteAlias([params, [callback]])</pre><p>Delete a specific alias.</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_114"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-deletealias-0-90"></a><code class="literal">indices.deleteAlias</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.deleteAlias([params, [callback]])</pre><p>Delete a specific alias.</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_115"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">timeout</code>
 </p>
@@ -2910,7 +3238,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The name of the alias to be deleted
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-deletemapping-0-90"></a><code class="literal">indices.deleteMapping</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.deleteMapping([params, [callback]])</pre><p>Delete a mapping (type definition) along with its data.</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-delete-mapping.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_115"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-deletemapping-0-90"></a><code class="literal">indices.deleteMapping</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.deleteMapping([params, [callback]])</pre><p>Delete a mapping (type definition) along with its data.</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-delete-mapping.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_116"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">masterTimeout</code>
 </p>
@@ -2934,7 +3262,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The name of the document type to delete
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-deletetemplate-0-90"></a><code class="literal">indices.deleteTemplate</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.deleteTemplate([params, [callback]])</pre><p>Delete an index template by its name.</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-templates.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_116"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-deletetemplate-0-90"></a><code class="literal">indices.deleteTemplate</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.deleteTemplate([params, [callback]])</pre><p>Delete an index template by its name.</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-templates.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_117"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">timeout</code>
 </p>
@@ -2958,7 +3286,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The name of the template
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-deletewarmer-0-90"></a><code class="literal">indices.deleteWarmer</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.deleteWarmer([params, [callback]])</pre><p>Delete an index warmer.</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-warmers.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_117"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-deletewarmer-0-90"></a><code class="literal">indices.deleteWarmer</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.deleteWarmer([params, [callback]])</pre><p>Delete an index warmer.</p><p>The default method is <code class="literal">DELETE</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-warmers.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_118"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">masterTimeout</code>
 </p>
@@ -2990,7 +3318,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of document types to register warmer for; use <code class="literal">_all</code> or empty string to perform the operation on all types
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-exists-0-90"></a><code class="literal">indices.exists</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.exists([params, [callback]])</pre><p>Return a boolean indicating whether given index exists.</p><p>The default method is <code class="literal">HEAD</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-get-settings.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_118"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-exists-0-90"></a><code class="literal">indices.exists</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.exists([params, [callback]])</pre><p>Return a boolean indicating whether given index exists.</p><p>The default method is <code class="literal">HEAD</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-get-settings.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_119"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">index</code>
 </p>
@@ -2998,7 +3326,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of indices to check
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-existsalias-0-90"></a><code class="literal">indices.existsAlias</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.existsAlias([params, [callback]])</pre><p>Return a boolean indicating whether given alias exists.</p><p>The default method is <code class="literal">HEAD</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_119"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-existsalias-0-90"></a><code class="literal">indices.existsAlias</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.existsAlias([params, [callback]])</pre><p>Return a boolean indicating whether given alias exists.</p><p>The default method is <code class="literal">HEAD</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_120"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">[ignoreIndices=none]</code>
 </p>
@@ -3006,6 +3334,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">index</code>
@@ -3022,7 +3357,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of alias names to return
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-existstype-0-90"></a><code class="literal">indices.existsType</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.existsType([params, [callback]])</pre><p>Check if a type/types exists in an index/indices.</p><p>The default method is <code class="literal">HEAD</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-types-exists.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_120"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-existstype-0-90"></a><code class="literal">indices.existsType</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.existsType([params, [callback]])</pre><p>Check if a type/types exists in an index/indices.</p><p>The default method is <code class="literal">HEAD</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-types-exists.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_121"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">[ignoreIndices=none]</code>
 </p>
@@ -3030,6 +3365,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">index</code>
@@ -3046,7 +3388,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of document types to check
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-flush-0-90"></a><code class="literal">indices.flush</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.flush([params, [callback]])</pre><p>Explicitly flush one or more indices.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-flush.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_121"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-flush-0-90"></a><code class="literal">indices.flush</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.flush([params, [callback]])</pre><p>Explicitly flush one or more indices.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-flush.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_122"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">force</code>
 </p>
@@ -3070,6 +3412,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">refresh</code>
@@ -3086,7 +3435,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of index names; use <code class="literal">_all</code> or empty string for all indices
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getalias-0-90"></a><code class="literal">indices.getAlias</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getAlias([params, [callback]])</pre><p>Retrieve a specified alias.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_122"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getalias-0-90"></a><code class="literal">indices.getAlias</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getAlias([params, [callback]])</pre><p>Retrieve a specified alias.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_123"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">[ignoreIndices=none]</code>
 </p>
@@ -3094,6 +3443,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">index</code>
@@ -3110,7 +3466,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of alias names to return
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getaliases-0-90"></a><code class="literal">indices.getAliases</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getAliases([params, [callback]])</pre><p>Retrieve specified aliases</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_123"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getaliases-0-90"></a><code class="literal">indices.getAliases</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getAliases([params, [callback]])</pre><p>Retrieve specified aliases</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_124"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">timeout</code>
 </p>
@@ -3126,7 +3482,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of index names to filter aliases
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getfieldmapping-0-90"></a><code class="literal">indices.getFieldMapping</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getFieldMapping([params, [callback]])</pre><p>Retrieve mapping definition of a specific field.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-get-field-mapping.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_124"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getfieldmapping-0-90"></a><code class="literal">indices.getFieldMapping</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getFieldMapping([params, [callback]])</pre><p>Retrieve mapping definition of a specific field.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-get-field-mapping.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_125"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">includeDefaults</code>
 </p>
@@ -3158,7 +3514,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of fields
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getmapping-0-90"></a><code class="literal">indices.getMapping</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getMapping([params, [callback]])</pre><p>Retrieve mapping definition of index or index/type.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-get-mapping.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_125"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getmapping-0-90"></a><code class="literal">indices.getMapping</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getMapping([params, [callback]])</pre><p>Retrieve mapping definition of index or index/type.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-get-mapping.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_126"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">index</code>
 </p>
@@ -3174,7 +3530,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of document types
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getsettings-0-90"></a><code class="literal">indices.getSettings</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getSettings([params, [callback]])</pre><p>Retrieve settings for one or more (or all) indices.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-get-mapping.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_126"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getsettings-0-90"></a><code class="literal">indices.getSettings</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getSettings([params, [callback]])</pre><p>Retrieve settings for one or more (or all) indices.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-get-mapping.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_127"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">index</code>
 </p>
@@ -3182,7 +3538,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of index names; use <code class="literal">_all</code> or empty string to perform the operation on all indices
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-gettemplate-0-90"></a><code class="literal">indices.getTemplate</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getTemplate([params, [callback]])</pre><p>Retrieve an index template by its name.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-templates.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_127"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-gettemplate-0-90"></a><code class="literal">indices.getTemplate</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getTemplate([params, [callback]])</pre><p>Retrieve an index template by its name.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-templates.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_128"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">name</code>
 </p>
@@ -3190,7 +3546,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The name of the template
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getwarmer-0-90"></a><code class="literal">indices.getWarmer</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getWarmer([params, [callback]])</pre><p>Retreieve an index warmer.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-warmers.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_128"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-getwarmer-0-90"></a><code class="literal">indices.getWarmer</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.getWarmer([params, [callback]])</pre><p>Retreieve an index warmer.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-warmers.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_129"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">index</code>
 </p>
@@ -3214,7 +3570,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of document types to restrict the operation; leave empty to perform the operation on all types
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-open-0-90"></a><code class="literal">indices.open</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.open([params, [callback]])</pre><p>Open a closed index, making it available for search.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-open-close.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_129"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-open-0-90"></a><code class="literal">indices.open</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.open([params, [callback]])</pre><p>Open a closed index, making it available for search.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-open-close.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_130"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">timeout</code>
 </p>
@@ -3238,7 +3594,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The name of the index
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-optimize-0-90"></a><code class="literal">indices.optimize</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.optimize([params, [callback]])</pre><p>Explicitly optimize one or more indices.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-optimize.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_130"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-optimize-0-90"></a><code class="literal">indices.optimize</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.optimize([params, [callback]])</pre><p>Explicitly optimize one or more indices.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-optimize.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_131"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">flush</code>
 </p>
@@ -3254,6 +3610,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">maxNumSegments</code>
@@ -3302,7 +3665,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of index names; use <code class="literal">_all</code> or empty string to perform the operation on all indices
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-putalias-0-90"></a><code class="literal">indices.putAlias</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.putAlias([params, [callback]])</pre><p>Create an alias for a specific index/indices.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_131"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-putalias-0-90"></a><code class="literal">indices.putAlias</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.putAlias([params, [callback]])</pre><p>Create an alias for a specific index/indices.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_132"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">timeout</code>
 </p>
@@ -3334,7 +3697,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The name of the alias to be created or updated
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-putmapping-0-90"></a><code class="literal">indices.putMapping</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.putMapping([params, [callback]])</pre><p>Register specific mapping definition for a specific type.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-put-mapping.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_132"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-putmapping-0-90"></a><code class="literal">indices.putMapping</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.putMapping([params, [callback]])</pre><p>Register specific mapping definition for a specific type.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-put-mapping.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_133"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">ignoreConflicts</code>
 </p>
@@ -3374,7 +3737,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The name of the document type
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-putsettings-0-90"></a><code class="literal">indices.putSettings</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.putSettings([params, [callback]])</pre><p>Change specific index level settings in real time.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-update-settings.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_133"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-putsettings-0-90"></a><code class="literal">indices.putSettings</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.putSettings([params, [callback]])</pre><p>Change specific index level settings in real time.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-update-settings.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_134"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">masterTimeout</code>
 </p>
@@ -3390,7 +3753,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of index names; use <code class="literal">_all</code> or empty string to perform the operation on all indices
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-puttemplate-0-90"></a><code class="literal">indices.putTemplate</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.putTemplate([params, [callback]])</pre><p>Create an index template that will automatically be applied to new indices created.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-templates.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_134"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-puttemplate-0-90"></a><code class="literal">indices.putTemplate</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.putTemplate([params, [callback]])</pre><p>Create an index template that will automatically be applied to new indices created.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-templates.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_135"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">order</code>
 </p>
@@ -3422,7 +3785,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — The name of the template
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-putwarmer-0-90"></a><code class="literal">indices.putWarmer</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.putWarmer([params, [callback]])</pre><p>Create an index warmer to run registered search requests to warm up the index before it is available for search.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-warmers.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_135"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-putwarmer-0-90"></a><code class="literal">indices.putWarmer</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.putWarmer([params, [callback]])</pre><p>Create an index warmer to run registered search requests to warm up the index before it is available for search.</p><p>The default method is <code class="literal">PUT</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-warmers.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_136"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">masterTimeout</code>
 </p>
@@ -3454,7 +3817,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of document types to register the warmer for; leave empty to perform the operation on all types
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-refresh-0-90"></a><code class="literal">indices.refresh</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.refresh([params, [callback]])</pre><p>Explicitly refresh one or more index, making all operations performed since the last refresh available for search.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-refresh.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_136"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-refresh-0-90"></a><code class="literal">indices.refresh</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.refresh([params, [callback]])</pre><p>Explicitly refresh one or more index, making all operations performed since the last refresh available for search.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-refresh.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_137"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">[ignoreIndices=none]</code>
 </p>
@@ -3462,6 +3825,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">operationThreading</code>
@@ -3478,7 +3848,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of index names; use <code class="literal">_all</code> or empty string to perform the operation on all indices
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-segments-0-90"></a><code class="literal">indices.segments</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.segments([params, [callback]])</pre><p>Retrieve low level segments information that a Lucene index (shard level) is built with.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-segments.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_137"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-segments-0-90"></a><code class="literal">indices.segments</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.segments([params, [callback]])</pre><p>Retrieve low level segments information that a Lucene index (shard level) is built with.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-segments.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_138"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">[ignoreIndices=none]</code>
 </p>
@@ -3486,6 +3856,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">operationThreading</code>
@@ -3502,7 +3879,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of index names; use <code class="literal">_all</code> or empty string to perform the operation on all indices
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-snapshotindex-0-90"></a><code class="literal">indices.snapshotIndex</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.snapshotIndex([params, [callback]])</pre><p>Initiate a snapshot through the gateway of one or more indices.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-gateway-snapshot.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_138"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-snapshotindex-0-90"></a><code class="literal">indices.snapshotIndex</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.snapshotIndex([params, [callback]])</pre><p>Initiate a snapshot through the gateway of one or more indices.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-gateway-snapshot.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_139"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">[ignoreIndices=none]</code>
 </p>
@@ -3510,6 +3887,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">index</code>
@@ -3518,7 +3902,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of index names; use <code class="literal">_all</code> or empty string for all indices
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-stats-0-90"></a><code class="literal">indices.stats</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.stats([params, [callback]])</pre><p>Retrieve statistics on different operations happening on an index.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-stats.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_139"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-stats-0-90"></a><code class="literal">indices.stats</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.stats([params, [callback]])</pre><p>Retrieve statistics on different operations happening on an index.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-stats.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_140"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">all</code>
 </p>
@@ -3630,6 +4014,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">indexing</code>
@@ -3702,6 +4093,39 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — Limit the information returned to a specific metric
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"completion"</code>
+</li><li class="listitem">
+<code class="literal">"docs"</code>
+</li><li class="listitem">
+<code class="literal">"fielddata"</code>
+</li><li class="listitem">
+<code class="literal">"filter_cache"</code>
+</li><li class="listitem">
+<code class="literal">"flush"</code>
+</li><li class="listitem">
+<code class="literal">"get"</code>
+</li><li class="listitem">
+<code class="literal">"groups"</code>
+</li><li class="listitem">
+<code class="literal">"id_cache"</code>
+</li><li class="listitem">
+<code class="literal">"ignore_indices"</code>
+</li><li class="listitem">
+<code class="literal">"indexing"</code>
+</li><li class="listitem">
+<code class="literal">"merge"</code>
+</li><li class="listitem">
+<code class="literal">"refresh"</code>
+</li><li class="listitem">
+<code class="literal">"search"</code>
+</li><li class="listitem">
+<code class="literal">"store"</code>
+</li><li class="listitem">
+<code class="literal">"warmer"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">searchGroups</code>
@@ -3710,7 +4134,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of search groups to include in the <code class="literal">search</code> statistics
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-status-0-90"></a><code class="literal">indices.status</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.status([params, [callback]])</pre><p>Get a comprehensive status information of one or more indices.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-status.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_140"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-status-0-90"></a><code class="literal">indices.status</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.status([params, [callback]])</pre><p>Get a comprehensive status information of one or more indices.</p><p>The default method is <code class="literal">GET</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-status.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_141"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">[ignoreIndices=none]</code>
 </p>
@@ -3718,6 +4142,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">operationThreading</code>
@@ -3750,7 +4181,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of index names; use <code class="literal">_all</code> or empty string to perform the operation on all indices
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-updatealiases-0-90"></a><code class="literal">indices.updateAliases</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.updateAliases([params, [callback]])</pre><p>Update specified aliases.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_141"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-updatealiases-0-90"></a><code class="literal">indices.updateAliases</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.updateAliases([params, [callback]])</pre><p>Update specified aliases.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-aliases.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_142"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">timeout</code>
 </p>
@@ -3774,7 +4205,7 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String, String[], Boolean</code> — A comma-separated list of index names to filter aliases
 </p>
-</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-validatequery-0-90"></a><code class="literal">indices.validateQuery</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.validateQuery([params, [callback]])</pre><p>Validate a potentially expensive query without executing it.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/search-validate.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_142"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+</td></tr></tbody></table></div><p><a class="ulink" href="#" target="_top">back to top</a></p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="api-indices-validatequery-0-90"></a><code class="literal">indices.validateQuery</code></h2></div></div></div><pre class="programlisting prettyprint lang-js">client.indices.validateQuery([params, [callback]])</pre><p>Validate a potentially expensive query without executing it.</p><p>The default method is <code class="literal">POST</code> and the usual <a class="link" href="api-conventions.html" title="API Conventions">params and return values</a> apply. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/search-validate.html" target="_top">the elasticsearch docs</a> for more about this method.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_params_143"></a>Params</h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">explain</code>
 </p>
@@ -3790,6 +4221,13 @@ a <code class="literal">script</code> which will update the document content
 <p>
 <code class="literal">String</code> — When performed on multiple indices, allows to ignore <code class="literal">missing</code> ones
 </p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Options
+</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">"none"</code>
+</li><li class="listitem">
+<code class="literal">"missing"</code>
+</li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
 <code class="literal">operationThreading</code>
