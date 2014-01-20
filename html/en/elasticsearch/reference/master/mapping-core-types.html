@@ -357,7 +357,33 @@ property, as this example shows:</p><pre class="programlisting prettyprint lang-
         The BM25 algorithm.
         <a class="ulink" href="http://en.wikipedia.org/wiki/Okapi_BM25" target="_top">See Okapi_BM25</a> for more
         details.
-</dd></dl></div></div><div class="navfooter"><span class="prev"><a href="mapping-types.html">
+</dd></dl></div><h5><a id="_copy_to_field"></a>Copy to field</h5><p>Adding <code class="literal">copy_to</code> parameter to any field mapping will cause all values of this field to be copied to fields specified in
+the parameter. In the following example all values from fields <code class="literal">title</code> and <code class="literal">abstract</code> will be copied to the field
+<code class="literal">meta_data</code>.</p><pre class="programlisting prettyprint lang-js">{
+  "book" : {
+    "properties" : {
+      "title" : { "type" : "string", "copy_to" : "meta_data" },
+      "abstract" : { "type" : "string", "copy_to" : "meta_data" },
+      "meta_data" : { "type" : "string" },
+    }
+}</pre><p>Multiple fields with optional boost factors are also supported:</p><pre class="programlisting prettyprint lang-js">{
+  "book" : {
+    "properties" : {
+      "title" : { "type" : "string", "copy_to" : ["meta_data", "article_info^10.0"] },
+    }
+}</pre><p>The same mapping can be also defined using extended syntax:</p><pre class="programlisting prettyprint lang-js">{
+  "book" : {
+    "properties" : {
+      "title" : {
+        "type" : "string",
+        "copy_to" : [{
+            "field": "meta_data"
+        }, {
+            "field": "article_info"
+            "boost": 10.0
+        }
+    }
+}</pre></div><div class="navfooter"><span class="prev"><a href="mapping-types.html">
               « 
               Types</a>
            
