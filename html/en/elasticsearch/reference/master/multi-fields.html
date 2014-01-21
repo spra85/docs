@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Config Mappings [master]</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [master]" /><link rel="up" href="mapping.html" title="Mapping" /><link rel="prev" href="mapping-dynamic-mapping.html" title="Dynamic Mapping" /><link rel="next" href="mapping-meta.html" title="Meta" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Multi Fields [master]</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [master]" /><link rel="up" href="mapping.html" title="Mapping" /><link rel="prev" href="mapping-attachment-type.html" title="Attachment Type" /><link rel="next" href="mapping-date-format.html" title="Date Format" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -21,31 +21,92 @@
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
       [master]
-    </a></span> » <span class="breadcrumb-link"><a href="mapping.html">Mapping</a></span> » <span class="breadcrumb-node">Config Mappings</span></div><div class="navheader"><span class="prev"><a href="mapping-dynamic-mapping.html">
+    </a></span> » <span class="breadcrumb-link"><a href="mapping.html">Mapping</a></span> » <span class="breadcrumb-node">Multi Fields</span></div><div class="navheader"><span class="prev"><a href="mapping-attachment-type.html">
               « 
-              Dynamic Mapping</a>
+              Attachment Type</a>
            
         </span><span class="next">
            
-          <a href="mapping-meta.html">Meta
+          <a href="mapping-date-format.html">Date Format
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-conf-mappings"></a>Config Mappings</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="mapping-fields.html">Fields</a></span></dt><dt><span class="chapter"><a href="mapping-types.html">Types</a></span></dt><dt><span class="chapter"><a href="multi-fields.html">Multi Fields</a></span></dt><dt><span class="chapter"><a href="mapping-date-format.html">Date Format</a></span></dt><dt><span class="chapter"><a href="mapping-dynamic-mapping.html">Dynamic Mapping</a></span></dt><dt><span class="chapter"><a href="mapping-conf-mappings.html">Config Mappings</a></span></dt><dt><span class="chapter"><a href="mapping-meta.html">Meta</a></span></dt></dl></div><p>Creating new mappings can be done using the
-<a class="link" href="indices-put-mapping.html" title="Put Mapping">Put Mapping</a>
-API. When a document is indexed with no mapping associated with it in
-the specific index, the
-<a class="link" href="mapping-dynamic-mapping.html" title="Dynamic Mapping">dynamic / default mapping</a> feature will kick in and automatically create mapping
-definition for it.</p><p>Mappings can also be provided on the node level, meaning that each index
-created will automatically be started with all the mappings defined
-within a certain location.</p><p>Mappings can be defined within files called <code class="literal">[mapping_name].json</code> and be
-placed either under <code class="literal">config/mappings/_default</code> location, or under
-<code class="literal">config/mappings/[index_name]</code> (for mappings that should be associated
-only with a specific index).</p></div><div class="navfooter"><span class="prev"><a href="mapping-dynamic-mapping.html">
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="multi-fields"></a>Multi Fields</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="mapping-fields.html">Fields</a></span></dt><dt><span class="chapter"><a href="mapping-types.html">Types</a></span></dt><dt><span class="chapter"><a href="multi-fields.html">Multi Fields</a></span></dt><dt><span class="chapter"><a href="mapping-date-format.html">Date Format</a></span></dt><dt><span class="chapter"><a href="mapping-dynamic-mapping.html">Dynamic Mapping</a></span></dt><dt><span class="chapter"><a href="mapping-conf-mappings.html">Config Mappings</a></span></dt><dt><span class="chapter"><a href="mapping-meta.html">Meta</a></span></dt></dl></div><p>The <code class="literal">fields</code> options allows to map several core types fields into a single
+json source field. This can be useful if a single field need to be
+used in different ways. For example a single field is to be used for both
+free text search and sorting.</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" : {
+        "properties" : {
+            "name" : {
+                "type" : "string",
+                "index" : "analyzed",
+                "fields" : {
+                    "raw" : {"type" : "string", "index" : "not_analyzed"}
+                }
+            }
+        }
+    }
+}</pre><p>In the above example the field name gets processed twice. The first time is gets
+processed as an analyzed string and this version is accessible under the field name
+<code class="literal">name</code>, this is the main field and is in fact just like any other field. The second time
+its get processed as a not analyzed string and is accessible under the name <code class="literal">name.raw</code>.</p><h3><a id="_accessing_fields"></a>Accessing Fields</h3><p>The multi fields defined in the <code class="literal">fields</code> are prefixed with the
+name of the main field and can be accessed by their full path using the
+navigation notation: <code class="literal">name.raw</code>, or using the typed navigation notation
+<code class="literal">tweet.name.raw</code>. The <code class="literal">path</code> option allows to control how fields are accessed.
+If the <code class="literal">path</code> option is set to <code class="literal">full</code>, then the full path of the main field
+is prefixed, but if the <code class="literal">path</code> option is set to <code class="literal">just_name</code> the actual
+multi field name without any prefix is used. The default value for
+the <code class="literal">path</code> option is <code class="literal">full</code>.</p><p>The <code class="literal">just_name</code> setting, among other things, allows indexing content of multiple
+fields under the same name. In the example below the content of both fields
+<code class="literal">first_name</code> and <code class="literal">last_name</code> can be accessed by using <code class="literal">any_name</code> or <code class="literal">tweet.any_name</code>.</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" : {
+        "properties": {
+            "first_name": {
+                "type": "string",
+                "index": "analyzed",
+                "path": "just_name",
+                "fields": {
+                    "any_name": {"type": "string","index": "analyzed"}
+                }
+            },
+            "last_name": {
+                "type": "string",
+                "index": "analyzed",
+                "path": "just_name",
+                "fields": {
+                    "any_name": {"type": "string","index": "analyzed"}
+                }
+            }
+        }
+    }
+}</pre><h3><a id="_include_in_all_2"></a>Include in All</h3><p>The <code class="literal">include_in_all</code> setting is ignored on any field that is defined in
+the <code class="literal">fields</code> options. Setting the <code class="literal">include_in_all</code> only makes sense on
+the main field, since the raw field value to copied to the <code class="literal">_all</code> field,
+the tokens aren’t copied.</p><h3><a id="_updating_a_field"></a>Updating a field</h3><p>In the essence a field can’t be updated. However multi fields can be
+added to existing fields. This allows for example to have a different
+<code class="literal">index_analyzer</code> configuration in addition to the already configured
+<code class="literal">index_analyzer</code> configuration specified in the main and other multi fields.</p><p>Also the new multi field will only be applied on document that have been
+added after the multi field has been added and in fact the new multi field
+doesn’t exist in existing documents.</p><p>Another important note is that new multi fields will be merged into the
+list of existing multi fields, so when adding new multi fields for a field
+previous added multi fields don’t need to be specified.</p><h3><a id="_inherit_settings_from_main_field"></a>Inherit settings from main field</h3><p>Any settings defined on the main field are automatically inherited by all
+multi fields and act as a default for a multi field.</p><p>The first example could also be defined as in the example below:</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" : {
+        "properties" : {
+            "name" : {
+                "type" : "string",
+                "index" : "analyzed",
+                "fields" : {
+                    "raw" : {"index" : "not_analyzed"}
+                }
+            }
+        }
+    }
+}</pre></div><div class="navfooter"><span class="prev"><a href="mapping-attachment-type.html">
               « 
-              Dynamic Mapping</a>
+              Attachment Type</a>
            
         </span><span class="next">
            
-          <a href="mapping-meta.html">Meta
+          <a href="mapping-date-format.html">Date Format
                »
             </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
               Need help with
