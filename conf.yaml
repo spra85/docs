@@ -8,6 +8,7 @@ repos:
         current:    0.90
         branches:
             - master
+            - 1.x
             - 0.90
 
 
