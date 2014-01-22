@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Core Types [1.x]</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="mapping-types.html" title="Types" /><link rel="prev" href="mapping-types.html" title="Types" /><link rel="next" href="mapping-array-type.html" title="Array Type" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css" /></head><body class="single single-guide"><img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" /><script type="text/javascript">if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12395217-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
+      [1.x]
+    </a></span> » <span class="breadcrumb-link"><a href="mapping.html">Mapping</a></span> » <span class="breadcrumb-link"><a href="mapping-types.html">Types</a></span> » <span class="breadcrumb-node">Core Types</span></div><div class="navheader"><span class="prev"><a href="mapping-types.html">
+              « 
+              Types</a>
+           
+        </span><span class="next">
+           
+          <a href="mapping-array-type.html">Array Type
+               »
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-core-types"></a>Core Types</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>Each JSON field can be mapped to a specific core type. JSON itself
+already provides us with some typing, with its support for <code class="literal">string</code>,
+<code class="literal">integer</code>/<code class="literal">long</code>, <code class="literal">float</code>/<code class="literal">double</code>, <code class="literal">boolean</code>, and <code class="literal">null</code>.</p><p>The following sample tweet JSON document will be used to explain the
+core types:</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" {
+        "user" : "kimchy"
+        "message" : "This is a tweet!",
+        "postDate" : "2009-11-15T14:12:12",
+        "priority" : 4,
+        "rank" : 12.3
+    }
+}</pre><p>Explicit mapping for the above JSON tweet can be:</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" : {
+        "properties" : {
+            "user" : {"type" : "string", "index" : "not_analyzed"},
+            "message" : {"type" : "string", "null_value" : "na"},
+            "postDate" : {"type" : "date"},
+            "priority" : {"type" : "integer"},
+            "rank" : {"type" : "float"}
+        }
+    }
+}</pre><h4><a id="string"></a>String</h4><p>The text based string type is the most basic type, and contains one or
+more characters. An example mapping can be:</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" : {
+        "properties" : {
+            "message" : {
+                "type" : "string",
+                "store" : true,
+                "index" : "analyzed",
+                "null_value" : "na"
+            },
+            "user" : {
+                "type" : "string",
+                "index" : "not_analyzed",
+                "norms" : {
+                    "enabled" : false
+                }
+            }
+        }
+    }
+}</pre><p>The above mapping defines a <code class="literal">string</code> <code class="literal">message</code> property/field within the
+<code class="literal">tweet</code> type. The field is stored in the index (so it can later be
+retrieved using selective loading when searching), and it gets analyzed
+(broken down into searchable terms). If the message has a <code class="literal">null</code> value,
+then the value that will be stored is <code class="literal">na</code>. There is also a <code class="literal">string</code> <code class="literal">user</code>
+which is indexed as-is (not broken down into tokens) and has norms
+disabled (so that matching this field is a binary decision, no match is
+better than another one).</p><p>The following table lists all the attributes that can be used with the
+<code class="literal">string</code> type:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Attribute </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">index_name</code></p></td><td align="left" valign="top"><p>The name of the field that will be stored in the index.
+Defaults to the property/field name.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">store</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to store actual field in the index, <code class="literal">false</code> to not
+store it. Defaults to <code class="literal">false</code> (note, the JSON document itself is stored,
+and it can be retrieved from it).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">analyzed</code> for the field to be indexed and searchable
+after being broken down into token using an analyzer. <code class="literal">not_analyzed</code>
+means that its still searchable, but does not go through any analysis
+process or broken down into tokens. <code class="literal">no</code> means that it won’t be
+searchable at all (as an individual field; it may still be included in
+<code class="literal">_all</code>). Setting to <code class="literal">no</code> disables <code class="literal">include_in_all</code>. Defaults to
+<code class="literal">analyzed</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc_values</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to store field values in a column-stride fashion.
+Automatically set to <code class="literal">true</code> when the fielddata format is <code class="literal">doc_values</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">term_vector</code></p></td><td align="left" valign="top"><p>Possible values are <code class="literal">no</code>, <code class="literal">yes</code>, <code class="literal">with_offsets</code>,
+<code class="literal">with_positions</code>, <code class="literal">with_positions_offsets</code>. Defaults to <code class="literal">no</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">boost</code></p></td><td align="left" valign="top"><p>The boost value. Defaults to <code class="literal">1.0</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">null_value</code></p></td><td align="left" valign="top"><p>When there is a (JSON) null value for the field, use the
+<code class="literal">null_value</code> as the field value. Defaults to not adding the field at
+all.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">norms.enabled</code></p></td><td align="left" valign="top"><p>Boolean value if norms should be enabled or not. Defaults
+to <code class="literal">true</code> for <code class="literal">analyzed</code> fields, and to <code class="literal">false</code> for <code class="literal">not_analyzed</code> fields.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">norms.loading</code></p></td><td align="left" valign="top"><p>Describes how norms should be loaded, possible values are
+<code class="literal">eager</code> and <code class="literal">lazy</code> (default). It is possible to change the default value to
+eager for all fields by configuring the index setting <code class="literal">index.norms.loading</code>
+to <code class="literal">eager</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index_options</code></p></td><td align="left" valign="top"><p>Allows to set the indexing
+options, possible values are <code class="literal">docs</code> (only doc numbers are indexed),
+<code class="literal">freqs</code> (doc numbers and term frequencies), and <code class="literal">positions</code> (doc
+numbers, term frequencies and positions). Defaults to <code class="literal">positions</code> for
+<code class="literal">analyzed</code> fields, and to <code class="literal">docs</code> for <code class="literal">not_analyzed</code> fields. It
+is also possible to set it to <code class="literal">offsets</code> (doc numbers, term
+frequencies, positions and offsets).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">analyzer</code></p></td><td align="left" valign="top"><p>The analyzer used to analyze the text contents when
+<code class="literal">analyzed</code> during indexing and when searching using a query string.
+Defaults to the globally configured analyzer.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index_analyzer</code></p></td><td align="left" valign="top"><p>The analyzer used to analyze the text contents when
+<code class="literal">analyzed</code> during indexing.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">search_analyzer</code></p></td><td align="left" valign="top"><p>The analyzer used to analyze the field when part of
+a query string. Can be updated on an existing field.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">include_in_all</code></p></td><td align="left" valign="top"><p>Should the field be included in the <code class="literal">_all</code> field (if
+enabled). If <code class="literal">index</code> is set to <code class="literal">no</code> this defaults to <code class="literal">false</code>, otherwise,
+defaults to <code class="literal">true</code> or to the parent <code class="literal">object</code> type setting.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">ignore_above</code></p></td><td align="left" valign="top"><p>The analyzer will ignore strings larger than this size.
+Useful for generic <code class="literal">not_analyzed</code> fields that should ignore long text.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">position_offset_gap</code></p></td><td align="left" valign="top"><p>Position increment gap between field instances
+with the same field name. Defaults to 0.</p></td></tr></tbody></table></div><p>The <code class="literal">string</code> type also support custom indexing parameters associated
+with the indexed value. For example:</p><pre class="programlisting prettyprint lang-js">{
+    "message" : {
+        "_value":  "boosted value",
+        "_boost":  2.0
+    }
+}</pre><p>The mapping is required to disambiguate the meaning of the document.
+Otherwise, the structure would interpret "message" as a value of type
+"object". The key <code class="literal">_value</code> (or <code class="literal">value</code>) in the inner document specifies
+the real string content that should eventually be indexed. The <code class="literal">_boost</code>
+(or <code class="literal">boost</code>) key specifies the per field document boost (here 2.0).</p><h4><a id="number"></a>Number</h4><p>A number based type supporting <code class="literal">float</code>, <code class="literal">double</code>, <code class="literal">byte</code>, <code class="literal">short</code>,
+<code class="literal">integer</code>, and <code class="literal">long</code>. It uses specific constructs within Lucene in
+order to support numeric values. The number types have the same ranges
+as corresponding
+<a class="ulink" href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html" target="_top">Java
+types</a>. An example mapping can be:</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" : {
+        "properties" : {
+            "rank" : {
+                "type" : "float",
+                "null_value" : 1.0
+            }
+        }
+    }
+}</pre><p>The following table lists all the attributes that can be used with a
+numbered type:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Attribute </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">type</code></p></td><td align="left" valign="top"><p>The type of the number. Can be <code class="literal">float</code>, <code class="literal">double</code>, <code class="literal">integer</code>,
+<code class="literal">long</code>, <code class="literal">short</code>, <code class="literal">byte</code>. Required.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index_name</code></p></td><td align="left" valign="top"><p>The name of the field that will be stored in the index.
+Defaults to the property/field name.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">store</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to store actual field in the index, <code class="literal">false</code> to not
+store it. Defaults to <code class="literal">false</code> (note, the JSON document itself is stored,
+and it can be retrieved from it).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">no</code> if the value should not be indexed. Setting to
+<code class="literal">no</code> disables <code class="literal">include_in_all</code>. If set to <code class="literal">no</code> the field can be stored
+in <code class="literal">_source</code>, have <code class="literal">include_in_all</code> enabled, or <code class="literal">store</code> should be set to
+<code class="literal">true</code> for this to be useful.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc_values</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to store field values in a column-stride fashion.
+Automatically set to <code class="literal">true</code> when the fielddata format is <code class="literal">doc_values</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">precision_step</code></p></td><td align="left" valign="top"><p>The precision step (number of terms generated for
+each number value). Defaults to <code class="literal">4</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">boost</code></p></td><td align="left" valign="top"><p>The boost value. Defaults to <code class="literal">1.0</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">null_value</code></p></td><td align="left" valign="top"><p>When there is a (JSON) null value for the field, use the
+<code class="literal">null_value</code> as the field value. Defaults to not adding the field at
+all.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">include_in_all</code></p></td><td align="left" valign="top"><p>Should the field be included in the <code class="literal">_all</code> field (if
+enabled). If <code class="literal">index</code> is set to <code class="literal">no</code> this defaults to <code class="literal">false</code>, otherwise,
+defaults to <code class="literal">true</code> or to the parent <code class="literal">object</code> type setting.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">ignore_malformed</code></p></td><td align="left" valign="top"><p>Ignored a malformed number. Defaults to <code class="literal">false</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">coerce</code></p></td><td align="left" valign="top"><p>Try convert strings to numbers and truncate fractions for integers. Defaults to <code class="literal">true</code>.</p></td></tr></tbody></table></div><h4><a id="token_count"></a>Token Count</h4><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 0.90.8.</p></div></div><p>The <code class="literal">token_count</code> type maps to the JSON string type but indexes and stores
+the number of tokens in the string rather than the string itself.  For
+example:</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" : {
+        "properties" : {
+            "name" : {
+                "type" : "string",
+                "fields" : {
+                    "word_count": {
+                        "type" : "token_count",
+                        "store" : "yes",
+                        "analyzer" : "standard"
+                    }
+                }
+            }
+        }
+    }
+}</pre><p>All the configuration that can be specified for a number can be specified
+for a token_count.  The only extra configuration is the required
+<code class="literal">analyzer</code> field which specifies which analyzer to use to break the string
+into tokens.  For best performance, use an analyzer with no token filters.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Technically the <code class="literal">token_count</code> type sums position increments rather than
+counting tokens. This means that even if the analyzer filters out stop
+words they are included in the count.</p></div></div><h4><a id="date"></a>Date</h4><p>The date type is a special type which maps to JSON string type. It
+follows a specific format that can be explicitly set. All dates are
+<code class="literal">UTC</code>. Internally, a date maps to a number type <code class="literal">long</code>, with the added
+parsing stage from string to long and from long to string. An example
+mapping:</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" : {
+        "properties" : {
+            "postDate" : {
+                "type" : "date",
+                "format" : "YYYY-MM-dd"
+            }
+        }
+    }
+}</pre><p>The date type will also accept a long number representing UTC
+milliseconds since the epoch, regardless of the format it can handle.</p><p>The following table lists all the attributes that can be used with a
+date type:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Attribute </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">index_name</code></p></td><td align="left" valign="top"><p>The name of the field that will be stored in the index.
+Defaults to the property/field name.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">format</code></p></td><td align="left" valign="top"><p>The <a class="link" href="mapping-date-format.html" title="Date Format">date format</a>. Defaults to <code class="literal">dateOptionalTime</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">store</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to store actual field in the index, <code class="literal">false</code> to not
+store it. Defaults to <code class="literal">false</code> (note, the JSON document itself is stored,
+and it can be retrieved from it).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">no</code> if the value should not be indexed. Setting to
+<code class="literal">no</code> disables <code class="literal">include_in_all</code>. If set to <code class="literal">no</code> the field can be stored
+in <code class="literal">_source</code>, have <code class="literal">include_in_all</code> enabled, or <code class="literal">store</code> should be set to
+<code class="literal">true</code> for this to be useful.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc_values</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to store field values in a column-stride fashion.
+Automatically set to <code class="literal">true</code> when the fielddata format is <code class="literal">doc_values</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">precision_step</code></p></td><td align="left" valign="top"><p>The precision step (number of terms generated for
+each number value). Defaults to <code class="literal">4</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">boost</code></p></td><td align="left" valign="top"><p>The boost value. Defaults to <code class="literal">1.0</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">null_value</code></p></td><td align="left" valign="top"><p>When there is a (JSON) null value for the field, use the
+<code class="literal">null_value</code> as the field value. Defaults to not adding the field at
+all.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">include_in_all</code></p></td><td align="left" valign="top"><p>Should the field be included in the <code class="literal">_all</code> field (if
+enabled). If <code class="literal">index</code> is set to <code class="literal">no</code> this defaults to <code class="literal">false</code>, otherwise,
+defaults to <code class="literal">true</code> or to the parent <code class="literal">object</code> type setting.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">ignore_malformed</code></p></td><td align="left" valign="top"><p>Ignored a malformed number. Defaults to <code class="literal">false</code>.</p></td></tr></tbody></table></div><h4><a id="boolean"></a>Boolean</h4><p>The boolean type Maps to the JSON boolean type. It ends up storing
+within the index either <code class="literal">T</code> or <code class="literal">F</code>, with automatic translation to <code class="literal">true</code>
+and <code class="literal">false</code> respectively.</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" : {
+        "properties" : {
+            "hes_my_special_tweet" : {
+                "type" : "boolean",
+            }
+        }
+    }
+}</pre><p>The boolean type also supports passing the value as a number (in this
+case <code class="literal">0</code> is <code class="literal">false</code>, all other values are <code class="literal">true</code>).</p><p>The following table lists all the attributes that can be used with the
+boolean type:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Attribute </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">index_name</code></p></td><td align="left" valign="top"><p>The name of the field that will be stored in the index.
+Defaults to the property/field name.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">store</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to store actual field in the index, <code class="literal">false</code> to not
+store it. Defaults to <code class="literal">false</code> (note, the JSON document itself is stored,
+and it can be retrieved from it).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">no</code> if the value should not be indexed. Setting to
+<code class="literal">no</code> disables <code class="literal">include_in_all</code>. If set to <code class="literal">no</code> the field can be stored
+in <code class="literal">_source</code>, have <code class="literal">include_in_all</code> enabled, or <code class="literal">store</code> should be set to
+<code class="literal">true</code> for this to be useful.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">boost</code></p></td><td align="left" valign="top"><p>The boost value. Defaults to <code class="literal">1.0</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">null_value</code></p></td><td align="left" valign="top"><p>When there is a (JSON) null value for the field, use the
+<code class="literal">null_value</code> as the field value. Defaults to not adding the field at
+all.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">include_in_all</code></p></td><td align="left" valign="top"><p>Should the field be included in the <code class="literal">_all</code> field (if
+enabled). If <code class="literal">index</code> is set to <code class="literal">no</code> this defaults to <code class="literal">false</code>, otherwise,
+defaults to <code class="literal">true</code> or to the parent <code class="literal">object</code> type setting.</p></td></tr></tbody></table></div><h4><a id="binary"></a>Binary</h4><p>The binary type is a base64 representation of binary data that can be
+stored in the index. The field is stored by default and not indexed at
+all.</p><pre class="programlisting prettyprint lang-js">{
+    "tweet" : {
+        "properties" : {
+            "image" : {
+                "type" : "binary",
+            }
+        }
+    }
+}</pre><p>The following table lists all the attributes that can be used with the
+binary type:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Attribute </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">index_name</code></p></td><td align="left" valign="top"><p>The name of the field that will be stored in the index.
+Defaults to the property/field name.</p></td></tr></tbody></table></div><h4><a id="fielddata-filters"></a>Fielddata filters</h4><p>It is possible to control which field values are loaded into memory,
+which is particularly useful for faceting on string fields, using
+fielddata filters, which are explained in detail in the
+<a class="link" href="index-modules-fielddata.html" title="Field data">Fielddata</a> section.</p><p>Fielddata filters can exclude terms which do not match a regex, or which
+don’t fall between a <code class="literal">min</code> and <code class="literal">max</code> frequency range:</p><pre class="programlisting prettyprint lang-js">{
+    tweet: {
+        type:      "string",
+        analyzer:  "whitespace"
+        fielddata: {
+            filter: {
+                regex: {
+                    "pattern":        "^#.*"
+                },
+                frequency: {
+                    min:              0.001,
+                    max:              0.1,
+                    min_segment_size: 500
+                }
+            }
+        }
+    }
+}</pre><p>These filters can be updated on an existing field mapping and will take
+effect the next time the fielddata for a segment is loaded. Use the
+<a class="link" href="indices-clearcache.html" title="Clear Cache">Clear Cache</a> API
+to reload the fielddata using the new filters.</p><h4><a id="postings"></a>Postings format</h4><p>Posting formats define how fields are written into the index and how
+fields are represented into memory. Posting formats can be defined per
+field via the <code class="literal">postings_format</code> option. Postings format are configurable.
+Elasticsearch has several builtin formats:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">direct</code>
+</span></dt><dd>
+        A postings format that uses disk-based storage but loads
+        its terms and postings directly into memory. Note this postings format
+        is very memory intensive and has certain limitation that don’t allow
+        segments to grow beyond 2.1GB see {@link DirectPostingsFormat} for
+        details.
+</dd><dt><span class="term">
+<code class="literal">memory</code>
+</span></dt><dd>
+        A postings format that stores its entire terms, postings,
+        positions and payloads in a finite state transducer. This format should
+        only be used for primary keys or with fields where each term is
+        contained in a very low number of documents.
+</dd><dt><span class="term">
+<code class="literal">pulsing</code>
+</span></dt><dd>
+        A postings format in-lines the posting lists for very low
+        frequent terms in the term dictionary. This is useful to improve lookup
+        performance for low-frequent terms.
+</dd><dt><span class="term">
+<code class="literal">bloom_default</code>
+</span></dt><dd>
+        A postings format that uses a bloom filter to
+        improve term lookup performance. This is useful for primarily keys or
+        fields that are used as a delete key.
+</dd><dt><span class="term">
+<code class="literal">bloom_pulsing</code>
+</span></dt><dd>
+        A postings format that combines the advantages of
+        <span class="strong"><strong>bloom</strong></span> and <span class="strong"><strong>pulsing</strong></span> to further improve lookup performance.
+</dd><dt><span class="term">
+<code class="literal">default</code>
+</span></dt><dd>
+        The default Elasticsearch postings format offering best
+        general purpose performance. This format is used if no postings format
+        is specified in the field mapping.
+</dd></dl></div><h5><a id="_postings_format_example"></a>Postings format example</h5><p>On all field types it possible to configure a <code class="literal">postings_format</code>
+attribute:</p><pre class="programlisting prettyprint lang-js">{
+  "person" : {
+     "properties" : {
+         "second_person_id" : {"type" : "string", "postings_format" : "pulsing"}
+     }
+  }
+}</pre><p>On top of using the built-in posting formats it is possible define
+custom postings format. See
+<a class="link" href="index-modules-codec.html" title="Codec module">codec module</a> for more
+information.</p><h4><a id="_doc_values_format"></a>Doc values format</h4><p>Doc values formats define how fields are written into column-stride storage in
+the index for the purpose of sorting or faceting. Fields that have doc values
+enabled will have special field data instances, which will not be uninverted
+from the inverted index, but directly read from disk. This makes _refresh faster
+and ultimately allows for having field data stored on disk depending on the
+configured doc values format.</p><p>Doc values formats are configurable. Elasticsearch has several builtin formats:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">memory</code>
+</span></dt><dd>
+        A doc values format which stores data in memory. Compared to the default
+        field data implementations, using doc values with this format will have
+        similar performance but will be faster to load, making <span class="emphasis"><em>_refresh</em></span> less
+        time-consuming.
+</dd><dt><span class="term">
+<code class="literal">disk</code>
+</span></dt><dd>
+        A doc values format which stores all data on disk, requiring almost no
+        memory from the JVM at the cost of a slight performance degradation.
+</dd><dt><span class="term">
+<code class="literal">default</code>
+</span></dt><dd>
+        The default Elasticsearch doc values format, offering good performance
+        with low memory usage. This format is used if no format is specified in
+        the field mapping.
+</dd></dl></div><h5><a id="_doc_values_format_example"></a>Doc values format example</h5><p>On all field types, it is possible to configure a <code class="literal">doc_values_format</code> attribute:</p><pre class="programlisting prettyprint lang-js">{
+  "product" : {
+     "properties" : {
+         "price" : {"type" : "integer", "doc_values_format" : "memory"}
+     }
+  }
+}</pre><p>On top of using the built-in doc values formats it is possible to define
+custom doc values formats. See
+<a class="link" href="index-modules-codec.html" title="Codec module">codec module</a> for more information.</p><h4><a id="_similarity"></a>Similarity</h4><p>Elasticsearch allows you to configure a similarity (scoring algorithm) per field.
+Allowing users a simpler extension beyond the usual TF/IDF algorithm. As
+part of this, new algorithms have been added including BM25. Also as
+part of the changes, it is now possible to define a Similarity per
+field, giving even greater control over scoring.</p><p>You can configure similarities via the
+<a class="link" href="index-modules-similarity.html" title="Similarity module">similarity module</a></p><h5><a id="_configuring_similarity_per_field"></a>Configuring Similarity per Field</h5><p>Defining the Similarity for a field is done via the <code class="literal">similarity</code> mapping
+property, as this example shows:</p><pre class="programlisting prettyprint lang-js">{
+  "book" : {
+    "properties" : {
+      "title" : { "type" : "string", "similarity" : "BM25" }
+    }
+}</pre><p>The following Similarities are configured out-of-box:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">default</code>
+</span></dt><dd>
+        The Default TF/IDF algorithm used by Elasticsearch and
+        Lucene in previous versions.
+</dd><dt><span class="term">
+<code class="literal">BM25</code>
+</span></dt><dd>
+        The BM25 algorithm.
+        <a class="ulink" href="http://en.wikipedia.org/wiki/Okapi_BM25" target="_top">See Okapi_BM25</a> for more
+        details.
+</dd></dl></div><h5><a id="_copy_to_field"></a>Copy to field</h5><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.0.0.RC2.</p></div></div><p>Adding <code class="literal">copy_to</code> parameter to any field mapping will cause all values of this field to be copied to fields specified in
+the parameter. In the following example all values from fields <code class="literal">title</code> and <code class="literal">abstract</code> will be copied to the field
+<code class="literal">meta_data</code>.</p><pre class="programlisting prettyprint lang-js">{
+  "book" : {
+    "properties" : {
+      "title" : { "type" : "string", "copy_to" : "meta_data" },
+      "abstract" : { "type" : "string", "copy_to" : "meta_data" },
+      "meta_data" : { "type" : "string" },
+    }
+}</pre><p>Multiple fields with optional boost factors are also supported:</p><pre class="programlisting prettyprint lang-js">{
+  "book" : {
+    "properties" : {
+      "title" : { "type" : "string", "copy_to" : ["meta_data", "article_info^10.0"] },
+    }
+}</pre><p>The same mapping can be also defined using extended syntax:</p><pre class="programlisting prettyprint lang-js">{
+  "book" : {
+    "properties" : {
+      "title" : {
+        "type" : "string",
+        "copy_to" : [{
+            "field": "meta_data"
+        }, {
+            "field": "article_info"
+            "boost": 10.0
+        }
+    }
+}</pre><h5><a id="_multi_fields_3"></a>Multi fields</h5><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 1.0.0.RC1.</p></div></div><p>The <code class="literal">fields</code> options allows to map several core types fields into a single
+json source field. This can be useful if a single field need to be
+used in different ways. For example a single field is to be used for both
+free text search and sorting.</p><pre class="programlisting prettyprint lang-js">{
+  "tweet" : {
+    "properties" : {
+      "name" : {
+        "type" : "string",
+        "index" : "analyzed",
+        "fields" : {
+          "raw" : {"type" : "string", "index" : "not_analyzed"}
+        }
+      }
+    }
+  }
+}</pre><p>In the above example the field name gets processed twice. The first time is gets
+processed as an analyzed string and this version is accessible under the field name
+<code class="literal">name</code>, this is the main field and is in fact just like any other field. The second time
+its get processed as a not analyzed string and is accessible under the name <code class="literal">name.raw</code>.</p><h4><a id="_accessing_fields"></a>Accessing Fields</h4><p>The multi fields defined in the <code class="literal">fields</code> are prefixed with the
+name of the main field and can be accessed by their full path using the
+navigation notation: <code class="literal">name.raw</code>, or using the typed navigation notation
+<code class="literal">tweet.name.raw</code>. The <code class="literal">path</code> option allows to control how fields are accessed.
+If the <code class="literal">path</code> option is set to <code class="literal">full</code>, then the full path of the main field
+is prefixed, but if the <code class="literal">path</code> option is set to <code class="literal">just_name</code> the actual
+multi field name without any prefix is used. The default value for
+the <code class="literal">path</code> option is <code class="literal">full</code>.</p><p>The <code class="literal">just_name</code> setting, among other things, allows indexing content of multiple
+fields under the same name. In the example below the content of both fields
+<code class="literal">first_name</code> and <code class="literal">last_name</code> can be accessed by using <code class="literal">any_name</code> or <code class="literal">tweet.any_name</code>.</p><pre class="programlisting prettyprint lang-js">{
+  "tweet" : {
+    "properties": {
+      "first_name": {
+        "type": "string",
+        "index": "analyzed",
+        "path": "just_name",
+        "fields": {
+          "any_name": {"type": "string","index": "analyzed"}
+        }
+      },
+      "last_name": {
+        "type": "string",
+        "index": "analyzed",
+        "path": "just_name",
+        "fields": {
+          "any_name": {"type": "string","index": "analyzed"}
+        }
+      }
+    }
+  }
+}</pre><h4><a id="_include_in_all"></a>Include in All</h4><p>The <code class="literal">include_in_all</code> setting is ignored on any field that is defined in
+the <code class="literal">fields</code> options. Setting the <code class="literal">include_in_all</code> only makes sense on
+the main field, since the raw field value to copied to the <code class="literal">_all</code> field,
+the tokens aren’t copied.</p><h4><a id="_updating_a_field"></a>Updating a field</h4><p>In the essence a field can’t be updated. However multi fields can be
+added to existing fields. This allows for example to have a different
+<code class="literal">index_analyzer</code> configuration in addition to the already configured
+<code class="literal">index_analyzer</code> configuration specified in the main and other multi fields.</p><p>Also the new multi field will only be applied on document that have been
+added after the multi field has been added and in fact the new multi field
+doesn’t exist in existing documents.</p><p>Another important note is that new multi fields will be merged into the
+list of existing multi fields, so when adding new multi fields for a field
+previous added multi fields don’t need to be specified.</p></div><div class="navfooter"><span class="prev"><a href="mapping-types.html">
+              « 
+              Types</a>
+           
+        </span><span class="next">
+           
+          <a href="mapping-array-type.html">Array Type
+               »
+            </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
+              Need help with
+              <span class="oomph">architectural advice</span></p><p> or <span class="oomph">design validation</span>?</p><a target="_blank" href="http://elasticsearch.com/support/" class="btn-expose drawer_toggle">More</a><span class="arrow"></span><div class="block_content"><h1 style="text-align: center;">Get development help from our core team!</h1><p>Want more information about our Development Support? Let us know how to get a hold of you and we’ll be in touch soon.</p><div class="gf_browser_gecko gform_wrapper" id="gform_wrapper_1"><a id="gf_1" name="gf_1" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="/resources/#gf_1"><div class="gform_body"><ul id="gform_fields_1" class="gform_fields top_label description_below"><li id="field_1_1" class="gfield    icon name           gfield_contains_required"><label class="gfield_label" for="input_1_1">
+                          First Name
+                          <span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_1" id="input_1_1" type="text" value="" class="medium" tabindex="2" /></div></li><li id="field_1_7" class="gfield    icon name           gfield_contains_required"><label class="gfield_label" for="input_1_7">
+                          Last Name
+                          <span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_7" id="input_1_7" type="text" value="" class="medium" tabindex="2" /></div></li><li id="field_1_2" class="gfield    icon company"><label class="gfield_label" for="input_1_2">Company</label><div class="ginput_container"><input name="input_2" id="input_1_2" type="text" value="" class="medium" tabindex="3" /></div></li><li id="field_1_3" class="gfield    icon email           gfield_contains_required"><label class="gfield_label" for="input_1_3">
+                          Email
+                          <span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_3" id="input_1_3" type="email" value="" class="medium" tabindex="4" /></div></li><li id="field_1_4" class="gfield    icon job"><label class="gfield_label" for="input_1_4">Job Title</label><div class="ginput_container"><input name="input_4" id="input_1_4" type="text" value="" class="medium" tabindex="5" /></div></li><li id="field_1_5" class="gfield    icon phone"><label class="gfield_label" for="input_1_5">Phone</label><div class="ginput_container"><input name="input_5" id="input_1_5" type="text" value="" class="medium" tabindex="6" /></div></li><li id="field_1_6" class="gfield    full"><label class="gfield_label">I'm inquiring about...</label><div class="ginput_container"><ul class="gfield_checkbox" id="input_1_6"><li class="gchoice_6_1"><input name="input_6.1" type="checkbox" value="Interest_Dev_Support__c" checked="checked" id="choice_6_1" tabindex="7" /><label for="choice_6_1">Dev support</label></li><li class="gchoice_6_2"><input name="input_6.2" type="checkbox" value="Interest_Training__c" id="choice_6_2" tabindex="8" /><label for="choice_6_2">Training</label></li><li class="gchoice_6_3"><input name="input_6.3" type="checkbox" value="Interest_Product_Support__c" id="choice_6_3" tabindex="9" /><label for="choice_6_3">Production support</label></li><li class="gchoice_6_4"><input name="input_6.4" type="checkbox" value="Interest_Newsletter_Updates__c" checked="checked" id="choice_6_4" tabindex="10" /><label for="choice_6_4">Newsletter Updates</label></li></ul></div></li><li id="field_1_10" class="gfield    icon comments full"><label class="gfield_label" for="input_1_10">Comments</label><div class="ginput_container"><textarea name="input_10" id="input_1_10" class="textarea medium" tabindex="11" rows="10" cols="50"></textarea></div></li><li id="field_1_8" class="gfield     gform_hidden"><input name="input_8" id="input_1_8" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_1_9" class="gfield     gform_hidden"><input name="input_9" id="input_1_9" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_1_11" class="gfield     gform_hidden"><input name="input_11" id="input_1_11" type="hidden" class="gform_hidden" value="WEB.org - Home - Dev Support" /></li><li id="field_1_12" class="gfield     gform_hidden"><input name="input_12" id="input_1_12" type="hidden" class="gform_hidden" value="-1" /></li><li id="field_1_13" class="gfield     gform_hidden"><input name="input_13" id="input_1_13" type="hidden" class="gform_hidden" value="55" /></li><li id="field_1_14" class="gfield     gform_hidden"><input name="input_14" id="input_1_14" type="hidden" class="gform_hidden" value="1005" /></li></ul></div><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_1" class="button gform_button" value="Submit" tabindex="12" /><input type="hidden" name="gform_ajax" value="form_id=1&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_1" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="1" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_1" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_1" id="gform_target_page_number_1" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_1" id="gform_source_page_number_1" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_1" id="gform_ajax_frame_1"></iframe><script type="text/javascript">//<![CDATA[
+function gformInitSpinner_1(){jQuery('#gform_1').submit(function(){if(jQuery('#gform_ajax_spinner_1').length == 0){jQuery('#gform_submit_button_1, #gform_wrapper_1 .gform_previous_button, #gform_wrapper_1 .gform_next_button, #gform_wrapper_1 .gform_image_button').attr('disabled', true); jQuery('#gform_submit_button_1, #gform_wrapper_1 .gform_next_button, #gform_wrapper_1 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_1"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_1();jQuery('#gform_ajax_frame_1').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_1');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;jQuery('#gform_submit_button_1').removeAttr('disabled');var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_1').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_1').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_1').val();gformInitSpinner_1();jQuery(document).trigger('gform_page_loaded', [1, current_page]);}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_1').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_1\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [1]);}, 50);}else{jQuery('#gform_1').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [1, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [1, 1]) } );
+//]]></script></div></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/prod_icon.png" alt="" /><h3>Production Support</h3><p>Have Elasticsearch live in production</p><p>and looking for <span class="oomph">SLA-based support</span>?</p><a target="_blank" href="http://elasticsearch.com/support/" class="btn-expose drawer_toggle">More</a><span class="arrow"></span><div class="block_content"><h1 style="text-align: center;">In production? We’ve got your back, 24/7</h1><p>We’d love to talk to you about our Production Support. Let us know how to get a hold of you and we’ll be in touch soon.</p><ul class="drawer_highlights"><li><div class="img"><img alt="clock" src="http://www.elasticsearch.org/content/uploads/2013/03/clock.png" /></div><p>24/7 response time available always</p></li><li class="wide"><div class="img"><img alt="flag" src="http://www.elasticsearch.org/content/uploads/2013/03/flag.png" /></div><p>Support from team that built Elasticsearch</p></li><li><div class="img"><img alt="star" src="http://www.elasticsearch.org/content/uploads/2013/03/star.png" /></div><p>Expert-level solutions</p></li></ul><div class="gf_browser_gecko gform_wrapper" id="gform_wrapper_2"><a id="gf_2" name="gf_2" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_2" id="gform_2" action="/resources/#gf_2"><div class="gform_body"><ul id="gform_fields_2" class="gform_fields top_label description_below"><li id="field_2_1" class="gfield    icon name           gfield_contains_required"><label class="gfield_label" for="input_2_1">
+                          First Name
+                          <span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_1" id="input_2_1" type="text" value="" class="medium" tabindex="1" /></div></li><li id="field_2_7" class="gfield    icon name           gfield_contains_required"><label class="gfield_label" for="input_2_7">
+                          Last Name
+                          <span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_7" id="input_2_7" type="text" value="" class="medium" tabindex="2" /></div></li><li id="field_2_2" class="gfield    icon company"><label class="gfield_label" for="input_2_2">Company</label><div class="ginput_container"><input name="input_2" id="input_2_2" type="text" value="" class="medium" tabindex="3" /></div></li><li id="field_2_3" class="gfield    icon email           gfield_contains_required"><label class="gfield_label" for="input_2_3">
+                          Email
+                          <span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_3" id="input_2_3" type="email" value="" class="medium" tabindex="4" /></div></li><li id="field_2_4" class="gfield    icon job"><label class="gfield_label" for="input_2_4">Job Title</label><div class="ginput_container"><input name="input_4" id="input_2_4" type="text" value="" class="medium" tabindex="5" /></div></li><li id="field_2_5" class="gfield    icon phone"><label class="gfield_label" for="input_2_5">Phone</label><div class="ginput_container"><input name="input_5" id="input_2_5" type="text" value="" class="medium" tabindex="6" /></div></li><li id="field_2_6" class="gfield    full"><label class="gfield_label">I'm inquiring about...</label><div class="ginput_container"><ul class="gfield_checkbox" id="input_2_6"><li class="gchoice_6_1"><input name="input_6.1" type="checkbox" value="Interest_Dev_Support__c" id="choice_6_1" tabindex="7" /><label for="choice_6_1">Dev support</label></li><li class="gchoice_6_2"><input name="input_6.2" type="checkbox" value="Interest_Training__c" id="choice_6_2" tabindex="8" /><label for="choice_6_2">Training</label></li><li class="gchoice_6_3"><input name="input_6.3" type="checkbox" value="Interest_Product_Support__c" checked="checked" id="choice_6_3" tabindex="9" /><label for="choice_6_3">Production support</label></li><li class="gchoice_6_4"><input name="input_6.4" type="checkbox" value="Interest_Newsletter_Updates__c" checked="checked" id="choice_6_4" tabindex="10" /><label for="choice_6_4">Newsletter Updates</label></li></ul></div></li><li id="field_2_10" class="gfield    icon comments full"><label class="gfield_label" for="input_2_10">Comments</label><div class="ginput_container"><textarea name="input_10" id="input_2_10" class="textarea medium" tabindex="11" rows="10" cols="50"></textarea></div></li><li id="field_2_8" class="gfield     gform_hidden"><input name="input_8" id="input_2_8" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_2_9" class="gfield     gform_hidden"><input name="input_9" id="input_2_9" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_2_11" class="gfield     gform_hidden"><input name="input_11" id="input_2_11" type="hidden" class="gform_hidden" value="WEB.org - Home - Production Support" /></li></ul></div><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_2" class="button gform_button" value="Submit" tabindex="12" /><input type="hidden" name="gform_ajax" value="form_id=2&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_2" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="2" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_2" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_2" id="gform_target_page_number_2" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_2" id="gform_source_page_number_2" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_2" id="gform_ajax_frame_2"></iframe><script type="text/javascript">//<![CDATA[
+function gformInitSpinner_2(){jQuery('#gform_2').submit(function(){if(jQuery('#gform_ajax_spinner_2').length == 0){jQuery('#gform_submit_button_2, #gform_wrapper_2 .gform_previous_button, #gform_wrapper_2 .gform_next_button, #gform_wrapper_2 .gform_image_button').attr('disabled', true); jQuery('#gform_submit_button_2, #gform_wrapper_2 .gform_next_button, #gform_wrapper_2 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_2"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_2();jQuery('#gform_ajax_frame_2').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_2');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;jQuery('#gform_submit_button_2').removeAttr('disabled');var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_2').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_2').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_2').val();gformInitSpinner_2();jQuery(document).trigger('gform_page_loaded', [2, current_page]);}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_2').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_2\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [2]);}, 50);}else{jQuery('#gform_2').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [2, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [2, 1]) } );
+//]]></script></div></div></div><div id="drawer_lower"><div id="support_details"><div class="container"><a href="#" class="close"><i class="icon-remove"></i></a><div class="drawer_content"></div></div></div></div></div><div id="mobile_learn_more"><div class="container"><div class="gf_browser_gecko gform_wrapper more_info_wrapper" id="gform_wrapper_3"><a id="gf_3" name="gf_3" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_3" id="gform_3" class="more_info" action="/resources/#gf_3"><div class="gform_body"><ul id="gform_fields_3" class="gform_fields top_label description_below"><li id="field_3_2" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_3_2">
+                      Need more info? We'll email some more your way!
+                      <span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_2" id="input_3_2" type="email" value="" class="medium" tabindex="1" /></div></li><li id="field_3_3" class="gfield     gform_hidden"><input name="input_3" id="input_3_3" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_3_4" class="gfield     gform_hidden"><input name="input_4" id="input_3_4" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_3_5" class="gfield     gform_hidden"><input name="input_5" id="input_3_5" type="hidden" class="gform_hidden" value="WEB.org - Home - Mobile" /></li></ul></div><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_3" class="button gform_button" value="Submit" tabindex="2" /><input type="hidden" name="gform_ajax" value="form_id=3&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_3" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="3" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_3" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_3" id="gform_target_page_number_3" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_3" id="gform_source_page_number_3" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_3" id="gform_ajax_frame_3"></iframe><script type="text/javascript">//<![CDATA[
+function gformInitSpinner_3(){jQuery('#gform_3').submit(function(){if(jQuery('#gform_ajax_spinner_3').length == 0){jQuery('#gform_submit_button_3, #gform_wrapper_3 .gform_previous_button, #gform_wrapper_3 .gform_next_button, #gform_wrapper_3 .gform_image_button').attr('disabled', true); jQuery('#gform_submit_button_3, #gform_wrapper_3 .gform_next_button, #gform_wrapper_3 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_3"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_3();jQuery('#gform_ajax_frame_3').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_3');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;jQuery('#gform_submit_button_3').removeAttr('disabled');var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_3').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_3').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_3').val();gformInitSpinner_3();jQuery(document).trigger('gform_page_loaded', [3, current_page]);}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_3').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_3\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [3]);}, 50);}else{jQuery('#gform_3').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [3, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [3, 1]) } );
+//]]></script></div></div><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74989" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-74989"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_gecko gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/resources/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">
+                        enter you email
+                        <span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_previous_button, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').attr('disabled', true); jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;jQuery('#gform_submit_button_4').removeAttr('disabled');var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+//]]></script></div><div class="legal"><p>© All Rights Reserved - Elasticsearch</p><p>Elasticsearch is a trademark of Elasticsearch BV, registered in the U.S. and in other countries | <a href="/trademarks/">Trademarks</a></p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+          Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy
+          <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+          Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy
+          <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/main.min.js?ver=1386267463"></script></body></html>
