@@ -357,7 +357,7 @@ property, as this example shows:</p><pre class="programlisting prettyprint lang-
         The BM25 algorithm.
         <a class="ulink" href="http://en.wikipedia.org/wiki/Okapi_BM25" target="_top">See Okapi_BM25</a> for more
         details.
-</dd></dl></div><h5><a id="_copy_to_field"></a>Copy to field</h5><p>Adding <code class="literal">copy_to</code> parameter to any field mapping will cause all values of this field to be copied to fields specified in
+</dd></dl></div><h5><a id="_copy_to_field"></a>Copy to field</h5><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.0.0.RC2.</p></div></div><p>Adding <code class="literal">copy_to</code> parameter to any field mapping will cause all values of this field to be copied to fields specified in
 the parameter. In the following example all values from fields <code class="literal">title</code> and <code class="literal">abstract</code> will be copied to the field
 <code class="literal">meta_data</code>.</p><pre class="programlisting prettyprint lang-js">{
   "book" : {
@@ -383,7 +383,7 @@ the parameter. In the following example all values from fields <code class="lite
             "boost": 10.0
         }
     }
-}</pre><h5><a id="_multi_fields_3"></a>Multi fields</h5><p>The <code class="literal">fields</code> options allows to map several core types fields into a single
+}</pre><h5><a id="_multi_fields_3"></a>Multi fields</h5><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 1.0.0.RC1.</p></div></div><p>The <code class="literal">fields</code> options allows to map several core types fields into a single
 json source field. This can be useful if a single field need to be
 used in different ways. For example a single field is to be used for both
 free text search and sorting.</p><pre class="programlisting prettyprint lang-js">{
