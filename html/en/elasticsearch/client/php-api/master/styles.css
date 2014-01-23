@@ -500,3 +500,31 @@ p.simpara+div.itemizedlist {
     color: #555;
 }
 
+/* prevent the list from rendering at the top of the content */
+#js-api-method-index + .itemizedlist,
+#js-api-method-index-0-90 + .itemizedlist {
+    display: none;
+}
+.js-api-method-index h2 {
+    color: #454746;
+    font-family: "Gibson-SemiBold";
+    font-size: 1.17em;
+    margin: 1.5em 0 1em;
+}
+.js-api-method-index ul {
+    padding: 0 0 0 0;
+}
+
+.js-api-method-index ul li {
+    list-style: disc;
+    color: #74b73f;
+    padding: 0.05em 0;
+}
+
+.js-api-method-index a {
+    text-transform: none;
+}
+
+.js-client-docs a[href="#"] {
+    float: right;
+}

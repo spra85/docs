@@ -27,7 +27,7 @@
            
           <a href="_installation_2.html">Installation
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_quickstart"></a>Quickstart</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_quickstart.html">Quickstart</a></span></dt><dt><span class="chapter"><a href="_installation_2.html">Installation</a></span></dt><dt><span class="chapter"><a href="_configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="_index_operations.html">Index Operations</a></span></dt><dt><span class="chapter"><a href="_indexing_operations.html">Indexing Operations</a></span></dt><dt><span class="chapter"><a href="_search_operations.html">Search Operations</a></span></dt><dt><span class="chapter"><a href="_the_connection_pool.html">The Connection Pool</a></span></dt></dl></div><p>This section will give you a quick overview of the client and how the major functions work.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_installation"></a>Installation</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_quickstart"></a>Quickstart</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_quickstart.html">Quickstart</a></span></dt><dt><span class="chapter"><a href="_installation_2.html">Installation</a></span></dt><dt><span class="chapter"><a href="_version_matrix.html">Version Matrix</a></span></dt><dt><span class="chapter"><a href="_configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="_index_operations.html">Index Operations</a></span></dt><dt><span class="chapter"><a href="_indexing_operations.html">Indexing Operations</a></span></dt><dt><span class="chapter"><a href="_search_operations.html">Search Operations</a></span></dt><dt><span class="chapter"><a href="_the_connection_pool.html">The Connection Pool</a></span></dt></dl></div><p>This section will give you a quick overview of the client and how the major functions work.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_installation"></a>Installation</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
 Include elasticsearch-php in your <code class="literal">composer.json</code> file:
 </p><pre class="programlisting prettyprint lang-json">{
     "require": {
@@ -98,4 +98,15 @@ function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#g
           Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy
           <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
           Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy
-          <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/main.min.js?ver=1386267463"></script></body></html>
+          <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/main.min.js?ver=1386267463"></script></body></html>

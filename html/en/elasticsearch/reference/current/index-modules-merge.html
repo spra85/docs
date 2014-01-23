@@ -33,11 +33,10 @@
 down into segments. Segments are internal storage elements in the index
 where the index data is stored, and are immutable up to delete markers.
 Segments are, periodically, merged into larger segments to keep the
-index size at bay and expunge deletes.</p><p>The more segments one has in the Lucene index mean slower searches and
-more memory used, but, low number of segments means more merging that
-has to go on.</p><p>Since merges can be expensive to perform, especially on low IO
-environments, they can be throttled using store level throttling. Read
-the store module documentation on how to set it.</p><h3><a id="policy"></a>Policy</h3><p>The index merge policy module allows one to control which segments of a
+index size at bay and expunge deletes.</p><p>The more segments one has in the Lucene index means slower searches and
+more memory used. Segment merging is used to reduce the number of segments,
+however merges can be expensive to perform, especially on low IO environments.
+Merges can be throttled using <a class="link" href="index-modules-store.html#store-throttling" title="Store Level Throttling">store level throttling</a>.</p><h3><a id="policy"></a>Policy</h3><p>The index merge policy module allows one to control which segments of a
 shard index are to be merged. There are several types of policies with
 the default set to <code class="literal">tiered</code>.</p><h4><a id="tiered"></a>tiered</h4><p>Merges segments of approximately equal size, subject to an allowed
 number of segments per tier. This is similar to <code class="literal">log_bytes_size</code> merge
@@ -78,7 +77,7 @@ over-merge (i.e., cascade merges).</p><p>This policy has the following settings:
 </span></dt><dd>
         Sets the allowed number of segments per tier. Smaller values mean more
         merging but fewer segments. Default is <code class="literal">10</code>. Note, this value needs to be
-        &gt;= then the <code class="literal">max_merge_at_once_</code> otherwise you’ll force too many merges to
+        &gt;= then the <code class="literal">max_merge_at_once</code> otherwise you’ll force too many merges to
         occur.
 </dd><dt><span class="term">
 <code class="literal">index.reclaim_deletes_weight</code>
