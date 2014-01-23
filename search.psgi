@@ -6,7 +6,7 @@ use Encode qw(encode_utf8);
 use Plack::Request;
 use Plack::Builder;
 use Plack::Response;
-use ElasticSearch;
+use Elasticsearch;
 
 use FindBin;
 use lib "$FindBin::RealBin/lib";
@@ -15,7 +15,8 @@ use ES::Util qw(run);
 chdir($FindBin::RealBin);
 
 our $host = 'localhost:9200';
-our $es = ElasticSearch->new( servers => $host );
+our $es   = Elasticsearch->new( nodes => $host );
+our $JSON = $es->transport->serializer;
 
 builder {
     mount '/elastic-search-website/' => \&old_doc_search;
@@ -43,32 +44,47 @@ sub doc_search {
     my $q        = $req->param('q');
 
     my $result = $es->search(
-        index  => 'docs',
-        fields => [ 'title', 'abbr', 'url', 'path' ],
-        query  => {
-            multi_match => {
-                query  => $q,
-                fields => [
-                    'title',         'title.shingles',
-                    'title.ngrams',  'text',
-                    'text.shingles', 'text.ngrams',
-                    'book'
-                ],
-                minimum_should_match => '50%',
-            }
-        },
-        size    => 10,
-        as_json => 1
-    );
+        index   => 'docs',
+        _source => [ 'title', 'abbr', 'url', 'path' ],
+        body    => {
+            query => {
+                function_score => {
+                    query => {
+                        multi_match => {
+                            query  => $q,
+                            fields => [
+                                'title',         'title.shingles',
+                                'title.ngrams',  'text',
+                                'text.shingles', 'text.ngrams',
+                                'book'
+                            ],
+                            minimum_should_match => '50%',
+                            }
 
-    $result = $callback . '(' . $result . ')'
+                    },
+                    functions => [
+                        {   filter => {
+                                term => {
+                                    "book.raw" => "en/elasticsearch/reference"
+                                }
+                            },
+                            boost_factor => 1.5
+                        }
+                    ]
+                }
+            },
+            size => 10,
+        }
+    );
+    for ( @{ $result->{hits}{hits} } ) {
+        $_->{fields} = delete $_->{_source};
+    }
+    my $json = $JSON->encode($result);
+
+    $json = $callback . '(' . $json . ')'
         if $callback;
 
-    return [
-        200,
-        [ 'Content-Type' => 'application/json' ],
-        [ encode_utf8($result) ]
-    ];
+    return [ 200, [ 'Content-Type' => 'application/json' ], [$json] ];
 
 }
 

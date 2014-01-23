@@ -9,7 +9,8 @@ use FindBin;
 use lib "$FindBin::RealBin/lib";
 use YAML qw(LoadFile);
 use Path::Class qw(dir file);
-use ElasticSearch();
+use Elasticsearch();
+use Elasticsearch::Bulk();
 use Encode qw(decode_utf8);
 use ES::Util qw(run $Opts sha_for);
 use Getopt::Long;
@@ -18,7 +19,7 @@ chdir($FindBin::RealBin) or die $!;
 
 our $URL_Base = '/guide';
 our $Conf     = LoadFile('conf.yaml');
-our $e        = ElasticSearch->new( servers => $ENV{ES_HOST} );
+our $e        = Elasticsearch->new( nodes => $ENV{ES_HOST} );
 
 GetOptions( $Opts, 'force', 'verbose' );
 
@@ -39,22 +40,28 @@ sub index_docs {
     $dir = dir($dir);
 
     my $index = "docs_" . time();
-    $e->delete_index( index => $index, ignore_missing => 1 );
-    $e->create_index(
-        index    => $index,
-        settings => index_settings(),
-        mappings => mappings()
+    $e->indices->delete( index => $index, ignore => 404 );
+    $e->indices->create(
+        index => $index,
+        body  => {
+            settings => index_settings(),
+            mappings => mappings()
+        }
     );
 
     my @docs;
     for my $book ( books( @{ $Conf->{contents} } ) ) {
         say "Indexing book: $book->{title}";
         my @docs = load_docs( $dir, $book->{prefix}, $book->{abbr} );
-        my $result = $e->bulk_index(
-            index => $index,
-            type  => 'doc',
-            docs  => \@docs
+        my $b = Elasticsearch::Bulk->new(
+            es        => $e,
+            index     => $index,
+            type      => 'doc',
+            max_count => 0,
+            max_size  => 0
         );
+        $b->index(@docs);
+        my $result = $b->flush;
 
         die join "\n", "Error indexing $book->{title}:",
             map { $_->{error} } @{ $result->{errors} }
@@ -62,7 +69,7 @@ sub index_docs {
     }
 
     my @actions = { add => { alias => 'docs', index => $index } };
-    my $aliases = $e->get_aliases( index => 'docs', ignore_missing => 1 )
+    my $aliases = $e->indices->get_aliases( index => 'docs', ignore => 404 )
         || {};
 
     my $current;
@@ -70,8 +77,8 @@ sub index_docs {
         push @actions, { remove => { alias => 'docs', index => $current } };
     }
 
-    $e->aliases( actions => \@actions );
-    $e->delete_index( index => $current )
+    $e->indices->update_aliases( body => { actions => \@actions } );
+    $e->indices->delete( index => $current )
         if $current;
 }
 
@@ -94,8 +101,8 @@ sub load_docs {
         for my $page ( load_file($file) ) {
             push @docs,
                 {
-                _id  => $url . $page->[0],
-                data => {
+                _id     => $url . $page->[0],
+                _source => {
                     book  => $prefix,
                     title => $page->[1] . ' » ' . $abbr,
                     text  => $page->[2],
@@ -230,19 +237,15 @@ sub mappings {
         doc => {
             properties => {
                 book => {
-                    type   => "multi_field",
+                    type   => 'string',
                     fields => {
-                        book => { type => 'string' },
-                        raw  => { type => 'string', index => 'not_analyzed' }
+                        raw => { type => 'string', index => 'not_analyzed' }
                     }
                 },
                 title => {
-                    type   => 'multi_field',
-                    fields => {
-                        title => {
-                            type     => 'string',
-                            analyzer => 'content',
-                        },
+                    type     => 'string',
+                    analyzer => 'content',
+                    fields   => {
                         shingles => {
                             type     => 'string',
                             analyzer => 'shingles',
@@ -255,9 +258,9 @@ sub mappings {
                     }
                 },
                 text => {
-                    type   => 'multi_field',
-                    fields => {
-                        text => { type => 'string', analyzer => 'content' },
+                    type     => 'string',
+                    analyzer => 'content',
+                    fields   => {
                         shingles => {
                             type     => 'string',
                             analyzer => 'shingles'
