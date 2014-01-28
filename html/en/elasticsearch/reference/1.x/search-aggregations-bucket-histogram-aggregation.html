@@ -44,20 +44,22 @@ bucket_key = value - rem</pre><p>The following snippet "buckets" the products ba
     }
 }</pre><p>And the following may be the response:</p><pre class="programlisting prettyprint lang-js">{
     "aggregations": {
-        "prices": [
-            {
-                "key": 0,
-                "doc_count": 2
-            },
-            {
-                "key": 50,
-                "doc_count": 4
-            },
-            {
-                "key": 150,
-                "doc_count": 3
-            }
-        ]
+        "prices" : {
+            "buckets": [
+                {
+                    "key": 0,
+                    "doc_count": 2
+                },
+                {
+                    "key": 50,
+                    "doc_count": 4
+                },
+                {
+                    "key": 150,
+                    "doc_count": 3
+                }
+            ]
+        }
     }
 }</pre><p>The response above shows that none of the aggregated products has a price that falls within the range of <code class="literal">[100 - 150)</code>. By default, the response will only contain the non-empty buckets, though it is possible to also return those, by setting the <code class="literal">empty_buckets</code> flag to <code class="literal">true</code>:</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
@@ -71,24 +73,26 @@ bucket_key = value - rem</pre><p>The following snippet "buckets" the products ba
     }
 }</pre><p>Response:</p><pre class="programlisting prettyprint lang-js">{
     "aggregations": {
-        "prices": [
-            {
-                "key": 0,
-                "doc_count": 2
-            },
-            {
-                "key": 50,
-                "doc_count": 4
-            },
-            {
-                "key" : 100,
-                "doc_count" : 0
-            },
-            {
-                "key": 150,
-                "doc_count": 3
-            }
-        ]
+        "prices" : {
+            "buckets": [
+                {
+                    "key": 0,
+                    "doc_count": 2
+                },
+                {
+                    "key": 50,
+                    "doc_count": 4
+                },
+                {
+                    "key" : 100,
+                    "doc_count" : 0
+                },
+                {
+                    "key": 150,
+                    "doc_count": 3
+                }
+            ]
+        }
     }
 }</pre><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_order_2"></a>Order</h3></div></div></div><p>By default the returned buckets are sorted by their <code class="literal">key</code> ascending, though the order behaviour can be controled using the <code class="literal">order</code> setting.</p><p>Ordering the buckets by their key - descending:</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
@@ -140,29 +144,31 @@ There is no need to configure the <code class="literal">price</code> field for t
 }</pre><p>The above aggregation would only return buckets that contain 10 documents or more. Default value is <code class="literal">1</code>.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The special value <code class="literal">0</code> can be used to add empty buckets to the response between the minimum and the maximum buckets. Here is an example of what the response could look like:</p></div></div><pre class="programlisting prettyprint lang-js">{
     "aggregations": {
         "prices": {
-            "0": {
-                "key": 0,
-                "doc_count": 2
-            },
-            "50": {
-                "key": 50,
-                "doc_count": 0
-            },
-            "150": {
-                "key": 150,
-                "doc_count": 3
-            },
-            "200": {
-                "key": 150,
-                "doc_count": 0
-            },
-            "250": {
-                "key": 150,
-                "doc_count": 0
-            },
-            "300": {
-                "key": 150,
-                "doc_count": 1
+            "buckets": {
+                "0": {
+                    "key": 0,
+                    "doc_count": 2
+                },
+                "50": {
+                    "key": 50,
+                    "doc_count": 0
+                },
+                "150": {
+                    "key": 150,
+                    "doc_count": 3
+                },
+                "200": {
+                    "key": 150,
+                    "doc_count": 0
+                },
+                "250": {
+                    "key": 150,
+                    "doc_count": 0
+                },
+                "300": {
+                    "key": 150,
+                    "doc_count": 1
+                }
             }
         }
    }
@@ -179,20 +185,22 @@ There is no need to configure the <code class="literal">price</code> field for t
 }</pre><p>Response:</p><pre class="programlisting prettyprint lang-js">{
     "aggregations": {
         "prices": {
-            "0": {
-                "key": 0,
-                "doc_count": 2
-            },
-            "50": {
-                "key": 50,
-                "doc_count": 4
-            },
-            "150": {
-                "key": 150,
-                "doc_count": 3
+            "buckets": {
+                "0": {
+                    "key": 0,
+                    "doc_count": 2
+                },
+                "50": {
+                    "key": 50,
+                    "doc_count": 4
+                },
+                "150": {
+                    "key": 150,
+                    "doc_count": 3
+                }
             }
         }
-   }
+    }
 }</pre></div></div><div class="navfooter"><span class="prev"><a href="search-aggregations-bucket-iprange-aggregation.html">
               « 
               IPv4 Range</a>

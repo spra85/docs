@@ -45,24 +45,26 @@
     }
 }</pre><p>Response:</p><pre class="programlisting prettyprint lang-js">{
     "aggregations": {
-        "rings": [
-            {
-                "unit": "km",
-                "to": 100.0,
-                "doc_count": 3
-            },
-            {
-                "unit": "km",
-                "from": 100.0,
-                "to": 300.0,
-                "doc_count": 1
-            },
-            {
-                "unit": "km",
-                "from": 300.0,
-                "doc_count": 7
-            }
-        ]
+        "rings" : {
+            "buckets": [
+                {
+                    "unit": "km",
+                    "to": 100.0,
+                    "doc_count": 3
+                },
+                {
+                    "unit": "km",
+                    "from": 100.0,
+                    "to": 300.0,
+                    "doc_count": 1
+                },
+                {
+                    "unit": "km",
+                    "from": 300.0,
+                    "doc_count": 7
+                }
+            ]
+        }
     }
 }</pre><p>The specified field must be of type <code class="literal">geo_point</code> (which can only be set explicitly in the mappings). And it can also hold an array of <code class="literal">geo_point</code> fields, in which case all will be taken into account during aggregation. The origin point can accept all formats supported by the <code class="literal">geo_point</code> <a class="link" href="mapping-geo-point-type.html" title="Geo Point Type">type</a>:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Object format: <code class="literal">{ "lat" : 52.3760, "lon" : 4.894 }</code> - this is the safest format as it is the most explicit about the <code class="literal">lat</code> &amp; <code class="literal">lon</code> values

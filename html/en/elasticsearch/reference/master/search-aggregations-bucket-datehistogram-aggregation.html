@@ -86,19 +86,21 @@ returning the dates as formatted strings next to the numeric key values:</p><pre
 Supports expressive date <a class="link" href="search-aggregations-bucket-daterange-aggregation.html#date-format-pattern" title="Date Format/Pattern">format pattern</a>
 </p></td></tr></table></div><p>Response:</p><pre class="programlisting prettyprint lang-js">{
     "aggregations": {
-        "articles_over_time": [
-            {
-                "key_as_string": "2013-02-02",
-                "key": 1328140800000,
-                "doc_count": 1
-            },
-            {
-                "key_as_string": "2013-03-02",
-                "key": 1330646400000,
-                "doc_count": 2
-            },
-            ...
-        ]
+        "articles_over_time": {
+            "buckets": [
+                {
+                    "key_as_string": "2013-02-02",
+                    "key": 1328140800000,
+                    "doc_count": 1
+                },
+                {
+                    "key_as_string": "2013-03-02",
+                    "key": 1330646400000,
+                    "doc_count": 2
+                },
+                ...
+            ]
+        }
     }
 }</pre><p>Like with the normal <a class="link" href="search-aggregations-bucket-histogram-aggregation.html" title="Histogram">histogram</a>, both document level scripts and
 value level scripts are supported. It is also possilbe to control the order of the returned buckets using the <code class="literal">order</code>

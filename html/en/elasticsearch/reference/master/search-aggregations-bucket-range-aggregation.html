@@ -46,21 +46,23 @@
     ...
 
     "aggregations": {
-        "price_ranges": [
-            {
-                "to": 50,
-                "doc_count": 2
-            },
-            {
-                "from": 50,
-                "to": 100,
-                "doc_count": 4
-            },
-            {
-                "from": 100,
-                "doc_count": 4
-            }
-        ]
+        "price_ranges" : {
+            "buckets": [
+                {
+                    "to": 50,
+                    "doc_count": 2
+                },
+                {
+                    "from": 50,
+                    "to": 100,
+                    "doc_count": 4
+                },
+                {
+                    "from": 100,
+                    "doc_count": 4
+                }
+            ]
+        }
     }
 }</pre><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_keyed_response"></a>Keyed Response</h3></div></div></div><p>Setting the <code class="literal">key</code> flag to <code class="literal">true</code> will associate a unique string key with each bucket and return the ranges as a hash rather than an array:</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
@@ -80,19 +82,21 @@
     ...
 
     "aggregations": {
-        "price_ranges": {
-            "*-50.0": {
-                "to": 50,
-                "doc_count": 2
-            },
-            "50.0-100.0": {
-                "from": 50,
-                "to": 100,
-                "doc_count": 4
-            },
-            "100.0-*": {
-                "from": 100,
-                "doc_count": 4
+        "price_ranges" : {
+            "buckets": {
+                "*-50.0": {
+                    "to": 50,
+                    "doc_count": 2
+                },
+                "50.0-100.0": {
+                    "from": 50,
+                    "to": 100,
+                    "doc_count": 4
+                },
+                "100.0-*": {
+                    "from": 100,
+                    "doc_count": 4
+                }
             }
         }
     }
@@ -160,42 +164,44 @@
     }
 }</pre><p>Response:</p><pre class="programlisting prettyprint lang-js">{
     "aggregations": {
-        "price_ranges": [
-            {
-                "to": 50,
-                "doc_count": 2,
-                "price_stats": {
-                    "count": 2,
-                    "min": 20,
-                    "max": 47,
-                    "avg": 33.5,
-                    "sum": 67
+        "price_ranges" : {
+            "buckets": [
+                {
+                    "to": 50,
+                    "doc_count": 2,
+                    "price_stats": {
+                        "count": 2,
+                        "min": 20,
+                        "max": 47,
+                        "avg": 33.5,
+                        "sum": 67
+                    }
+                },
+                {
+                    "from": 50,
+                    "to": 100,
+                    "doc_count": 4,
+                    "price_stats": {
+                        "count": 4,
+                        "min": 60,
+                        "max": 98,
+                        "avg": 82.5,
+                        "sum": 330
+                    }
+                },
+                {
+                    "from": 100,
+                    "doc_count": 4,
+                    "price_stats": {
+                        "count": 4,
+                        "min": 134,
+                        "max": 367,
+                        "avg": 216,
+                        "sum": 864
+                    }
                 }
-            },
-            {
-                "from": 50,
-                "to": 100,
-                "doc_count": 4,
-                "price_stats": {
-                    "count": 4,
-                    "min": 60,
-                    "max": 98,
-                    "avg": 82.5,
-                    "sum": 330
-                }
-            },
-            {
-                "from": 100,
-                "doc_count": 4,
-                "price_stats": {
-                    "count": 4,
-                    "min": 134,
-                    "max": 367,
-                    "avg": 216,
-                    "sum": 864
-                }
-            }
-        ]
+            ]
+        }
     }
 }</pre><p>If a sub aggregation is also based on the same value source as the range aggregation (like the <code class="literal">stats</code> aggregation in the example above) it is possible to leave out the value source definition for it. The following will return the same response as above:</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
