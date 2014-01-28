@@ -110,7 +110,7 @@ Defaults to <code class="literal">"YYYY.MM.dd"</code>, which produces index name
 an index per day, with one shard and one replica. We expect this to be a good
 default which will fit most use cases. You may need to change it for very big
 installations.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_the_marvel_index_template"></a>The Marvel index template</h3></div></div></div><p>Marvel uses an <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-templates.html" target="_top">index template</a> to preconfigure newly created indices. You can retrieve it with:</p><pre class="programlisting prettyprint lang-sh">GET /_template/marvel</pre><p>then make changes, and update it with:</p><pre class="programlisting prettyprint lang-json">PUT /_template/marvel
-{ ... new template }</pre><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>We recommend only changing the <code class="literal">settings</code> section as other changes are
+{ ... new template }</pre><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>We recommend only changing the <code class="literal">settings</code> section. Other sections are
 important for the correct operation of the dashboards.</p></div></div><p>Here are the default <code class="literal">settings</code>:</p><pre class="programlisting prettyprint lang-json">{
     "template": ".marvel*",
     "settings": {
