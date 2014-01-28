@@ -33,7 +33,7 @@ dashboards.</p><p><span class="inlinemediaobject"><img src="images/overview_thum
 one or more nodes. Metrics include hardware level metrics (like load and CPU
 usage), process and JVM metrics (memory usage, GC), and node level
 Elasticsearch metrics such as field data usage, search requests rate and
-thread pool rejection.</p><p><span class="inlinemediaobject"><img src="images/node_stats_thumb.png" alt="Node Statistics Dashboard" /></span></p><p>The <span class="emphasis"><em>Index Statistics</em></span> dashboard is very similar to the Node Satistics
+thread pool rejection.</p><p><span class="inlinemediaobject"><img src="images/node_stats_thumb.png" alt="Node Statistics Dashboard" /></span></p><p>The <span class="emphasis"><em>Index Statistics</em></span> dashboard is very similar to the <span class="emphasis"><em>Node Statistics</em></span>
 dashboard, but it shows you all the metrics from the perspective of one or
 more indices. The metrics are per index, with data aggregated from all of the
 nodes in the cluster. For example, the <span class="emphasis"><em>'store size</em></span>' chart shows the total
@@ -127,7 +127,7 @@ important for the correct operation of the dashboards.</p></div></div><p>Here ar
         "marvel.index_format": 1
     }
     .....
-}</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_other_relevant_elasticsearch_settings"></a>Other relevant Elasticsearch settings</h2></div></div></div><p>Marvel relies on Elasticsearch’s apability to automatically create new indices
+}</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_other_relevant_elasticsearch_settings"></a>Other relevant Elasticsearch settings</h2></div></div></div><p>Marvel relies on Elasticsearch’s capability to automatically create new indices
 when indexing documents. Some people like to disable this feature to better
 protect against mistakes in production clusters. To do so but still allow the
 creation of Marvel indices you need to set the following:</p><pre class="programlisting prettyprint lang-yaml">action.auto_create_index: .marvel-*</pre><p>More information is available <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html#index-creation" target="_top">here</a></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_system_requirements"></a>System Requirements</h1></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
