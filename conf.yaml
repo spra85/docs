@@ -29,6 +29,11 @@ repos:
         branches:
             - master
 
+    marvel:
+        url:        https://github.com/elasticsearch/elasticsearch-marvel.git
+        current:    master
+        branches:   [master]
+
 contents_title:     Guide
 
 contents:
@@ -39,6 +44,15 @@ contents:
         index:      docs/reference/index.asciidoc
         chunk:      1
         abbr:       elasticsearch
+
+    -
+        title:      Marvel
+        prefix:     en/marvel
+        repo:       marvel
+        index:      docs/index.asciidoc
+        abbr:       marvel
+        single:     1
+
 
     -
         title:      Elasticsearch for Apache Hadoop
