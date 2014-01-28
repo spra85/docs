@@ -80,9 +80,10 @@ handling nodes being added or removed.</p><p>The following settings may be used:
 </dd><dt><span class="term">
 <code class="literal">cluster.routing.allocation.same_shard.host</code>
 </span></dt><dd>
-      Prevents that multiple instances of the same shard are allocated
-      on a single host. Defaults to <code class="literal">false</code>. This setting only applies
-      if multiple nodes are started on the same machine.
+      Allows to perform a check to prevent allocation of multiple instances
+      of the same shard on a single host, based on host name and host address.
+      Defaults to <code class="literal">false</code>, meaning that no check is performed by default. This
+      setting only applies if multiple nodes are started on the same machine.
 </dd><dt><span class="term">
 <code class="literal">indices.recovery.concurrent_streams</code>
 </span></dt><dd>
