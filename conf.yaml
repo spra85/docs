@@ -46,7 +46,7 @@ contents:
         abbr:       elasticsearch
 
     -
-        title:      Marvel
+        title:      Marvel monitoring
         prefix:     en/marvel
         repo:       marvel
         index:      docs/index.asciidoc
