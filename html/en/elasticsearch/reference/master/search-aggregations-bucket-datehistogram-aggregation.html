@@ -78,11 +78,11 @@ returning the dates as formatted strings next to the numeric key values:</p><pre
             "date_histogram" : {
                 "field" : "date",
                 "interval" : "1M",
-                "format" : "yyyy-MM-dd" <a id="CO9-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+                "format" : "yyyy-MM-dd" <a id="CO10-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
             }
         }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO9-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Supports expressive date <a class="link" href="search-aggregations-bucket-daterange-aggregation.html#date-format-pattern" title="Date Format/Pattern">format pattern</a>
 </p></td></tr></table></div><p>Response:</p><pre class="programlisting prettyprint lang-js">{
     "aggregations": {
@@ -104,7 +104,8 @@ Supports expressive date <a class="link" href="search-aggregations-bucket-datera
     }
 }</pre><p>Like with the normal <a class="link" href="search-aggregations-bucket-histogram-aggregation.html" title="Histogram">histogram</a>, both document level scripts and
 value level scripts are supported. It is also possilbe to control the order of the returned buckets using the <code class="literal">order</code>
-settings and empty buckets can also be returned by setting the <code class="literal">empty_buckets</code> field to <code class="literal">true</code> (defaults to <code class="literal">false</code>).</p></div></div><div class="navfooter"><span class="prev"><a href="search-aggregations-bucket-histogram-aggregation.html">
+settings and filter the returned buckets based on a <code class="literal">min_doc_count</code> setting (by defaults to all buckets with
+<code class="literal">min_doc_count &gt; 1</code> will be returned).</p></div></div><div class="navfooter"><span class="prev"><a href="search-aggregations-bucket-histogram-aggregation.html">
               « 
               Histogram</a>
            

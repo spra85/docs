@@ -29,7 +29,13 @@
            
           <a href="search-aggregations-bucket-datehistogram-aggregation.html">Date Histogram
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="search-aggregations-bucket-histogram-aggregation"></a>Histogram</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="search-aggregations-metrics-min-aggregation.html">Min</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-max-aggregation.html">Max</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-sum-aggregation.html">Sum</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-avg-aggregation.html">Avg</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-stats-aggregation.html">Stats</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-extendedstats-aggregation.html">Extended Stats</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-valuecount-aggregation.html">Value Count</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-global-aggregation.html">Global</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-filter-aggregation.html">Filter</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-missing-aggregation.html">Missing</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-nested-aggregation.html">Nested</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-terms-aggregation.html">Terms</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-range-aggregation.html">Range</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-daterange-aggregation.html">Date Range</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-iprange-aggregation.html">IPv4 Range</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-histogram-aggregation.html">Histogram</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-datehistogram-aggregation.html">Date Histogram</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-geodistance-aggregation.html">Geo Distance</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-geohashgrid-aggregation.html">GeoHash grid</a></span></dt><dt><span class="section"><a href="_cell_dimensions_at_the_equator.html">Cell dimensions at the equator</a></span></dt><dt><span class="section"><a href="_options_2.html">Options</a></span></dt></dl></div><p>A multi-bucket values source based aggregation that can be applied on numeric values extracted from the documents. It dynamically builds fixed size (a.k.a. interval) buckets over the values. For example, if the documents have a field that holds a price (numeric), we can configure this aggregation to dynamically build buckets with interval <code class="literal">5</code> (in case of price it may represent $5). When the aggregation executes, the price field of every document will be evaluated and will be rounded down to its closest bucket - for example, if the price is <code class="literal">32</code> and the bucket size is <code class="literal">5</code> then the rounding will yield <code class="literal">30</code> and thus the document will "fall" into the bucket that is associated withe the key <code class="literal">30</code>. To make this more formal, here is the rounding function that is used:</p><pre class="programlisting prettyprint lang-java">rem = value % interval
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="search-aggregations-bucket-histogram-aggregation"></a>Histogram</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="search-aggregations-metrics-min-aggregation.html">Min</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-max-aggregation.html">Max</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-sum-aggregation.html">Sum</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-avg-aggregation.html">Avg</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-stats-aggregation.html">Stats</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-extendedstats-aggregation.html">Extended Stats</a></span></dt><dt><span class="section"><a href="search-aggregations-metrics-valuecount-aggregation.html">Value Count</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-global-aggregation.html">Global</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-filter-aggregation.html">Filter</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-missing-aggregation.html">Missing</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-nested-aggregation.html">Nested</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-terms-aggregation.html">Terms</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-range-aggregation.html">Range</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-daterange-aggregation.html">Date Range</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-iprange-aggregation.html">IPv4 Range</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-histogram-aggregation.html">Histogram</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-datehistogram-aggregation.html">Date Histogram</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-geodistance-aggregation.html">Geo Distance</a></span></dt><dt><span class="section"><a href="search-aggregations-bucket-geohashgrid-aggregation.html">GeoHash grid</a></span></dt><dt><span class="section"><a href="_cell_dimensions_at_the_equator.html">Cell dimensions at the equator</a></span></dt><dt><span class="section"><a href="_options_2.html">Options</a></span></dt></dl></div><p>A multi-bucket values source based aggregation that can be applied on numeric values extracted from the documents.
+It dynamically builds fixed size (a.k.a. interval) buckets over the values. For example, if the documents have a field
+that holds a price (numeric), we can configure this aggregation to dynamically build buckets with interval <code class="literal">5</code>
+(in case of price it may represent $5). When the aggregation executes, the price field of every document will be
+evaluated and will be rounded down to its closest bucket - for example, if the price is <code class="literal">32</code> and the bucket size is <code class="literal">5</code>
+then the rounding will yield <code class="literal">30</code> and thus the document will "fall" into the bucket that is associated withe the key <code class="literal">30</code>.
+To make this more formal, here is the rounding function that is used:</p><pre class="programlisting prettyprint lang-java">rem = value % interval
 if (rem &lt; 0) {
     rem += interval
 }
@@ -61,13 +67,16 @@ bucket_key = value - rem</pre><p>The following snippet "buckets" the products ba
             ]
         }
     }
-}</pre><p>The response above shows that none of the aggregated products has a price that falls within the range of <code class="literal">[100 - 150)</code>. By default, the response will only contain the non-empty buckets, though it is possible to also return those, by setting the <code class="literal">empty_buckets</code> flag to <code class="literal">true</code>:</p><pre class="programlisting prettyprint lang-js">{
+}</pre><p>The response above shows that none of the aggregated products has a price that falls within the range of <code class="literal">[100 - 150)</code>.
+By default, the response will only contain those buckets with a <code class="literal">doc_count</code> greater than 0. It is possible change that
+and request buckets with either a higher minimum count or even 0 (in which case elasticsearch will "fill in the gaps"
+and create buckets with zero documents). This can be configured using the <code class="literal">min_doc_count</code> setting:</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
         "prices" : {
             "histogram" : {
                 "field" : "price",
                 "interval" : 50,
-                "empty_buckets" : true
+                "min_doc_count" : 0
             }
         }
     }
@@ -85,7 +94,7 @@ bucket_key = value - rem</pre><p>The following snippet "buckets" the products ba
                 },
                 {
                     "key" : 100,
-                    "doc_count" : 0
+                    "doc_count" : 0 <a id="CO8-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
                 },
                 {
                     "key": 150,
@@ -94,7 +103,10 @@ bucket_key = value - rem</pre><p>The following snippet "buckets" the products ba
             ]
         }
     }
-}</pre><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_order_2"></a>Order</h3></div></div></div><p>By default the returned buckets are sorted by their <code class="literal">key</code> ascending, though the order behaviour can be controled using the <code class="literal">order</code> setting.</p><p>Ordering the buckets by their key - descending:</p><pre class="programlisting prettyprint lang-js">{
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+No documents were found that belong in this bucket, yet it is still returned with zero <code class="literal">doc_count</code>.
+</p></td></tr></table></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_order_2"></a>Order</h3></div></div></div><p>By default the returned buckets are sorted by their <code class="literal">key</code> ascending, though the order behaviour can be controled
+using the <code class="literal">order</code> setting.</p><p>Ordering the buckets by their key - descending:</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
         "prices" : {
             "histogram" : {
@@ -120,18 +132,19 @@ bucket_key = value - rem</pre><p>The following snippet "buckets" the products ba
             "histogram" : {
                 "field" : "price",
                 "interval" : 50,
-                "order" : { "price_stats.min" : "asc" } <a id="CO8-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+                "order" : { "price_stats.min" : "asc" } <a id="CO9-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
             },
             "aggs" : {
-                "price_stats" : { "stats" : {} } <a id="CO8-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+                "price_stats" : { "stats" : {} } <a id="CO9-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
             }
         }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO9-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">{ "price_stats.min" : asc" }</code> will sort the buckets based on <code class="literal">min</code> value of their their <code class="literal">price_stats</code> sub-aggregation.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO9-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 There is no need to configure the <code class="literal">price</code> field for the <code class="literal">price_stats</code> aggregation as it will inherit it by default from its parent histogram aggregation.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_minimum_document_count_2"></a>Minimum document count</h3></div></div></div><p>It is possible to only return buckets that have a document count that is greater than or equal to a configured limit through the <code class="literal">min_doc_count</code> option.</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_minimum_document_count_2"></a>Minimum document count</h3></div></div></div><p>It is possible to only return buckets that have a document count that is greater than or equal to a configured
+limit through the <code class="literal">min_doc_count</code> option.</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
         "prices" : {
             "histogram" : {
@@ -141,7 +154,8 @@ There is no need to configure the <code class="literal">price</code> field for t
             }
         }
     }
-}</pre><p>The above aggregation would only return buckets that contain 10 documents or more. Default value is <code class="literal">1</code>.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The special value <code class="literal">0</code> can be used to add empty buckets to the response between the minimum and the maximum buckets. Here is an example of what the response could look like:</p></div></div><pre class="programlisting prettyprint lang-js">{
+}</pre><p>The above aggregation would only return buckets that contain 10 documents or more. Default value is <code class="literal">1</code>.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The special value <code class="literal">0</code> can be used to add empty buckets to the response between the minimum and the maximum buckets.
+Here is an example of what the response could look like:</p></div></div><pre class="programlisting prettyprint lang-js">{
     "aggregations": {
         "prices": {
             "buckets": {
@@ -172,7 +186,8 @@ There is no need to configure the <code class="literal">price</code> field for t
             }
         }
    }
-}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_response_format"></a>Response Format</h3></div></div></div><p>By default, the buckets are returned as an ordered array. It is also possible to request the response as a hash instead keyed by the buckets keys:</p><pre class="programlisting prettyprint lang-js">{
+}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_response_format"></a>Response Format</h3></div></div></div><p>By default, the buckets are returned as an ordered array. It is also possible to request the response as a hash
+instead keyed by the buckets keys:</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
         "prices" : {
             "histogram" : {
