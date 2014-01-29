@@ -43,7 +43,24 @@ and more.</p><p><span class="inlinemediaobject"><img src="images/cluster_pulse_t
 to make an extra API call to check something or perhaps tweak a setting. The
 developer console understands both JSON and the Elasticsearch API, offering
 suggestions and autocompletion. It is very useful for prototyping queries,
-researching your data or any other administrative work with the API.</p><div class="informalfigure"><div class="mediaobject"><img src="images/sense_thumb.png" alt="Developer Console" /></div></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_installation"></a>Installation</h1></div></div></div><p>Marvel is installed as an Elasticsearch plugin. The plugin must be installed
+researching your data or any other administrative work with the API.</p><div class="informalfigure"><div class="mediaobject"><img src="images/sense_thumb.png" alt="Developer Console" /></div></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_system_requirements"></a>System Requirements</h1></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+Elasticsearch
+</p>
+</td><td valign="top">
+<p>
+0.90.9 or above
+</p>
+</td></tr><tr><td valign="top">
+<p>
+Browser
+</p>
+</td><td valign="top">
+<p>
+The latest version of Chrome, Firefox or Safari is
+                recommended. Internet Explorer 9 and above is also supported.
+</p>
+</td></tr></tbody></table></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_installation"></a>Installation</h1></div></div></div><p>Marvel is installed as an Elasticsearch plugin. The plugin must be installed
 on <span class="strong"><strong>every node in the cluster</strong></span>. By default, the plugin will store data in the
 same Elasticsearch cluster that it is monitoring.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>If you are monitoring a production cluster we recommend that you send this
 data to another cluster that will serve as a <span class="emphasis"><em>monitoring cluster</em></span>.</p><p>This will help to prevent a problem in one cluster from impacting the other
@@ -74,7 +91,7 @@ Restart Elasticsearch
 </li></ol></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_the_production_cluster"></a>The production cluster</h3></div></div></div><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
 Tell each node where to send its stats by adding this line to
     `config/elasticsearch.yml:
-</p><pre class="programlisting prettyprint lang-yaml">marvel.agent.es.exporter.hosts: ["es-mon-1:9200","es-mon-2:9200"]</pre><p class="simpara">This line adds two hosts of your monitoring cluster to receive the data, a
+</p><pre class="programlisting prettyprint lang-yaml">marvel.agent.exporter.es.hosts: ["es-mon-1:9200","es-mon-2:9200"]</pre><p class="simpara">This line adds two hosts of your monitoring cluster to receive the data, a
 primary and a backup.</p></li><li class="listitem"><p class="simpara">
 Install the plugin. From the Elasticsearch home directory run
 </p><pre class="programlisting prettyprint lang-sh">bin/plugin -i elasticsearch/marvel/latest</pre></li><li class="listitem">
@@ -132,24 +149,7 @@ important for the correct operation of the dashboards.</p></div></div><p>Here ar
 }</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_other_relevant_elasticsearch_settings"></a>Other relevant Elasticsearch settings</h2></div></div></div><p>Marvel relies on Elasticsearch’s capability to automatically create new indices
 when indexing documents. Some people like to disable this feature to better
 protect against mistakes in production clusters. To do so but still allow the
-creation of Marvel indices you need to set the following:</p><pre class="programlisting prettyprint lang-yaml">action.auto_create_index: .marvel-*</pre><p>More information is available <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html#index-creation" target="_top">here</a></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_system_requirements"></a>System Requirements</h1></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
-Elasticsearch
-</p>
-</td><td valign="top">
-<p>
-0.90.9 or above
-</p>
-</td></tr><tr><td valign="top">
-<p>
-Browser
-</p>
-</td><td valign="top">
-<p>
-The latest version of Chrome, Firefox or Safari is
-                recommended. Internet Explorer 9 and above is also supported.
-</p>
-</td></tr></tbody></table></div></div></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
+creation of Marvel indices you need to set the following:</p><pre class="programlisting prettyprint lang-yaml">action.auto_create_index: .marvel-*</pre><p>More information is available <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html#index-creation" target="_top">here</a></p></div></div></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
               Need help with
               <span class="oomph">architectural advice</span></p><p> or <span class="oomph">design validation</span>?</p><a target="_blank" href="http://elasticsearch.com/support/" class="btn-expose drawer_toggle">More</a><span class="arrow"></span><div class="block_content"><h1 style="text-align: center;">Get development help from our core team!</h1><p>Want more information about our Development Support? Let us know how to get a hold of you and we’ll be in touch soon.</p><div class="gf_browser_gecko gform_wrapper" id="gform_wrapper_1"><a id="gf_1" name="gf_1" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="/resources/#gf_1"><div class="gform_body"><ul id="gform_fields_1" class="gform_fields top_label description_below"><li id="field_1_1" class="gfield    icon name           gfield_contains_required"><label class="gfield_label" for="input_1_1">
                           First Name
