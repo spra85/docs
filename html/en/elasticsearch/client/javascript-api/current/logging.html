@@ -186,6 +186,24 @@ Append the log messages to a file.
 </dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
+<code class="literal">"tracer"</code>
+</p>
+</td><td valign="top">
+<p>
+Logs in a format that can be executed with bash, where everything is commented except the trace commands which are formatted as curl calls. By default all of the urls are rewritten to protect production systems and to making the scripts easier to reuse/send to other people. In order to control the urls written specify the curlHost and curlPort configs.
+</p>
+<p>Options:</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">curlHost</code>
+</span></dt><dd>
+<code class="literal">Sting</code> —  Default is <code class="literal">"localhost"</code>.
+</dd><dt><span class="term">
+<code class="literal">curlPort</code>
+</span></dt><dd>
+<code class="literal">Sting</code> —  Default is <code class="literal">9200</code>.
+</dd></dl></div>
+</td></tr><tr><td valign="top">
+<p>
 <code class="literal">"stream"</code>
 </p>
 </td><td valign="top">
