@@ -89,7 +89,8 @@ Note, the process of caching the first execution is higher when caching
 (since it needs to satisfy different queries).</p><p>If caching the <span class="strong"><strong>result</strong></span> of the filter is desired (for example, using the
 same "teen" filter with ages between 10 and 20), then it is advisable to
 simply use the <a class="link" href="query-dsl-range-filter.html" title="Range Filter">range</a>
-filter.</p></div><div class="navfooter"><span class="prev"><a href="query-dsl-not-filter.html">
+filter.</p><p>If the <code class="literal">now</code> date math expression is used without rounding then a range numeric filter will never be cached even
+if <code class="literal">_cache</code> is set to <code class="literal">true</code>. Also any filter that wraps this filter will never be cached.</p></div><div class="navfooter"><span class="prev"><a href="query-dsl-not-filter.html">
               « 
               Not Filter</a>
            
