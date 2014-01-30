@@ -78,7 +78,7 @@ Since this requires to restart the nodes of your cluster, you might want
   to temporarily <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/modules-cluster.html" target="_top">disable allocations</a>.
 </li><li class="listitem">
 If you run your cluster using a non-standard port, you need to change the
-  <code class="literal">marvel.agent.exporter.es.nosts</code> settings. See <a class="xref" href="#configuration" title="Configuration Options"><em>Configuration Options</em></a>.
+  <code class="literal">marvel.agent.exporter.es.hosts</code> settings. See <a class="xref" href="#configuration" title="Configuration Options"><em>Configuration Options</em></a>.
 </li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_installing_a_secondary_monitoring_cluster"></a>Installing a secondary Monitoring Cluster</h2></div></div></div><p>First, prepare the <span class="emphasis"><em>monitoring cluster</em></span> — the cluster you will use to store
 and analyze Marvel’s data. For this example, we will assume two hosts,
 <code class="literal">es-mon-1</code> and <code class="literal">es-mon-2</code>, are in the monitoring cluster.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_the_monitoring_cluster"></a>The monitoring cluster</h3></div></div></div><p>For each node in the monitoring cluster:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
