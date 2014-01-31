@@ -124,94 +124,94 @@ background-color:#DAD7FF;
 }
 
 .str{
-color:#080;
+color:#080 !important;
 }
 
 .kwd{
-color:#008;
+color:#008  !important;
 font-weight:normal;
 }
 
 .com{
-color:#800;
+color:#800 !important;
 }
 
 .typ{
-color:#606;
+color:#606 !important;
 font-weight:normal;
 }
 
 .lit{
-color:#066;
+color:#066 !important;
 }
 
 .pun{
-color:#660;
+color:#660 !important;
 }
 
 .pln{
-color:#000;
+color:#000 !important;
 }
 
 .tag{
-color:#008;
+color:#008 !important;
 }
 
 .atn{
-color:#606;
+color:#606 !important;
 }
 
 .atv{
-color:#080;
+color:#080 !important;
 }
 
 .dec{
-color:#606;
+color:#606 !important;
 }
 
 @media print{
 .str{
-color:#060;
+color:#060 !important;
 }
 
 .kwd{
-color:#006;
+color:#006 !important;
 font-weight:normal;
 }
 
 .com{
-color:#600;
+color:#600 !important;
 font-style:italic;
 }
 
 .typ{
-color:#404;
+color:#404 !important;
 font-weight:normal;
 }
 
 .lit{
-color:#044;
+color:#044 !important;
 }
 
 .pun{
-color:#440;
+color:#440 !important;
 }
 
 .pln{
-color:#000;
+color:#000 !important;
 }
 
 .tag{
-color:#006;
+color:#006 !important;
 font-weight:normal;
 }
 
 .atn{
-color:#404;
+color:#404 !important;
 }
 
 .atv{
-color:#060;
+color:#060 !important;
 }
 
 ;
