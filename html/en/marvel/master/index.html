@@ -99,7 +99,7 @@ Restart Elasticsearch
 </li></ol></div><p>Once the plugin is installed on all nodes, you can access the Marvel UI by
 opening this link with any modern browser.</p><pre class="literallayout">http://any-server-in-monitoring-cluster:9200/_plugin/marvel/</pre><p>It may take a minute or two for data to appear.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>You may want to temporarily <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/modules-cluster.html" target="_top">disable shard
 allocation</a> before you restart your nodes to avoid unnecessary shard
-reallocations during the install process.</p></div></div></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="configuration"></a>Configuration Options</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_statistics_exporting"></a>Statistics exporting</h2></div></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+reallocations during the install process.</p></div></div></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="configuration"></a>Configuration Options</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="stats-export"></a>Statistics exporting</h2></div></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">marvel.agent.exporter.es.hosts</code>
 </span></dt><dd>
 A list of hosts in <code class="literal">hostname:port</code> format to which statistics  and events will
@@ -125,12 +125,20 @@ Controls the time component in the index name to  which data is exported.
 Defaults to <code class="literal">"YYYY.MM.dd"</code>, which produces index names like:
 <code class="literal">.marvel-2014.01.28</code>. Supports date formats as explained
 <a class="ulink" href="http://joda-time.sourceforge.net/api-release/org/joda/time/format/DateTimeFormat.html" target="_top">here</a>.
-</dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_marvel_indices"></a>Marvel indices</h2></div></div></div><p>Marvel stores it’s data using time based indices. By default, Marvel generates
+</dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="marvel-indices"></a>Marvel indices</h2></div></div></div><p>Marvel stores it’s data using time based indices. By default, Marvel generates
 an index per day, with one shard and one replica. We expect this to be a good
 default which will fit most use cases. You may need to change it for very big
-installations.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_the_marvel_index_template"></a>The Marvel index template</h3></div></div></div><p>Marvel uses an <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-templates.html" target="_top">index template</a> to preconfigure newly created indices. You can retrieve it with:</p><pre class="programlisting prettyprint lang-sh">GET /_template/marvel</pre><p>then make changes, and update it with:</p><pre class="programlisting prettyprint lang-json">PUT /_template/marvel
-{ ... new template }</pre><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>We recommend only changing the <code class="literal">settings</code> section. Other sections are
-important for the correct operation of the dashboards.</p></div></div><p>Here are the default <code class="literal">settings</code>:</p><pre class="programlisting prettyprint lang-json">{
+installations.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="config-marvel-indices"></a>Configuring Marvel’s indices</h3></div></div></div><p>Marvel uses an <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-templates.html" target="_top">index template</a> to preconfigure newly created indices. You can retrieve it with:</p><pre class="programlisting prettyprint lang-sh">GET /_template/marvel</pre><p>To change the default settings, you may add your own template to override it. Make sure your template uses
+the <code class="literal">.marvel-*</code> matching pattern and has an order of 1 or higher. For example, this template will increase the
+number of shards to 5:</p><pre class="programlisting prettyprint lang-json">PUT /_template/custom_marvel
+{
+    "template": ".marvel*",
+    "order": 1
+    "settings": {
+        "number_of_shards": 5
+    }
+}</pre><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>We recommend only changing the <code class="literal">settings</code> section. Other sections are
+important for the correct operation of the dashboards.</p></div></div><p>For reference, here is the <code class="literal">settings</code> section of the default template:</p><pre class="programlisting prettyprint lang-json">{
     "template": ".marvel*",
     "settings": {
         "number_of_shards": 1,
@@ -146,7 +154,7 @@ important for the correct operation of the dashboards.</p></div></div><p>Here ar
         "marvel.index_format": 1
     }
     .....
-}</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_other_relevant_elasticsearch_settings"></a>Other relevant Elasticsearch settings</h2></div></div></div><p>Marvel relies on Elasticsearch’s capability to automatically create new indices
+}</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="relevant-settings"></a>Other relevant Elasticsearch settings</h2></div></div></div><p>Marvel relies on Elasticsearch’s capability to automatically create new indices
 when indexing documents. Some people like to disable this feature to better
 protect against mistakes in production clusters. To do so but still allow the
 creation of Marvel indices you need to set the following:</p><pre class="programlisting prettyprint lang-yaml">action.auto_create_index: .marvel-*</pre><p>More information is available <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html#index-creation" target="_top">here</a></p></div></div></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
