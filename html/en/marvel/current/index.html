@@ -107,11 +107,14 @@ and installing Marvel. If your server doesn’t have internet access, you can do
 the Marvel binaries from the following link: <a class="ulink" href="https://download.elasticsearch.org/elasticsearch/marvel/marvel-latest.zip" target="_top">https://download.elasticsearch.org/elasticsearch/marvel/marvel-latest.zip</a></p><p>Once you have transferred the zip file to your server, you can use the <code class="literal">bin/plugin</code>
 script to install it:</p><pre class="programlisting prettyprint lang-sh">bin/plugin -i marvel -u file://PATH_TO_MARVEL_ZIP_FILE</pre><p>After the script has finish, continue according to the standard installation procedure.</p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="configuration"></a>Configuration Options</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="stats-export"></a>Statistics exporting</h2></div></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">marvel.agent.exporter.es.hosts</code>
-</span></dt><dd>
+</span></dt><dd><p class="simpara">
 A list of hosts in <code class="literal">hostname:port</code> format to which statistics  and events will
 be sent. Data will be sent to the first host, but will failover to the next
 host(s) if the first is not reachable. Defaults to <code class="literal">["localhost:9200"]</code>.
-</dd><dt><span class="term">
+</p><p class="simpara"><span class="added">
+      [<span class="version">1.0.2</span>]
+      <span class="detail">Added in 1.0.2.</span></span> - HTTP Basic authentication credentials can be specified as part of the host name,
+ i.e., ["user:pwd@host:9200"]</p></dd><dt><span class="term">
 <code class="literal">marvel.agent.enabled</code>
 </span></dt><dd>
 Set this to <code class="literal">false</code> to disable all exporting of data. Set this on the
@@ -164,7 +167,17 @@ important for the correct operation of the dashboards.</p></div></div><p>For ref
 }</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="relevant-settings"></a>Other relevant Elasticsearch settings</h2></div></div></div><p>Marvel relies on Elasticsearch’s capability to automatically create new indices
 when indexing documents. Some people like to disable this feature to better
 protect against mistakes in production clusters. To do so but still allow the
-creation of Marvel indices you need to set the following:</p><pre class="programlisting prettyprint lang-yaml">action.auto_create_index: .marvel-*</pre><p>More information is available <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html#index-creation" target="_top">here</a></p></div></div></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
+creation of Marvel indices you need to set the following:</p><pre class="programlisting prettyprint lang-yaml">action.auto_create_index: .marvel-*</pre><p>More information is available <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html#index-creation" target="_top">here</a></p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_change_list"></a>Change list</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_1_0_2"></a>1.0.2</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Kibana uses <code class="literal">window.location.protocol</code> (http or https) to make ES calls.
+</li><li class="listitem">
+Added support for basic authentication when sending data from agent. See <a class="xref" href="#configuration" title="Configuration Options"><em>Configuration Options</em></a>.
+</li><li class="listitem">
+Reduced DEBUG logging verbosity.
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_1_0_1"></a>1.0.1</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+fixed an issue with usage statistics report.
+</li><li class="listitem">
+improve logging message when running on old Elasticsearch versions.
+</li></ul></div></div></div></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
               Need help with
               <span class="oomph">architectural advice</span></p><p> or <span class="oomph">design validation</span>?</p><a target="_blank" href="http://elasticsearch.com/support/" class="btn-expose drawer_toggle">More</a><span class="arrow"></span><div class="block_content"><h1 style="text-align: center;">Get development help from our core team!</h1><p>Want more information about our Development Support? Let us know how to get a hold of you and we’ll be in touch soon.</p><div class="gf_browser_gecko gform_wrapper" id="gform_wrapper_1"><a id="gf_1" name="gf_1" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="/resources/#gf_1"><div class="gform_body"><ul id="gform_fields_1" class="gform_fields top_label description_below"><li id="field_1_1" class="gfield    icon name           gfield_contains_required"><label class="gfield_label" for="input_1_1">
                           First Name
