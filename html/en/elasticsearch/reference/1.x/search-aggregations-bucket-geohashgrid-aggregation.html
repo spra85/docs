@@ -38,7 +38,7 @@ Low precision geohashes have a short string length and represent cells that each
 Please see the example below on how to first filter the aggregation to a smaller geographic area before requesting high-levels of detail.</p></div></div><p>The specified field must be of type <code class="literal">geo_point</code> (which can only be set explicitly in the mappings) and it can also hold an array of <code class="literal">geo_point</code> fields, in which case all points will be taken into account during aggregation.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_simple_low_precision_request"></a>Simple low-precision request</h3></div></div></div><pre class="programlisting prettyprint lang-js">{
     "aggregations" : {
         "myLarge-GrainGeoHashGrid" : {
-            "geohashgrid" : {
+            "geohash_grid" : {
                 "field" : "location",
                 "precision" : 3
             }
@@ -72,7 +72,7 @@ Please see the example below on how to first filter the aggregation to a smaller
             },
             "aggregations":{
                 "zoom1":{
-                    "geohashgrid" : {
+                    "geohash_grid" : {
                         "field":"location",
                         "precision":8,
                     }
