@@ -357,7 +357,7 @@ property, as this example shows:</p><pre class="programlisting prettyprint lang-
         The BM25 algorithm.
         <a class="ulink" href="http://en.wikipedia.org/wiki/Okapi_BM25" target="_top">See Okapi_BM25</a> for more
         details.
-</dd></dl></div><h5><a id="_copy_to_field"></a>Copy to field</h5><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.0.0.RC2.</p></div></div><p>Adding <code class="literal">copy_to</code> parameter to any field mapping will cause all values of this field to be copied to fields specified in
+</dd></dl></div><h5><a id="copy-to"></a>Copy to field</h5><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.0.0.RC2.</p></div></div><p>Adding <code class="literal">copy_to</code> parameter to any field mapping will cause all values of this field to be copied to fields specified in
 the parameter. In the following example all values from fields <code class="literal">title</code> and <code class="literal">abstract</code> will be copied to the field
 <code class="literal">meta_data</code>.</p><pre class="programlisting prettyprint lang-js">{
   "book" : {
@@ -389,37 +389,7 @@ free text search and sorting.</p><pre class="programlisting prettyprint lang-js"
 }</pre><p>In the above example the field name gets processed twice. The first time is gets
 processed as an analyzed string and this version is accessible under the field name
 <code class="literal">name</code>, this is the main field and is in fact just like any other field. The second time
-its get processed as a not analyzed string and is accessible under the name <code class="literal">name.raw</code>.</p><h4><a id="_accessing_fields"></a>Accessing Fields</h4><p>The multi fields defined in the <code class="literal">fields</code> are prefixed with the
-name of the main field and can be accessed by their full path using the
-navigation notation: <code class="literal">name.raw</code>, or using the typed navigation notation
-<code class="literal">tweet.name.raw</code>. The <code class="literal">path</code> option allows to control how fields are accessed.
-If the <code class="literal">path</code> option is set to <code class="literal">full</code>, then the full path of the main field
-is prefixed, but if the <code class="literal">path</code> option is set to <code class="literal">just_name</code> the actual
-multi field name without any prefix is used. The default value for
-the <code class="literal">path</code> option is <code class="literal">full</code>.</p><p>The <code class="literal">just_name</code> setting, among other things, allows indexing content of multiple
-fields under the same name. In the example below the content of both fields
-<code class="literal">first_name</code> and <code class="literal">last_name</code> can be accessed by using <code class="literal">any_name</code> or <code class="literal">tweet.any_name</code>.</p><pre class="programlisting prettyprint lang-js">{
-  "tweet" : {
-    "properties": {
-      "first_name": {
-        "type": "string",
-        "index": "analyzed",
-        "path": "just_name",
-        "fields": {
-          "any_name": {"type": "string","index": "analyzed"}
-        }
-      },
-      "last_name": {
-        "type": "string",
-        "index": "analyzed",
-        "path": "just_name",
-        "fields": {
-          "any_name": {"type": "string","index": "analyzed"}
-        }
-      }
-    }
-  }
-}</pre><h4><a id="_include_in_all"></a>Include in All</h4><p>The <code class="literal">include_in_all</code> setting is ignored on any field that is defined in
+its get processed as a not analyzed string and is accessible under the name <code class="literal">name.raw</code>.</p><h4><a id="_include_in_all"></a>Include in All</h4><p>The <code class="literal">include_in_all</code> setting is ignored on any field that is defined in
 the <code class="literal">fields</code> options. Setting the <code class="literal">include_in_all</code> only makes sense on
 the main field, since the raw field value to copied to the <code class="literal">_all</code> field,
 the tokens aren’t copied.</p><h4><a id="_updating_a_field"></a>Updating a field</h4><p>In the essence a field can’t be updated. However multi fields can be

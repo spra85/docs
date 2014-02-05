@@ -135,7 +135,9 @@ For example:</p><pre class="programlisting prettyprint lang-js">{
             "message" : {"type" : "string"}
         }
     }
-}</pre><p>In the above, <code class="literal">name</code> and its content will not be indexed at all.</p><h4><a id="_path_3"></a>path</h4><p>In the <a class="link" href="mapping-core-types.html" title="Core Types">core_types</a>
+}</pre><p>In the above, <code class="literal">name</code> and its content will not be indexed at all.</p><h4><a id="_include_in_all_2"></a>include_in_all</h4><p><code class="literal">include_in_all</code> can be set on the <code class="literal">object</code> type level. When set, it
+propagates down to all the inner mapping defined within the <code class="literal">object</code>
+that do no explicitly set it.</p><h4><a id="_path_3"></a>path</h4><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><h4>Deprecated in 1.0.0.</h4><p>Use <a class="link" href="mapping-core-types.html#copy-to" title="Copy to field"><code class="literal">copy_to</code></a> instead.</p></div></div><p>In the <a class="link" href="mapping-core-types.html" title="Core Types">core_types</a>
 section, a field can have a <code class="literal">index_name</code> associated with it in order to
 control the name of the field that will be stored within the index. When
 that field exists within an object(s) that are not the root object, the
@@ -175,9 +177,7 @@ using <code class="literal">name1.last1</code> (logical name), or its actual ind
 including the type can be used such as <code class="literal">person.name.last1</code>, in this
 case, both the actual indexed name will be resolved to match against the
 index, and an automatic query filter will be added to only match
-<code class="literal">person</code> types.</p><h4><a id="_include_in_all_2"></a>include_in_all</h4><p><code class="literal">include_in_all</code> can be set on the <code class="literal">object</code> type level. When set, it
-propagates down to all the inner mapping defined within the <code class="literal">object</code>
-that do no explicitly set it.</p></div><div class="navfooter"><span class="prev"><a href="mapping-array-type.html">
+<code class="literal">person</code> types.</p></div><div class="navfooter"><span class="prev"><a href="mapping-array-type.html">
               « 
               Array Type</a>
            

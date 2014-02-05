@@ -135,47 +135,7 @@ For example:</p><pre class="programlisting prettyprint lang-js">{
             "message" : {"type" : "string"}
         }
     }
-}</pre><p>In the above, <code class="literal">name</code> and its content will not be indexed at all.</p><h4><a id="_path_3"></a>path</h4><p>In the <a class="link" href="mapping-core-types.html" title="Core Types">core_types</a>
-section, a field can have a <code class="literal">index_name</code> associated with it in order to
-control the name of the field that will be stored within the index. When
-that field exists within an object(s) that are not the root object, the
-name of the field of the index can either include the full "path" to the
-field with its <code class="literal">index_name</code>, or just the <code class="literal">index_name</code>. For example
-(under mapping of <span class="emphasis"><em>type</em></span> <code class="literal">person</code>, removed the tweet type for clarity):</p><pre class="programlisting prettyprint lang-js">{
-    "person" : {
-        "properties" : {
-            "name1" : {
-                "type" : "object",
-                "path" : "just_name",
-                "properties" : {
-                    "first1" : {"type" : "string"},
-                    "last1" : {"type" : "string", "index_name" : "i_last_1"}
-                }
-            },
-            "name2" : {
-                "type" : "object",
-                "path" : "full",
-                "properties" : {
-                    "first2" : {"type" : "string"},
-                    "last2" : {"type" : "string", "index_name" : "i_last_2"}
-                }
-            }
-        }
-    }
-}</pre><p>In the above example, the <code class="literal">name1</code> and <code class="literal">name2</code> objects within the
-<code class="literal">person</code> object have different combination of <code class="literal">path</code> and <code class="literal">index_name</code>.
-The document fields that will be stored in the index as a result of that
-are:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">JSON Name </th><th align="left" valign="top">Document Field Name</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">name1</code>/<code class="literal">first1</code></p></td><td align="left" valign="top"><p><code class="literal">first1</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">name1</code>/<code class="literal">last1</code></p></td><td align="left" valign="top"><p><code class="literal">i_last_1</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">name2</code>/<code class="literal">first2</code></p></td><td align="left" valign="top"><p><code class="literal">name2.first2</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">name2</code>/<code class="literal">last2</code></p></td><td align="left" valign="top"><p><code class="literal">name2.i_last_2</code></p></td></tr></tbody></table></div><p>Note, when querying or using a field name in any of the APIs provided
-(search, query, selective loading, …), there is an automatic detection
-from logical full path and into the <code class="literal">index_name</code> and vice versa. For
-example, even though <code class="literal">name1</code>/<code class="literal">last1</code> defines that it is stored with
-<code class="literal">just_name</code> and a different <code class="literal">index_name</code>, it can either be referred to
-using <code class="literal">name1.last1</code> (logical name), or its actual indexed name of
-<code class="literal">i_last_1</code>.</p><p>More over, where applicable, for example, in queries, the full path
-including the type can be used such as <code class="literal">person.name.last1</code>, in this
-case, both the actual indexed name will be resolved to match against the
-index, and an automatic query filter will be added to only match
-<code class="literal">person</code> types.</p><h4><a id="_include_in_all_2"></a>include_in_all</h4><p><code class="literal">include_in_all</code> can be set on the <code class="literal">object</code> type level. When set, it
+}</pre><p>In the above, <code class="literal">name</code> and its content will not be indexed at all.</p><h4><a id="_include_in_all_2"></a>include_in_all</h4><p><code class="literal">include_in_all</code> can be set on the <code class="literal">object</code> type level. When set, it
 propagates down to all the inner mapping defined within the <code class="literal">object</code>
 that do no explicitly set it.</p></div><div class="navfooter"><span class="prev"><a href="mapping-array-type.html">
               « 

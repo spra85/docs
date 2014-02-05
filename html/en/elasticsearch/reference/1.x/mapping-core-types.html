@@ -357,7 +357,7 @@ property, as this example shows:</p><pre class="programlisting prettyprint lang-
         The BM25 algorithm.
         <a class="ulink" href="http://en.wikipedia.org/wiki/Okapi_BM25" target="_top">See Okapi_BM25</a> for more
         details.
-</dd></dl></div><h5><a id="_copy_to_field"></a>Copy to field</h5><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.0.0.RC2.</p></div></div><p>Adding <code class="literal">copy_to</code> parameter to any field mapping will cause all values of this field to be copied to fields specified in
+</dd></dl></div><h5><a id="copy-to"></a>Copy to field</h5><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.0.0.RC2.</p></div></div><p>Adding <code class="literal">copy_to</code> parameter to any field mapping will cause all values of this field to be copied to fields specified in
 the parameter. In the following example all values from fields <code class="literal">title</code> and <code class="literal">abstract</code> will be copied to the field
 <code class="literal">meta_data</code>.</p><pre class="programlisting prettyprint lang-js">{
   "book" : {
@@ -389,7 +389,17 @@ free text search and sorting.</p><pre class="programlisting prettyprint lang-js"
 }</pre><p>In the above example the field name gets processed twice. The first time is gets
 processed as an analyzed string and this version is accessible under the field name
 <code class="literal">name</code>, this is the main field and is in fact just like any other field. The second time
-its get processed as a not analyzed string and is accessible under the name <code class="literal">name.raw</code>.</p><h4><a id="_accessing_fields"></a>Accessing Fields</h4><p>The multi fields defined in the <code class="literal">fields</code> are prefixed with the
+its get processed as a not analyzed string and is accessible under the name <code class="literal">name.raw</code>.</p><h4><a id="_include_in_all"></a>Include in All</h4><p>The <code class="literal">include_in_all</code> setting is ignored on any field that is defined in
+the <code class="literal">fields</code> options. Setting the <code class="literal">include_in_all</code> only makes sense on
+the main field, since the raw field value to copied to the <code class="literal">_all</code> field,
+the tokens aren’t copied.</p><h4><a id="_updating_a_field"></a>Updating a field</h4><p>In the essence a field can’t be updated. However multi fields can be
+added to existing fields. This allows for example to have a different
+<code class="literal">index_analyzer</code> configuration in addition to the already configured
+<code class="literal">index_analyzer</code> configuration specified in the main and other multi fields.</p><p>Also the new multi field will only be applied on document that have been
+added after the multi field has been added and in fact the new multi field
+doesn’t exist in existing documents.</p><p>Another important note is that new multi fields will be merged into the
+list of existing multi fields, so when adding new multi fields for a field
+previous added multi fields don’t need to be specified.</p><h4><a id="_accessing_fields"></a>Accessing Fields</h4><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><h4>Deprecated in 1.0.0.</h4><p>Use <a class="link" href="mapping-core-types.html#copy-to" title="Copy to field"><code class="literal">copy_to</code></a> instead.</p></div></div><p>The multi fields defined in the <code class="literal">fields</code> are prefixed with the
 name of the main field and can be accessed by their full path using the
 navigation notation: <code class="literal">name.raw</code>, or using the typed navigation notation
 <code class="literal">tweet.name.raw</code>. The <code class="literal">path</code> option allows to control how fields are accessed.
@@ -419,17 +429,7 @@ fields under the same name. In the example below the content of both fields
       }
     }
   }
-}</pre><h4><a id="_include_in_all"></a>Include in All</h4><p>The <code class="literal">include_in_all</code> setting is ignored on any field that is defined in
-the <code class="literal">fields</code> options. Setting the <code class="literal">include_in_all</code> only makes sense on
-the main field, since the raw field value to copied to the <code class="literal">_all</code> field,
-the tokens aren’t copied.</p><h4><a id="_updating_a_field"></a>Updating a field</h4><p>In the essence a field can’t be updated. However multi fields can be
-added to existing fields. This allows for example to have a different
-<code class="literal">index_analyzer</code> configuration in addition to the already configured
-<code class="literal">index_analyzer</code> configuration specified in the main and other multi fields.</p><p>Also the new multi field will only be applied on document that have been
-added after the multi field has been added and in fact the new multi field
-doesn’t exist in existing documents.</p><p>Another important note is that new multi fields will be merged into the
-list of existing multi fields, so when adding new multi fields for a field
-previous added multi fields don’t need to be specified.</p></div><div class="navfooter"><span class="prev"><a href="mapping-types.html">
+}</pre></div><div class="navfooter"><span class="prev"><a href="mapping-types.html">
               « 
               Types</a>
            
