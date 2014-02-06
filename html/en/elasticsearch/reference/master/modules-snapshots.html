@@ -119,7 +119,7 @@ Throttles the number of streams (per node) preforming snapshot operation. Defaul
 </td></tr></tbody></table></div><h5><a id="_repository_plugins"></a>Repository plugins</h5><p>Other repository backends are available in these official plugins:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-aws#s3-repository" target="_top">AWS Cloud Plugin</a> for S3 repositories
 </li><li class="listitem">
-<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-hdfs" target="_top">HDFS Plugin</a>
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-hadoop/tree/master/repository-hdfs" target="_top">HDFS Plugin</a> for Hadoop environments
 </li></ul></div><h3><a id="_snapshot"></a>Snapshot</h3><p>A repository can contain multiple snapshots of the same cluster. Snapshot are identified by unique names within the
 cluster. A snapshot with the name <code class="literal">snapshot_1</code> in the repository <code class="literal">my_backup</code> can be created by executing the following
 command:</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT "localhost:9200/_snapshot/my_backup/snapshot_1?wait_for_completion=true"</pre><p>The <code class="literal">wait_for_completion</code> parameter specifies whether or not the request should return immediately or wait for snapshot
