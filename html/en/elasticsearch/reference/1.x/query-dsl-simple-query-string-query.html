@@ -58,6 +58,10 @@ enable. Defaults to <code class="literal">ALL</code>.</p></td></tr></tbody></tab
 <code class="literal">*</code> at the end of a term signifies a prefix query
 </li><li class="listitem">
 <code class="literal">(</code> and <code class="literal">)</code> signify precedence
+</li><li class="listitem">
+<code class="literal">~N</code> after a word signifies edit distance (fuzziness)
+</li><li class="listitem">
+<code class="literal">~N</code> after a phrase signifies slop amount
 </li></ul></div><p>In order to search for any of these special characters, they will need to
 be escaped with <code class="literal">\</code>.</p><h4><a id="_default_field_2"></a>Default Field</h4><p>When not explicitly specifying the field to search on in the query
 string syntax, the <code class="literal">index.query.default_field</code> will be used to derive
@@ -77,7 +81,7 @@ should be enabled. It is specified as a <code class="literal">|</code>-delimited
         "flags" : "OR|AND|PREFIX"
     }
 }</pre><p>The available flags are: <code class="literal">ALL</code>, <code class="literal">NONE</code>, <code class="literal">AND</code>, <code class="literal">OR</code>, <code class="literal">PREFIX</code>, <code class="literal">PHRASE</code>,
-<code class="literal">PRECEDENCE</code>, <code class="literal">ESCAPE</code>, and <code class="literal">WHITESPACE</code>.</p></div><div class="navfooter"><span class="prev"><a href="query-dsl-query-string-query.html">
+<code class="literal">PRECEDENCE</code>, <code class="literal">ESCAPE</code>, <code class="literal">WHITESPACE</code>, <code class="literal">FUZZY</code>, <code class="literal">NEAR</code>, and <code class="literal">SLOP</code>.</p></div><div class="navfooter"><span class="prev"><a href="query-dsl-query-string-query.html">
               « 
               Query String Query</a>
            
