@@ -53,22 +53,22 @@ the desired functionality by boosting each document by the value in
 any field the document:</p><pre class="programlisting prettyprint lang-js">{
     "query": {
         "function_score": {
-            "query": {  <a id="CO12-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+            "query": {  <a id="CO18-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
                 "match": {
                     "title": "your main query"
                 }
             },
             "functions": [{
-                "script_score": { <a id="CO12-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+                "script_score": { <a id="CO18-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
                     "script": "doc['my_boost_field'].value"
                 }
             }],
             "score_mode": "multiply"
         }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO12-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO18-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The original query, now wrapped in a <code class="literal">function_score</code> query.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO12-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO18-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This script returns the value in <code class="literal">my_boost_field</code>, which is then
     multiplied by the query <code class="literal">_score</code> for each document.
 </p></td></tr></table></div></div></div><div class="navfooter"><span class="prev"><a href="mapping-analyzer-field.html">

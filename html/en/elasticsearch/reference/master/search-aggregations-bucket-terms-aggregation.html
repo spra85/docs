@@ -137,7 +137,7 @@ their <code class="literal">doc_count</code> descending. It is also possible to 
         "genders" : {
             "terms" : {
                 "field" : "gender",
-                "script" : "doc['gender'].value"
+                "script" : "'Gender: ' +_value"
             }
         }
     }
