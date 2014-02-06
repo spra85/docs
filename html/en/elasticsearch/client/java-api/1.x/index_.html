@@ -78,7 +78,7 @@ XContentBuilder builder = jsonBuilder()
 <code class="literal">endArray()</code> methods. By the way, <code class="literal">field</code> method
  accept many object types. You can pass directly numbers, dates and even
 other XContentBuilder objects.</p><p>If you need to see the generated JSON content, you can use the
-@string()@method.</p><pre class="programlisting prettyprint lang-java">String json = builder.string();</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="index-doc"></a>Index document</h2></div></div></div><p>The following example indexes a JSON document into an index called
+<code class="literal">string()</code> method.</p><pre class="programlisting prettyprint lang-java">String json = builder.string();</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="index-doc"></a>Index document</h2></div></div></div><p>The following example indexes a JSON document into an index called
 twitter, under a type called tweet, with id valued 1:</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.common.xcontent.XContentFactory.*;
 
 IndexResponse response = client.prepareIndex("twitter", "tweet", "1")
