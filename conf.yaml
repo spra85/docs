@@ -25,12 +25,13 @@ repos:
 
     elasticsearch-js:
         url:        https://github.com/elasticsearch/elasticsearch-js.git
-        current:    master
+        current:    1.5
         branches:
-            - master
+            - 1.4
+            - 1.5
 
     marvel:
-        url:        https://github.com/elasticsearch/elasticsearch-marvel.git
+        url:        git@github.com:elasticsearch/elasticsearch-marvel.git
         current:    1.0
         branches:   [1.0]
 
@@ -77,6 +78,9 @@ contents:
             repo:       elasticsearch-js
             index:      docs/index.asciidoc
             abbr:       js
+            branches:
+                - 1.5
+                - 1.4
 
           -
             title:      Groovy API
