@@ -46,7 +46,7 @@ gateway:
 can further control the S3 gateway:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Setting </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">chunk_size</code></p></td><td align="left" valign="top"><p>Big files are broken down into chunks (to overcome AWS 5g
 limit and use concurrent snapshotting). Default set to <code class="literal">100m</code>.</p></td></tr></tbody></table></div><h4><a id="_concurrent_streams_3"></a>concurrent_streams</h4><p>The <code class="literal">gateway.s3.concurrent_streams</code> allow to throttle the number of
 streams (per node) opened against the shared gateway performing the
-snapshot operation. It defaults to <code class="literal">5</code>.</p><h4><a id="_region_2"></a>Region</h4><p>The <code class="literal">cloud.aws.region</code> can be set to a region and will automatically use
+snapshot operation. It defaults to <code class="literal">5</code>.</p><h4><a id="_region"></a>Region</h4><p>The <code class="literal">cloud.aws.region</code> can be set to a region and will automatically use
 the relevant settings for both <code class="literal">ec2</code> and <code class="literal">s3</code>. The available values are:
 <code class="literal">us-east-1</code>, <code class="literal">us-west-1</code>, <code class="literal">ap-southeast-1</code>, <code class="literal">eu-west-1</code>.</p></div><div class="navfooter"><span class="prev"><a href="modules-gateway-hadoop.html">
               « 
