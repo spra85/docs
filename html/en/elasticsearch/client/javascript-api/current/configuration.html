@@ -159,20 +159,7 @@ Default
 </dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
-<code class="literal">maxSockets</code>
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">Number</code> — Number of sockets each connection should keep to it’s corresponding node. This will also be the maximum number of concurrent requests that could be made to that node.
-</p>
-<div class="variablelist"><dl class="variablelist"><dt><span class="term">
-Default
-</span></dt><dd>
-<code class="literal">10</code>
-</dd></dl></div>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">forever</code>
+<code class="literal">keepAlive</code>
 </p>
 </td><td valign="top">
 <p>
@@ -182,6 +169,32 @@ Default
 Default
 </span></dt><dd>
 <code class="literal">true</code>
+</dd></dl></div>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">maxSockets</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">Number</code> — Maximum number of concurrent requests that can be made to any node.
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Default
+</span></dt><dd>
+<code class="literal">10</code>
+</dd></dl></div>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">minSockets</code>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">Number</code> — Minimum number of sockets to keep connected to a node, only applies when <code class="literal">keepAlive</code> is true
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Default
+</span></dt><dd>
+<code class="literal">10</code>
 </dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
