@@ -36,7 +36,9 @@ provided using a simple query string as a parameter, or using the
 body. Here is an example:</p><pre class="programlisting prettyprint lang-js">$ curl -XDELETE 'http://localhost:9200/twitter/tweet/_query?q=user:kimchy'
 
 $ curl -XDELETE 'http://localhost:9200/twitter/tweet/_query' -d '{
-    "term" : { "user" : "kimchy" }
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
 }
 '</pre><p>Both above examples end up doing the same thing, which is delete all
 tweets from the twitter index for a certain user. The result of the
