@@ -46,18 +46,7 @@ Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilder qb =
                     .should(termQuery("content", "test3"));</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="boosting"></a>Boosting Query</h2></div></div></div><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-boosting-query.html" target="_top">Boosting Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.boostingQuery()
             .positive(QueryBuilders.termQuery("name","kimchy"))
             .negative(QueryBuilders.termQuery("name","dadoonet"))
-            .negativeBoost(0.2f);</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="ids"></a>IDs Query</h2></div></div></div><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-ids-query.html" target="_top">IDs Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.idsQuery().ids("1", "2");</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="custom-score"></a>Custom Score Query</h2></div></div></div><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-custom-score-query.html" target="_top">Custom Score
-Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.customScoreQuery(QueryBuilders.matchAllQuery())   // Your query here
-                .script("_score * doc['price'].value");         // Your script here
-
-// If the script have parameters, use the same script and provide parameters to it.
-QueryBuilders.customScoreQuery(QueryBuilders.matchAllQuery())
-                .script("_score * doc['price'].value / pow(param1, param2)")
-                .param("param1", 2)
-                .param("param2", 3.1);</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="custom-boost-factor"></a>Custom Boost Factor Query</h2></div></div></div><p>See
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-custom-boost-factor-query.html" target="_top">Custom
-Boost Factor Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.customBoostFactorQuery(QueryBuilders.matchAllQuery()) // Your query
-                .boostFactor(3.1f);</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="constant-score"></a>Constant Score Query</h2></div></div></div><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-constant-score-query.html" target="_top">Constant
+            .negativeBoost(0.2f);</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="ids"></a>IDs Query</h2></div></div></div><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-ids-query.html" target="_top">IDs Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.idsQuery().ids("1", "2");</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="constant-score"></a>Constant Score Query</h2></div></div></div><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-constant-score-query.html" target="_top">Constant
 Score Query</a></p><pre class="programlisting prettyprint lang-java">// Using with Filters
 QueryBuilders.constantScoreQuery(FilterBuilders.termFilter("name","kimchy"))
                 .boost(2.0f);
@@ -69,10 +58,7 @@ Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.dis
                 .add(QueryBuilders.termQuery("name","kimchy"))          // Your queries
                 .add(QueryBuilders.termQuery("name","elasticsearch"))   // Your queries
                 .boost(1.2f)
-                .tieBreaker(0.7f);</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="field"></a>Field Query</h2></div></div></div><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-field-query.html" target="_top">Field Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.fieldQuery("name", "+kimchy -dadoonet");
-
-// Note that you can write the same query using queryString query.
-QueryBuilders.queryString("+kimchy -dadoonet").field("name");</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="flt"></a>Fuzzy Like This (Field) Query (flt and flt_field)</h2></div></div></div><p>See:
+                .tieBreaker(0.7f);</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="flt"></a>Fuzzy Like This (Field) Query (flt and flt_field)</h2></div></div></div><p>See:
  * <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-flt-query.html" target="_top">Fuzzy Like This Query</a>
  * <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-flt-field-query.html" target="_top">Fuzzy Like This Field Query</a></p><pre class="programlisting prettyprint lang-java">// flt Query
 QueryBuilders.fuzzyLikeThisQuery("name.first", "name.last")     // Fields
@@ -155,13 +141,7 @@ QueryBuilders.spanTermQuery("user","kimchy");</pre></div><div class="section"><d
                         .must(QueryBuilders.matchQuery("obj1.name", "blue"))
                         .must(QueryBuilders.rangeQuery("obj1.count").gt(5))
             )
-            .scoreMode("avg");                  // max, total, avg or none</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="custom-filters-score"></a>Custom Filters Score Query</h2></div></div></div><p>See
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-custom-filters-score-query.html" target="_top">Custom Filters Score Query</a></p><pre class="programlisting prettyprint lang-java">QueryBuilders.customFiltersScoreQuery(
-                QueryBuilders.matchAllQuery())  // Query
-            // Filters with their boost factors
-            .add(FilterBuilders.rangeFilter("age").from(0).to(10), 3)
-            .add(FilterBuilders.rangeFilter("age").from(10).to(20), 2)
-            .scoreMode("first");    // first, min, max, total, avg or multiply</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="indices"></a>Indices Query</h2></div></div></div><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-indices-query.html" target="_top">Indices Query</a></p><pre class="programlisting prettyprint lang-java">// Using another query when no match for the main one
+            .scoreMode("avg");                  // max, total, avg or none</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="indices"></a>Indices Query</h2></div></div></div><p>See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-indices-query.html" target="_top">Indices Query</a></p><pre class="programlisting prettyprint lang-java">// Using another query when no match for the main one
 QueryBuilders.indicesQuery(
                 QueryBuilders.termQuery("tag", "wow"),
                 "index1", "index2"

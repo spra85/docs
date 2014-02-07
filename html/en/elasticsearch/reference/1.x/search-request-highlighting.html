@@ -283,7 +283,7 @@ matches specifically on them.</p></div><div class="section"><div class="titlepag
 <code class="literal">boundary_chars</code> can be configured to define what constitutes a boundary
 for highlighting. It’s a single string with each boundary character
 defined in it. It defaults to <code class="literal">.,!? \t\n</code>.</p><p>The <code class="literal">boundary_max_scan</code> allows to control how far to look for boundary
-characters, and defaults to <code class="literal">20</code>.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 0.90.8.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="matched-fields"></a>Matched Fields</h3></div></div></div><p>The Fast Vector Highlighter can combine matches on multiple fields to
+characters, and defaults to <code class="literal">20</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="matched-fields"></a>Matched Fields</h3></div></div></div><p>The Fast Vector Highlighter can combine matches on multiple fields to
 highlight a single field using <code class="literal">matched_fields</code>.  This is most
 intuitive for multifields that analyze the same string in different
 ways.  All <code class="literal">matched_fields</code> must have <code class="literal">term_vector</code> set to
@@ -361,7 +361,7 @@ matches is off the end of the text then the whole the query will fail.</p></div>
                 "type" : "fvh"
             }
         }
-    }</pre></div></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 0.90.10.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="phrase-limit"></a>Phrase Limit</h3></div></div></div><p>The <code class="literal">fast-vector-highlighter</code> has a <code class="literal">phrase_limit</code> parameter that prevents
+    }</pre></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="phrase-limit"></a>Phrase Limit</h3></div></div></div><p>The <code class="literal">fast-vector-highlighter</code> has a <code class="literal">phrase_limit</code> parameter that prevents
 it from analyzing too many phrases and eating tons of memory.  It defaults
 to 256 so only the first 256 matching phrases in the document scored
 considered.  You can raise the limit with the <code class="literal">phrase_limit</code> parameter but
