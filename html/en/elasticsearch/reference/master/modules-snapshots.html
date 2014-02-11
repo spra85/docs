@@ -158,7 +158,7 @@ rename index on restore using regular expression that supports referencing the o
     "indices": "index_1,index_2",
     "ignore_unavailable": "true",
     "include_global_state": false,
-    "rename_pattern": "index_(.)+",
+    "rename_pattern": "index_(.+)",
     "rename_replacement": "restored_index_$1"
 }'</pre><p>The restore operation can be performed on a functioning cluster. However, an existing index can be only restored if it’s
 closed. The restore operation automatically opens restored indices if they were closed and creates new indices if they
