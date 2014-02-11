@@ -5,7 +5,7 @@ paths:
 repos:
     elasticsearch:
         url:        https://github.com/elasticsearch/elasticsearch.git
-        current:    0.90
+        current:    1.x
         branches:
             - master
             - 1.x
