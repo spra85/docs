@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Multi Field Type</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="mapping-types.html" title="Types" /><link rel="prev" href="mapping-nested-type.html" title="Nested Type" /><link rel="next" href="mapping-ip-type.html" title="IP Type" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Indices APIs</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="breaking-changes.html" title="Breaking changes in 1.0" /><link rel="prev" href="_stats_and_info_apis.html" title="Stats and Info APIs" /><link rel="next" href="_index_request.html" title="Index request" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,82 +20,61 @@
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
-      [0.90]
-    </a></span> » <span class="breadcrumb-link"><a href="mapping.html">Mapping</a></span> » <span class="breadcrumb-link"><a href="mapping-types.html">Types</a></span> » <span class="breadcrumb-node">Multi Field Type</span></div><div class="navheader"><span class="prev"><a href="mapping-nested-type.html">
+      [1.x]
+    </a></span> » <span class="breadcrumb-link"><a href="breaking-changes.html">Breaking changes in 1.0</a></span> » <span class="breadcrumb-node">Indices APIs</span></div><div class="navheader"><span class="prev"><a href="_stats_and_info_apis.html">
               « 
-              Nested Type</a>
+              Stats and Info APIs</a>
            
         </span><span class="next">
            
-          <a href="mapping-ip-type.html">IP Type
+          <a href="_index_request.html">Index request
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-multi-field-type"></a>Multi Field Type</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="mapping-core-types.html">Core Types</a></span></dt><dt><span class="section"><a href="mapping-array-type.html">Array Type</a></span></dt><dt><span class="section"><a href="mapping-object-type.html">Object Type</a></span></dt><dt><span class="section"><a href="mapping-root-object-type.html">Root Object Type</a></span></dt><dt><span class="section"><a href="mapping-nested-type.html">Nested Type</a></span></dt><dt><span class="section"><a href="mapping-multi-field-type.html">Multi Field Type</a></span></dt><dt><span class="section"><a href="mapping-ip-type.html">IP Type</a></span></dt><dt><span class="section"><a href="mapping-geo-point-type.html">Geo Point Type</a></span></dt><dt><span class="section"><a href="mapping-geo-shape-type.html">Geo Shape Type</a></span></dt><dt><span class="section"><a href="mapping-attachment-type.html">Attachment Type</a></span></dt></dl></div><p>The <code class="literal">multi_field</code> type allows to map several
-<a class="link" href="mapping-core-types.html" title="Core Types">core_types</a> of the same
-value. This can come very handy, for example, when wanting to map a
-<code class="literal">string</code> type, once when it’s <code class="literal">analyzed</code> and once when it’s
-<code class="literal">not_analyzed</code>. For example:</p><pre class="programlisting prettyprint lang-js">{
-    "tweet" : {
-        "properties" : {
-            "name" : {
-                "type" : "multi_field",
-                "fields" : {
-                    "name" : {"type" : "string", "index" : "analyzed"},
-                    "untouched" : {"type" : "string", "index" : "not_analyzed"}
-                }
-            }
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="_indices_apis"></a>Indices APIs</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_system_and_settings.html">System and settings</a></span></dt><dt><span class="chapter"><a href="_stats_and_info_apis.html">Stats and Info APIs</a></span></dt><dt><span class="chapter"><a href="_indices_apis.html">Indices APIs</a></span></dt><dt><span class="chapter"><a href="_index_request.html">Index request</a></span></dt><dt><span class="chapter"><a href="_search_requests.html">Search requests</a></span></dt><dt><span class="chapter"><a href="_multi_fields.html">Multi-fields</a></span></dt><dt><span class="chapter"><a href="_stopwords.html">Stopwords</a></span></dt><dt><span class="chapter"><a href="_dates_without_years.html">Dates without years</a></span></dt><dt><span class="chapter"><a href="_parameters.html">Parameters</a></span></dt><dt><span class="chapter"><a href="_return_values.html">Return values</a></span></dt><dt><span class="chapter"><a href="_deprecations.html">Deprecations</a></span></dt></dl></div><p>The <code class="literal">mapping</code>, <code class="literal">alias</code>, <code class="literal">settings</code>, and <code class="literal">warmer</code> index APIs are all similar
+but there are subtle differences in the order of the URL and the response
+body.  For instance, adding a mapping and a warmer look slightly different:</p><pre class="programlisting prettyprint lang-sh">PUT /{index}/{type}/_mapping
+PUT /{index}/_warmer/{name}</pre><p>These URLs have been unified as:</p><pre class="programlisting prettyprint lang-sh">PUT /{indices}/_mapping/{type}
+PUT /{indices}/_alias/{name}
+PUT /{indices}/_warmer/{name}
+
+GET /{indices}/_mapping/{types}
+GET /{indices}/_alias/{names}
+GET /{indices}/_settings/{names}
+GET /{indices}/_warmer/{names}
+
+DELETE /{indices}/_mapping/{types}
+DELETE /{indices}/_alias/{names}
+DELETE /{indices}/_warmer/{names}</pre><p>All of the <code class="literal">{indices}</code>, <code class="literal">{types}</code> and <code class="literal">{names}</code> parameters can be replaced by:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">_all</code>, <code class="literal">*</code> or blank (ie left out altogether), all of which mean “all”
+</li><li class="listitem">
+wildcards like <code class="literal">test*</code>
+</li><li class="listitem">
+comma-separated lists: <code class="literal">index_1,test_*</code>
+</li></ul></div><p>The only exception is <code class="literal">DELETE</code> which doesn’t accept blank (missing)
+parameters. If you want to delete something, you should be specific.</p><p>Similarly, the return values for <code class="literal">GET</code> have been unified with the following
+rules:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Only return values that exist.  If you try to <code class="literal">GET</code> a mapping which doesn’t
+  exist, then the result will be an empty object: <code class="literal">{}</code>. We no longer throw a
+  <code class="literal">404</code> if the requested mapping/warmer/alias/setting doesn’t exist.
+</li><li class="listitem"><p class="simpara">
+The response format always has the index name, then the section, then the
+  element name, for instance:
+</p><pre class="programlisting prettyprint lang-json">{
+    "my_index": {
+        "mappings": {
+            "my_type": {...}
         }
     }
-}</pre><p>The above example shows how the <code class="literal">name</code> field, which is of simple
-<code class="literal">string</code> type, gets mapped twice, once with it being <code class="literal">analyzed</code> under
-<code class="literal">name</code>, and once with it being <code class="literal">not_analyzed</code> under <code class="literal">untouched</code>.</p><h4><a id="_accessing_fields"></a>Accessing Fields</h4><p>With <code class="literal">multi_field</code> mapping, the field that has the same name as the
-property is treated as if it was mapped without a multi field. That’s
-the "default" field. It can be accessed regularly, for example using
-<code class="literal">name</code> or using typed navigation <code class="literal">tweet.name</code>.</p><p>The <code class="literal">path</code> attribute allows to control how non-default fields can be
-accessed. If the <code class="literal">path</code> attribute is set to <code class="literal">full</code>, which is the default
-setting, all non-default fields are prefixed with the name of the
-property and can be accessed by their full path using the navigation
-notation: <code class="literal">name.untouched</code>, or using the typed navigation notation
-<code class="literal">tweet.name.untouched</code>. If the <code class="literal">path</code> attribute is set to <code class="literal">just_name</code>
-the actual field name without a prefix is used. The <code class="literal">just_name</code> setting,
-among other things, allows indexing content of multiple fields under the
-same name. In the example below the content of both fields <code class="literal">first_name</code>
-and <code class="literal">last_name</code> can be accessed by using <code class="literal">any_name</code> or <code class="literal">tweet.any_name</code></p><pre class="programlisting prettyprint lang-js">{
-    "tweet" : {
-        "properties": {
-            "first_name": {
-                "type": "multi_field",
-                "path": "just_name",
-                "fields": {
-                    "first_name": {"type": "string", "index": "analyzed"},
-                    "any_name": {"type": "string","index": "analyzed"}
-                }
-            },
-            "last_name": {
-                "type": "multi_field",
-                "path": "just_name",
-                "fields": {
-                    "last_name": {"type": "string", "index": "analyzed"},
-                    "any_name": {"type": "string","index": "analyzed"}
-                }
-            }
-        }
-    }
-}</pre><h4><a id="_include_in_all_2"></a>Include in All</h4><p>The <code class="literal">include_in_all</code> setting on the "default" field allows to control if
-the value of the field should be included in the <code class="literal">_all</code> field. Note, the
-value of the field is copied to <code class="literal">_all</code>, not the tokens. So, it only
-makes sense to copy the field value once. Because of this, the
-<code class="literal">include_in_all</code> setting on all non-default fields is automatically set
-to <code class="literal">false</code> and can’t be changed.</p><h4><a id="_merging"></a>Merging</h4><p>When updating mapping definition using the <code class="literal">put_mapping</code> API, a core
-type mapping can be "upgraded" to a <code class="literal">multi_field</code> mapping. This means
-that if the old mapping has a plain core type mapping, the updated
-mapping for the same property can be a <code class="literal">multi_field</code> type, with the
-default field being the one being replaced.</p></div><div class="navfooter"><span class="prev"><a href="mapping-nested-type.html">
+}</pre><p class="simpara">This is a breaking change for the <code class="literal">get_mapping</code> API.</p></li></ul></div><p>In the future we will also provide plural versions to allow putting multiple mappings etc in a single request.</p><p>See <a class="link" href="indices-put-mapping.html" title="Put Mapping"><code class="literal">put-mapping</code></a>, <a class="link" href="indices-get-mapping.html" title="Get Mapping"><code class="literal">get-
+mapping</code></a>, <a class="link" href="indices-get-field-mapping.html" title="Get Field Mapping"><code class="literal">get-field-mapping</code></a>,
+<a class="link" href="indices-delete-mapping.html" title="Delete Mapping"><code class="literal">delete-mapping</code></a>,
+<a class="link" href="indices-update-settings.html" title="Update Indices Settings"><code class="literal">update-settings</code></a>, <a class="link" href="indices-get-settings.html" title="Get Settings"><code class="literal">get-settings</code></a>,
+<a class="link" href="indices-warmers.html" title="Warmers"><code class="literal">warmers</code></a>, and <a class="link" href="indices-aliases.html" title="Index Aliases"><code class="literal">aliases</code></a> for more details.</p></div><div class="navfooter"><span class="prev"><a href="_stats_and_info_apis.html">
               « 
-              Nested Type</a>
+              Stats and Info APIs</a>
            
         </span><span class="next">
            
-          <a href="mapping-ip-type.html">IP Type
+          <a href="_index_request.html">Index request
                »
             </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
               Need help with

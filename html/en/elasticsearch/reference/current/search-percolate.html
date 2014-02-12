@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Percolate API</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="search.html" title="Search APIs" /><link rel="prev" href="search-explain.html" title="Explain API" /><link rel="next" href="search-more-like-this.html" title="More Like This API" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Percolator</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="search.html" title="Search APIs" /><link rel="prev" href="search-explain.html" title="Explain API" /><link rel="next" href="search-more-like-this.html" title="More Like This API" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,8 +20,8 @@
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
-      [0.90]
-    </a></span> » <span class="breadcrumb-link"><a href="search.html">Search APIs</a></span> » <span class="breadcrumb-node">Percolate API</span></div><div class="navheader"><span class="prev"><a href="search-explain.html">
+      [1.x]
+    </a></span> » <span class="breadcrumb-link"><a href="search.html">Search APIs</a></span> » <span class="breadcrumb-node">Percolator</span></div><div class="navheader"><span class="prev"><a href="search-explain.html">
               « 
               Explain API</a>
            
@@ -29,67 +29,263 @@
            
           <a href="search-more-like-this.html">More Like This API
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="search-percolate"></a>Percolate API</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="search-search.html">Search</a></span></dt><dt><span class="chapter"><a href="search-uri-request.html">URI Search</a></span></dt><dt><span class="chapter"><a href="search-request-body.html">Request Body Search</a></span></dt><dt><span class="chapter"><a href="search-facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="search-suggesters.html">Suggesters</a></span></dt><dt><span class="chapter"><a href="search-multi-search.html">Multi Search API</a></span></dt><dt><span class="chapter"><a href="search-count.html">Count API</a></span></dt><dt><span class="chapter"><a href="search-validate.html">Validate API</a></span></dt><dt><span class="chapter"><a href="search-explain.html">Explain API</a></span></dt><dt><span class="chapter"><a href="search-percolate.html">Percolate API</a></span></dt><dt><span class="chapter"><a href="search-more-like-this.html">More Like This API</a></span></dt></dl></div><p>The percolator allows to register queries against an index, and then
-send <code class="literal">percolate</code> requests which include a doc, and getting back the
-queries that match on that doc out of the set of registered queries.</p><p>Think of it as the reverse operation of indexing and then searching.
-Instead of sending docs, indexing them, and then running queries. One
-sends queries, registers them, and then sends docs and finds out which
-queries match that doc.</p><p>As an example, a user can register an interest (a query) on all tweets
-that contain the word "elasticsearch". For every tweet, one can
-percolate the tweet against all registered user queries, and find out
-which ones matched.</p><p>Here is a quick sample, first, lets create a <code class="literal">test</code> index:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test</pre><p>Next, we will register a percolator query with a specific name called
-<code class="literal">kuku</code> against the <code class="literal">test</code> index:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/_percolator/test/kuku -d '{
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="search-percolate"></a>Percolator</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="search-search.html">Search</a></span></dt><dt><span class="chapter"><a href="search-uri-request.html">URI Search</a></span></dt><dt><span class="chapter"><a href="search-request-body.html">Request Body Search</a></span></dt><dt><span class="chapter"><a href="search-facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="search-aggregations.html">Aggregations</a></span></dt><dt><span class="chapter"><a href="search-suggesters.html">Suggesters</a></span></dt><dt><span class="chapter"><a href="search-multi-search.html">Multi Search API</a></span></dt><dt><span class="chapter"><a href="search-count.html">Count API</a></span></dt><dt><span class="chapter"><a href="search-validate.html">Validate API</a></span></dt><dt><span class="chapter"><a href="search-explain.html">Explain API</a></span></dt><dt><span class="chapter"><a href="search-percolate.html">Percolator</a></span></dt><dt><span class="chapter"><a href="search-more-like-this.html">More Like This API</a></span></dt></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 1.0.0.Beta1.</p></div></div><p>Traditionally you design documents based on your data and store them into an index and then define queries via the search api
+in order to retrieve these documents. The percolator works in the opposite direction, first you store queries into an
+index and then via the percolate api you define documents in order to retrieve these queries.</p><p>The reason that queries can be stored comes from the fact that in Elasticsearch both documents and queries are defined in
+JSON. This allows you to embed queries into documents via the index api. Elasticsearch can extract the query from a
+document and make it available to the percolate api. Since documents are also defines as json, you can define a document
+in a request to the percolate api.</p><p>The percolator and most of its features work in realtime, so once a percolate query is indexed it can immediately be used
+in the percolate api.</p><h3><a id="_sample_usage"></a>Sample usage</h3><p>Adding a query to the percolator:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'localhost:9200/my-index/.percolator/1' -d '{
     "query" : {
-        "term" : {
-            "field1" : "value1"
+        "match" : {
+            "message" : "bonsai tree"
         }
     }
-}'</pre><p>And now, we can percolate a document and see which queries match on it
-(note, its not really indexed!):</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/test/type1/_percolate -d '{
+}'</pre><p>Matching documents to the added queries:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'localhost:9200/my-index/message/_percolate' -d '{
     "doc" : {
-        "field1" : "value1"
+        "message" : "A new bonsai tree in the office"
     }
-}'</pre><p>And the matches are part of the response:</p><pre class="programlisting prettyprint lang-js">{"ok":true, "matches":["kuku"]}</pre><p>You can unregister the previous percolator query with the same API you
-use to delete any document in an index:</p><pre class="programlisting prettyprint lang-js">curl -XDELETE localhost:9200/_percolator/test/kuku</pre><h3><a id="_filtering_executed_queries"></a>Filtering Executed Queries</h3><p>Since the registered percolator queries are just docs in an index, one
-can filter the queries that will be used to percolate a doc. For
-example, we can add a <code class="literal">color</code> field to the registered query:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/_percolator/test/kuku -d '{
-    "color" : "blue",
-    "query" : {
-        "term" : {
-            "field1" : "value1"
-        }
-    }
-}'</pre><p>And then, we can percolate a doc that only matches on blue colors:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/test/type1/_percolate -d '{
-    "doc" : {
-        "field1" : "value1"
+}'</pre><p>The above request will yield the following response:</p><pre class="programlisting prettyprint lang-js">{
+    "took" : 19,
+    "_shards" : {
+        "total" : 5,
+        "successful" : 5,
+        "failed" : 0
     },
+    "total" : 1,
+    "matches" : [
+        {
+             "_index" : "my-index",
+             "_id" : "1"
+        }
+    ]
+}</pre><p>The percolate api returns matches that refer to percolate queries that have matched with the document defined in the percolate api.</p><h3><a id="_indexing_percolator_queries"></a>Indexing percolator queries</h3><p>Percolate queries are stored as documents in a specific format and in an arbitrary index under a reserved type with the
+name <code class="literal">.percolator</code>. The query itself is placed as is in a json objects under the top level field <code class="literal">query</code>.</p><pre class="programlisting prettyprint lang-js">{
     "query" : {
+                "match" : {
+                        "field" : "value"
+                }
+        }
+}</pre><p>Since this is just an ordinary document, any field can be added to this document. This can be useful later on to only
+percolate documents by specific queries.</p><pre class="programlisting prettyprint lang-js">{
+        "query" : {
+                "match" : {
+                        "field" : "value"
+                }
+        },
+        "priority" : "high"
+}</pre><p>On top of this also a mapping type can be associated with the this query. This allows to control how certain queries
+like range queries, shape filters and other query &amp; filters that rely on mapping settings get constructed. This is
+important since the percolate queries are indexed into the <code class="literal">.percolator</code> type, and the queries / filters that rely on
+mapping settings would yield unexpected behaviour. Note by default field names do get resolved in a smart manner,
+but in certain cases with multiple types this can lead to unexpected behaviour, so being explicit about it will help.</p><pre class="programlisting prettyprint lang-js">{
+        "query" : {
+                "range" : {
+                        "created_at" : {
+                                "gte" : "2010-01-01T00:00:00",
+                                "lte" : "2011-01-01T00:00:00"
+                        }
+                }
+        },
+        "type" : "tweet",
+        "priority" : "high"
+}</pre><p>In the above example the range query gets really parsed into a Lucene numeric range query, based on the settings for
+the field <code class="literal">created_at</code> in the type <code class="literal">tweet</code>.</p><p>Just as with any other type, the <code class="literal">.percolator</code> type has a mapping, which you can configure via the mappings apis.
+The default percolate mapping doesn’t index the query field and only stores it.</p><p>Because <code class="literal">.percolate</code> is a type it also has a mapping. By default the following mapping is active:</p><pre class="programlisting prettyprint lang-js">{
+        ".percolator" : {
+                "properties" : {
+                        "query" : {
+                                "type" : "object",
+                                "enabled" : false
+                        }
+                }
+        }
+}</pre><p>If needed this mapping can be modified wit the update mapping api.</p><p>In order to un-register a percolate query the delete api can be used. So if the previous added query needs to be deleted
+the following delete requests needs to be executed:</p><pre class="programlisting prettyprint lang-js">curl -XDELETE localhost:9200/my-index/.percolator/1</pre><h3><a id="_percolate_api"></a>Percolate api</h3><p>The percolate api executes in a distributed manner, meaning it executes on all shards an index points to.</p><div class="itemizedlist"><p class="title"><strong>Required options</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">index</code> - The index that contains the <code class="literal">.percolator</code> type. This can also be an alias.
+</li><li class="listitem">
+<code class="literal">type</code> - The type of the document to be percolated. The mapping of that type is used to parse document.
+</li><li class="listitem">
+<code class="literal">doc</code> - The actual document to percolate. Unlike the other two options this needs to be specified in the request body. Note this isn’t required when percolating an existing document.
+</li></ul></div><pre class="programlisting prettyprint lang-js">curl -XGET 'localhost:9200/twitter/tweet/_percolate' -d '{
+        "doc" : {
+                "created_at" : "2010-10-10T00:00:00",
+                "message" : "some text"
+        }
+}'</pre><div class="itemizedlist"><p class="title"><strong>Additional supported query string options</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">routing</code> - In the case the percolate queries are partitioned by a custom routing value, that routing option make sure
+that the percolate request only gets executed on the shard where the routing value is partitioned to. This means that
+the percolate request only gets executed on one shard instead of all shards. Multiple values can be specified as a
+comma separated string, in that case the request can be be executed on more than one shard.
+</li><li class="listitem">
+<code class="literal">preference</code> - Controls which shard replicas are preferred to execute the request on. Works the same as in the search api.
+</li><li class="listitem">
+<code class="literal">ignore_unavailable</code> - Controls if missing concrete indices should silently be ignored. Same as is in the search api.
+</li><li class="listitem">
+<code class="literal">percolate_format</code> - If <code class="literal">ids</code> is specified then the matches array in the percolate response will contain a string
+array of the matching ids instead of an array of objects. This can be useful the reduce the amount of data being send
+back to the client. Obviously if there are to percolator queries with same id from different indices there is no way
+the find out which percolator query belongs to what index. Any other value to <code class="literal">percolate_format</code> will be ignored.
+</li></ul></div><div class="itemizedlist"><p class="title"><strong>Additional request body options</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">filter</code> - Reduces the number queries to execute during percolating. Only the percolator queries that match with the
+filter will be included in the percolate execution. The filter option works in near realtime, so a refresh needs to have
+occurred for the filter to included the latest percolate queries.
+</li><li class="listitem">
+<code class="literal">query</code> - Same as the <code class="literal">filter</code> option, but also the score is computed. The computed scores can then be used by the
+<code class="literal">track_scores</code> and <code class="literal">sort</code> option.
+</li><li class="listitem">
+<code class="literal">size</code> - Defines to maximum number of matches (percolate queries) to be returned. Defaults to unlimited.
+</li><li class="listitem">
+<code class="literal">track_scores</code> - Whether the <code class="literal">_score</code> is included for each match. The is based on the query and represents how the query matched
+to the percolate query’s metadata and <span class="strong"><strong>not</strong></span> how the document being percolated matched to the query. The <code class="literal">query</code> option
+is required for this option. Defaults to <code class="literal">false</code>.
+</li><li class="listitem">
+<code class="literal">sort</code> - Define a sort specification like in the search api. Currently only sorting <code class="literal">_score</code> reverse (default relevancy)
+is supported. Other sort fields will throw an exception. The <code class="literal">size</code> and <code class="literal">query</code> option are required for this setting. Like
+<code class="literal">track_score</code> the score is based on the query and represents how the query matched to the percolate query’s metadata
+and <span class="strong"><strong>not</strong></span> how the document being percolated matched to the query.
+</li><li class="listitem">
+<code class="literal">facets</code> - Allows facet definitions to be included. The facets are based on the matching percolator queries. See facet
+documentation how to define facets.
+</li><li class="listitem">
+<code class="literal">aggs</code> - Allows aggregation definitions to be included. The aggregations are based on the matching percolator queries,
+look at the aggregation documentation on how to define aggregations.
+</li><li class="listitem">
+<code class="literal">highlight</code> - Allows highlight definitions to be included. The document being percolated is being highlight for each
+matching query. This allows you to see how each match is highlighting the document being percolated. See highlight
+documentation on how to define highlights. The <code class="literal">size</code> option is required for highlighting, the performance of highlighting
+ in the percolate api depends of how many matches are being highlighted.
+</li></ul></div><h3><a id="_dedicated_percolator_index"></a>Dedicated percolator index</h3><p>Percolate queries can be added to any index. Instead of adding percolate queries to the index the data resides in,
+these queries can also be added to an dedicated index. The advantage of this is that this dedicated percolator index
+can have its own index settings (For example the number of primary and replicas shards). If you choose to have a dedicated
+percolate index, you need to make sure that the mappings from the normal index are also available on the percolate index.
+Otherwise percolate queries can be parsed incorrectly.</p><h3><a id="_filtering_executed_queries"></a>Filtering Executed Queries</h3><p>Filtering allows to reduce the number of queries, any filter that the search api supports, (expect the ones mentioned in important notes)
+can also be used in the percolate api. The filter only works on the metadata fields. The <code class="literal">query</code> field isn’t indexed by
+default. Based on the query we indexed before the following filter can be defined:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/test/type1/_percolate -d '{
+    "doc" : {
+        "field" : "value"
+    },
+    "filter" : {
         "term" : {
-            "color" : "blue"
+            "priority" : "high"
         }
     }
-}'</pre><h3><a id="_how_it_works"></a>How it Works</h3><p>The <code class="literal">_percolator</code> which holds the repository of registered queries is
-just a another index. The query is registered under a concrete index
-that exists (or will exist). That index name is represented as the type
-in the <code class="literal">_percolator</code> index (a bit confusing, I know…).</p><p>The fact that the queries are stored as docs in another index
-(<code class="literal">_percolator</code>) gives us both the persistency nature of it, and the
-ability to filter out queries to execute using another query.</p><p>The <code class="literal">_percolator</code> index uses the <code class="literal">index.auto_expand_replica</code> setting to
-make sure that each data node will have access locally to the registered
-queries, allowing for fast query executing to filter out queries to run
-against a percolated doc.</p><p>The percolate API uses the whole number of shards as percolating
-processing "engines", both primaries and replicas. In our above case, if
-the <code class="literal">test</code> index has 2 shards with 1 replica, 4 shards will round-robin
-in handling percolate requests. Increasing (dynamically) the number of
-replicas will increase the number of percolating processing "engines"
-and thus the percolation power.</p><p>Note, percolate requests will prefer to be executed locally, and will
-not try and round-robin across shards if a shard exists locally on a
-node that received a request (for example, from HTTP). It’s important to
-do some round-robin in the client code among nodes (in any case its
-recommended). If this behavior is not desired, the <code class="literal">prefer_local</code>
-parameter can be set to <code class="literal">false</code> to disable it.</p><p>Because the percolator API is processing one document at a time, it
-doesn’t support queries and filters that run against child and nested
-documents such as <code class="literal">has_child</code>, <code class="literal">has_parent</code>, <code class="literal">top_children</code>, and
-<code class="literal">nested</code>.</p></div><div class="navfooter"><span class="prev"><a href="search-explain.html">
+}'</pre><h3><a id="_percolator_count_api"></a>Percolator count api</h3><p>The count percolate api, only keeps track of the number of matches and doesn’t keep track of the actual matches
+Example:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'localhost:9200/my-index/my-type/_percolate/count' -d '{
+   "doc" : {
+       "message" : "some message"
+   }
+}'</pre><p>Response:</p><pre class="programlisting prettyprint lang-js">{
+   ... // header
+   "total" : 3
+}</pre><h3><a id="_percolating_an_existing_document"></a>Percolating an existing document</h3><p>In order to percolate in newly indexed document, the percolate existing document can be used. Based on the response
+from an index request the <code class="literal">_id</code> and other meta information can be used to the immediately percolate the newly added
+document.</p><div class="itemizedlist"><p class="title"><strong>Supported options for percolating an existing document on top of existing percolator options:</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">id</code> - The id of the document to retrieve the source for.
+</li><li class="listitem">
+<code class="literal">percolate_index</code> - The index containing the percolate queries. Defaults to the <code class="literal">index</code> defined in the url.
+</li><li class="listitem">
+<code class="literal">percolate_type</code> - The percolate type (used for parsing the document). Default to <code class="literal">type</code> defined in the url.
+</li><li class="listitem">
+<code class="literal">routing</code> - The routing value to use when retrieving the document to percolate.
+</li><li class="listitem">
+<code class="literal">preference</code> - Which shard to prefer when retrieving the existing document.
+</li><li class="listitem">
+<code class="literal">percolate_routing</code> - The routing value to use when percolating the existing document.
+</li><li class="listitem">
+<code class="literal">percolate_preference</code> - Which shard to prefer when executing the percolate request.
+</li><li class="listitem">
+<code class="literal">version</code> - Enables a version check. If the fetched document’s version isn’t equal to the specified version then the request fails with a version conflict and the percolation request is aborted.
+</li><li class="listitem">
+<code class="literal">version_type</code> - Whether internal or external versioning is used. Defaults to internal versioning.
+</li></ul></div><p>Internally the percolate api will issue a get request for fetching the`_source` of the document to percolate.
+For this feature to work the <code class="literal">_source</code> for documents to be percolated need to be stored.</p><h4><a id="_example_2"></a>Example</h4><p>Index response:</p><pre class="programlisting prettyprint lang-js">{
+        "_index" : "my-index",
+        "_type" : "message",
+        "_id" : "1",
+        "_version" : 1,
+        "created" : true
+}</pre><p>Percolating an existing document:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'localhost:9200/my-index1/message/1/_percolate'</pre><p>The response is the same as with the regular percolate api.</p><h3><a id="_multi_percolate_api"></a>Multi percolate api</h3><p>The multi percolate api allows to bundle multiple percolate requests into a single request, similar to what the multi
+search api does to search requests. The request body format is line based. Each percolate request item takes two lines,
+the first line is the header and the second line is the body.</p><p>The header can contain any parameter that normally would be set via the request path or query string parameters. T
+here are several percolate actions, because there are multiple types of percolate requests.</p><div class="itemizedlist"><p class="title"><strong>Supported actions:</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">percolate</code> - Action for defining a regular percolate request.
+</li><li class="listitem">
+<code class="literal">count</code> - Action for defining a count percolate request.
+</li></ul></div><p>Depending on the percolate action different parameters can be specified. For example the percolate and percolate existing
+document actions support different parameters.</p><div class="itemizedlist"><p class="title"><strong>The following endpoints are supported</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+GET|POST /[index]/[type]/_mpercolate
+</li><li class="listitem">
+GET}POST /[index]/_mpercolate
+</li><li class="listitem">
+GET|POST /_mpercolate
+</li></ul></div><p>The <code class="literal">index</code> and <code class="literal">type</code> defined in the url path are the default index and type.</p><h4><a id="_example_3"></a>Example</h4><p>Request:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'localhost:9200/twitter/tweet/_mpercolate' --data-binary @requests.txt; echo</pre><p>The index twitter is the default index and the type tweet is the default type and will be used in the case a header
+doesn’t specify an index or type.</p><p>requests.txt:</p><pre class="programlisting prettyprint lang-js">{"percolate" : {"index" : twitter", "type" : "tweet"}}
+{"doc" : {"message" : "some text"}}
+{"percolate" : {"index" : twitter", "type" : "tweet", "id" : "1"}}
+{}
+{"percolate" : {"index" : users", "type" : "user", "id" : "3", "percolate_index" : "users_2012" }}
+{"size" : 10}
+{"count" : {"index" : twitter", "type" : "tweet"}}
+{"doc" : {"message" : "some other text"}}
+{"count" : {"index" : twitter", "type" : "tweet", "id" : "1"}}
+{}</pre><p>For a percolate existing document item (headers with the <code class="literal">id</code> field), the response can be an empty json object.
+All the required options are set in the header.</p><p>Response:</p><pre class="programlisting prettyprint lang-js">{
+    "items" : [
+        {
+            "took" : 24,
+            "_shards" : {
+                "total" : 5,
+                "successful" : 5,
+                "failed" : 0,
+            },
+            "total" : 3,
+            "matches" : ["1", "2", "3"]
+        },
+        {
+            "took" : 12,
+            "_shards" : {
+                "total" : 5,
+                "successful" : 5,
+                "failed" : 0,
+            },
+            "total" : 3,
+            "matches" : ["4", "5", "6"]
+        },
+        {
+            "error" : "[user][3]document missing"
+        },
+        {
+            "took" : 12,
+            "_shards" : {
+                "total" : 5,
+                "successful" : 5,
+                "failed" : 0,
+            },
+            "total" : 3
+        },
+        {
+            "took" : 14,
+            "_shards" : {
+                "total" : 5,
+                "successful" : 5,
+                "failed" : 0,
+            },
+            "total" : 3
+        }
+    ]
+}</pre><p>Each item represents a percolate response, the order of the items maps to the order in where the percolate requests
+were specified. In case a percolate request failed, the item response is substituted with an error message.</p><h3><a id="_how_it_works_under_the_hood"></a>How it works under the hood</h3><p>When indexing a document that contains a query in an index and the <code class="literal">.percolator</code> type the query part of the documents gets
+parsed into a Lucene query and is kept in memory until that percolator document is removed or the index containing the
+<code class="literal">.percolator</code> type get removed. So all the active percolator queries are kept in memory.</p><p>At percolate time the document specified in the request gets parsed into a Lucene document and is stored in a in-memory
+Lucene index. This in-memory index can just hold this one document and it is optimized for that. Then all the queries
+that are registered to the index that the percolate request is targeted for are going to be executed on this single document
+in-memory index. This happens on each shard the percolate request need to execute.</p><p>By using <code class="literal">routing</code>, <code class="literal">filter</code> or <code class="literal">query</code> features the amount of queries that need to be executed can be reduced and thus
+the time the percolate api needs to run can be decreased.</p><h3><a id="_important_notes"></a>Important notes</h3><p>Because the percolator API is processing one document at a time, it doesn’t support queries and filters that run
+against child and nested documents such as <code class="literal">has_child</code>, <code class="literal">has_parent</code>, <code class="literal">top_children</code>, and <code class="literal">nested</code>.</p><p>The <code class="literal">wildcard</code> and <code class="literal">regexp</code> query natively use a lot of memory and because the percolator keeps the queries into memory
+this can easily take up the available memory in the heap space. If possible try to use a <code class="literal">prefix</code> query or ngramming to
+achieve the same result (with way less memory being used).</p><p>The delete-by-query api doesn’t work to unregister a query, it only deletes the percolate documents from disk. In order
+to update the registered queries in memory the index needs be closed and opened.</p></div><div class="navfooter"><span class="prev"><a href="search-explain.html">
               « 
               Explain API</a>
            

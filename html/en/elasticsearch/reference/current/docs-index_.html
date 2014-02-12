@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Index API</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="docs.html" title="Document APIs" /><link rel="prev" href="docs.html" title="Document APIs" /><link rel="next" href="docs-get.html" title="Get API" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Index API</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="docs.html" title="Document APIs" /><link rel="prev" href="docs.html" title="Document APIs" /><link rel="next" href="docs-get.html" title="Get API" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,7 +20,7 @@
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
-      [0.90]
+      [1.x]
     </a></span> » <span class="breadcrumb-link"><a href="docs.html">Document APIs</a></span> » <span class="breadcrumb-node">Index API</span></div><div class="navheader"><span class="prev"><a href="docs.html">
               « 
               Document APIs</a>
@@ -29,18 +29,18 @@
            
           <a href="docs-get.html">Get API
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="docs-index_"></a>Index API</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="docs-index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="docs-get.html">Get API</a></span></dt><dt><span class="chapter"><a href="docs-delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="docs-update.html">Update API</a></span></dt><dt><span class="chapter"><a href="docs-multi-get.html">Multi Get API</a></span></dt><dt><span class="chapter"><a href="docs-bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="docs-delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="docs-bulk-udp.html">Bulk UDP API</a></span></dt></dl></div><p>The index API adds or updates a typed JSON document in a specific index,
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="docs-index_"></a>Index API</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="docs-index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="docs-get.html">Get API</a></span></dt><dt><span class="chapter"><a href="docs-delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="docs-update.html">Update API</a></span></dt><dt><span class="chapter"><a href="docs-multi-get.html">Multi Get API</a></span></dt><dt><span class="chapter"><a href="docs-bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="docs-delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="docs-bulk-udp.html">Bulk UDP API</a></span></dt><dt><span class="chapter"><a href="docs-termvectors.html">Term Vectors</a></span></dt><dt><span class="chapter"><a href="docs-multi-termvectors.html">Multi termvectors API</a></span></dt></dl></div><p>The index API adds or updates a typed JSON document in a specific index,
 making it searchable. The following example inserts the JSON document
 into the "twitter" index, under a type called "tweet" with an id of 1:</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
     "user" : "kimchy",
     "post_date" : "2009-11-15T14:12:12",
-    "message" : "trying out Elastic Search"
+    "message" : "trying out Elasticsearch"
 }'</pre><p>The result of the above index operation is:</p><pre class="programlisting prettyprint lang-js">{
-    "ok" : true,
     "_index" : "twitter",
     "_type" : "tweet",
     "_id" : "1",
-    "_version" : 1
+    "_version" : 1,
+    "created" : true
 }</pre><h3><a id="index-creation"></a>Automatic Index Creation</h3><p>The index operation automatically creates an index if it has not been
 created before (check out the
 <a class="link" href="indices-create-index.html" title="Create Index">create index API</a> for manually
@@ -50,13 +50,22 @@ created (check out the <a class="link" href="indices-put-mapping.html" title="Pu
 API for manually creating a type mapping).</p><p>The mapping itself is very flexible and is schema-free. New fields and
 objects will automatically be added to the mapping definition of the
 type specified. Check out the <a class="link" href="mapping.html" title="Mapping">mapping</a>
-section for more information on mapping definitions.</p><p>Though explained on the <a class="link" href="mapping.html" title="Mapping">mapping</a> section,
-it’s important to note that the format of the JSON document can also
-include the type (very handy when using JSON mappers), for example:</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
+section for more information on mapping definitions.</p><p>Note that the format of the JSON document can also include the type (very handy
+when using JSON mappers) if the <code class="literal">index.mapping.allow_type_wrapper</code> setting is
+set to true, for example:</p><pre class="programlisting prettyprint lang-js">$ curl -XPOST 'http://localhost:9200/twitter' -d '{
+  "settings": {
+    "index": {
+      "mapping.allow_type_wrapper": true
+    }
+  }
+}'
+{"acknowledged":true}
+
+$ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
     "tweet" : {
         "user" : "kimchy",
         "post_date" : "2009-11-15T14:12:12",
-        "message" : "trying out Elastic Search"
+        "message" : "trying out Elasticsearch"
     }
 }'</pre><p>Automatic index creation can be disabled by setting
 <code class="literal">action.auto_create_index</code> to <code class="literal">false</code> in the config file of all nodes.
@@ -64,8 +73,7 @@ Automatic mapping creation can be disabled by setting
 <code class="literal">index.mapper.dynamic</code> to <code class="literal">false</code> in the config files of all nodes (or
 on the specific index settings).</p><p>Automatic index creation can include a pattern based white/black list,
 for example, set <code class="literal">action.auto_create_index</code> to <code class="literal">+aaa*,-bbb*,+ccc*,-*</code> (+
-meaning allowed, and - meaning disallowed). Note, this feature is
-available since 0.20.</p><h3><a id="index-versioning"></a>Versioning</h3><p>Each indexed document is given a version number. The associated
+meaning allowed, and - meaning disallowed).</p><h3><a id="index-versioning"></a>Versioning</h3><p>Each indexed document is given a version number. The associated
 <code class="literal">version</code> number is returned as part of the response to the index API
 request. The index API optionally allows for
 <a class="ulink" href="http://en.wikipedia.org/wiki/Optimistic_concurrency_control" target="_top">optimistic
@@ -102,47 +110,47 @@ a <code class="literal">create</code> operation, allowing for "put-if-absent" be
 already exists in the index.</p><p>Here is an example of using the <code class="literal">op_type</code> parameter:</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT 'http://localhost:9200/twitter/tweet/1?op_type=create' -d '{
     "user" : "kimchy",
     "post_date" : "2009-11-15T14:12:12",
-    "message" : "trying out Elastic Search"
+    "message" : "trying out Elasticsearch"
 }'</pre><p>Another option to specify <code class="literal">create</code> is to use the following uri:</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT 'http://localhost:9200/twitter/tweet/1/_create' -d '{
     "user" : "kimchy",
     "post_date" : "2009-11-15T14:12:12",
-    "message" : "trying out Elastic Search"
+    "message" : "trying out Elasticsearch"
 }'</pre><h3><a id="_automatic_id_generation"></a>Automatic ID Generation</h3><p>The index operation can be executed without specifying the id. In such a
 case, an id will be generated automatically. In addition, the <code class="literal">op_type</code>
 will automatically be set to <code class="literal">create</code>. Here is an example (note the
 <span class="strong"><strong>POST</strong></span> used instead of <span class="strong"><strong>PUT</strong></span>):</p><pre class="programlisting prettyprint lang-js">$ curl -XPOST 'http://localhost:9200/twitter/tweet/' -d '{
     "user" : "kimchy",
     "post_date" : "2009-11-15T14:12:12",
-    "message" : "trying out Elastic Search"
+    "message" : "trying out Elasticsearch"
 }'</pre><p>The result of the above index operation is:</p><pre class="programlisting prettyprint lang-js">{
-    "ok" : true,
     "_index" : "twitter",
     "_type" : "tweet",
     "_id" : "6a8ca01c-7896-48e9-81cc-9f70661fcb32",
-    "_version" : 1
+    "_version" : 1,
+    "created" : true
 }</pre><h3><a id="index-routing"></a>Routing</h3><p>By default, shard placement — or <code class="literal">routing</code> — is controlled by using a
 hash of the document’s id value. For more explicit control, the value
 fed into the hash function used by the router can be directly specified
 on a per-operation basis using the <code class="literal">routing</code> parameter. For example:</p><pre class="programlisting prettyprint lang-js">$ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '{
     "user" : "kimchy",
     "post_date" : "2009-11-15T14:12:12",
-    "message" : "trying out Elastic Search"
+    "message" : "trying out Elasticsearch"
 }'</pre><p>In the example above, the "tweet" document is routed to a shard based on
 the <code class="literal">routing</code> parameter provided: "kimchy".</p><p>When setting up explicit mapping, the <code class="literal">_routing</code> field can be optionally
 used to direct the index operation to extract the routing value from the
 document itself. This does come at the (very minimal) cost of an
 additional document parsing pass. If the <code class="literal">_routing</code> mapping is defined,
 and set to be <code class="literal">required</code>, the index operation will fail if no routing
-value is provided or extracted.</p><h3><a id="parent-children"></a>Parents &amp; Children</h3><p>A child document can be indexed by specifying it’s parent when indexing.
+value is provided or extracted.</p><h3><a id="parent-children"></a>Parents &amp; Children</h3><p>A child document can be indexed by specifying its parent when indexing.
 For example:</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT localhost:9200/blogs/blog_tag/1122?parent=1111 -d '{
     "tag" : "something"
 }'</pre><p>When indexing a child document, the routing value is automatically set
-to be the same as it’s parent, unless the routing value is explicitly
+to be the same as its parent, unless the routing value is explicitly
 specified using the <code class="literal">routing</code> parameter.</p><h3><a id="index-timestamp"></a>Timestamp</h3><p>A document can be indexed with a <code class="literal">timestamp</code> associated with it. The
 <code class="literal">timestamp</code> value of a document can be set using the <code class="literal">timestamp</code>
 parameter. For example:</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT localhost:9200/twitter/tweet/1?timestamp=2009-11-15T14%3A12%3A12 -d '{
     "user" : "kimchy",
-    "message" : "trying out Elastic Search",
+    "message" : "trying out Elasticsearch",
 }'</pre><p>If the <code class="literal">timestamp</code> value is not provided externally or in the <code class="literal">_source</code>,
 the <code class="literal">timestamp</code> will be automatically set to the date the document was
 processed by the indexing chain. More information can be found on the
@@ -163,21 +171,7 @@ as shown in the following examples:</p><pre class="programlisting prettyprint la
     "user": "kimchy",
     "message": "Trying out elasticsearch, so far so good?"
 }'</pre><p>More information can be found on the
-<a class="link" href="mapping-ttl-field.html" title="_ttl">_ttl mapping page</a>.</p><h3><a id="percolate"></a>Percolate</h3><p><a class="link" href="search-percolate.html" title="Percolate API">Percolation</a> can be performed
-at index time by passing the <code class="literal">percolate</code> parameter. Setting it to <code class="literal">*</code>
-will cause all percolation queries registered against the index to be
-checked against the provided document, for example:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test/type1/1?percolate=* -d '{
-    "field1" : "value1"
-}'</pre><p>To filter out which percolator queries will be executed, pass the query
-string syntax to the <code class="literal">percolate</code> parameter:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test/type1/1?percolate=color:green -d '{
-    "field1" : "value1",
-    "field2" : "value2"
-}'</pre><p><span class="strong"><strong>NOTE:</strong></span> In a distributed cluster, percolation during the index operation
-is performed on the primary shard, as soon as the index operation
-completes. The operation executes on the primary while the replicas are
-updating, concurrently. Percolation during the index operation somewhat
-cuts down on parsing overhead, as the parse tree for the document is
-simply re-used for percolation.</p><h3><a id="index-distributed"></a>Distributed</h3><p>The index operation is directed to the primary shard based on its route
+<a class="link" href="mapping-ttl-field.html" title="_ttl">_ttl mapping page</a>.</p><h3><a id="index-distributed"></a>Distributed</h3><p>The index operation is directed to the primary shard based on its route
 (see the Routing section above) and performed on the actual node
 containing this shard. After the primary shard completes the operation,
 if needed, the update is distributed to applicable replicas.</p><h3><a id="index-consistency"></a>Write Consistency</h3><p>To prevent writes from taking place on the "wrong" side of a network
@@ -205,7 +199,7 @@ explicitly specify how long it waits. Here is an example of setting it
 to 5 minutes:</p><pre class="programlisting prettyprint lang-js">$ curl -XPUT 'http://localhost:9200/twitter/tweet/1?timeout=5m' -d '{
     "user" : "kimchy",
     "post_date" : "2009-11-15T14:12:12",
-    "message" : "trying out Elastic Search"
+    "message" : "trying out Elasticsearch"
 }'</pre></div><div class="navfooter"><span class="prev"><a href="docs.html">
               « 
               Document APIs</a>

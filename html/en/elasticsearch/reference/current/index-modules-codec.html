@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Codec module</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="index-modules.html" title="Index Modules" /><link rel="prev" href="_field_data_formats.html" title="Field data formats" /><link rel="next" href="index-modules-similarity.html" title="Similarity module" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Codec module</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="index-modules.html" title="Index Modules" /><link rel="prev" href="fielddata-formats.html" title="Field data formats" /><link rel="next" href="index-modules-similarity.html" title="Similarity module" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,8 +20,8 @@
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
-      [0.90]
-    </a></span> » <span class="breadcrumb-link"><a href="index-modules.html">Index Modules</a></span> » <span class="breadcrumb-node">Codec module</span></div><div class="navheader"><span class="prev"><a href="_field_data_formats.html">
+      [1.x]
+    </a></span> » <span class="breadcrumb-link"><a href="index-modules.html">Index Modules</a></span> » <span class="breadcrumb-node">Codec module</span></div><div class="navheader"><span class="prev"><a href="fielddata-formats.html">
               « 
               Field data formats</a>
            
@@ -29,14 +29,18 @@
            
           <a href="index-modules-similarity.html">Similarity module
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="index-modules-codec"></a>Codec module</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="index-modules-codec.html">Codec module</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>Codecs define how documents are written to disk and read from disk. The
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="index-modules-codec"></a>Codec module</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="fielddata-formats.html">Field data formats</a></span></dt><dt><span class="chapter"><a href="index-modules-codec.html">Codec module</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>Codecs define how documents are written to disk and read from disk. The
 postings format is the part of the codec that responsible for reading
 and writing the term dictionary, postings lists and positions, payloads
-and offsets stored in the postings list.</p><p>Configuring custom postings formats is an expert feature and most likely
-using the builtin postings formats will suite your needs as is described
-in the <a class="link" href="mapping-core-types.html" title="Core Types">mapping section</a>.</p><div class="sidebar"><div class="titlepage"></div><p>Only the default codec and postings format are supported: other formats may
-break backward compatibility between minor versions of Elasticsearch,
-requiring data to be reindexed.</p></div><p>Codecs are available in Elasticsearch from version <code class="literal">0.90.0.beta1</code>.</p><h3><a id="custom-postings"></a>Configuring a custom postings format</h3><p>Custom postings format can be defined in the index settings in the
+and offsets stored in the postings list. The doc values format is
+responsible for reading column-stride storage for a field and is typically
+used for sorting or faceting. When a field doesn’t have doc values enabled,
+it is still possible to sort or facet by loading field values from the
+inverted index into main memory.</p><p>Configuring custom postings or doc values formats is an expert feature and
+most likely using the builtin formats will suit your needs as is described
+in the <a class="link" href="mapping-core-types.html" title="Core Types">mapping section</a>.</p><div class="sidebar"><div class="titlepage"></div><p>Only the default codec, postings format and doc values format are supported:
+other formats may break backward compatibility between minor versions of
+Elasticsearch, requiring data to be reindexed.</p></div><h3><a id="custom-postings"></a>Configuring a custom postings format</h3><p>Custom postings format can be defined in the index settings in the
 <code class="literal">codec</code> part. The <code class="literal">codec</code> part can be configured when creating an index
 or updating index settings. An example on how to define your custom
 postings format:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'http://localhost:9200/twitter/' -d '{
@@ -115,13 +119,11 @@ following options:</p><div class="variablelist"><dl class="variablelist"><dt><sp
     and if number of docs per segment is larger than <span class="strong"><strong>10k</strong></span> use <span class="strong"><strong>0.01</strong></span> as
     fpp. The last fallback value is always <span class="strong"><strong>0.03</strong></span>. This example expression
     is also the default.
-</dd></dl></div><p>Type name: <code class="literal">bloom</code></p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p><span class="added">
-      [<span class="version">0.90.9</span>]
-      <span class="detail">Added in 0.90.9.</span></span>. It can sometime make sense to disable bloom filters. For
-instance, if you are logging into an index per day, and you have thousands of
-indices, the bloom filters can take up a sizable amount of memory. For most
-queries you are only interested in recent indices, so you don’t mind CRUD
-operations on older indices taking slightly longer.</p><p>In these cases you can disable loading of the bloom filter on  a per-index
+</dd></dl></div><p>Type name: <code class="literal">bloom</code></p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><a id="codec-bloom-load"></a><p>It can sometime make sense to disable bloom filters. For instance, if you are
+logging into an index per day, and you have thousands of indices, the bloom
+filters can take up a sizable amount of memory. For most queries you are only
+interested in recent indices, so you don’t mind CRUD operations on older
+indices taking slightly longer.</p><p>In these cases you can disable loading of the bloom filter on  a per-index
 basis by updating the index settings:</p><pre class="programlisting prettyprint lang-js">PUT /old_index/_settings?index.codec.bloom.load=false</pre><p>This setting, which defaults to <code class="literal">true</code>, can be updated on a live index. Note,
 however, that changing the value will cause the index to be reopened, which
 will invalidate any existing caches.</p></div></div><h4><a id="pulsing-postings"></a>Pulsing postings format</h4><p>The pulsing implementation in-lines the posting lists for very low
@@ -154,7 +156,37 @@ following parameters:</p><div class="variablelist"><dl class="variablelist"><dt>
 </span></dt><dd>
     The maximum block size the default Lucene term
     dictionary uses to encode on-disk blocks. Defaults to <span class="strong"><strong>48</strong></span>.
-</dd></dl></div><p>Type name: <code class="literal">default</code></p></div><div class="navfooter"><span class="prev"><a href="_field_data_formats.html">
+</dd></dl></div><p>Type name: <code class="literal">default</code></p><h3><a id="_configuring_a_custom_doc_values_format"></a>Configuring a custom doc values format</h3><p>Custom doc values format can be defined in the index settings in the
+<code class="literal">codec</code> part. The <code class="literal">codec</code> part can be configured when creating an index
+or updating index settings. An example on how to define your custom
+doc values format:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'http://localhost:9200/twitter/' -d '{
+    "settings" : {
+        "index" : {
+            "codec" : {
+                "doc_values_format" : {
+                    "my_format" : {
+                        "type" : "disk"
+                    }
+                }
+            }
+        }
+    }
+}'</pre><p>Then we defining your mapping your can use the <code class="literal">my_format</code> name in the
+<code class="literal">doc_values_format</code> option as the example below illustrates:</p><pre class="programlisting prettyprint lang-js">{
+  "product" : {
+     "properties" : {
+         "price" : {"type" : "integer", "doc_values_format" : "my_format"}
+     }
+  }
+}</pre><h3><a id="_available_doc_values_formats"></a>Available doc values formats</h3><h4><a id="_memory_doc_values_format"></a>Memory doc values format</h4><p>A doc values format that stores all values in a FST in RAM. This format does
+write to disk but the whole data-structure is loaded into memory when reading
+the index. The memory postings format has no options.</p><p>Type name: <code class="literal">memory</code></p><h4><a id="_disk_doc_values_format"></a>Disk doc values format</h4><p>A doc values format that stores and reads everything from disk. Although it may
+be slightly slower than the default doc values format, this doc values format
+will require almost no memory from the JVM. The disk doc values format has no
+options.</p><p>Type name: <code class="literal">disk</code></p><h4><a id="_default_doc_values_format"></a>Default doc values format</h4><p>The default doc values format tries to make a good compromise between speed and
+memory usage by only loading into memory data-structures that matter for
+performance. This makes this doc values format a good fit for most use-cases.
+The default doc values format has no options.</p><p>Type name: <code class="literal">default</code></p></div><div class="navfooter"><span class="prev"><a href="fielddata-formats.html">
               « 
               Field data formats</a>
            

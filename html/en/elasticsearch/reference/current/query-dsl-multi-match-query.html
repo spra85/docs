@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Multi Match Query</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="query-dsl-queries.html" title="Queries" /><link rel="prev" href="query-dsl-match-query.html" title="Match Query" /><link rel="next" href="query-dsl-bool-query.html" title="Bool Query" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Multi Match Query</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="query-dsl-queries.html" title="Queries" /><link rel="prev" href="query-dsl-match-query.html" title="Match Query" /><link rel="next" href="query-dsl-bool-query.html" title="Bool Query" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,7 +20,7 @@
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
-      [0.90]
+      [1.x]
     </a></span> » <span class="breadcrumb-link"><a href="query-dsl.html">Query DSL</a></span> » <span class="breadcrumb-link"><a href="query-dsl-queries.html">Queries</a></span> » <span class="breadcrumb-node">Multi Match Query</span></div><div class="navheader"><span class="prev"><a href="query-dsl-match-query.html">
               « 
               Match Query</a>
@@ -29,39 +29,287 @@
            
           <a href="query-dsl-bool-query.html">Bool Query
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="query-dsl-multi-match-query"></a>Multi Match Query</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="query-dsl-match-query.html">Match Query</a></span></dt><dt><span class="section"><a href="query-dsl-multi-match-query.html">Multi Match Query</a></span></dt><dt><span class="section"><a href="query-dsl-bool-query.html">Bool Query</a></span></dt><dt><span class="section"><a href="query-dsl-boosting-query.html">Boosting Query</a></span></dt><dt><span class="section"><a href="query-dsl-common-terms-query.html">Common Terms Query</a></span></dt><dt><span class="section"><a href="query-dsl-custom-filters-score-query.html">Custom Filters Score Query</a></span></dt><dt><span class="section"><a href="query-dsl-custom-score-query.html">Custom Score Query</a></span></dt><dt><span class="section"><a href="query-dsl-custom-boost-factor-query.html">Custom Boost Factor Query</a></span></dt><dt><span class="section"><a href="query-dsl-constant-score-query.html">Constant Score Query</a></span></dt><dt><span class="section"><a href="query-dsl-dis-max-query.html">Dis Max Query</a></span></dt><dt><span class="section"><a href="query-dsl-field-query.html">Field Query</a></span></dt><dt><span class="section"><a href="query-dsl-filtered-query.html">Filtered Query</a></span></dt><dt><span class="section"><a href="query-dsl-flt-query.html">Fuzzy Like This Query</a></span></dt><dt><span class="section"><a href="query-dsl-flt-field-query.html">Fuzzy Like This Field Query</a></span></dt><dt><span class="section"><a href="query-dsl-function-score-query.html">Function Score Query</a></span></dt><dt><span class="section"><a href="query-dsl-fuzzy-query.html">Fuzzy Query</a></span></dt><dt><span class="section"><a href="query-dsl-geo-shape-query.html">GeoShape Query</a></span></dt><dt><span class="section"><a href="query-dsl-has-child-query.html">Has Child Query</a></span></dt><dt><span class="section"><a href="query-dsl-has-parent-query.html">Has Parent Query</a></span></dt><dt><span class="section"><a href="query-dsl-ids-query.html">Ids Query</a></span></dt><dt><span class="section"><a href="query-dsl-indices-query.html">Indices Query</a></span></dt><dt><span class="section"><a href="query-dsl-match-all-query.html">Match All Query</a></span></dt><dt><span class="section"><a href="query-dsl-mlt-query.html">More Like This Query</a></span></dt><dt><span class="section"><a href="query-dsl-mlt-field-query.html">More Like This Field Query</a></span></dt><dt><span class="section"><a href="query-dsl-nested-query.html">Nested Query</a></span></dt><dt><span class="section"><a href="query-dsl-prefix-query.html">Prefix Query</a></span></dt><dt><span class="section"><a href="query-dsl-query-string-query.html">Query String Query</a></span></dt><dt><span class="section"><a href="query-dsl-simple-query-string-query.html">Simple Query String Query</a></span></dt><dt><span class="section"><a href="query-dsl-range-query.html">Range Query</a></span></dt><dt><span class="section"><a href="query-dsl-regexp-query.html">Regexp Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-first-query.html">Span First Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-multi-term-query.html">Span Multi Term Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-near-query.html">Span Near Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-not-query.html">Span Not Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-or-query.html">Span Or Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-term-query.html">Span Term Query</a></span></dt><dt><span class="section"><a href="query-dsl-term-query.html">Term Query</a></span></dt><dt><span class="section"><a href="query-dsl-terms-query.html">Terms Query</a></span></dt><dt><span class="section"><a href="query-dsl-top-children-query.html">Top Children Query</a></span></dt><dt><span class="section"><a href="query-dsl-wildcard-query.html">Wildcard Query</a></span></dt><dt><span class="section"><a href="query-dsl-text-query.html">Text Query</a></span></dt><dt><span class="section"><a href="query-dsl-minimum-should-match.html">Minimum Should Match</a></span></dt><dt><span class="section"><a href="query-dsl-multi-term-rewrite.html">Multi Term Query Rewrite</a></span></dt></dl></div><p>The <code class="literal">multi_match</code> query builds further on top of the <code class="literal">match</code> query by
-allowing multiple fields to be specified. The idea here is to allow to
-more easily build a concise match type query over multiple fields
-instead of using a relatively more expressive query by using multiple
-match queries within a <code class="literal">bool</code> query.</p><p>The structure of the query is a bit different. Instead of a nested json
-object defining the query field, there is a top json level field for
-defining the query fields. Example:</p><pre class="programlisting prettyprint lang-js">{
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="query-dsl-multi-match-query"></a>Multi Match Query</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="query-dsl-match-query.html">Match Query</a></span></dt><dt><span class="section"><a href="query-dsl-multi-match-query.html">Multi Match Query</a></span></dt><dt><span class="section"><a href="query-dsl-bool-query.html">Bool Query</a></span></dt><dt><span class="section"><a href="query-dsl-boosting-query.html">Boosting Query</a></span></dt><dt><span class="section"><a href="query-dsl-common-terms-query.html">Common Terms Query</a></span></dt><dt><span class="section"><a href="query-dsl-constant-score-query.html">Constant Score Query</a></span></dt><dt><span class="section"><a href="query-dsl-dis-max-query.html">Dis Max Query</a></span></dt><dt><span class="section"><a href="query-dsl-filtered-query.html">Filtered Query</a></span></dt><dt><span class="section"><a href="query-dsl-flt-query.html">Fuzzy Like This Query</a></span></dt><dt><span class="section"><a href="query-dsl-flt-field-query.html">Fuzzy Like This Field Query</a></span></dt><dt><span class="section"><a href="query-dsl-function-score-query.html">Function Score Query</a></span></dt><dt><span class="section"><a href="query-dsl-fuzzy-query.html">Fuzzy Query</a></span></dt><dt><span class="section"><a href="query-dsl-geo-shape-query.html">GeoShape Query</a></span></dt><dt><span class="section"><a href="query-dsl-has-child-query.html">Has Child Query</a></span></dt><dt><span class="section"><a href="query-dsl-has-parent-query.html">Has Parent Query</a></span></dt><dt><span class="section"><a href="query-dsl-ids-query.html">Ids Query</a></span></dt><dt><span class="section"><a href="query-dsl-indices-query.html">Indices Query</a></span></dt><dt><span class="section"><a href="query-dsl-match-all-query.html">Match All Query</a></span></dt><dt><span class="section"><a href="query-dsl-mlt-query.html">More Like This Query</a></span></dt><dt><span class="section"><a href="query-dsl-mlt-field-query.html">More Like This Field Query</a></span></dt><dt><span class="section"><a href="query-dsl-nested-query.html">Nested Query</a></span></dt><dt><span class="section"><a href="query-dsl-prefix-query.html">Prefix Query</a></span></dt><dt><span class="section"><a href="query-dsl-query-string-query.html">Query String Query</a></span></dt><dt><span class="section"><a href="query-dsl-simple-query-string-query.html">Simple Query String Query</a></span></dt><dt><span class="section"><a href="query-dsl-range-query.html">Range Query</a></span></dt><dt><span class="section"><a href="query-dsl-regexp-query.html">Regexp Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-first-query.html">Span First Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-multi-term-query.html">Span Multi Term Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-near-query.html">Span Near Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-not-query.html">Span Not Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-or-query.html">Span Or Query</a></span></dt><dt><span class="section"><a href="query-dsl-span-term-query.html">Span Term Query</a></span></dt><dt><span class="section"><a href="query-dsl-term-query.html">Term Query</a></span></dt><dt><span class="section"><a href="query-dsl-terms-query.html">Terms Query</a></span></dt><dt><span class="section"><a href="query-dsl-top-children-query.html">Top Children Query</a></span></dt><dt><span class="section"><a href="query-dsl-wildcard-query.html">Wildcard Query</a></span></dt><dt><span class="section"><a href="query-dsl-minimum-should-match.html">Minimum Should Match</a></span></dt><dt><span class="section"><a href="query-dsl-multi-term-rewrite.html">Multi Term Query Rewrite</a></span></dt></dl></div><p>The <code class="literal">multi_match</code> query builds on the <a class="link" href="query-dsl-match-query.html" title="Match Query"><code class="literal">match</code> query</a>
+to allow multi-field queries:</p><pre class="programlisting prettyprint lang-js">{
+  "multi_match" : {
+    "query":    "this is a test", <a id="CO12-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+    "fields": [ "subject", "message" ] <a id="CO12-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+  }
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO12-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+The query string.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO12-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+The fields to be queried.
+</p></td></tr></table></div><h3><a id="_literal_fields_literal_and_per_field_boosting"></a><code class="literal">fields</code> and per-field boosting</h3><p>Fields can be specified with wildcards, eg:</p><pre class="programlisting prettyprint lang-js">{
+  "multi_match" : {
+    "query":    "Will Smith"
+    "fields": [ "title", "*_name" ] <a id="CO13-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+  }
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO13-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+Query the <code class="literal">title</code>, <code class="literal">first_name</code> and <code class="literal">last_name</code> fields.
+</p></td></tr></table></div><p>Individual fields can be boosted with the caret (<code class="literal">^</code>) notation:</p><pre class="programlisting prettyprint lang-js">{
   "multi_match" : {
     "query" : "this is a test",
-    "fields" : [ "subject", "message" ]
+    "fields" : [ "subject^3", "message" ] <a id="CO14-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
   }
-}</pre><p>The <code class="literal">multi_match</code> query creates either a <code class="literal">bool</code> or a <code class="literal">dis_max</code> top level
-query. Each field is a query clause in this top level query. The query
-clause contains the actual query (the specified <span class="emphasis"><em>type</em></span> defines what
-query this will be). Each query clause is basically a <code class="literal">should</code> clause.</p><h4><a id="_options_2"></a>Options</h4><p>All options that apply on the <code class="literal">match</code> query also apply on the
-<code class="literal">multi_match</code> query. The <code class="literal">match</code> query options apply only on the
-individual clauses inside the top level query.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<code class="literal">fields</code> - Fields to be used in the query.
-</li><li class="listitem">
-<code class="literal">use_dis_max</code> - Boolean indicating to either create a <code class="literal">dis_max</code> query
-or a <code class="literal">bool</code> query. Defaults to <code class="literal">true</code>.
-</li><li class="listitem">
-<code class="literal">tie_breaker</code> - Multiplier value to balance the scores between lower
-and higher scoring fields. Only applicable when <code class="literal">use_dis_max</code> is set to
-true. Defaults to <code class="literal">0.0</code>.
-</li></ul></div><p>The query accepts all the options that a regular <code class="literal">match</code> query accepts.</p><h4><a id="_boosting"></a>Boosting</h4><p>The <code class="literal">multi_match</code> query supports field boosting via <code class="literal">^</code> notation in the
-fields json field.</p><pre class="programlisting prettyprint lang-js">{
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO14-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+The <code class="literal">subject</code> field is three times as important than the <code class="literal">message</code> field.
+</p></td></tr></table></div><h3><a id="_literal_use_dis_max_literal"></a><code class="literal">use_dis_max</code></h3><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><h4>Deprecated in 1.1.0.</h4><p>Use <code class="literal">type:best_fields</code> or <code class="literal">type:most_fields</code> instead. See <a class="xref" href="query-dsl-multi-match-query.html#multi-match-types" title="Types of multi_match query:">the section called “Types of <code class="literal">multi_match</code> query:”</a>.</p></div></div><p>By default, the <code class="literal">multi_match</code> query generates a <code class="literal">match</code> clause per field, then wraps them
+in a <code class="literal">dis_max</code> query.  By setting <code class="literal">use_dis_max</code> to <code class="literal">false</code>, they will be wrapped in a
+<code class="literal">bool</code> query instead.</p><h3><a id="multi-match-types"></a>Types of <code class="literal">multi_match</code> query:</h3><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.1.0.</p></div></div><p>The way the <code class="literal">multi_match</code> query is executed internally depends on the <code class="literal">type</code>
+parameter, which can be set to:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">best_fields</code>
+</p>
+</td><td valign="top">
+<p>
+(<span class="strong"><strong>default</strong></span>) Finds documents which match any field, but
+                    uses the  <code class="literal">_score</code> from the best field.  See <a class="xref" href="query-dsl-multi-match-query.html#type-best-fields" title="best_fields"><code class="literal">best_fields</code></a>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">most_fields</code>
+</p>
+</td><td valign="top">
+<p>
+Finds documents which match any field and combines
+                    the <code class="literal">_score</code> from each field.  See <a class="xref" href="query-dsl-multi-match-query.html#type-most-fields" title="most_fields"><code class="literal">most_fields</code></a>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">cross_fields</code>
+</p>
+</td><td valign="top">
+<p>
+Treats fields with the same <code class="literal">analyzer</code> as though they
+                    were one big field. Looks for each word in <span class="strong"><strong>any</strong></span>
+                    field. See <a class="xref" href="query-dsl-multi-match-query.html#type-cross-fields" title="cross_fields"><code class="literal">cross_fields</code></a>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">phrase</code>
+</p>
+</td><td valign="top">
+<p>
+Runs a <code class="literal">match_phrase</code> query on each field and combines
+                    the <code class="literal">_score</code> from each field.  See <a class="xref" href="query-dsl-multi-match-query.html#type-phrase" title="phrase and phrase_prefix"><code class="literal">phrase</code> and <code class="literal">phrase_prefix</code></a>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">phrase_prefix</code>
+</p>
+</td><td valign="top">
+<p>
+Runs a <code class="literal">match_phrase_prefix</code> query on each field and
+                    combines the <code class="literal">_score</code> from each field.  See <a class="xref" href="query-dsl-multi-match-query.html#type-phrase" title="phrase and phrase_prefix"><code class="literal">phrase</code> and <code class="literal">phrase_prefix</code></a>.
+</p>
+</td></tr></tbody></table></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="type-best-fields"></a><code class="literal">best_fields</code></h3></div></div></div><p>The <code class="literal">best_fields</code> type is most useful when you are searching for multiple
+words best found in the same field. For instance “brown fox” in a single
+field is more meaningful than “brown” in one field and “fox” in the other.</p><p>The <code class="literal">best_fields</code> type generates a <a class="link" href="query-dsl-match-query.html" title="Match Query"><code class="literal">match</code> query</a> for
+each field and wraps them in a <a class="link" href="query-dsl-dis-max-query.html" title="Dis Max Query"><code class="literal">dis_max</code></a> query, to
+find the single best matching field.  For instance, this query:</p><pre class="programlisting prettyprint lang-js">{
   "multi_match" : {
-    "query" : "this is a test",
-    "fields" : [ "subject^2", "message" ]
+    "query":      "brown fox",
+    "type":       "best_fields",
+    "fields":     [ "subject", "message" ],
+    "tie_breaker": 0.3
   }
-}</pre><p>In the above example hits in the <code class="literal">subject</code> field are 2 times more
-important than in the <code class="literal">message</code> field.</p></div><div class="navfooter"><span class="prev"><a href="query-dsl-match-query.html">
+}</pre><p>would be executed as:</p><pre class="programlisting prettyprint lang-js">{
+  "dis_max": {
+    "queries": [
+      { "match": { "subject": "brown fox" }},
+      { "match": { "message": "brown fox" }}
+    ],
+    "tie_breaker": 0.3
+  }
+}</pre><p>Normally the <code class="literal">best_fields</code> type uses the score of the <span class="strong"><strong>single</strong></span> best matching
+field, but if <code class="literal">tie_breaker</code> is specified, then it calculates the score as
+follows:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+the score from the best matching field
+</li><li class="listitem">
+plus <code class="literal">tie_breaker * _score</code> for all other matching fields
+</li></ul></div><p>Also, accepts <code class="literal">analyzer</code>, <code class="literal">boost</code>, <code class="literal">operator</code>, <code class="literal">minimum_should_match</code>,
+<code class="literal">fuzziness</code>, <code class="literal">prefix_length</code>, <code class="literal">max_expansions</code>, <code class="literal">rewrite</code>, <code class="literal">zero_terms_query</code>
+and <code class="literal">cutoff_frequency</code>, as explained in <a class="link" href="query-dsl-match-query.html" title="Match Query">match query</a>.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><h4><code class="literal">operator</code> and <code class="literal">minimum_should_match</code></h4><a id="operator-min"></a><p>The <code class="literal">best_fields</code> and <code class="literal">most_fields</code> types are <span class="emphasis"><em>field-centric</em></span> — they generate
+a <code class="literal">match</code> query <span class="strong"><strong>per field</strong></span>.  This means that the <code class="literal">operator</code> and
+<code class="literal">minimum_should_match</code> parameters are applied to each field individually,
+which is probably not what you want.</p><p>Take this query for example:</p><pre class="programlisting prettyprint lang-js">{
+  "multi_match" : {
+    "query":      "Will Smith",
+    "type":       "best_fields",
+    "fields":     [ "first_name", "last_name" ],
+    "operator":   "and" <a id="CO15-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+  }
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO15-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+All terms must be present.
+</p></td></tr></table></div><p>This query is executed as:</p><pre class="literallayout">  (+first_name:will +first_name:smith)
+| (+last_name:will  +last_name:smith)</pre><p>In other words, <span class="strong"><strong>all terms</strong></span> must be present <span class="strong"><strong>in a single field</strong></span> for a document
+to match.</p><p>See <a class="xref" href="query-dsl-multi-match-query.html#type-cross-fields" title="cross_fields"><code class="literal">cross_fields</code></a> for a better solution.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="type-most-fields"></a><code class="literal">most_fields</code></h3></div></div></div><p>The <code class="literal">most_fields</code> type is most useful when querying multiple fields that
+contain the same text analyzed in different ways.  For instance, the main
+field may contain synonyms, stemming and terms without diacritics. A second
+field may contain the original terms, and a third field might contain
+shingles. By combining scores from all three fields we can match as many
+documents as possible with the main field, but use the second and third fields
+to push the most similar results to the top of the list.</p><p>This query:</p><pre class="programlisting prettyprint lang-js">{
+  "multi_match" : {
+    "query":      "quick brown fox",
+    "type":       "most_fields",
+    "fields":     [ "title", "title.original", "title.shingles" ]
+  }
+}</pre><p>would be executed as:</p><pre class="programlisting prettyprint lang-js">{
+  "bool": {
+    "should": [
+      { "match": { "title":          "quick brown fox" }},
+      { "match": { "title.original": "quick brown fox" }},
+      { "match": { "title.shingles": "quick brown fox" }}
+    ]
+  }
+}</pre><p>The score from each <code class="literal">match</code> clause is added together, then divided by the
+number of <code class="literal">match</code> clauses.</p><p>Also, accepts <code class="literal">analyzer</code>, <code class="literal">boost</code>, <code class="literal">operator</code>, <code class="literal">minimum_should_match</code>,
+<code class="literal">fuzziness</code>, <code class="literal">prefix_length</code>, <code class="literal">max_expansions</code>, <code class="literal">rewrite</code>, <code class="literal">zero_terms_query</code>
+and <code class="literal">cutoff_frequency</code>, as explained in <a class="link" href="query-dsl-match-query.html" title="Match Query">match query</a>, but
+<span class="strong"><strong>see <a class="xref" href="query-dsl-multi-match-query.html#operator-min" title="operator and minimum_should_match"><code class="literal">operator</code> and <code class="literal">minimum_should_match</code></a></strong></span>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="type-phrase"></a><code class="literal">phrase</code> and <code class="literal">phrase_prefix</code></h3></div></div></div><p>The <code class="literal">phrase</code> and <code class="literal">phrase_prefix</code> types behave just like <a class="xref" href="query-dsl-multi-match-query.html#type-best-fields" title="best_fields"><code class="literal">best_fields</code></a>,
+but they use a <code class="literal">match_phrase</code> or <code class="literal">match_phrase_prefix</code> query instead of a
+<code class="literal">match</code> query.</p><p>This query:</p><pre class="programlisting prettyprint lang-js">{
+  "multi_match" : {
+    "query":      "quick brown f",
+    "type":       "phrase_prefix",
+    "fields":     [ "subject", "message" ]
+  }
+}</pre><pre class="programlisting prettyprint lang-js">{
+  "dis_max": {
+    "queries": [
+      { "match_phrase_prefix": { "subject": "quick brown f" }},
+      { "match_phrase_prefix": { "message": "quick brown f" }}
+    ]
+  }
+}</pre><p>Also, accepts <code class="literal">analyzer</code>, <code class="literal">boost</code>, <code class="literal">slop</code> and <code class="literal">zero_terms_query</code>  as explained
+in <a class="xref" href="query-dsl-match-query.html" title="Match Query">Match Query</a>.  Type <code class="literal">phrase_prefix</code> additionally accepts
+<code class="literal">max_expansions</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="type-cross-fields"></a><code class="literal">cross_fields</code></h3></div></div></div><p>The <code class="literal">cross_fields</code> type is particularly useful with structured documents where
+multiple fields <span class="strong"><strong>should</strong></span> match.  For instance, when querying the <code class="literal">first_name</code>
+and <code class="literal">last_name</code> fields for “Will Smith”, the best match is like to have
+“Will” in one field and “Smith” in the other.</p><div class="sidebar"><div class="titlepage"></div><p>This sounds like a job for <a class="xref" href="query-dsl-multi-match-query.html#type-most-fields" title="most_fields"><code class="literal">most_fields</code></a> but there are two problems
+with that approach. The first problem is that <code class="literal">operator</code> and
+<code class="literal">minimum_should_match</code> are applied per-field, instead of per-term (see
+<a class="link" href="query-dsl-multi-match-query.html#operator-min" title="operator and minimum_should_match">explanation above</a>).</p><p>The second problem is to do with relevance: the different term frequencies in
+the <code class="literal">first_name</code> and <code class="literal">last_name</code> fields   can produce unexpected results.</p><p>For instance, imagine we have two people: “Will Smith” and “Smith Jones”.
+“Smith” as a last name is very common (and so is of low importance) but
+“Smith” as a first name is very uncommon (and so is of great importance).</p><p>If we do a search for “Will Smith”, the “Smith Jones” document will
+probably appear above the better matching “Will Smith” because the score of
+<code class="literal">first_name:smith</code> has trumped the combined scores of <code class="literal">first_name:will</code> plus
+<code class="literal">last_name:smith</code>.</p></div><p>One way of dealing with these types of queries is simply to index the
+<code class="literal">first_name</code> and <code class="literal">last_name</code> fields into a single <code class="literal">full_name</code> field.  Of
+course, this can only be done at index time.</p><p>The <code class="literal">cross_field</code> type tries to solve these problems at query time by taking a
+<span class="emphasis"><em>term-centric</em></span> approach.  It first analyzes the query string into individual
+terms, then looks for each term in any of the fields, as though they were one
+big field.</p><p>A query like:</p><pre class="programlisting prettyprint lang-js">{
+  "multi_match" : {
+    "query":      "Will Smith",
+    "type":       "cross_fields",
+    "fields":     [ "first_name", "last_name" ],
+    "operator":   "and"
+  }
+}</pre><p>is executed as:</p><pre class="literallayout">+(first_name:will  last_name:will)
++(first_name:smith last_name:smith)</pre><p>In other words, <span class="strong"><strong>all terms</strong></span> must be present <span class="strong"><strong>in at least one field</strong></span> for a
+document to match.  (Compare this to
+<a class="link" href="query-dsl-multi-match-query.html#operator-min" title="operator and minimum_should_match">the logic used for <code class="literal">best_fields</code> and <code class="literal">most_fields</code></a>.)</p><p>That solves one of the two problems. The problem of differing term frequencies
+is solved by <span class="emphasis"><em>blending</em></span> the term frequencies for all fields in order to even
+out the differences.  In other words, <code class="literal">first_name:smith</code> will be treated as
+though it has the same weight as <code class="literal">last_name:smith</code>. (Actually,
+<code class="literal">first_name:smith</code> is given a tiny advantage over <code class="literal">last_name:smith</code>, just to
+make the order of results more stable.)</p><p>If you run the above query through the <a class="xref" href="search-validate.html" title="Validate API"><em>Validate API</em></a>, it returns this
+explanation:</p><pre class="literallayout">+blended("will",  fields: [first_name, last_name])
++blended("smith", fields: [first_name, last_name])</pre><p>Also, accepts <code class="literal">analyzer</code>, <code class="literal">boost</code>, <code class="literal">operator</code>, <code class="literal">minimum_should_match</code>,
+<code class="literal">zero_terms_query</code> and <code class="literal">cutoff_frequency</code>, as explained in
+<a class="link" href="query-dsl-match-query.html" title="Match Query">match query</a>.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_literal_cross_field_literal_and_analysis"></a><code class="literal">cross_field</code> and analysis</h4></div></div></div><p>The <code class="literal">cross_field</code> type can only work in term-centric mode on fields that have
+the same analyzer. Fields with the same analyzer are grouped together as in
+the example above.  If there are multiple groups, they are combined with a
+<code class="literal">bool</code> query.</p><p>For instance, if we have a <code class="literal">first</code> and <code class="literal">last</code> field which have
+the same analyzer, plus a <code class="literal">first.edge</code> and <code class="literal">last.edge</code> which
+both use an <code class="literal">edge_ngram</code> analyzer, this query:</p><pre class="programlisting prettyprint lang-js">{
+  "multi_match" : {
+    "query":      "Jon",
+    "type":       "cross_fields",
+    "fields":     [
+        "first", "first.edge",
+        "last",  "last.edge"
+    ]
+  }
+}</pre><p>would be executed as:</p><pre class="literallayout">    blended("jon", fields: [first, last])
+| (
+    blended("j",   fields: [first.edge, last.edge])
+    blended("jo",  fields: [first.edge, last.edge])
+    blended("jon", fields: [first.edge, last.edge])
+)</pre><p>In other words, <code class="literal">first</code> and <code class="literal">last</code> would be grouped together and
+treated as a single field, and <code class="literal">first.edge</code> and <code class="literal">last.edge</code> would be
+grouped together and treated as a single field.</p><p>Having multiple groups is fine but, when combined with <code class="literal">operator</code> or
+<code class="literal">minimum_should_match</code>, it can suffer from the <a class="link" href="query-dsl-multi-match-query.html#operator-min" title="operator and minimum_should_match">same problem</a>
+as <code class="literal">most_fields</code> or <code class="literal">best_fields</code>.</p><p>You can easily rewrite this query yourself as two separate <code class="literal">cross_type</code>
+queries combined with a <code class="literal">bool</code> query, and apply the <code class="literal">minimum_should_match</code>
+parameter to just one of them:</p><pre class="programlisting prettyprint lang-js">{
+    "bool": {
+        "should": [
+            {
+              "multi_match" : {
+                "query":      "Will Smith",
+                "type":       "cross_fields",
+                "fields":     [ "first", "last" ],
+                "minimum_should_match": 50% <a id="CO16-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+              }
+            },
+            {
+              "multi_match" : {
+                "query":      "Will Smith",
+                "type":       "cross_fields",
+                "fields":     [ "*.edge" ]
+              }
+            }
+        ]
+    }
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO16-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+Either <code class="literal">will</code> or <code class="literal">smith</code> must be present in either of the <code class="literal">first</code>
+    or <code class="literal">last</code> fields
+</p></td></tr></table></div><p>You can force all fields into the same group by specifying the <code class="literal">analyzer</code>
+parameter in the query.</p><pre class="programlisting prettyprint lang-js">{
+  "multi_match" : {
+    "query":      "Jon",
+    "type":       "cross_fields",
+    "analyzer":   "standard", <a id="CO17-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+    "fields":     [ "first", "last", "*.edge" ]
+  }
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO17-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+Use the <code class="literal">standard</code> analyzer for all fields.
+</p></td></tr></table></div><p>which will be executed as:</p><pre class="literallayout">blended("will",  fields: [first, first.edge, last.edge, last])
+blended("smith", fields: [first, first.edge, last.edge, last])</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_literal_tie_breaker_literal"></a><code class="literal">tie_breaker</code></h4></div></div></div><p>By default, each per-term <code class="literal">blended</code> query will use the best score returned by
+any field in a group, then these scores are added together to give the final
+score. The <code class="literal">tie_breaker</code> parameter can change the default behaviour of the
+per-term <code class="literal">blended</code> queries. It accepts:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">0.0</code>
+</p>
+</td><td valign="top">
+<p>
+Take the single best score out of (eg) <code class="literal">first_name:will</code>
+                    and <code class="literal">last_name:will</code> (<span class="strong"><strong>default</strong></span>)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">1.0</code>
+</p>
+</td><td valign="top">
+<p>
+Add together the scores for (eg) <code class="literal">first_name:will</code> and
+                    <code class="literal">last_name:will</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">0.0 &lt; n &lt; 1.0</code>
+</p>
+</td><td valign="top">
+<p>
+Take the single best score plus <code class="literal">tie_breaker</code> multiplied
+                    by each of the scores from other matching fields.
+</p>
+</td></tr></tbody></table></div></div></div></div><div class="navfooter"><span class="prev"><a href="query-dsl-match-query.html">
               « 
               Match Query</a>
            

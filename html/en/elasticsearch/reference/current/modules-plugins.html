@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Plugins</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [0.90]" /><link rel="up" href="modules.html" title="Modules" /><link rel="prev" href="modules-node.html" title="Node" /><link rel="next" href="modules-scripting.html" title="Scripting" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Plugins</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="modules.html" title="Modules" /><link rel="prev" href="modules-tribe.html" title="Tribe node" /><link rel="next" href="modules-scripting.html" title="Scripting" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,46 +20,35 @@
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
-      [0.90]
-    </a></span> » <span class="breadcrumb-link"><a href="modules.html">Modules</a></span> » <span class="breadcrumb-node">Plugins</span></div><div class="navheader"><span class="prev"><a href="modules-node.html">
+      [1.x]
+    </a></span> » <span class="breadcrumb-link"><a href="modules.html">Modules</a></span> » <span class="breadcrumb-node">Plugins</span></div><div class="navheader"><span class="prev"><a href="modules-tribe.html">
               « 
-              Node</a>
+              Tribe node</a>
            
         </span><span class="next">
            
           <a href="modules-scripting.html">Scripting
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-plugins"></a>Plugins</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="modules-jmx.html">JMX</a></span></dt><dt><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt><span class="chapter"><a href="modules-advanced-scripting.html">Text scoring in scripts</a></span></dt><dt><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt></dl></div><h3><a id="_plugins"></a>Plugins</h3><p>Plugins are a way to enhance the basic elasticsearch functionality in a
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-plugins"></a>Plugins</h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt><span class="chapter"><a href="modules-tribe.html">Tribe node</a></span></dt><dt><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt><span class="chapter"><a href="modules-advanced-scripting.html">Text scoring in scripts</a></span></dt><dt><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt><dt><span class="chapter"><a href="modules-snapshots.html">Snapshot And Restore</a></span></dt></dl></div><h3><a id="_plugins"></a>Plugins</h3><p>Plugins are a way to enhance the basic elasticsearch functionality in a
 custom manner. They range from adding custom mapping types, custom
 analyzers (in a more built in fashion), native scripts, custom discovery
 and more.</p><h4><a id="installing"></a>Installing plugins</h4><p>Installing plugins can either be done manually by placing them under the
 <code class="literal">plugins</code> directory, or using the <code class="literal">plugin</code> script. Several plugins can
 be found under the <a class="ulink" href="https://github.com/elasticsearch" target="_top">elasticsearch</a>
-organization in GitHub, starting with <code class="literal">elasticsearch-</code>.</p><p>Starting from 0.90.2, installing plugins typically take the form of
-<code class="literal">plugin --install &lt;org&gt;/&lt;user/component&gt;/&lt;version&gt;</code>. The plugins will be
+organization in GitHub, starting with <code class="literal">elasticsearch-</code>.</p><p>Installing plugins typically take the following form:</p><pre class="programlisting prettyprint lang-shell">plugin --install &lt;org&gt;/&lt;user/component&gt;/&lt;version&gt;</pre><p>The plugins will be
 automatically downloaded in this case from <code class="literal">download.elasticsearch.org</code>,
 and in case they don’t exist there, from maven (central and sonatype).</p><p>Note that when the plugin is located in maven central or sonatype
 repository, <code class="literal">&lt;org&gt;</code> is the artifact <code class="literal">groupId</code> and <code class="literal">&lt;user/component&gt;</code> is
-the <code class="literal">artifactId</code>.</p><p>For prior version, the older form is
-<code class="literal">plugin -install &lt;org&gt;/&lt;user/component&gt;/&lt;version&gt;</code></p><p>A plugin can also be installed directly by specifying the URL for it,
-for example:
-<code class="literal">bin/plugin --url file:///path/to/plugin --install plugin-name</code> or
-<code class="literal">bin/plugin -url file:///path/to/plugin -install plugin-name</code> for older
-version.</p><p>Starting from 0.90.2, for more information about plugins, you can run
-<code class="literal">bin/plugin -h</code>.</p><h4><a id="site-plugins"></a>Site Plugins</h4><p>Plugins can have "sites" in them, any plugin that exists under the
+the <code class="literal">artifactId</code>.</p><p>A plugin can also be installed directly by specifying the URL for it,
+for example:</p><pre class="programlisting prettyprint lang-shell">bin/plugin --url file:///path/to/plugin --install plugin-name</pre><p>You can run <code class="literal">bin/plugin -h</code>.</p><h4><a id="site-plugins"></a>Site Plugins</h4><p>Plugins can have "sites" in them, any plugin that exists under the
 <code class="literal">plugins</code> directory with a <code class="literal">_site</code> directory, its content will be
 statically served when hitting <code class="literal">/_plugin/[plugin_name]/</code> url. Those can
 be added even after the process has started.</p><p>Installed plugins that do not contain any java related content, will
 automatically be detected as site plugins, and their content will be
 moved under <code class="literal">_site</code>.</p><p>The ability to install plugins from Github allows to easily install site
 plugins hosted there by downloading the actual repo, for example,
-running:</p><pre class="programlisting prettyprint lang-js"># From 0.90.2
-bin/plugin --install mobz/elasticsearch-head
-bin/plugin --install lukas-vlcek/bigdesk
-
-# From a prior version
-bin/plugin -install mobz/elasticsearch-head
-bin/plugin -install lukas-vlcek/bigdesk</pre><p>Will install both of those site plugins, with <code class="literal">elasticsearch-head</code>
+running:</p><pre class="programlisting prettyprint lang-js">bin/plugin --install mobz/elasticsearch-head
+bin/plugin --install lukas-vlcek/bigdesk</pre><p>Will install both of those site plugins, with <code class="literal">elasticsearch-head</code>
 available under <code class="literal">http://localhost:9200/_plugin/head/</code> and <code class="literal">bigdesk</code>
 available under <code class="literal">http://localhost:9200/_plugin/bigdesk/</code>.</p><h4><a id="_mandatory_plugins"></a>Mandatory Plugins</h4><p>If you rely on some plugins, you can define mandatory plugins using the
 <code class="literal">plugin.mandatory</code> attribute, for example, here is a sample config:</p><pre class="programlisting prettyprint lang-js">plugin.mandatory: mapper-attachments,lang-groovy</pre><p>For safety reasons, if a mandatory plugin is not installed, the node
@@ -112,6 +101,12 @@ bin/plugin --install mobz/elasticsearch-head --timeout 0</pre><h3><a id="known-p
 <a class="ulink" href="https://github.com/medcl/elasticsearch-analysis-pinyin" target="_top">Pinyin Analysis Plugin</a> (by Medcl)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/medcl/elasticsearch-analysis-string2int" target="_top">String2Integer Analysis Plugin</a> (by Medcl)
+</li></ul></div><h4><a id="discovery-plugins"></a>Discovery Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-aws" target="_top">AWS Cloud Plugin</a> - EC2 discovery and S3 Repository
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-azure" target="_top">Azure Cloud Plugin</a> - Azure discovery
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-gce" target="_top">Google Compute Engine Cloud Plugin</a> - GCE discovery
 </li></ul></div><h4><a id="river"></a>River Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-river-couchdb" target="_top">CouchDB River Plugin</a>
 </li><li class="listitem">
@@ -187,7 +182,7 @@ bin/plugin --install mobz/elasticsearch-head --timeout 0</pre><h3><a id="known-p
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/mobz/elasticsearch-head" target="_top">Elasticsearch Head Plugin</a> (by Ben Birch)
 </li><li class="listitem">
-<a class="ulink" href="https://github.com/royrusso/elasticsearch-HQ" target="_top">ElasticSearch HQ</a> (by Roy Russo)
+<a class="ulink" href="https://github.com/royrusso/elasticsearch-HQ" target="_top">Elasticsearch HQ</a> (by Roy Russo)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/andrewvc/elastic-hammer" target="_top">Hammer Plugin</a> (by Andrew Cholakian)
 </li><li class="listitem">
@@ -196,39 +191,37 @@ bin/plugin --install mobz/elasticsearch-head --timeout 0</pre><h3><a id="known-p
 <a class="ulink" href="https://github.com/karmi/elasticsearch-paramedic" target="_top">Paramedic Plugin</a> (by Karel Minařík)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/polyfractal/elasticsearch-segmentspy" target="_top">SegmentSpy Plugin</a> (by Zachary Tong)
+</li></ul></div><h4><a id="repository-plugins"></a>Snapshot/Restore Repository Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-hadoop/tree/master/repository-hdfs" target="_top">Hadoop HDFS</a> Repository
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-aws#s3-repository" target="_top">AWS S3</a> Repository
+</li></ul></div><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/kzwang/elasticsearch-repository-gridfs" target="_top">GridFS</a> Repository (by Kevin Wang)
 </li></ul></div><h4><a id="misc"></a>Misc Plugins</h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-mapper-attachments" target="_top">Mapper Attachments Type plugin</a>
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-hadoop" target="_top">Hadoop Plugin</a>
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-aws" target="_top">AWS Cloud Plugin</a>
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-azure" target="_top">Azure Cloud Plugin</a> - Azure discovery
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-gce" target="_top">Google Compute Engine Cloud Plugin</a> - GCE discovery
 </li></ul></div><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 <a class="ulink" href="https://github.com/carrot2/elasticsearch-carrot2" target="_top">carrot2 Plugin</a>: Results clustering with carrot2 (by Dawid Weiss)
 </li><li class="listitem">
-<a class="ulink" href="https://github.com/derryx/elasticsearch-changes-plugin" target="_top">ElasticSearch Changes Plugin</a> (by Thomas Peuss)
+<a class="ulink" href="https://github.com/derryx/elasticsearch-changes-plugin" target="_top">Elasticsearch Changes Plugin</a> (by Thomas Peuss)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/johtani/elasticsearch-extended-analyze" target="_top">Extended Analyze Plugin</a> (by Jun Ohtani)
 </li><li class="listitem">
-<a class="ulink" href="https://github.com/spinscale/elasticsearch-graphite-plugin" target="_top">ElasticSearch Graphite Plugin</a> (by Alexander Reelsen)
+<a class="ulink" href="https://github.com/spinscale/elasticsearch-graphite-plugin" target="_top">Elasticsearch Graphite Plugin</a> (by Alexander Reelsen)
 </li><li class="listitem">
-<a class="ulink" href="https://github.com/mattweber/elasticsearch-mocksolrplugin" target="_top">ElasticSearch Mock Solr Plugin</a> (by Matt Weber)
+<a class="ulink" href="https://github.com/mattweber/elasticsearch-mocksolrplugin" target="_top">Elasticsearch Mock Solr Plugin</a> (by Matt Weber)
 </li><li class="listitem">
-<a class="ulink" href="https://github.com/viniciusccarvalho/elasticsearch-newrelic" target="_top">ElasticSearch New Relic Plugin</a> (by Vinicius Carvalho)
+<a class="ulink" href="https://github.com/viniciusccarvalho/elasticsearch-newrelic" target="_top">Elasticsearch New Relic Plugin</a> (by Vinicius Carvalho)
 </li><li class="listitem">
-<a class="ulink" href="https://github.com/swoop-inc/elasticsearch-statsd-plugin" target="_top">ElasticSearch Statsd Plugin</a> (by Swoop Inc.)
+<a class="ulink" href="https://github.com/swoop-inc/elasticsearch-statsd-plugin" target="_top">Elasticsearch Statsd Plugin</a> (by Swoop Inc.)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/endgameinc/elasticsearch-term-plugin" target="_top">Terms Component Plugin</a> (by Endgame Inc.)
 </li><li class="listitem">
-<a class="ulink" href="http://tlrx.github.com/elasticsearch-view-plugin" target="_top">ElasticSearch View Plugin</a> (by Tanguy Leroux)
+<a class="ulink" href="http://tlrx.github.com/elasticsearch-view-plugin" target="_top">Elasticsearch View Plugin</a> (by Tanguy Leroux)
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/sonian/elasticsearch-zookeeper" target="_top">ZooKeeper Discovery Plugin</a> (by Sonian Inc.)
-</li></ul></div></div><div class="navfooter"><span class="prev"><a href="modules-node.html">
+</li></ul></div></div><div class="navfooter"><span class="prev"><a href="modules-tribe.html">
               « 
-              Node</a>
+              Tribe node</a>
            
         </span><span class="next">
            
