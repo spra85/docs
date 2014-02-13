@@ -56,7 +56,7 @@ The <code class="literal">resellers</code> is an array that holds nested documen
                 "path" : "resellers"
             },
             "aggs" : {
-                "min_price" : { "min" : { "field" : "nested.value" } }
+                "min_price" : { "min" : { "field" : "resellers.price" } }
             }
         }
     }
