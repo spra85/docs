@@ -19,9 +19,11 @@ repos:
 
     elasticsearch-php:
         url:        https://github.com/elasticsearch/elasticsearch-php
-        current:    master
+        current:    1.0
         branches:
             - master
+            - 1.0
+            - 0.4
 
     elasticsearch-js:
         url:        https://github.com/elasticsearch/elasticsearch-js.git
@@ -95,6 +97,10 @@ contents:
             repo:       elasticsearch-php
             index:      docs/index.asciidoc
             abbr:       php
+            branches:
+                - master
+                - 1.0
+                - 0.4
 
           -
             title:      Perl API
