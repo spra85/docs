@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Search Operations</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch-PHP [1.0]" /><link rel="up" href="index.html" title="Elasticsearch-PHP [1.0]" /><link rel="prev" href="_indexing_operations.html" title="Indexing Operations" /><link rel="next" href="_namespaces.html" title="Namespaces" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Configuration</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch-PHP [0.4]" /><link rel="up" href="index.html" title="Elasticsearch-PHP [0.4]" /><link rel="prev" href="_installation_2.html" title="Installation" /><link rel="next" href="_index_operations.html" title="Index Operations" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,77 +20,113 @@
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch-PHP
-      [1.0]
-    </a></span> » <span class="breadcrumb-node">Search Operations</span></div><div class="navheader"><span class="prev"><a href="_indexing_operations.html">
+      [0.4]
+    </a></span> » <span class="breadcrumb-node">Configuration</span></div><div class="navheader"><span class="prev"><a href="_installation_2.html">
               « 
-              Indexing Operations</a>
+              Installation</a>
            
         </span><span class="next">
            
-          <a href="_namespaces.html">Namespaces
+          <a href="_index_operations.html">Index Operations
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_search_operations"></a>Search Operations</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_quickstart.html">Quickstart</a></span></dt><dt><span class="chapter"><a href="_installation_2.html">Installation</a></span></dt><dt><span class="chapter"><a href="_configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="_index_operations.html">Index Operations</a></span></dt><dt><span class="chapter"><a href="_indexing_operations.html">Indexing Operations</a></span></dt><dt><span class="chapter"><a href="_search_operations.html">Search Operations</a></span></dt><dt><span class="chapter"><a href="_namespaces.html">Namespaces</a></span></dt><dt><span class="chapter"><a href="_the_connection_pool.html">The Connection Pool</a></span></dt><dt><span class="chapter"><a href="_serializers.html">Serializers</a></span></dt><dt><span class="chapter"><a href="_php_version_requirement.html">PHP Version Requirement</a></span></dt></dl></div><p>Well…it isn’t called elasticsearch for nothing!  Let’s talk about search operations in the PHP client.</p><p>The client gives you full access to every query and parameter exposed by the REST API, following the naming scheme as much as possible.  Let’s look at a few examples so you can become familiar with the syntax.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_match_query"></a>Match Query</h2></div></div></div><p>Here is a standard curl for a Match query:</p><pre class="programlisting prettyprint lang-shell">curl -XGET 'localhost:9200/my_index/my_type/_search' -d '{
-    "query" : {
-        "match" : {
-            "testField" : "abc"
-        }
-    }
-}'</pre><p>​</p><p>And here is the same query constructed in the client:</p><pre class="programlisting prettyprint lang-php">$params['index'] = 'my_index';
-$params['type']  = 'my_type';
-$params['body']['query']['match']['testField'] = 'abc';
-
-$results = $client-&gt;search($params);</pre><p>​</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Using Raw JSON</strong></p></div></div></div><p>As you can see, the translation between JSON and query is very straightforward.  You could serialize JSON directly into the body, or even provide the raw JSON string.  The client will handle it just fine:</p><pre class="programlisting prettyprint lang-php">$json = '{
-    "query" : {
-        "match" : {
-            "testField" : "abc"
-        }
-    }
-}';
-
-$params['index'] = 'my_index';
-$params['type']  = 'my_type';
-$params['body']  = $json;
-
-$results = $client-&gt;search($params);</pre></div><p>​</p><p>The search results that come back are simply elasticsearch response elements serialized into an array.  Working with the search results is as simple as iterating over the array values:</p><pre class="programlisting prettyprint lang-php">$milliseconds = $results['took'];
-$maxScore     = $results['hits']['max_score'];
-
-$score = $results['hits']['hits'][0]['_score'];
-$doc   = $results['hits']['hits'][0]['_source'];</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_a_more_complicated_example"></a>A more complicated example</h2></div></div></div><p>Let’s construct a slightly more complicated example: a filtered query that contains both a filter and a query.  This is a very common activity in elasticsearch queries, so it will be a good demonstration.</p><p>The curl version of the query:</p><pre class="programlisting prettyprint lang-shell">curl -XGET 'localhost:9200/my_index/my_type/_search' -d '{
-    "query" : {
-        "filtered" : {
-            "filter" : {
-                "term" : {
-                    "my_field" : "abc"
-                }
-            },
-            "query" : {
-                "match" : {
-                    "my_other_field" : "xyz"
-                }
-            }
-        }
-    }
-}'</pre><p>​</p><p>And in PHP:</p><pre class="programlisting prettyprint lang-php">$params['index'] = 'my_index';
-$params['type']  = 'my_type';
-
-$filter = array();
-$filter['term']['my_field'] = 'abc';
-
-$query = array();
-$query['match']['my_other_field'] = 'xyz';
-
-$params['body']['query']['filtered'] = array(
-    "filter" =&gt; $filter,
-    "query"  =&gt; $query
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_configuration"></a>Configuration</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_quickstart.html">Quickstart</a></span></dt><dt><span class="chapter"><a href="_installation_2.html">Installation</a></span></dt><dt><span class="chapter"><a href="_configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="_index_operations.html">Index Operations</a></span></dt><dt><span class="chapter"><a href="_indexing_operations.html">Indexing Operations</a></span></dt><dt><span class="chapter"><a href="_search_operations.html">Search Operations</a></span></dt><dt><span class="chapter"><a href="_the_connection_pool.html">The Connection Pool</a></span></dt></dl></div><p>Almost every aspect of the client is configurable.  The client is built around <a class="ulink" href="http://pimple.sensiolabs.org" target="_top">Pimple</a> a light-weight dependency injection container.  Most users will only need to configure a few parameters to suit their needs.</p><p>However, since the container also controls all object instantiation, it is possible for users to completely change the internal components used by the client.  A user could, for example, write a custom ConnectionPool class and use that instead of the default connection pools that ship with the client</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_example_configuring_the_hosts"></a>Example: Configuring the Hosts</h2></div></div></div><p>A common operation will be telling the client what nodes are in your cluster.  By default, the client will connect to <span class="emphasis"><em>localhost:9200</em></span>, which obviously doesn’t work in many production environments.</p><p>All configurations (both simple parameters and more advanced component-replacement) are injected into the constructor of the client.</p><p>The client accepts an array of hosts that you would like to connect to.  Each value in the array must be a string (either with or without the port number):</p><pre class="programlisting prettyprint lang-php">$params = array();
+$params['hosts'] = array (
+    '192.168.1.1:9200',         // IP + Port
+    '192.168.1.2',              // Just IP
+    'mydomain.server.com:9201', // Domain + Port
+    'mydomain2.server.com'      // Just Domain
 );
 
-$results = $client-&gt;search($params);</pre><p>​</p><p>For clarity and ease of readability, the filter and query sections were allocated individually as variables and then composed together later.  This is often a good design pattern for applications, since it lets you treat the queries and filters as building blocks that can be passed around your application.</p><p>Of course, at the end of the day, it is built into a single array.  You could easily build the entire array in one definition of nested array blocks, or build them line-by-line.</p><p>All the client requires is an associative array with a structure that matches the JSON query structure.</p></div></div><div class="navfooter"><span class="prev"><a href="_indexing_operations.html">
+$client = new Elasticsearch\Client($params);</pre><p>This associative array holds all custom configurations that you may want to set.  Often, you’ll only need to configure the hosts, but if you need more advanced behavior, read on.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_example_configuring_http_basic_auth"></a>Example: Configuring HTTP Basic Auth</h2></div></div></div><p>HTTP basic authentication is a very common requirement.  To enable Basic Auth in the client, simply set a parameter with the required auth parameters:</p><pre class="programlisting prettyprint lang-php">$params = array();
+$params['connectionParams']['auth'] = array(
+    'username',
+    'password',
+    'Basic' <a id="CO1-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+);
+$client = new Elasticsearch\Client($params);</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO1-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+Accepts four different options: <code class="literal">Basic</code>, <code class="literal">Digets</code>, <code class="literal">NTLM</code>, <code class="literal">Any</code>
+</p></td></tr></table></div><p>After being initialized with authentication credentials, all outgoing requests will automatically include the HTTP auth headers.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_example_configuring_the_logger"></a>Example: Configuring the Logger</h2></div></div></div><p>By default, logging in the client is disabled for performance reasons.  If you wish to enable logging, simply set the <code class="literal">logging</code> parameter to true:</p><pre class="programlisting prettyprint lang-php">$params = array();
+$params['logging'] = true;
+$client = new Elasticsearch\Client($params);</pre><p>​</p><p>This will enable logging to a file called <code class="literal">elasticsearch.log</code> inside your project directory.  The default logging level is <code class="literal">WARN</code>.  This is a logging level
+that only describes important events that should probably require action from you.</p><p>Often, you’ll want to change the logging location.  To change this location, simply do the following:</p><pre class="programlisting prettyprint lang-php">$params = array();
+$params['logging'] = true;
+$params['logPath'] = '/var/logs/elasticsearch/elasticsearch.log';
+$client = new Elasticsearch\Client($params);</pre><p>​</p><p>Not all parameters are strings.  For example, we can change the logging level of the client:</p><pre class="programlisting prettyprint lang-php">$params = array();
+$params['logging']  = true;
+$params['logPath']  = '/var/logs/elasticsearch/elasticsearch.log';
+$params['logLevel'] = Psr\Log\LogLevel::INFO;
+$client = new Elasticsearch\Client($params);</pre><p>​</p><p>Easy, right?  Let’s get a little more complicated and specify a custom logger.  By default, the client uses a file-based logger provided by the <a class="ulink" href="https://github.com/Seldaek/monolog" target="_top">Monolog</a> framework.  Monolog provides a variety of loggers.</p><p>Let’s log to the SysLog instead of a file:</p><pre class="programlisting prettyprint lang-php">use Monolog\Logger;
+
+// Build a Monolog logger that uses the SyslogHandler
+$logger    = new Logger('log');
+$handler   = new SyslogHandler('my_user');
+$processor = new IntrospectionProcessor();
+
+$logger-&gt;pushHandler($handler);
+$logger-&gt;pushProcessor($processor);
+
+// Over-ride the client's logger object with your own
+$params['logging']   = true;
+$params['logObject'] = $logger;
+$client = new Elasticsearch\Client($params);</pre><p>​</p><p>The client uses the generic <a class="ulink" href="https://github.com/php-fig/log" target="_top">PSR\Log interface</a>, which means that any PSR\Log compatible loggers will work just fine in the client.
+Replacing the logger with another PSR\Log compatible logger is similar to the previous example of configuring a Monolog logger:</p><pre class="programlisting prettyprint lang-php">use Monolog\Logger;
+
+$logger = new MySpecialPSRLogger();
+
+
+$params['logging'] = true;
+$params['logObject'] = $logger;
+$client = new Elasticsearch\Client($params);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_example_configuring_the_selector_class"></a>Example: Configuring the Selector Class</h2></div></div></div><p>When we changed the logger object, we provided a complete object that we wanted to over-ride the default with.  There are many configurations where this won’t work.  For example, the Connection class must be instantiated repeatedly when new connections are made.</p><p>Rather than provide an anonymous function or callback which builds new objects, the client simply accepts a class path which is used to build new objects.</p><p>Let’s configure the Selector class.  By default, the client uses a Round-Robin selector (called RoundRobinSelector, unsurprisingly).  This will select connections in a loop, evenly distributing requests against your whole cluster.</p><p>Let’s change it to a different Selector - the RandomSelector:</p><pre class="programlisting prettyprint lang-php">$params['selectorClass'] = '\Elasticsearch\ConnectionPool\Selectors\RandomSelector';
+$client = new Elasticsearch\Client($params);</pre><p>​</p><p>The client will now query random nodes.  Let’s go one step further and define our own selector, using custom business logic that is specific to your domain.  Most configurable components in the client adhere to an interface, which makes it easy to swap them out for your own class.</p><p>Let’s make a selector that only chooses the first connection.  This is obviously not a good selector (!!!), but it demonstrates the concept well:</p><pre class="programlisting prettyprint lang-php">namespace MyProject\Selectors;
+
+use Elasticsearch\Connections\ConnectionInterface;
+use Elasticsearch\ConnectionPool\Selectors\SelectorInterface
+
+class FirstSelector implements SelectorInterface
+{
+
+    /**
+     * Selects the first connection
+     *
+     * @param array $connections Array of Connection objects
+     *
+     * @return ConnectionInterface
+     */
+    public function select($connections)
+    {
+        return $connections[0];
+    }
+
+}</pre><p>​</p><p>And now we can specify that when creating the client:</p><pre class="programlisting prettyprint lang-php">$params['selectorClass'] = '\MyProject\Selectors\FirstSelector';
+$client = new Elasticsearch\Client($params);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_full_list_of_configurations"></a>Full list of configurations</h2></div></div></div><p><strong>Default Configurations. </strong>
+</p><pre class="programlisting prettyprint lang-php">$paramDefaults = array(
+    'connectionClass'       =&gt; '\Elasticsearch\Connections\GuzzleConnection',
+    'connectionFactoryClass'=&gt; '\Elasticsearch\Connections\ConnectionFactory',
+    'connectionPoolClass'   =&gt; '\Elasticsearch\ConnectionPool\StaticConnectionPool',
+    'selectorClass'         =&gt; '\Elasticsearch\ConnectionPool\Selectors\RoundRobinSelector',
+    'serializerClass'       =&gt; '\Elasticsearch\Serializers\ArrayToJSONSerializer',
+    'sniffOnStart'          =&gt; false,
+    'connectionParams'      =&gt; array(),
+    'logging'               =&gt; false,
+    'logObject'             =&gt; null,
+    'logPath'               =&gt; 'elasticsearch.log',
+    'logLevel'              =&gt; Log\LogLevel::WARNING,
+    'traceObject'           =&gt; null,
+    'tracePath'             =&gt; 'elasticsearch.log',
+    'traceLevel'            =&gt; Log\LogLevel::WARNING,
+    'guzzleOptions'         =&gt; array(),
+    'connectionPoolParams'  =&gt; array(
+        'randomizeHosts' =&gt; true
+    ),
+    'retries'               =&gt; null
+);</pre><p>
+</p></div></div><div class="navfooter"><span class="prev"><a href="_installation_2.html">
               « 
-              Indexing Operations</a>
+              Installation</a>
            
         </span><span class="next">
            
-          <a href="_namespaces.html">Namespaces
+          <a href="_index_operations.html">Index Operations
                »
             </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
               Need help with

@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Search Operations</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch-PHP [1.0]" /><link rel="up" href="index.html" title="Elasticsearch-PHP [1.0]" /><link rel="prev" href="_indexing_operations.html" title="Indexing Operations" /><link rel="next" href="_namespaces.html" title="Namespaces" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Serializers</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch-PHP [master]" /><link rel="up" href="index.html" title="Elasticsearch-PHP [master]" /><link rel="prev" href="_the_connection_pool.html" title="The Connection Pool" /><link rel="next" href="_php_version_requirement.html" title="PHP Version Requirement" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,77 +20,76 @@
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch-PHP
-      [1.0]
-    </a></span> » <span class="breadcrumb-node">Search Operations</span></div><div class="navheader"><span class="prev"><a href="_indexing_operations.html">
+      [master]
+    </a></span> » <span class="breadcrumb-node">Serializers</span></div><div class="navheader"><span class="prev"><a href="_the_connection_pool.html">
               « 
-              Indexing Operations</a>
+              The Connection Pool</a>
            
         </span><span class="next">
            
-          <a href="_namespaces.html">Namespaces
+          <a href="_php_version_requirement.html">PHP Version Requirement
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_search_operations"></a>Search Operations</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_quickstart.html">Quickstart</a></span></dt><dt><span class="chapter"><a href="_installation_2.html">Installation</a></span></dt><dt><span class="chapter"><a href="_configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="_index_operations.html">Index Operations</a></span></dt><dt><span class="chapter"><a href="_indexing_operations.html">Indexing Operations</a></span></dt><dt><span class="chapter"><a href="_search_operations.html">Search Operations</a></span></dt><dt><span class="chapter"><a href="_namespaces.html">Namespaces</a></span></dt><dt><span class="chapter"><a href="_the_connection_pool.html">The Connection Pool</a></span></dt><dt><span class="chapter"><a href="_serializers.html">Serializers</a></span></dt><dt><span class="chapter"><a href="_php_version_requirement.html">PHP Version Requirement</a></span></dt></dl></div><p>Well…it isn’t called elasticsearch for nothing!  Let’s talk about search operations in the PHP client.</p><p>The client gives you full access to every query and parameter exposed by the REST API, following the naming scheme as much as possible.  Let’s look at a few examples so you can become familiar with the syntax.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_match_query"></a>Match Query</h2></div></div></div><p>Here is a standard curl for a Match query:</p><pre class="programlisting prettyprint lang-shell">curl -XGET 'localhost:9200/my_index/my_type/_search' -d '{
-    "query" : {
-        "match" : {
-            "testField" : "abc"
-        }
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_serializers"></a>Serializers</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_quickstart.html">Quickstart</a></span></dt><dt><span class="chapter"><a href="_installation_2.html">Installation</a></span></dt><dt><span class="chapter"><a href="_configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="_index_operations.html">Index Operations</a></span></dt><dt><span class="chapter"><a href="_indexing_operations.html">Indexing Operations</a></span></dt><dt><span class="chapter"><a href="_search_operations.html">Search Operations</a></span></dt><dt><span class="chapter"><a href="_namespaces.html">Namespaces</a></span></dt><dt><span class="chapter"><a href="_the_connection_pool.html">The Connection Pool</a></span></dt><dt><span class="chapter"><a href="_serializers.html">Serializers</a></span></dt><dt><span class="chapter"><a href="_php_version_requirement.html">PHP Version Requirement</a></span></dt></dl></div><p>The client has three serializers available.  You will most likely never need
+to change the serializer, unless you have special requirements or are
+implementing a new protocol.</p><p>The job of the serializer is to encode the outgoing request body and decode
+the incoming response body.  In 99% of cases, this is a simple conversion
+to/from JSON.</p><p>The default serializer is the <code class="literal">SmartSerializer</code></p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_smartserializer"></a>SmartSerializer</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_serialize"></a>Serialize()</h3></div></div></div><p>The <code class="literal">SmartSerializer</code> inspects the data to be encoded.  If the request body
+is provided as a string, it is passed directly to Elasticsearch as a string.
+This allows users to provide raw JSON, or raw strings for certain endpoints that
+dont have structure (such as the Analyze endpoint).</p><p>If the data is an array, it is converted to json.  If the data provided was an
+empty array, the serializer manually converts the JSON from an empty array (<code class="literal">[]</code>)
+to an empty object (<code class="literal">{}</code>) so that it is valid JSON for Elasticsearch request
+bodies.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_deserialize"></a>Deserialize()</h3></div></div></div><p>When decoding the response body, the <code class="literal">SmartSerializer</code> introspects the
+<code class="literal">content_type</code> headers to determine the appropriate encoding.  If the data is
+encoded as JSON, it is decoded into an array using <code class="literal">json_decode</code>.  Otherwise,
+it is returned as a string.</p><p>This functionality is required to cooperate with endpoints such as the <code class="literal">Cat</code>
+endpoints, which return tabular text instead of JSON.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_arraytojsonserializer"></a>ArrayToJSONSerializer</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_serialize_2"></a>Serialize()</h3></div></div></div><p>The <code class="literal">ArrayToJSONSerializer</code> inspects the data to be encoded.  If the request body
+is provided as a string, it is passed directly to Elasticsearch as a string.
+This allows users to provide raw JSON, or raw strings for certain endpoints that
+dont have structure (such as the Analyze endpoint).</p><p>If the data is an array, it is converted to json.  If the data provided was an
+empty array, the serializer manually converts the JSON from an empty array (<code class="literal">[]</code>)
+to an empty object (<code class="literal">{}</code>) so that it is valid JSON for Elasticsearch request
+bodies.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_deserialize_2"></a>Deserialize()</h3></div></div></div><p>When decoding the response body, everything is decoded to JSON from JSON.  If
+the data is not valid JSON, <code class="literal">null</code> will be returned.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_everythingtojsonserializer"></a>EverythingToJSONSerializer</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_serialize_3"></a>Serialize()</h3></div></div></div><p>The <code class="literal">EverythingToJSONSerializer</code> tries to convert everything to JSON.</p><p>If the data provided was an empty array, the serializer manually converts the
+JSON from an empty array (<code class="literal">[]</code>) to an empty object (<code class="literal">{}</code>) so that it is valid
+JSON for Elasticsearch request bodies.</p><p>If the data was not an array and/or not convertible to JSON, the method returns
+<code class="literal">null</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_deserialize_3"></a>Deserialize()</h3></div></div></div><p>When decoding the response body, everything is decoded to JSON from JSON.  If
+the data is not valid JSON, <code class="literal">null</code> will be returned.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_implementing_your_own_serializer"></a>Implementing your own Serializer</h2></div></div></div><p>If you want to use your own custom serializer, you need to implement the
+<code class="literal">SerializerInterface</code> interface:</p><pre class="programlisting prettyprint lang-php">class MyCustomSerializer implements SerializerInterface
+{
+
+    /**
+     * Serialize request body
+     *
+     * @param string|array $data Request body
+     *
+     * @return string
+     */
+    public function serialize($data)
+    {
+        // code here
     }
-}'</pre><p>​</p><p>And here is the same query constructed in the client:</p><pre class="programlisting prettyprint lang-php">$params['index'] = 'my_index';
-$params['type']  = 'my_type';
-$params['body']['query']['match']['testField'] = 'abc';
 
-$results = $client-&gt;search($params);</pre><p>​</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Using Raw JSON</strong></p></div></div></div><p>As you can see, the translation between JSON and query is very straightforward.  You could serialize JSON directly into the body, or even provide the raw JSON string.  The client will handle it just fine:</p><pre class="programlisting prettyprint lang-php">$json = '{
-    "query" : {
-        "match" : {
-            "testField" : "abc"
-        }
+    /**
+     * Deserialize response body
+     *
+     * @param string $data Response body
+     * @param array  $headers Response Headers
+     *
+     * @return array|string
+     */
+    public function deserialize($data, $headers)
+    {
+        // code here
     }
-}';
-
-$params['index'] = 'my_index';
-$params['type']  = 'my_type';
-$params['body']  = $json;
-
-$results = $client-&gt;search($params);</pre></div><p>​</p><p>The search results that come back are simply elasticsearch response elements serialized into an array.  Working with the search results is as simple as iterating over the array values:</p><pre class="programlisting prettyprint lang-php">$milliseconds = $results['took'];
-$maxScore     = $results['hits']['max_score'];
-
-$score = $results['hits']['hits'][0]['_score'];
-$doc   = $results['hits']['hits'][0]['_source'];</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_a_more_complicated_example"></a>A more complicated example</h2></div></div></div><p>Let’s construct a slightly more complicated example: a filtered query that contains both a filter and a query.  This is a very common activity in elasticsearch queries, so it will be a good demonstration.</p><p>The curl version of the query:</p><pre class="programlisting prettyprint lang-shell">curl -XGET 'localhost:9200/my_index/my_type/_search' -d '{
-    "query" : {
-        "filtered" : {
-            "filter" : {
-                "term" : {
-                    "my_field" : "abc"
-                }
-            },
-            "query" : {
-                "match" : {
-                    "my_other_field" : "xyz"
-                }
-            }
-        }
-    }
-}'</pre><p>​</p><p>And in PHP:</p><pre class="programlisting prettyprint lang-php">$params['index'] = 'my_index';
-$params['type']  = 'my_type';
-
-$filter = array();
-$filter['term']['my_field'] = 'abc';
-
-$query = array();
-$query['match']['my_other_field'] = 'xyz';
-
-$params['body']['query']['filtered'] = array(
-    "filter" =&gt; $filter,
-    "query"  =&gt; $query
-);
-
-$results = $client-&gt;search($params);</pre><p>​</p><p>For clarity and ease of readability, the filter and query sections were allocated individually as variables and then composed together later.  This is often a good design pattern for applications, since it lets you treat the queries and filters as building blocks that can be passed around your application.</p><p>Of course, at the end of the day, it is built into a single array.  You could easily build the entire array in one definition of nested array blocks, or build them line-by-line.</p><p>All the client requires is an associative array with a structure that matches the JSON query structure.</p></div></div><div class="navfooter"><span class="prev"><a href="_indexing_operations.html">
+}</pre><p>​</p><p>To use it, you simply provide the class path in the configuration parameters:</p><pre class="programlisting prettyprint lang-php">$params['serializerClass'] = '\MyProject\Serializers\MyCustomSerializer';
+$client = new Elasticsearch\Client($params);</pre><p>​</p></div></div><div class="navfooter"><span class="prev"><a href="_the_connection_pool.html">
               « 
-              Indexing Operations</a>
+              The Connection Pool</a>
            
         </span><span class="next">
            
-          <a href="_namespaces.html">Namespaces
+          <a href="_php_version_requirement.html">PHP Version Requirement
                »
             </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
               Need help with

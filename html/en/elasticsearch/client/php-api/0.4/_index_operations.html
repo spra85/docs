@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Search Operations</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch-PHP [1.0]" /><link rel="up" href="index.html" title="Elasticsearch-PHP [1.0]" /><link rel="prev" href="_indexing_operations.html" title="Indexing Operations" /><link rel="next" href="_namespaces.html" title="Namespaces" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Index Operations</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch-PHP [0.4]" /><link rel="up" href="index.html" title="Elasticsearch-PHP [0.4]" /><link rel="prev" href="_configuration.html" title="Configuration" /><link rel="next" href="_indexing_operations.html" title="Indexing Operations" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><script>var eucookie = true;</script><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Resources | Elasticsearch" /><meta property="og:url" content="/guide" /><meta property="og:site_name" content="" /><link rel="alternate" type="application/rss+xml" title=" » Elasticsearch Resources Comments Feed" href="/resources/feed/" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1386286315" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/modernizr-2.6.1.min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/vendor/selectivizr-min.js?ver=1"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/plugins.min.js?ver=1386264369"></script><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/comment-reply.min.js?ver=3.5.2"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elasticsearch.org/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elasticsearch.org/wp-includes/wlwmanifest.xml" /><link rel="stylesheet" id="custom-css-css" type="text/css" href="http://www.elasticsearch.org/?custom-css=1&amp;csblog=1&amp;cscache=6&amp;csrev=34" /><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,77 +20,101 @@
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><div class="container"><div id="header-inner"><nav role="navigation" id="main-nav-container"><ul id="top-nav" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/">Elasticsearch</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-4841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841 current-menu-item"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul></nav><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><div class="slide-trigger navigation" id="nav-trigger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><a class="btn btn-primary" href="/download/">Download</a><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4841"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div id="index" class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch-PHP
-      [1.0]
-    </a></span> » <span class="breadcrumb-node">Search Operations</span></div><div class="navheader"><span class="prev"><a href="_indexing_operations.html">
+      [0.4]
+    </a></span> » <span class="breadcrumb-node">Index Operations</span></div><div class="navheader"><span class="prev"><a href="_configuration.html">
               « 
-              Indexing Operations</a>
+              Configuration</a>
            
         </span><span class="next">
            
-          <a href="_namespaces.html">Namespaces
+          <a href="_indexing_operations.html">Indexing Operations
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_search_operations"></a>Search Operations</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_quickstart.html">Quickstart</a></span></dt><dt><span class="chapter"><a href="_installation_2.html">Installation</a></span></dt><dt><span class="chapter"><a href="_configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="_index_operations.html">Index Operations</a></span></dt><dt><span class="chapter"><a href="_indexing_operations.html">Indexing Operations</a></span></dt><dt><span class="chapter"><a href="_search_operations.html">Search Operations</a></span></dt><dt><span class="chapter"><a href="_namespaces.html">Namespaces</a></span></dt><dt><span class="chapter"><a href="_the_connection_pool.html">The Connection Pool</a></span></dt><dt><span class="chapter"><a href="_serializers.html">Serializers</a></span></dt><dt><span class="chapter"><a href="_php_version_requirement.html">PHP Version Requirement</a></span></dt></dl></div><p>Well…it isn’t called elasticsearch for nothing!  Let’s talk about search operations in the PHP client.</p><p>The client gives you full access to every query and parameter exposed by the REST API, following the naming scheme as much as possible.  Let’s look at a few examples so you can become familiar with the syntax.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_match_query"></a>Match Query</h2></div></div></div><p>Here is a standard curl for a Match query:</p><pre class="programlisting prettyprint lang-shell">curl -XGET 'localhost:9200/my_index/my_type/_search' -d '{
-    "query" : {
-        "match" : {
-            "testField" : "abc"
-        }
-    }
-}'</pre><p>​</p><p>And here is the same query constructed in the client:</p><pre class="programlisting prettyprint lang-php">$params['index'] = 'my_index';
-$params['type']  = 'my_type';
-$params['body']['query']['match']['testField'] = 'abc';
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_index_operations"></a>Index Operations</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_quickstart.html">Quickstart</a></span></dt><dt><span class="chapter"><a href="_installation_2.html">Installation</a></span></dt><dt><span class="chapter"><a href="_configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="_index_operations.html">Index Operations</a></span></dt><dt><span class="chapter"><a href="_indexing_operations.html">Indexing Operations</a></span></dt><dt><span class="chapter"><a href="_search_operations.html">Search Operations</a></span></dt><dt><span class="chapter"><a href="_the_connection_pool.html">The Connection Pool</a></span></dt></dl></div><p>This section will walk you through the various index APIs that are exposed through the client.  Index operations include anything that manages an index itself (e.g. create an index, delete, change mappings, etc).</p><p>We’ll walk through a few common operations with detailed code snippets, then list the rest of the methods in a table.  The parameters are identical to the REST api, so it should be easy to perform the operation you need.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_create_an_index_2"></a>Create an index</h2></div></div></div><p>The index operations are all contained under a distinct namespace, separated from other methods that are on the root client object.  As an example, let’s create a new index:</p><pre class="programlisting prettyprint lang-php">$client = new Elasticsearch\Client();
+$indexParams['index']  = 'my_index';    //index
 
-$results = $client-&gt;search($params);</pre><p>​</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Using Raw JSON</strong></p></div></div></div><p>As you can see, the translation between JSON and query is very straightforward.  You could serialize JSON directly into the body, or even provide the raw JSON string.  The client will handle it just fine:</p><pre class="programlisting prettyprint lang-php">$json = '{
-    "query" : {
-        "match" : {
-            "testField" : "abc"
-        }
-    }
-}';
+$client-&gt;indices()-&gt;create($indexParams);</pre><p>​</p><p>You can, of course, specify any parameters that would normally be included in a new index creation API.  All parameters that would normally go in the request body are located in the <span class="emphasis"><em>body</em></span> associative array:</p><pre class="programlisting prettyprint lang-php">$client = new Elasticsearch\Client();
+$indexParams['index']  = 'my_index';
 
-$params['index'] = 'my_index';
-$params['type']  = 'my_type';
-$params['body']  = $json;
+// Index Settings
+$indexParams['body']['settings']['number_of_shards']   = 3;
+$indexParams['body']['settings']['number_of_replicas'] = 2;
 
-$results = $client-&gt;search($params);</pre></div><p>​</p><p>The search results that come back are simply elasticsearch response elements serialized into an array.  Working with the search results is as simple as iterating over the array values:</p><pre class="programlisting prettyprint lang-php">$milliseconds = $results['took'];
-$maxScore     = $results['hits']['max_score'];
-
-$score = $results['hits']['hits'][0]['_score'];
-$doc   = $results['hits']['hits'][0]['_source'];</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_a_more_complicated_example"></a>A more complicated example</h2></div></div></div><p>Let’s construct a slightly more complicated example: a filtered query that contains both a filter and a query.  This is a very common activity in elasticsearch queries, so it will be a good demonstration.</p><p>The curl version of the query:</p><pre class="programlisting prettyprint lang-shell">curl -XGET 'localhost:9200/my_index/my_type/_search' -d '{
-    "query" : {
-        "filtered" : {
-            "filter" : {
-                "term" : {
-                    "my_field" : "abc"
-                }
-            },
-            "query" : {
-                "match" : {
-                    "my_other_field" : "xyz"
-                }
-            }
-        }
-    }
-}'</pre><p>​</p><p>And in PHP:</p><pre class="programlisting prettyprint lang-php">$params['index'] = 'my_index';
-$params['type']  = 'my_type';
-
-$filter = array();
-$filter['term']['my_field'] = 'abc';
-
-$query = array();
-$query['match']['my_other_field'] = 'xyz';
-
-$params['body']['query']['filtered'] = array(
-    "filter" =&gt; $filter,
-    "query"  =&gt; $query
+// Example Index Mapping
+$myTypeMapping = array(
+    '_source' =&gt; array(
+        'enabled' =&gt; true
+    ),
+    'properties' =&gt; array(
+        'first_name' =&gt; array(
+            'type' =&gt; 'string',
+            'analyzer' =&gt; 'standard'
+        ),
+        'age' =&gt; array(
+            'type' =&gt; 'integer'
+        )
+    )
 );
+$indexParams['body']['mappings']['my_type'] = $myTypeMapping;
 
-$results = $client-&gt;search($params);</pre><p>​</p><p>For clarity and ease of readability, the filter and query sections were allocated individually as variables and then composed together later.  This is often a good design pattern for applications, since it lets you treat the queries and filters as building blocks that can be passed around your application.</p><p>Of course, at the end of the day, it is built into a single array.  You could easily build the entire array in one definition of nested array blocks, or build them line-by-line.</p><p>All the client requires is an associative array with a structure that matches the JSON query structure.</p></div></div><div class="navfooter"><span class="prev"><a href="_indexing_operations.html">
+// Create the index
+$client-&gt;indices()-&gt;create($indexParams);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_delete_an_index_2"></a>Delete an index</h2></div></div></div><p>Deleting an index is very simple:</p><pre class="programlisting prettyprint lang-php">$deleteParams['index'] = 'my_index';
+$client-&gt;indices()-&gt;delete($deleteParams);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_put_settings_api"></a>Put Settings API</h2></div></div></div><p>The Put Settings API allows you to modify any index setting that is dynamic:</p><pre class="programlisting prettyprint lang-php">$params['index'] = 'my_index';
+$params['body']['index']['number_of_replicas'] = 0;
+$params['body']['index']['refresh_interval'] = -1;
+
+$ret = $client-&gt;indices()-&gt;putSettings($params);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_get_settings_api"></a>Get Settings API</h2></div></div></div><p>Get Settings API will show you the currently configured settings for one or more indexes:</p><pre class="programlisting prettyprint lang-php">// Get settings for one index
+$params['index'] = 'my_index';
+$ret = $client-&gt;indices()-&gt;getSettings($params);
+
+// Get settings for several indexes
+$params['index'] = array('my_index', 'my_index2');
+$ret = $client-&gt;indices()-&gt;getSettings($params);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_put_mappings_api"></a>Put Mappings API</h2></div></div></div><p>The Put Mappings API allows you to modify or add to an existing index’s mapping.</p><pre class="programlisting prettyprint lang-php">// Set the index and type
+$params['index'] = 'my_index';
+$params['type']  = 'my_type2';
+
+// Adding a new type to an existing index
+$myTypeMapping2 = array(
+    '_source' =&gt; array(
+        'enabled' =&gt; true
+    ),
+    'properties' =&gt; array(
+        'first_name' =&gt; array(
+            'type' =&gt; 'string',
+            'analyzer' =&gt; 'standard'
+        ),
+        'age' =&gt; array(
+            'type' =&gt; 'integer'
+        )
+    )
+);
+$params['body']['my_type2'] = $myTypeMapping2;
+
+// Update the index mapping
+$client-&gt;indices()-&gt;putMapping($params);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_get_mappings_api"></a>Get Mappings API</h2></div></div></div><p>The Get Mappings API will return the mapping details about your indexes and types.  Depending on the mappings that you wish to retrieve, you can specify a number of combinations of index and type:</p><pre class="programlisting prettyprint lang-php">// Get mappings for all indexes and types
+$ret = $client-&gt;indices()-&gt;getMapping();
+
+// Get mappings for all types in 'my_index'
+$params['index'] = 'my_index';
+$ret = $client-&gt;indices()-&gt;getMapping($params);
+
+// Get mappings for all types of 'my_type', regardless of index
+$params['type'] = 'my_type';
+$ret = $client-&gt;indices()-&gt;getMapping($params);
+
+// Get mapping 'my_type' in 'my_index'
+$params['index'] = 'my_index';
+$params['type']  = 'my_type'
+$ret = $client-&gt;indices()-&gt;getMapping($params);
+
+// Get mappings for two indexes
+$params['index'] = array('my_index', 'my_index2');
+$ret = $client-&gt;indices()-&gt;getMapping($params);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_other_apis_in_the_indices_namespace"></a>Other APIs in the Indices Namespace</h2></div></div></div><p>There are a number of other APIs in the indices namespace that allow you to manage your elasticsearch indexes (add/remove templates, flush segments, close indexes, etc).</p><p>If you use an IDE with autocompletion, you should be able to easily explore the indices namespace by typing:</p><pre class="programlisting prettyprint lang-php">$client-&gt;indices()-&gt;</pre><p>And perusing the list of available methods.  Alternatively, browsing the <code class="literal">\Elasticsearch\Namespaces\Indices.php</code> file will show you the full list of available method calls (as well as parameter lists in the comments for each method).</p></div></div><div class="navfooter"><span class="prev"><a href="_configuration.html">
               « 
-              Indexing Operations</a>
+              Configuration</a>
            
         </span><span class="next">
            
-          <a href="_namespaces.html">Namespaces
+          <a href="_indexing_operations.html">Indexing Operations
                »
             </a></span></div></article></section></div></div></div><footer><div id="drawer_container" class="full_wrapper"><div id="drawer_inner" class="container"><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/training_icon.png" alt="" /><h3>Training</h3><p>Want to <span class="oomph">learn</span> from the creators and advance your data-driven <span class="oomph">superpowers?</span></p><a target="_blank" href="http://training.elasticsearch.com/" class="btn-expose">More</a></div><div class="block"><img class="creeper" src="http://www.elasticsearch.org/content/uploads/2013/03/dev_icon.png" alt="" /><h3>Dev Support</h3><p>
               Need help with
