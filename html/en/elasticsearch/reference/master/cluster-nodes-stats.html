@@ -122,15 +122,6 @@ of <code class="literal">indices</code>, <code class="literal">os</code>, <code 
 <p>
         Statistics about the field data circuit breaker
 </p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">clear</code>
-</p>
-</td><td valign="top">
-<p>
-        Clears all the flags (first). Useful, if you only want to
-        retrieve specific stats.
-</p>
 </td></tr></tbody></table></div><pre class="programlisting prettyprint lang-js"># return indices and os
 curl -XGET 'http://localhost:9200/_nodes/stats/os'
 # return just os and process
