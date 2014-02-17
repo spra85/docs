@@ -78,6 +78,16 @@ that can be set when creating an index, please check the
             }
         }
     }
+}'</pre><h3><a id="create-index-aliases"></a>Aliases</h3><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.1.0.</p></div></div><p>The create index API allows also to provide a set of <a class="link" href="indices-aliases.html" title="Index Aliases">aliases</a>:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test -d '{
+    "aliases" : {
+        "alias_1" : {},
+        "alias_2" : {
+            "filter" : {
+                "term" : {"user" : "kimchy" }
+            },
+            "routing" : "kimchy"
+        }
+    }
 }'</pre></div><div class="navfooter"><span class="prev"><a href="indices.html">
               « 
               Indices APIs</a>
