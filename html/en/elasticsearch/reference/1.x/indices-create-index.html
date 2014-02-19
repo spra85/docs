@@ -53,8 +53,8 @@ index settings can also be defined with <a class="ulink" href="http://www.json.o
         "number_of_shards" : 3,
         "number_of_replicas" : 2
     }
-}'</pre><p>_Note you do not have to explicitly specify <code class="literal">index</code> section inside
-<code class="literal">settings</code> section.</p><p>For more information regarding all the different index level settings
+}'</pre><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>You do not have to explicitly specify <code class="literal">index</code> section inside the
+<code class="literal">settings</code> section.</p></div></div><p>For more information regarding all the different index level settings
 that can be set when creating an index, please check the
 <a class="link" href="index-modules.html" title="Index Modules">index modules</a> section.</p><h3><a id="mappings"></a>Mappings</h3><p>The create index API allows to provide a set of one or more mappings:</p><pre class="programlisting prettyprint lang-js">curl -XPOST localhost:9200/test -d '{
     "settings" : {
